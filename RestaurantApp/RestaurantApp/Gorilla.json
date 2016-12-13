@@ -1,0 +1,12 @@
+﻿{
+  "knownAssemblies": [
+    { "name": "RestaurantApp" },
+    { "name": "FreshMvvm" },
+    {
+      "name": "UXDivers.Artina.Shared",
+      "types": null
+    },
+    { "name": "RestaurantApp.Pages" },
+    { "name": "RestaurantApp.Forms" }
+  ]
+}
