@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using RestaurantApp.Pages;
 using UIKit;
 
 namespace RestaurantApp.iOS
@@ -23,7 +24,15 @@ namespace RestaurantApp.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+#if !GORILLA
             LoadApplication(new App());
+#else
+            LoadApplication(UXDivers.Gorilla.iOS.Player.CreateApplication(
+                new UXDivers.Gorilla.Config("Good Gorilla")
+                   
+
+                ));
+#endif
 
             return base.FinishedLaunching(app, options);
         }

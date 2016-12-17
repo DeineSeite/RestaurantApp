@@ -21,7 +21,14 @@ namespace RestaurantApp.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+#if !GORILLA
             LoadApplication(new App());
+
+#else
+              LoadApplication(UXDivers.Gorilla.Droid.Player.CreateApplication(ApplicationContext,
+              new UXDivers.Gorilla.Config("Good Gorilla")
+              ));
+#endif
         }
     }
 }

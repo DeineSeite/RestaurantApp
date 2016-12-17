@@ -4,12 +4,13 @@
              xmlns:local="clr-namespace:RestaurantApp"
              xmlns:pages="clr-namespace:RestaurantApp.Pages;assembly=RestaurantApp"
              x:Class="RestaurantApp.Pages.MainPage">
-<pages:BasePage.Content>
-        <Label Text="TEst" 
-               TextColor="Black"
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
-    </pages:BasePage.Content>
+
+    <AbsoluteLayout>
+        <Image Source="background.jpg" Aspect="AspectFill"  AbsoluteLayout.LayoutBounds="1,1,1,1"
+                   AbsoluteLayout.LayoutFlags="All" ></Image>
+        
+        </AbsoluteLayout>
+
 	
 
 </pages:BasePage>
