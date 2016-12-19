@@ -1,16 +1,155 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<pages:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:RestaurantApp"
-             xmlns:pages="clr-namespace:RestaurantApp.Pages;assembly=RestaurantApp"
-             x:Class="RestaurantApp.Pages.MainPage">
+<pages:BasePage
+    x:Class="RestaurantApp.Pages.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:gorilla="clr-namespace:UXDivers.Gorilla;assembly=UXDivers.Gorilla.Common"
+    xmlns:local="clr-namespace:RestaurantApp"
+    xmlns:pages="clr-namespace:RestaurantApp.Pages;assembly=RestaurantApp"
+    xmlns:triggers="clr-namespace:RestaurantApp.Triggers;assembly=RestaurantApp"
+    xmlns:userControls="clr-namespace:RestaurantApp.UserControls;assembly=RestaurantApp">
+    <pages:BasePage.Resources>
+        <ResourceDictionary>
+            <gorilla:JsonData x:Key="MenuSample">
+                [
+                {  &quot;Name&quot;: &quot;BONUSPUNKTE&quot;},
+                {  &quot;Name&quot;: &quot;INFORMATIONEN&quot;},
+                {  &quot;Name&quot;: &quot;SPEISEKARTE&quot;},
+                {  &quot;Name&quot;: &quot;KONTAKS&quot;},
+                {  &quot;Name&quot;: &quot;MEIN KONTO&quot;}
+                ]
+            </gorilla:JsonData>
+        </ResourceDictionary>
+    </pages:BasePage.Resources>
+    <pages:BasePage.Content>
+        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <AbsoluteLayout>
+                <Image
+                    AbsoluteLayout.LayoutBounds="1,1,1,1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    Aspect="AspectFill"
+                    Source="background.jpg" />
+                <Grid AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="4*" />
+                    </Grid.RowDefinitions>
+                    <AbsoluteLayout Grid.Row="0">
+                        <userControls:RoundedBox
+                            x:Name="NameBox"
+                            AbsoluteLayout.LayoutFlags="YProportional,SizeProportional"
+                            BackgroundColor="{StaticResource MainThemeColor}"
+                            CornerRadius="15"
+                            Opacity="0.8">
+                            <AbsoluteLayout.LayoutBounds>
+                                <OnIdiom
+                                    x:TypeArguments="Rectangle"
+                                    Phone="60,.5,.8,.3"
+                                    Tablet="80,.5,.8,.3" />
+                            </AbsoluteLayout.LayoutBounds>
+                        </userControls:RoundedBox>
+                        <StackLayout AbsoluteLayout.LayoutFlags="YProportional,SizeProportional" Orientation="Horizontal">
+                            <AbsoluteLayout.LayoutBounds>
+                                <OnIdiom
+                                    x:TypeArguments="Rectangle"
+                                    Phone="60,.5,.8,.3"
+                                    Tablet="80,.5,.8,.3" />
+                            </AbsoluteLayout.LayoutBounds>
 
-    <AbsoluteLayout>
-        <Image Source="background.jpg" Aspect="AspectFill"  AbsoluteLayout.LayoutBounds="1,1,1,1"
-                   AbsoluteLayout.LayoutFlags="All" ></Image>
-        
-        </AbsoluteLayout>
+                            <Label
+                                FontSize="Medium"
+                                HorizontalOptions="EndAndExpand"
+                                Text="John Doe"
+                                TextColor="White"
+                                VerticalOptions="CenterAndExpand" />
+                            <Image HorizontalOptions="EndAndExpand" Source="door.png" />
+                        </StackLayout>
 
-	
+                        <userControls:RoundedBox
+                            x:Name="LogoBox"
+                            AbsoluteLayout.LayoutFlags="XProportional,YProportional"
+                            BackgroundColor="{StaticResource MainThemeColor}">
+                            <userControls:RoundedBox.CornerRadius>
+                                <OnPlatform
+                                    x:TypeArguments="x:Double"
+                                    Android="90"
+                                    iOS="50" />
+                            </userControls:RoundedBox.CornerRadius>
+                            <AbsoluteLayout.LayoutBounds>
+                                <OnIdiom
+                                    x:TypeArguments="Rectangle"
+                                    Phone=".1,.5,100,100"
+                                    Tablet=".1,.5,150,150" />
+                            </AbsoluteLayout.LayoutBounds>
+                        </userControls:RoundedBox>
+                        <StackLayout AbsoluteLayout.LayoutFlags="XProportional,YProportional">
+                            <AbsoluteLayout.LayoutBounds>
+                                <OnIdiom
+                                    x:TypeArguments="Rectangle"
+                                    Phone=".1,.5,100,100"
+                                    Tablet=".1,.5,150,150" />
+                            </AbsoluteLayout.LayoutBounds>
+                            <Image
+                                Margin="0,20,0,20"
+                                Source="spoon.png"
+                                VerticalOptions="FillAndExpand" />
+                        </StackLayout>
+                    </AbsoluteLayout>
+                    <ListView
+                        Grid.Row="1"
+                        AbsoluteLayout.LayoutBounds="1,.8,1,.7"
+                        AbsoluteLayout.LayoutFlags="All"
+                        BackgroundColor="Transparent"
+                        ItemsSource="{Binding Source={StaticResource MenuSample}, Path=Obj}"
+                        RowHeight="90"
+                        SeparatorVisibility="None">
+
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <AbsoluteLayout>
+                                        <BoxView
+                                            AbsoluteLayout.LayoutBounds="1,1,1,1"
+                                            AbsoluteLayout.LayoutFlags="All"
+                                            BackgroundColor="{StaticResource SecondThemeColor}"
+                                            Opacity="0.6">
+                                            <BoxView.Margin>
+                                                <OnIdiom
+                                                    x:TypeArguments="Thickness"
+                                                    Phone="5"
+                                                    Tablet="10" />
+                                            </BoxView.Margin>
+                                        </BoxView>
+                                        <StackLayout AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All">
+                                            <StackLayout.Margin>
+                                                <OnIdiom
+                                                    x:TypeArguments="Thickness"
+                                                    Phone="5"
+                                                    Tablet="10" />
+                                            </StackLayout.Margin>
+                                            <Label
+                                                FontAttributes="Bold"
+                                                HorizontalOptions="Center"
+                                                Text="{Binding Name}"
+                                                TextColor="Black"
+                                                VerticalOptions="CenterAndExpand">
+                                                <Label.FontSize>
+                                                    <OnIdiom
+                                                        x:TypeArguments="x:Double"
+                                                        Phone="15"
+                                                        Tablet="20" />
+                                                </Label.FontSize>
+                                            </Label>
+                                        </StackLayout>
+                                    </AbsoluteLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+            </AbsoluteLayout>
+        </ScrollView>
+    </pages:BasePage.Content>
+
 
 </pages:BasePage>

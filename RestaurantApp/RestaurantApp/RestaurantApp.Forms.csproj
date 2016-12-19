@@ -47,12 +47,15 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\AlphaColorConverter.cs" />
     <Compile Include="Pages\BasePage.cs" />
     <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\RestaurantAppPageModelMapper.cs" />
+    <Compile Include="Triggers\MenuItemClickTrigger.cs" />
+    <Compile Include="UserControls\RoundedBox.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\MainPage.xaml">

@@ -5,8 +5,14 @@
     {
       "name": "UXDivers.Artina.Shared",
       "types": null
-    },
+    }, 
+
     { "name": "RestaurantApp.Pages" },
-    { "name": "RestaurantApp.Forms" }
+    { "name": "RestaurantApp.Forms" },
+    { "name": "RestaurantApp.Core" },
+    { "name": "RestaurantApp.Data" },
+    { "name": "RestaurantApp.Converters" },
+    { "name": "RestaurantApp.UserControls" }
+   
   ]
 }

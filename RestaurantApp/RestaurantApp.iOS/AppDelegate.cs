@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
 using Foundation;
+using RestaurantApp.Converters;
+using RestaurantApp.iOS.Renderers;
 using RestaurantApp.Pages;
+using RestaurantApp.UserControls;
 using UIKit;
 
 namespace RestaurantApp.iOS
@@ -29,8 +31,11 @@ namespace RestaurantApp.iOS
 #else
             LoadApplication(UXDivers.Gorilla.iOS.Player.CreateApplication(
                 new UXDivers.Gorilla.Config("Good Gorilla")
-                   
-
+                .RegisterAssemblyFromType<BasePage>()
+                .RegisterAssemblyFromType<AlphaColorConverter>()
+                .RegisterAssemblyFromType<RoundedBox>()
+                .RegisterAssemblyFromType<RoundedBoxRenderer>()
+                .RegisterAssemblyFromType<MenuItemClickTrigger>()
                 ));
 #endif
 

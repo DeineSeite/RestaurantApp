@@ -96,11 +96,26 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <MtouchSdkVersion>10.1</MtouchSdkVersion>
+    <MtouchLink>SdkOnly</MtouchLink>
+    <MtouchDebug>True</MtouchDebug>
+    <MtouchProfiling>False</MtouchProfiling>
+    <MtouchFastDev>True</MtouchFastDev>
+    <MtouchArch>i386</MtouchArch>
+    <MtouchUseLlvm>False</MtouchUseLlvm>
+    <MtouchUseThumb>False</MtouchUseThumb>
+    <MtouchEnableBitcode>False</MtouchEnableBitcode>
+    <MtouchUseSGen>False</MtouchUseSGen>
+    <MtouchUseRefCounting>False</MtouchUseRefCounting>
+    <OptimizePNGs>True</OptimizePNGs>
+    <MtouchTlsProvider>Default</MtouchTlsProvider>
+    <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
+    <MtouchFloat32>False</MtouchFloat32>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Gorilla|iPhone'">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\iPhone\Gorilla\</OutputPath>
-    <DefineConstants>__UNIFIED__;__MOBILE__;__IOS__;DEBUG</DefineConstants>
+    <DefineConstants>DEBUG;__UNIFIED__;__MOBILE__;__IOS__;__UNIFIED__;__MOBILE__;__IOS__:GORILLA</DefineConstants>
     <DebugType>full</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
@@ -110,6 +125,7 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="Renderers\RoundedBoxRenderer.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -138,6 +154,14 @@
   <ItemGroup>
     <Reference Include="EngineIoClientDotNet">
       <HintPath>..\..\packages\EngineIoClientDotNet.0.9.22\lib\xamarinios10\EngineIoClientDotNet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FreshIOC, Version=1.0.6071.17008, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FreshMvvm.2.2.0\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\FreshIOC.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FreshMvvm, Version=1.0.6071.17008, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FreshMvvm.2.2.0\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\FreshMvvm.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json">
@@ -195,6 +219,15 @@
       <Name>RestaurantApp.Forms</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\door.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\spoon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.3.175\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.3.175\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
@@ -202,5 +235,5 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\..\packages\Xamarin.Forms.2.3.3.175\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Forms.2.3.3.175\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets'))" />
-    </Target>
- </Project>
+  </Target>
+</Project>
