@@ -100,10 +100,10 @@
                         AbsoluteLayout.LayoutBounds="1,.8,1,.7"
                         AbsoluteLayout.LayoutFlags="All"
                         BackgroundColor="Transparent"
-                        ItemsSource="{Binding Source={StaticResource MenuSample}, Path=Obj}"
+                        ItemsSource="{Binding MenuItemsList}"
                         RowHeight="90"
+                        SelectedItem="{Binding SelectedItem}"
                         SeparatorVisibility="None">
-
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
@@ -130,7 +130,7 @@
                                             <Label
                                                 FontAttributes="Bold"
                                                 HorizontalOptions="Center"
-                                                Text="{Binding Name}"
+                                                Text="{Binding Title}"
                                                 TextColor="Black"
                                                 VerticalOptions="CenterAndExpand">
                                                 <Label.FontSize>

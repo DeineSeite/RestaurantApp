@@ -11,15 +11,18 @@ namespace RestaurantApp
 {
     public partial class App : Application
     {
+        public FreshNavigationContainer BasicNavContainer { get; set; }
         public App()
         {
             InitializeComponent();
             InitializeFreshMvvm();
-            MainPage = FreshPageModelResolver.ResolvePageModel<MainPageModel>();
+            MainPage = BasicNavContainer;
         }
         void InitializeFreshMvvm()
         {
             FreshPageModelResolver.PageModelMapper = new RestaurantAppPageModelMapper();
+            var mainPage = FreshPageModelResolver.ResolvePageModel<MainPageModel>();
+            BasicNavContainer = new FreshNavigationContainer(mainPage);
         }
         protected override void OnStart()
         {
