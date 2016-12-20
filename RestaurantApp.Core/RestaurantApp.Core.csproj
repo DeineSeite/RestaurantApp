@@ -44,6 +44,21 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Localization\AppResources.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppResources.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Localization\AppResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Localization\AppResources.qps-ploc.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppResources.qps-ploc.resx</DependentUpon>
+    </Compile>
     <Compile Include="PageModels\AccountPageModel.cs" />
     <Compile Include="PageModels\BasePageModel.cs" />
     <Compile Include="PageModels\BonusPointPageModel.cs" />
@@ -51,7 +66,6 @@
     <Compile Include="PageModels\FoodCardPageModel.cs" />
     <Compile Include="PageModels\InfoPageModel.cs" />
     <Compile Include="PageModels\MainPageModel.cs" />
-    <Compile Include="RestaurantApp.Core.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -102,6 +116,36 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FodyWeavers.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <XliffResource Include="Localization\AppResources.de-DE.xlf">
+      <Generator>XliffResxGenerator</Generator>
+      <LastGenOutput>AppResources.de-DE.resx</LastGenOutput>
+    </XliffResource>
+    <XliffResource Include="Localization\AppResources.qps-ploc.xlf">
+      <Generator>XliffResxGenerator</Generator>
+      <LastGenOutput>AppResources.qps-ploc.resx</LastGenOutput>
+    </XliffResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Localization\AppResources.de-DE.resx">
+      <DependentUpon>AppResources.de-DE.xlf</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\AppResources.qps-ploc.resx">
+      <DependentUpon>AppResources.qps-ploc.xlf</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\AppResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.3.3.175\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.3.175\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />

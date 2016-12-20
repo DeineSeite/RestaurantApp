@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using FreshMvvm;
 using PropertyChanged;
+using RestaurantApp.Core.Localization;
+using Xamarin.Forms;
 using Page = Xamarin.Forms.Page;
 
 
@@ -13,36 +15,54 @@ namespace RestaurantApp.Core.PageModels
     [ImplementPropertyChanged]
   public class MainPageModel: BasePageModel
     {
-        public MainPageModel()
+        #region Public properties
+        public Dictionary<Type, string> MenuItemsList { get; set; }
+        public KeyValuePair<Type, string> SelectedItem
         {
-            var page = FreshPageModelResolver.ResolvePageModel<BonusPointPageModel>();
-          
-            MenuItemsList =new List<Page>();
-            MenuItemsList.Add(FreshPageModelResolver.ResolvePageModel<BonusPointPageModel>());
-            MenuItemsList.Add(FreshPageModelResolver.ResolvePageModel<InfoPageModel>());
-            MenuItemsList.Add(FreshPageModelResolver.ResolvePageModel<FoodCardPageModel>());
-            MenuItemsList.Add(FreshPageModelResolver.ResolvePageModel<ContactPageModel>());
-            MenuItemsList.Add(FreshPageModelResolver.ResolvePageModel<AccountPageModel>());
-        }
-#region Public properties
-        public List<Page> MenuItemsList { get; set; }
-        public  Page SelectedItem {
             get { return _selectedItem; }
             set
             {
-                Task.Run(async () =>
+                _selectedItem = value;
+                PushPageCommand.Execute(value);
+            }
+        }
+
+        #endregion
+
+        #region ctor
+        public MainPageModel()
+        {
+            //Initialize menu
+            MenuItemsList = new Dictionary<Type, string>
+            {
+                {typeof (BonusPointPageModel), AppResources.BonusPoints},
+                {typeof (InfoPageModel), AppResources.Info},
+                {typeof (FoodCardPageModel), AppResources.FoodCard},
+                {typeof (ContactPageModel), AppResources.Contacts},
+                {typeof (AccountPageModel), AppResources.Account}
+            };
+
+        }
+#endregion
+
+        #region Commands
+         Command<KeyValuePair<Type, string>> PushPageCommand
+        {
+            get
+            {
+                return new Command<KeyValuePair<Type, string>>(async (page) =>
                 {
-                    _selectedItem = value;
-                    await CoreMethods.PushPageModel(value.GetType());
+                    var contentPage = FreshPageModelResolver.ResolvePageModel(page.Key, null);
+                    contentPage.Title = page.Value;
+                    await CurrentPage.Navigation.PushAsync(contentPage);
                 });
-              
-                
             }
         }
         #endregion
+
         #region Private members
 
-        Page _selectedItem;
+        KeyValuePair<Type, string> _selectedItem;
 
         #endregion
     }

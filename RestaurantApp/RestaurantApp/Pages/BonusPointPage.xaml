@@ -1,10 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
+<pages:BasePage
     x:Class="RestaurantApp.Pages.BonusPointPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages="clr-namespace:RestaurantApp.Pages;assembly=RestaurantApp">
     <Label
         HorizontalOptions="Center"
         Text="{Binding MainText}"
         VerticalOptions="Center" />
-</ContentPage>
+</pages:BasePage>

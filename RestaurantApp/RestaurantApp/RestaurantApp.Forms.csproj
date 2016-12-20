@@ -52,11 +52,6 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\AlphaColorConverter.cs" />
-    <Compile Include="Localization\AppResources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AppResources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Pages\AccountPage.xaml.cs">
       <DependentUpon>AccountPage.xaml</DependentUpon>
     </Compile>
@@ -82,22 +77,6 @@
     <Compile Include="UserControls\RoundedBox.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Localization\AppResources.de-DE.resx">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AppResources.de-DE.xlf</DependentUpon>
-      <culture>de-DE</culture>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Localization\AppResources.qps-ploc.resx">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AppResources.qps-ploc.xlf</DependentUpon>
-      <culture>qps-ploc</culture>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Localization\AppResources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Pages\MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
@@ -181,16 +160,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <XliffResource Include="Localization\AppResources.de-DE.xlf">
-      <Generator>XliffResxGenerator</Generator>
-      <LastGenOutput>AppResources.de-DE.resx</LastGenOutput>
-    </XliffResource>
-    <XliffResource Include="Localization\AppResources.qps-ploc.xlf">
-      <Generator>XliffResxGenerator</Generator>
-      <LastGenOutput>AppResources.qps-ploc.resx</LastGenOutput>
-    </XliffResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="FodyWeavers.xml" />

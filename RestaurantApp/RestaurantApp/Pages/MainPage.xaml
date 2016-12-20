@@ -5,22 +5,13 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:gorilla="clr-namespace:UXDivers.Gorilla;assembly=UXDivers.Gorilla.Common"
     xmlns:local="clr-namespace:RestaurantApp"
+    xmlns:pageModels="clr-namespace:RestaurantApp.Core.PageModels;assembly=RestaurantApp.Core"
     xmlns:pages="clr-namespace:RestaurantApp.Pages;assembly=RestaurantApp"
     xmlns:triggers="clr-namespace:RestaurantApp.Triggers;assembly=RestaurantApp"
     xmlns:userControls="clr-namespace:RestaurantApp.UserControls;assembly=RestaurantApp">
-    <pages:BasePage.Resources>
-        <ResourceDictionary>
-            <gorilla:JsonData x:Key="MenuSample">
-                [
-                {  &quot;Name&quot;: &quot;BONUSPUNKTE&quot;},
-                {  &quot;Name&quot;: &quot;INFORMATIONEN&quot;},
-                {  &quot;Name&quot;: &quot;SPEISEKARTE&quot;},
-                {  &quot;Name&quot;: &quot;KONTAKS&quot;},
-                {  &quot;Name&quot;: &quot;MEIN KONTO&quot;}
-                ]
-            </gorilla:JsonData>
-        </ResourceDictionary>
-    </pages:BasePage.Resources>
+    <pages:BasePage.BindingContext>
+        <pageModels:MainPageModel />
+    </pages:BasePage.BindingContext>
     <pages:BasePage.Content>
         <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <AbsoluteLayout>
@@ -130,7 +121,7 @@
                                             <Label
                                                 FontAttributes="Bold"
                                                 HorizontalOptions="Center"
-                                                Text="{Binding Title}"
+                                                Text="{Binding Value}"
                                                 TextColor="Black"
                                                 VerticalOptions="CenterAndExpand">
                                                 <Label.FontSize>

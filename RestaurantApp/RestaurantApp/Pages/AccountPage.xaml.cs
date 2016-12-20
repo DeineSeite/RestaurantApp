@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RestaurantApp.Localization;
+using RestaurantApp.Core.Localization;
 using Xamarin.Forms;
 
 namespace RestaurantApp.Pages
 {
-    public partial class AccountPage : ContentPage
+    public partial class AccountPage : BasePage
     {
         public AccountPage()
         {
             InitializeComponent();
             Title = AppResources.Account;
         }
+        
     }
 }
