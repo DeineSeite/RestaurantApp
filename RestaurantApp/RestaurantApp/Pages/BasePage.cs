@@ -10,10 +10,11 @@ namespace RestaurantApp.Pages
 {
  public class BasePage:FreshBaseContentPage
     {
-
+       
      public BasePage()
      {
             NavigationPage.SetHasNavigationBar(this, false);//Hide navigation bar
+            
      }
      
     }

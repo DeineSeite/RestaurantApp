@@ -13,57 +13,47 @@ using Page = Xamarin.Forms.Page;
 namespace RestaurantApp.Core.PageModels
 {
     [ImplementPropertyChanged]
-  public class MainPageModel: BasePageModel
+  public class MainPageModel: MenuListPageModel
     {
-        #region Public properties
-        public Dictionary<Type, string> MenuItemsList { get; set; }
-        public KeyValuePair<Type, string> SelectedItem
-        {
-            get { return _selectedItem; }
-            set
-            {
-                _selectedItem = value;
-                PushPageCommand.Execute(value);
-            }
-        }
-
-        #endregion
-
         #region ctor
         public MainPageModel()
         {
             //Initialize menu
-            MenuItemsList = new Dictionary<Type, string>
+            var bonusPointPage = new SubMenuListPageModel {Title = AppResources.BonusPoints};
+            var infoPage = new SubMenuListPageModel
             {
-                {typeof (BonusPointPageModel), AppResources.BonusPoints},
-                {typeof (InfoPageModel), AppResources.Info},
-                {typeof (FoodCardPageModel), AppResources.FoodCard},
-                {typeof (ContactPageModel), AppResources.Contacts},
-                {typeof (AccountPageModel), AppResources.Account}
+                Title = AppResources.Info,
+                MenuItemsList = new List<BasePageModel>()
+                {
+                    new AccountPageModel() {Title = "Test"},
+                    new AccountPageModel() {Title = "Test"}
+                }
             };
+            var foodCardPage = new SubMenuListPageModel
+            {
+                Title = AppResources.FoodCard,
+            MenuItemsList = new List<BasePageModel>()
+                {
+                    new AccountPageModel() {Title = "Test2"},
+                    new AccountPageModel() {Title = "Test2"},
+                    new AccountPageModel() {Title = "Test2"}
+                }
+            };
+            var contactPage = new SubMenuListPageModel {Title = AppResources.Contacts};
+            var accountPage = new AccountPageModel {Title = AppResources.Account};
+            MenuItemsList = new List<BasePageModel>
+            {
+               bonusPointPage,
+               infoPage,
+               foodCardPage,
+               contactPage,
+               accountPage
+            };
+
 
         }
 #endregion
 
-        #region Commands
-         Command<KeyValuePair<Type, string>> PushPageCommand
-        {
-            get
-            {
-                return new Command<KeyValuePair<Type, string>>(async (page) =>
-                {
-                    var contentPage = FreshPageModelResolver.ResolvePageModel(page.Key, null);
-                    contentPage.Title = page.Value;
-                    await CurrentPage.Navigation.PushAsync(contentPage);
-                });
-            }
-        }
-        #endregion
-
-        #region Private members
-
-        KeyValuePair<Type, string> _selectedItem;
-
-        #endregion
+     
     }
 }

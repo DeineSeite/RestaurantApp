@@ -66,6 +66,8 @@
     <Compile Include="PageModels\FoodCardPageModel.cs" />
     <Compile Include="PageModels\InfoPageModel.cs" />
     <Compile Include="PageModels\MainPageModel.cs" />
+    <Compile Include="PageModels\MenuListViewModel.cs" />
+    <Compile Include="PageModels\SubMenuListViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

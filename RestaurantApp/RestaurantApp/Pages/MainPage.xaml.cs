@@ -12,6 +12,7 @@ namespace RestaurantApp.Pages
         public MainPage()
         {
             InitializeComponent();
+           
         }
     }
 }

@@ -12,6 +12,11 @@ namespace RestaurantApp.Core.PageModels
     [ImplementPropertyChanged]
   public  class BasePageModel : FreshMvvm.FreshBasePageModel
     {
+        /// <summary>
+        /// Set title for ContentPage
+        /// </summary>
+        public string Title { get; set; }
+
         public BasePageModel()
       {
         
