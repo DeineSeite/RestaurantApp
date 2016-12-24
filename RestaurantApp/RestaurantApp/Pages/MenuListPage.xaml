@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <pages:BasePage
-    x:Class="RestaurantApp.Pages.SubMenuListPage"
+    x:Class="RestaurantApp.Pages.MenuListPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pageModels="clr-namespace:RestaurantApp.Core.PageModels;assembly=RestaurantApp.Core"
@@ -9,7 +9,7 @@
     x:Name="SubMenuPage"
     Title="Test">
     <pages:BasePage.BindingContext>
-        <pageModels:SubMenuListPageModel />
+        <pageModels:MenuListPageModel />
     </pages:BasePage.BindingContext>
     <pages:BasePage.Content>
         <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -84,7 +84,6 @@
                                 Source="spoon.png"
                                 VerticalOptions="FillAndExpand" />
                         </StackLayout>
-                        <Label Text="{Binding Title}" />
                         <!--<userControls:MenuItemCellTemplate
                             BindingContext="{Binding Source={x:Reference Name=SubMenuPage}}"
                             HeightRequest="100"

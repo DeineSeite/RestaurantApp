@@ -19,8 +19,8 @@ namespace RestaurantApp.Core.PageModels
         public MainPageModel()
         {
             //Initialize menu
-            var bonusPointPage = new SubMenuListPageModel {Title = AppResources.BonusPoints};
-            var infoPage = new SubMenuListPageModel
+            var bonusPointPage = new MenuListPageModel {Title = AppResources.BonusPoints};
+            var infoPage = new MenuListPageModel
             {
                 Title = AppResources.Info,
                 MenuItemsList = new List<BasePageModel>()
@@ -29,7 +29,7 @@ namespace RestaurantApp.Core.PageModels
                     new AccountPageModel() {Title = "Test"}
                 }
             };
-            var foodCardPage = new SubMenuListPageModel
+            var foodCardPage = new MenuListPageModel
             {
                 Title = AppResources.FoodCard,
             MenuItemsList = new List<BasePageModel>()
@@ -39,8 +39,9 @@ namespace RestaurantApp.Core.PageModels
                     new AccountPageModel() {Title = "Test2"}
                 }
             };
-            var contactPage = new SubMenuListPageModel {Title = AppResources.Contacts};
+            var contactPage = new MenuListPageModel {Title = AppResources.Contacts};
             var accountPage = new AccountPageModel {Title = AppResources.Account};
+
             MenuItemsList = new List<BasePageModel>
             {
                bonusPointPage,

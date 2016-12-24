@@ -8,5 +8,6 @@ namespace RestaurantApp.Core.PageModels
 {
    public class AccountPageModel: BasePageModel
     {
+
     }
 }

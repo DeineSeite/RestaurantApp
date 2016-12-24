@@ -8,9 +8,9 @@ using Xamarin.Forms;
 
 namespace RestaurantApp.Pages
 {
-    public partial class SubMenuListPage : BasePage
+    public partial class MenuListPage : BasePage
     {
-        public SubMenuListPage()
+        public MenuListPage()
         {
             InitializeComponent();
         }
