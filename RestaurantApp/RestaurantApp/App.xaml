@@ -6,6 +6,7 @@
     xmlns:converters="clr-namespace:RestaurantApp.Converters">
     <Application.Resources>
         <ResourceDictionary>
+
             <Color x:Key="MainThemeColor">#637704</Color>
             <Color x:Key="SecondThemeColor">#FAECC7</Color>
             <Style x:Key="MenuListStyle" TargetType="ListView">
@@ -22,15 +23,13 @@
             </Style>
             <FileImageSource x:Key="MainBackgroundImage" File="background.jpg" />
             <Style x:Key="MenuItemCellStyle" TargetType="BoxView">
-                <Setter Property="Opacity" Value="0.6" />
-                <Setter Property="BackgroundColor" Value="{StaticResource SecondThemeColor}" />
+                <Setter Property="Opacity" Value="0.5" />
+                <Setter Property="Style" Value="{StaticResource SecondThemeColor}" />
             </Style>
-            <Style
-                x:Key="TitleStyle"   
-               
-                TargetType="BoxView">
-                <Setter Property="Opacity" Value="1" />
-                <Setter Property="BackgroundColor" Value="Red" />
+
+            <Style x:Key="TitleStyle" TargetType="BoxView">
+                <Setter Property="Opacity" Value="0.5" />
+                <Setter Property="BackgroundColor" Value="White" />
             </Style>
         </ResourceDictionary>
         <!--  Application resource dictionary  -->

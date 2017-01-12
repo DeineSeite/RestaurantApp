@@ -26,6 +26,18 @@
           <source>Information</source>
           <target state="new">Information</target>
         </trans-unit>
+        <trans-unit id="Resx/Tables" translate="yes" xml:space="preserve">
+          <source>Tables</source>
+          <target state="new">Tables</target>
+        </trans-unit>
+        <trans-unit id="Resx/ParkPlace" translate="yes" xml:space="preserve">
+          <source>Park places</source>
+          <target state="new">Park places</target>
+        </trans-unit>
+        <trans-unit id="Resx/OpenHours" translate="yes" xml:space="preserve">
+          <source>Open Hours</source>
+          <target state="new">Open Hours</target>
+        </trans-unit>
       </group>
     </body>
   </file>

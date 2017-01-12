@@ -8,5 +8,9 @@ namespace RestaurantApp.Core.PageModels
 {
    public class InfoPageModel: BasePageModel
     {
+       public InfoPageModel()
+       {
+           
+       }
     }
 }

@@ -8,12 +8,11 @@ using Xamarin.Forms;
 
 namespace RestaurantApp.UserControls
 {
-    public partial class MenuItemCellTemplate : ContentView
+    public partial class TitleControlTemplate : ContentView
     {
-        public MenuItemCellTemplate()
+        public TitleControlTemplate()
         {
             InitializeComponent();
         }
-      
     }
 }

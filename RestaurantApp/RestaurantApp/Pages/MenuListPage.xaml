@@ -6,8 +6,7 @@
     xmlns:pageModels="clr-namespace:RestaurantApp.Core.PageModels;assembly=RestaurantApp.Core"
     xmlns:pages="clr-namespace:RestaurantApp.Pages;assembly=RestaurantApp"
     xmlns:userControls="clr-namespace:RestaurantApp.UserControls;assembly=RestaurantApp"
-    x:Name="SubMenuPage"
-    Title="Test">
+    x:Name="SubMenuPage">
     <pages:BasePage.BindingContext>
         <pageModels:MenuListPageModel />
     </pages:BasePage.BindingContext>
@@ -84,17 +83,26 @@
                                 Source="spoon.png"
                                 VerticalOptions="FillAndExpand" />
                         </StackLayout>
-                        <!--<userControls:MenuItemCellTemplate
-                            BindingContext="{Binding Source={x:Reference Name=SubMenuPage}}"
-                            HeightRequest="100"
-                            Style="{StaticResource TitleStyle}"
-                            WidthRequest="400" />-->
+
                     </AbsoluteLayout>
 
-                    <userControls:MenuTemplate
+                    <StackLayout
                         Grid.Row="1"
                         AbsoluteLayout.LayoutBounds="1,.8,1,.7"
-                        AbsoluteLayout.LayoutFlags="All" />
+                        AbsoluteLayout.LayoutFlags="All">
+
+                        <userControls:TitleControlTemplate BindingContext="{Binding Source={x:Reference Name=SubMenuPage}}" HorizontalOptions="FillAndExpand">
+                            <userControls:TitleControlTemplate.HeightRequest>
+                                <OnIdiom
+                                    x:TypeArguments="x:Double"
+                                    Phone="70"
+                                    Tablet="90" />
+                            </userControls:TitleControlTemplate.HeightRequest>
+                        </userControls:TitleControlTemplate>
+                        <userControls:MenuTemplate />
+
+                    </StackLayout>
+
                 </Grid>
             </AbsoluteLayout>
 

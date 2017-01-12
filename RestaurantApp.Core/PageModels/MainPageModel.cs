@@ -20,13 +20,15 @@ namespace RestaurantApp.Core.PageModels
         {
             //Initialize menu
             var bonusPointPage = new MenuListPageModel {Title = AppResources.BonusPoints};
+            
             var infoPage = new MenuListPageModel
             {
                 Title = AppResources.Info,
                 MenuItemsList = new List<BasePageModel>()
                 {
-                    new AccountPageModel() {Title = "Test"},
-                    new AccountPageModel() {Title = "Test"}
+                    new AccountPageModel() {Title = AppResources.OpenHours},
+                    new AccountPageModel() {Title = AppResources.Tables},
+                    new AccountPageModel() {Title = AppResources.ParkPlace}
                 }
             };
             var foodCardPage = new MenuListPageModel

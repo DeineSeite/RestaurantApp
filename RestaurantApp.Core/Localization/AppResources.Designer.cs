@@ -105,5 +105,32 @@ namespace RestaurantApp.Core.Localization {
                 return ResourceManager.GetString("Info", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Hours.
+        /// </summary>
+        public static string OpenHours {
+            get {
+                return ResourceManager.GetString("OpenHours", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Park places.
+        /// </summary>
+        public static string ParkPlace {
+            get {
+                return ResourceManager.GetString("ParkPlace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tables.
+        /// </summary>
+        public static string Tables {
+            get {
+                return ResourceManager.GetString("Tables", resourceCulture);
+            }
+        }
     }
 }

@@ -15,11 +15,28 @@ namespace RestaurantApp.Core.PageModels
         /// <summary>
         /// Set title for ContentPage
         /// </summary>
-        public string Title { get; set; }
+        public string Title {
+            get { return _title; }
+            set
+            {
+                _title = value;
+                if (CurrentPage != null) CurrentPage.Title = _title;
+            }
+        }
+
+        public override void Init(object initData)
+        {
+            CurrentPage.Title = _title;
+        }
 
         public BasePageModel()
       {
-        
+       
       }
+        #region Private members
+
+        string _title;
+
+        #endregion
     }
 }

@@ -132,4 +132,13 @@
   <data name="Info" xml:space="preserve">
     <value>Information</value>
   </data>
+  <data name="OpenHours" xml:space="preserve">
+    <value>Open Hours</value>
+  </data>
+  <data name="ParkPlace" xml:space="preserve">
+    <value>Park places</value>
+  </data>
+  <data name="Tables" xml:space="preserve">
+    <value>Tables</value>
+  </data>
 </root>
