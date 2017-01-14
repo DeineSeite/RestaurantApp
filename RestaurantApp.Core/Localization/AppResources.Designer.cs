@@ -71,7 +71,7 @@ namespace RestaurantApp.Core.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bonus pionts.
+        ///   Looks up a localized string similar to Bonus points.
         /// </summary>
         public static string BonusPoints {
             get {

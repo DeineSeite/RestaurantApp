@@ -27,6 +27,7 @@ namespace RestaurantApp.Core.PageModels
                 MenuItemsList = new List<BasePageModel>()
                 {
                     new AccountPageModel() {Title = AppResources.OpenHours},
+                    new AccountPageModel() {Title = AppResources.Contacts},
                     new AccountPageModel() {Title = AppResources.Tables},
                     new AccountPageModel() {Title = AppResources.ParkPlace}
                 }
@@ -41,7 +42,6 @@ namespace RestaurantApp.Core.PageModels
                     new AccountPageModel() {Title = "Test2"}
                 }
             };
-            var contactPage = new MenuListPageModel {Title = AppResources.Contacts};
             var accountPage = new AccountPageModel {Title = AppResources.Account};
 
             MenuItemsList = new List<BasePageModel>
@@ -49,7 +49,6 @@ namespace RestaurantApp.Core.PageModels
                bonusPointPage,
                infoPage,
                foodCardPage,
-               contactPage,
                accountPage
             };
 

@@ -1,0 +1,42 @@
+﻿{
+  "MainPage.xaml": {
+    "Name": "Alte Geshichte",
+    "Tasks": "25",
+    "MenuItemsList": [
+      { "Title": "1" },
+      { "Title": "2" },
+      { "Title": "3" },
+      { "Title": "4" }
+    ]
+  },
+  "MenuListPage.xaml": {
+    "Name": "Alte Geshichte",
+    "Title": "Test title",
+    "MenuItemsList": [
+      { "Title": "1" },
+      { "Title": "2" },
+      { "Title": "3" },
+      { "Title": "3" },
+      { "Title": "3" },
+      { "Title": "4" }
+    ]
+  },
+  "QuestListPage.xaml": [
+    {
+      "Name": "Alte Geshichte",
+      "Tasks": "25",
+      "Background": "questItem.jpg"
+    },
+    {
+      "Name": "Alte Geshichte",
+      "Tasks": "25",
+      "Background": "questItem.jpg"
+    },
+    {
+      "Name": "Alte Geshichte",
+      "Tasks": "25",
+      "Background": "questItem.jpg"
+    }
+  ]
+
+}

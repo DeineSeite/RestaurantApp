@@ -9,90 +9,29 @@
     xmlns:pages="clr-namespace:RestaurantApp.Pages;assembly=RestaurantApp"
     xmlns:triggers="clr-namespace:RestaurantApp.Triggers;assembly=RestaurantApp"
     xmlns:userControls="clr-namespace:RestaurantApp.UserControls;assembly=RestaurantApp">
-    <pages:BasePage.BindingContext>
-        <pageModels:MainPageModel />
-    </pages:BasePage.BindingContext>
+
     <pages:BasePage.Content>
-        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <AbsoluteLayout>
-                <Image
-                    AbsoluteLayout.LayoutBounds="1,1,1,1"
-                    AbsoluteLayout.LayoutFlags="All"
-                    Aspect="AspectFill"
-                    Source="{StaticResource MainBackgroundImage}" />
-                <Grid AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="4*" />
-                    </Grid.RowDefinitions>
-                    <AbsoluteLayout Grid.Row="0">
-                        <userControls:RoundedBox
-                            x:Name="NameBox"
-                            AbsoluteLayout.LayoutFlags="YProportional,SizeProportional"
-                            BackgroundColor="{StaticResource MainThemeColor}"
-                            CornerRadius="15"
-                            Opacity="0.8">
-                            <AbsoluteLayout.LayoutBounds>
-                                <OnIdiom
-                                    x:TypeArguments="Rectangle"
-                                    Phone="60,.5,.8,.3"
-                                    Tablet="80,.5,.8,.3" />
-                            </AbsoluteLayout.LayoutBounds>
-                        </userControls:RoundedBox>
-                        <StackLayout AbsoluteLayout.LayoutFlags="YProportional,SizeProportional" Orientation="Horizontal">
-                            <AbsoluteLayout.LayoutBounds>
-                                <OnIdiom
-                                    x:TypeArguments="Rectangle"
-                                    Phone="60,.5,.8,.3"
-                                    Tablet="80,.5,.8,.3" />
-                            </AbsoluteLayout.LayoutBounds>
+        <AbsoluteLayout>
+            <Image
+                AbsoluteLayout.LayoutBounds="1,1,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                Aspect="AspectFill"
+                Source="{StaticResource MainBackgroundImage}" />
+            <Grid AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <ContentView ControlTemplate="{StaticResource HeaderTemplate}" />
 
-                            <Label
-                                FontSize="Medium"
-                                HorizontalOptions="EndAndExpand"
-                                Text="John Doe"
-                                TextColor="White"
-                                VerticalOptions="CenterAndExpand" />
-                            <Image HorizontalOptions="EndAndExpand" Source="door.png" />
-                        </StackLayout>
-
-                        <userControls:RoundedBox
-                            x:Name="LogoBox"
-                            AbsoluteLayout.LayoutFlags="XProportional,YProportional"
-                            BackgroundColor="{StaticResource MainThemeColor}">
-                            <userControls:RoundedBox.CornerRadius>
-                                <OnPlatform
-                                    x:TypeArguments="x:Double"
-                                    Android="90"
-                                    iOS="50" />
-                            </userControls:RoundedBox.CornerRadius>
-                            <AbsoluteLayout.LayoutBounds>
-                                <OnIdiom
-                                    x:TypeArguments="Rectangle"
-                                    Phone=".1,.5,100,100"
-                                    Tablet=".1,.5,150,150" />
-                            </AbsoluteLayout.LayoutBounds>
-                        </userControls:RoundedBox>
-                        <StackLayout AbsoluteLayout.LayoutFlags="XProportional,YProportional">
-                            <AbsoluteLayout.LayoutBounds>
-                                <OnIdiom
-                                    x:TypeArguments="Rectangle"
-                                    Phone=".1,.5,100,100"
-                                    Tablet=".1,.5,150,150" />
-                            </AbsoluteLayout.LayoutBounds>
-                            <Image
-                                Margin="0,20,0,20"
-                                Source="spoon.png"
-                                VerticalOptions="FillAndExpand" />
-                        </StackLayout>
-                    </AbsoluteLayout>
-                    <userControls:MenuTemplate
-                        Grid.Row="1"
-                        AbsoluteLayout.LayoutBounds="1,.8,1,.7"
-                        AbsoluteLayout.LayoutFlags="All" />
-                </Grid>
-            </AbsoluteLayout>
-        </ScrollView>
+                <userControls:MenuTemplate
+                    x:Name="Menu"
+                    Grid.Row="1"
+                    Margin="-10,0,-10,0"
+                    AbsoluteLayout.LayoutBounds="1,.8,1,.7"
+                    AbsoluteLayout.LayoutFlags="All" />
+            </Grid>
+        </AbsoluteLayout>
     </pages:BasePage.Content>
 
 

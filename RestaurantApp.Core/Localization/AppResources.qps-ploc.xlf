@@ -11,8 +11,8 @@
           <target state="new">Account</target>
         </trans-unit>
         <trans-unit id="Resx/BonusPoints" translate="yes" xml:space="preserve">
-          <source>Bonus pionts</source>
-          <target state="new">Bonus pionts</target>
+          <source>Bonus points</source>
+          <target state="new">Bonus points</target>
         </trans-unit>
         <trans-unit id="Resx/Contacts" translate="yes" xml:space="preserve">
           <source>Contacts</source>

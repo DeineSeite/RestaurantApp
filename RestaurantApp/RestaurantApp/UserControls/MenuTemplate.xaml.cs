@@ -10,15 +10,13 @@ namespace RestaurantApp.UserControls
 {
     public partial class MenuTemplate : ContentView
     {
+        public ListView MenuListView { get { return MenuList; } set { MenuList = value; } }
         public MenuTemplate()
         {
             InitializeComponent();
-            MenuListView.ItemAppearing += MenuListView_ItemAppearing;
         }
 
-        private void MenuListView_ItemAppearing(object sender, ItemVisibilityEventArgs e)
-        {
-            var s = sender;
-        }
+
+        
     }
 }

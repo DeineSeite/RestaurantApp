@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
-  <file datatype="xml" source-language="en" target-language="de-DE" original="AppResources.resx" tool-id="MultilingualAppToolkit" product-name="RestaurantApp.Core" product-version="1.0.0.0" build-num="0">
+  <file datatype="xml" source-language="en" target-language="it" original="AppResources.resx" tool-id="MultilingualAppToolkit" product-name="RestaurantApp.Core" product-version="1.0.0.0" build-num="0">
     <header>
       <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="3.1.1250.0" tool-company="Microsoft" />
     </header>
@@ -8,23 +8,27 @@
       <group id="Resx">
         <trans-unit id="Resx/Account" translate="yes" xml:space="preserve">
           <source>Account</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Mein Konto</target>
+          <target state="new">Account</target>
         </trans-unit>
         <trans-unit id="Resx/BonusPoints" translate="yes" xml:space="preserve">
           <source>Bonus points</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Bonus Punkte</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
+          <target state="new">Bonus points</target>
         </trans-unit>
         <trans-unit id="Resx/Contacts" translate="yes" xml:space="preserve">
           <source>Contacts</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Kontakts</target>
+          <target state="new">Contacts</target>
         </trans-unit>
         <trans-unit id="Resx/FoodCard" translate="yes" xml:space="preserve">
           <source>Menu</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Speisekarte</target>
+          <target state="new">Menu</target>
         </trans-unit>
         <trans-unit id="Resx/Info" translate="yes" xml:space="preserve">
           <source>Information</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Informationen</target>
+          <target state="new">Information</target>
+        </trans-unit>
+        <trans-unit id="Resx/OpenHours" translate="yes" xml:space="preserve">
+          <source>Open Hours</source>
+          <target state="new">Open Hours</target>
         </trans-unit>
         <trans-unit id="Resx/Tables" translate="yes" xml:space="preserve">
           <source>Tables</source>
@@ -33,10 +37,6 @@
         <trans-unit id="Resx/ParkPlace" translate="yes" xml:space="preserve">
           <source>Park places</source>
           <target state="new">Park places</target>
-        </trans-unit>
-        <trans-unit id="Resx/OpenHours" translate="yes" xml:space="preserve">
-          <source>Open Hours</source>
-          <target state="new">Open Hours</target>
         </trans-unit>
       </group>
     </body>

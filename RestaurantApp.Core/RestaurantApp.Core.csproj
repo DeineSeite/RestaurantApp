@@ -14,7 +14,9 @@
     <TargetFrameworkProfile>Profile259</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <NuGetPackageImportStamp></NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <SupportedCultures>de-DE;it-IT;it;qps-ploc</SupportedCultures>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -125,6 +127,14 @@
       <Generator>XliffResxGenerator</Generator>
       <LastGenOutput>AppResources.de-DE.resx</LastGenOutput>
     </XliffResource>
+    <XliffResource Include="Localization\AppResources.it-IT.xlf">
+      <Generator>XliffResxGenerator</Generator>
+      <LastGenOutput>AppResources.it-IT.resx</LastGenOutput>
+    </XliffResource>
+    <XliffResource Include="Localization\AppResources.it.xlf">
+      <Generator>XliffResxGenerator</Generator>
+      <LastGenOutput>AppResources.it.resx</LastGenOutput>
+    </XliffResource>
     <XliffResource Include="Localization\AppResources.qps-ploc.xlf">
       <Generator>XliffResxGenerator</Generator>
       <LastGenOutput>AppResources.qps-ploc.resx</LastGenOutput>
@@ -135,6 +145,18 @@
       <DependentUpon>AppResources.de-DE.xlf</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\AppResources.it-IT.resx">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppResources.it-IT.xlf</DependentUpon>
+      <culture>it-IT</culture>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\AppResources.it.resx">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppResources.it.xlf</DependentUpon>
+      <culture>it</culture>
     </EmbeddedResource>
     <EmbeddedResource Include="Localization\AppResources.qps-ploc.resx">
       <DependentUpon>AppResources.qps-ploc.xlf</DependentUpon>

@@ -5,6 +5,7 @@ using Foundation;
 using RestaurantApp.Converters;
 using RestaurantApp.iOS.Renderers;
 using RestaurantApp.Pages;
+using RestaurantApp.Triggers;
 using RestaurantApp.UserControls;
 using UIKit;
 

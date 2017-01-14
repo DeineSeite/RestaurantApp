@@ -15,38 +15,21 @@ namespace RestaurantApp.Core.PageModels
      public MenuListPageModel()
      {
             MenuItemsList=new List<BasePageModel>();
+         PushPageCommand = new Command<BasePageModel>(PushPage);
      }
         #endregion
 
         #region Public properties
+
+
         /// <summary>
         /// 
         /// </summary>
         public List<BasePageModel> MenuItemsList { get; set; }
-        public BasePageModel SelectedItem
-        {
-            get { return _selectedItem; }
-            set
-            {
-                _selectedItem = value;
-                PushPageCommand.Execute(value);
-            }
-        }
-
         #endregion
 
         #region Commands
-        Command<BasePageModel> PushPageCommand
-        {
-            get
-            {
-                return new Command<BasePageModel>(async (page) =>
-                {
-                    var contentPage = FreshPageModelResolver.ResolvePageModel(page.GetType(),null,page);
-                    await CurrentPage.Navigation.PushAsync(contentPage);
-                });
-            }
-        }
+       public Command<BasePageModel> PushPageCommand { get; set; }
         #endregion
 
         #region Public methods
@@ -58,6 +41,14 @@ namespace RestaurantApp.Core.PageModels
      {
          this._parameter = parameter;
      }
+        #endregion
+        #region Private methods
+
+     private async void PushPage(BasePageModel page)
+     {
+            var contentPage = FreshPageModelResolver.ResolvePageModel(page.GetType(), null, page);
+            await CurrentPage.Navigation.PushAsync(contentPage);
+        }
 #endregion
 
         #region Private members

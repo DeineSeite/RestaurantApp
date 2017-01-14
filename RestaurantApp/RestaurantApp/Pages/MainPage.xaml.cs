@@ -14,5 +14,12 @@ namespace RestaurantApp.Pages
             InitializeComponent();
            
         }
+
+        protected override void OnAppearing()
+        {
+            Menu.MenuListView.HeaderTemplate = null;
+           
+            base.OnAppearing();
+        }
     }
 }

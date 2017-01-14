@@ -118,19 +118,28 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Account" xml:space="preserve">
-    <value>Mein Konto</value>
+    <value>Account</value>
   </data>
   <data name="BonusPoints" xml:space="preserve">
-    <value>Bonus Punkte</value>
+    <value>Premio pionts</value>
     <comment></comment>
   </data>
   <data name="Contacts" xml:space="preserve">
-    <value>Kontakts</value>
+    <value>Contatti</value>
   </data>
   <data name="FoodCard" xml:space="preserve">
-    <value>Speisekarte</value>
+    <value>Dal menu</value>
   </data>
   <data name="Info" xml:space="preserve">
-    <value>Informationen</value>
+    <value>Informazioni</value>
+  </data>
+  <data name="OpenHours" xml:space="preserve">
+    <value>Apri ore</value>
+  </data>
+  <data name="ParkPlace" xml:space="preserve">
+    <value>Parco decimali</value>
+  </data>
+  <data name="Tables" xml:space="preserve">
+    <value>Tabelle</value>
   </data>
 </root>

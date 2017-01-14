@@ -51,7 +51,10 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Behaviors\BindableBehavior.cs" />
+    <Compile Include="Behaviors\EventToCommandBehavior.cs" />
     <Compile Include="Converters\AlphaColorConverter.cs" />
+    <Compile Include="Converters\ItemTappedEventArgsConverter.cs" />
     <Compile Include="Pages\AccountPage.xaml.cs">
       <DependentUpon>AccountPage.xaml</DependentUpon>
     </Compile>
@@ -84,9 +87,6 @@
       <DependentUpon>MenuTemplate.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\RoundedBox.cs" />
-    <Compile Include="UserControls\TitleControlTemplate.xaml.cs">
-      <DependentUpon>TitleControlTemplate.xaml</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\MainPage.xaml">
@@ -102,6 +102,7 @@
     <None Include="GettingStarted.Xamarin" />
     <None Include="Gorilla.json" />
     <None Include="packages.config" />
+    <None Include="SampleData.json" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\RestaurantApp.Core\RestaurantApp.Core.csproj">
@@ -190,12 +191,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="UserControls\MenuItemCellTemplate.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="UserControls\TitleControlTemplate.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
