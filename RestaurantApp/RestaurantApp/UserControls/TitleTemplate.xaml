@@ -2,22 +2,25 @@
 <ContentView
     x:Class="RestaurantApp.UserControls.TitleTemplate"
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:userControls="clr-namespace:RestaurantApp.UserControls;assembly=RestaurantApp">
     <ContentView.Content>
 
-        <AbsoluteLayout>
-            <BoxView
+        <AbsoluteLayout HeightRequest="{StaticResource TitleSize}">
+            <userControls:GradientContentView
                 AbsoluteLayout.LayoutBounds="1,1,1,1"
                 AbsoluteLayout.LayoutFlags="All"
                 BackgroundColor="White"
-                Opacity="0.7">
+                EndColor="Transparent"
+                Orientation="Horizontal"
+                StartColor="Black">
                 <BoxView.Margin>
                     <OnIdiom
                         x:TypeArguments="Thickness"
                         Phone="5"
                         Tablet="10" />
                 </BoxView.Margin>
-            </BoxView>
+            </userControls:GradientContentView>
             <StackLayout AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All">
                 <StackLayout.Margin>
                     <OnIdiom
@@ -26,10 +29,11 @@
                         Tablet="10" />
                 </StackLayout.Margin>
                 <Label
-                    FontAttributes="Bold"
-                    HorizontalOptions="Center"
+                    Margin="15,0,0,0"
+                    Font="Large"
+                    HorizontalOptions="StartAndExpand"
                     Text="{Binding Title}"
-                    TextColor="Black"
+                    TextColor="White"
                     VerticalOptions="CenterAndExpand">
                     <Label.FontSize>
                         <OnIdiom

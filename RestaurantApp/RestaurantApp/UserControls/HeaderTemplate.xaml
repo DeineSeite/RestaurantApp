@@ -59,10 +59,10 @@
                         </StackLayout>-->
         </AbsoluteLayout>
         <Image
-            Margin="0,-45,0,0"
+            Margin="0,-45,10,0"
             HorizontalOptions="EndAndExpand"
             Source="Logo.png" />
-        <userControls:TitleTemplate />
+        <userControls:TitleTemplate Margin="-10,0,-10,0" />
     </StackLayout>
 
 </ContentView>

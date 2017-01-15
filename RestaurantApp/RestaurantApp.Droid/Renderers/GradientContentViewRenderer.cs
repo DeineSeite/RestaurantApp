@@ -44,6 +44,7 @@ namespace RestaurantApp.Droid.Renderers
                 //ShapeDrawable sd = new ShapeDrawable(new RectShape());
                 GradientDrawable = new GradientDrawable();
                 GradientDrawable.SetColors(new int[] { GradientContentView.StartColor.ToAndroid(), GradientContentView.EndColor.ToAndroid() });
+                GradientDrawable.SetGradientRadius((float) GradientContentView.Radius);
             }
         }
 

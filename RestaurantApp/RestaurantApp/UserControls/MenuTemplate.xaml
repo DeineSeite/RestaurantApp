@@ -13,6 +13,7 @@
     </ContentView.Resources>
     <ListView
         x:Name="MenuList"
+        Margin="-10,0,-10,0"
         ItemsSource="{Binding MenuItemsList}"
         Style="{StaticResource MenuListStyle}">
         <ListView.Behaviors>

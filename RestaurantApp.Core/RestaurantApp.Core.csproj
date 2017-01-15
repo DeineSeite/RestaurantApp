@@ -71,6 +71,7 @@
     <Compile Include="PageModels\GalleryPageModel.cs" />
     <Compile Include="PageModels\MainPageModel.cs" />
     <Compile Include="PageModels\MenuListPageModel.cs" />
+    <Compile Include="PageModels\TblReservationPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

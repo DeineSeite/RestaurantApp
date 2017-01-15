@@ -77,6 +77,9 @@
     <Compile Include="Pages\MenuListPage.xaml.cs">
       <DependentUpon>MenuListPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\TblReservationPage.xaml.cs">
+      <DependentUpon>TblReservationPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\RestaurantAppPageModelMapper.cs" />
     <Compile Include="Triggers\MenuItemClickTrigger.cs" />
@@ -203,6 +206,12 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\FoodCardPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\TblReservationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

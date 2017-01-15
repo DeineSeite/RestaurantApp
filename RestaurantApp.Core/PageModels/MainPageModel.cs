@@ -29,7 +29,7 @@ namespace RestaurantApp.Core.PageModels
                 {
                     new AccountPageModel() {Title = AppResources.OpenHours},
                     new AccountPageModel() {Title = AppResources.Contacts},
-                    new AccountPageModel() {Title = AppResources.Tables},
+                    new TblReservationPage() {Title = AppResources.Tables},
                     new AccountPageModel() {Title = AppResources.ParkPlace}
                 }
             };

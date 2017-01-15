@@ -46,7 +46,7 @@ namespace RestaurantApp.iOS.Renderers
                 };
 
                 SetOrientation();
-
+               
                 NativeView.Layer.InsertSublayer(GradientLayer, 0);
             }
         }

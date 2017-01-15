@@ -26,7 +26,6 @@
                 <userControls:MenuTemplate
                     x:Name="Menu"
                     Grid.Row="1"
-                    Margin="-10,0,-10,0"
                     AbsoluteLayout.LayoutBounds="1,.8,1,.7"
                     AbsoluteLayout.LayoutFlags="All" />
             </Grid>

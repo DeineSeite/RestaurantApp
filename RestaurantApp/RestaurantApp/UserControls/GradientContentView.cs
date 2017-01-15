@@ -72,5 +72,14 @@ namespace RestaurantApp.UserControls
         /// </summary>
         public static readonly BindableProperty EndColorProperty =
             BindableProperty.Create<GradientContentView, Color>(x => x.EndColor, Color.Black, BindingMode.OneWay);
+
+        public double Radius
+        {
+            get { return (double)GetValue(RadiusProperty); }
+            set { SetValue(RadiusProperty, value); }
+        }
+        public static readonly BindableProperty RadiusProperty =
+            BindableProperty.Create<GradientContentView,double>(x => x.Radius, 0.0, BindingMode.OneWay);
+
     }
 }

@@ -36,6 +36,10 @@ namespace RestaurantApp.iOS
                 .RegisterAssemblyFromType<AlphaColorConverter>()
                 .RegisterAssemblyFromType<RoundedBox>()
                 .RegisterAssemblyFromType<RoundedBoxRenderer>()
+                .RegisterAssemblyFromType<GradientContentView>()
+                .RegisterAssemblyFromType<GradientContentViewRenderer>()
+                .RegisterAssemblyFromType<TransparentWebView>()
+                .RegisterAssemblyFromType<TransparentWebViewRenderer>()
                 .RegisterAssemblyFromType<MenuItemClickTrigger>()
                 ));
 #endif
