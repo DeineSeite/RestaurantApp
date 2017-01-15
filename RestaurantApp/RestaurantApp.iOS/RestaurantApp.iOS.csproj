@@ -125,7 +125,9 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="Renderers\GradientContentViewRenderer.cs" />
     <Compile Include="Renderers\RoundedBoxRenderer.cs" />
+    <Compile Include="Renderers\TransparentWebViewRenderer.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />

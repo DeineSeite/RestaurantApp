@@ -17,7 +17,7 @@ namespace RestaurantApp.Pages
 
         protected override void OnAppearing()
         {
-            Menu.MenuListView.HeaderTemplate = null;
+            //Menu.MenuListView.HeaderTemplate = null;
            
             base.OnAppearing();
         }

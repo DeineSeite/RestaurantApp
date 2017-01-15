@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
-namespace RestaurantApp.Pages
+namespace RestaurantApp.UserControls
 {
-    public partial class ContactPage : BasePage
+    public partial class HeaderTemplate : ContentView
     {
-        public ContactPage()
+        public HeaderTemplate()
         {
             InitializeComponent();
         }

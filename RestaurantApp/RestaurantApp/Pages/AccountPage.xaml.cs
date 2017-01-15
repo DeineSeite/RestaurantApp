@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RestaurantApp.Core.Localization;
+
 using Xamarin.Forms;
 
 namespace RestaurantApp.Pages
@@ -13,8 +13,6 @@ namespace RestaurantApp.Pages
         public AccountPage()
         {
             InitializeComponent();
-            Title = AppResources.Account;
         }
-        
     }
 }

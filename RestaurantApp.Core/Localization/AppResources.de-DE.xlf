@@ -22,6 +22,10 @@
           <source>Menu</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">Speisekarte</target>
         </trans-unit>
+        <trans-unit id="Resx/Gallery" translate="yes" xml:space="preserve">
+          <source>Gallery</source>
+          <target state="new">Gallery</target>
+        </trans-unit>
         <trans-unit id="Resx/Info" translate="yes" xml:space="preserve">
           <source>Information</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">Informationen</target>

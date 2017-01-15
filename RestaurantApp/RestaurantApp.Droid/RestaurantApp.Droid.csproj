@@ -159,7 +159,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
+    <Compile Include="Renderers\GradientContentViewRenderer.cs" />
     <Compile Include="Renderers\RoundedBoxRenderer.cs" />
+    <Compile Include="Renderers\TransparentWebViewRenderer.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

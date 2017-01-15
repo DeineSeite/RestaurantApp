@@ -3,17 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RestaurantApp.Core.Localization;
+
 using Xamarin.Forms;
 
-namespace RestaurantApp.Pages
+namespace RestaurantApp.UserControls
 {
-    public partial class InfoPage : BasePage
+    public partial class TitleTemplate : ContentView
     {
-        public InfoPage()
+        public TitleTemplate()
         {
             InitializeComponent();
-            Title = AppResources.Info;
         }
     }
 }

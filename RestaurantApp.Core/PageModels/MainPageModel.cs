@@ -15,11 +15,12 @@ namespace RestaurantApp.Core.PageModels
     [ImplementPropertyChanged]
   public class MainPageModel: MenuListPageModel
     {
+     
         #region ctor
         public MainPageModel()
         {
             //Initialize menu
-            var bonusPointPage = new MenuListPageModel {Title = AppResources.BonusPoints};
+            var bonusPointPage = new GalleryPageModel() {Title = AppResources.Gallery};
             
             var infoPage = new MenuListPageModel
             {
@@ -32,26 +33,26 @@ namespace RestaurantApp.Core.PageModels
                     new AccountPageModel() {Title = AppResources.ParkPlace}
                 }
             };
-            var foodCardPage = new MenuListPageModel
-            {
-                Title = AppResources.FoodCard,
-            MenuItemsList = new List<BasePageModel>()
-                {
-                    new AccountPageModel() {Title = "Test2"},
-                    new AccountPageModel() {Title = "Test2"},
-                    new AccountPageModel() {Title = "Test2"}
-                }
-            };
-            var accountPage = new AccountPageModel {Title = AppResources.Account};
+           
+           var foodCardPage = new MenuListPageModel
+           {
+               Title = AppResources.FoodCard,
+           MenuItemsList = new List<BasePageModel>()
+               {
+                   new AccountPageModel() {Title = "Test2"},
+                   new AccountPageModel() {Title = "Test2"},
+                   new AccountPageModel() {Title = "Test2"}
+               }
 
-            MenuItemsList = new List<BasePageModel>
-            {
-               bonusPointPage,
-               infoPage,
-               foodCardPage,
-               accountPage
-            };
+           };
+           MenuItemsList = new List<BasePageModel>
+           {
+              bonusPointPage,
+              infoPage,
+              foodCardPage,
 
+           };
+              
 
         }
 #endregion

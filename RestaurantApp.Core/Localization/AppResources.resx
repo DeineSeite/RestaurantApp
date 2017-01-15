@@ -129,6 +129,9 @@
   <data name="FoodCard" xml:space="preserve">
     <value>Menu</value>
   </data>
+  <data name="Gallery" xml:space="preserve">
+    <value>Gallery</value>
+  </data>
   <data name="Info" xml:space="preserve">
     <value>Information</value>
   </data>

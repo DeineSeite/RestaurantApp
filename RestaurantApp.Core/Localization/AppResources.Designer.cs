@@ -98,6 +98,15 @@ namespace RestaurantApp.Core.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Gallery.
+        /// </summary>
+        public static string Gallery {
+            get {
+                return ResourceManager.GetString("Gallery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Information.
         /// </summary>
         public static string Info {

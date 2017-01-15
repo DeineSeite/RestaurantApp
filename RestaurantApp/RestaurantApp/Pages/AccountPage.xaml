@@ -1,8 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<pages:BasePage
-    x:Class="RestaurantApp.Pages.AccountPage"
-    xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:pages="clr-namespace:RestaurantApp.Pages;assembly=RestaurantApp">
-   
+<pages:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:RestaurantApp.Pages;assembly=RestaurantApp"
+             x:Class="RestaurantApp.Pages.AccountPage">
+	<Label Text="{Binding MainText}" VerticalOptions="Center" HorizontalOptions="Center" />
 </pages:BasePage>

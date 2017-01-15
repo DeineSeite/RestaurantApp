@@ -19,7 +19,7 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <ContentView ControlTemplate="{StaticResource HeaderTemplate}" />
+                <userControls:HeaderTemplate />
                 <StackLayout
                     Grid.Row="1"
                     AbsoluteLayout.LayoutBounds="1,.8,1,.7"

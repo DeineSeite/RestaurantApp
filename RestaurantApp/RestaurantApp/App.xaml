@@ -10,68 +10,6 @@
             <Color x:Key="MainThemeColor">#637704</Color>
             <Color x:Key="SecondThemeColor">#FAECC7</Color>
 
-            <ControlTemplate x:Key="HeaderTemplate">
-                <StackLayout>
-                    <AbsoluteLayout>
-                        <userControls:RoundedBox
-                            x:Name="NameBox"
-                            BackgroundColor="{StaticResource MainThemeColor}"
-                            CornerRadius="5"
-                            Opacity="0.8"
-                            Style="{StaticResource HeaderStyleWithName}" />
-                        <StackLayout Orientation="Horizontal" Style="{StaticResource HeaderStyleWithName}">
-                            <Label
-                                Margin="40,0,0,0"
-                                FontSize="Medium"
-                                HorizontalOptions="StartAndExpand"
-                                Text="John Doe"
-                                TextColor="White"
-                                VerticalOptions="CenterAndExpand" />
-                            <Image
-                                Margin="0,0,10,0"
-                                HorizontalOptions="EndAndExpand"
-                                Source="menu.png" />
-
-                        </StackLayout>
-
-                        <!--<userControls:RoundedBox
-                            x:Name="LogoBox"
-                            AbsoluteLayout.LayoutFlags="XProportional,YProportional"
-                            BackgroundColor="{StaticResource MainThemeColor}">
-                            <userControls:RoundedBox.CornerRadius>
-                                <OnPlatform
-                                    x:TypeArguments="x:Double"
-                                    Android="90"
-                                    iOS="50" />
-                            </userControls:RoundedBox.CornerRadius>
-                            <AbsoluteLayout.LayoutBounds>
-                                <OnIdiom
-                                    x:TypeArguments="Rectangle"
-                                    Phone=".1,.5,100,100"
-                                    Tablet=".1,.5,150,150" />
-                            </AbsoluteLayout.LayoutBounds>
-                        </userControls:RoundedBox>-->
-                        <!--<StackLayout AbsoluteLayout.LayoutFlags="XProportional,YProportional">
-                            <AbsoluteLayout.LayoutBounds>
-                                <OnIdiom
-                                    x:TypeArguments="Rectangle"
-                                    Phone=".1,.5,100,100"
-                                    Tablet=".1,.5,150,150" />
-                            </AbsoluteLayout.LayoutBounds>
-                            <Image
-                                Margin="0,20,0,20"
-                                Source="spoon.png"
-                                VerticalOptions="FillAndExpand" />
-                        </StackLayout>-->
-                    </AbsoluteLayout>
-                    <Image
-                        Margin="0,-45,0,0"
-                        HorizontalOptions="EndAndExpand"
-                        Source="Logo.png" />
-                </StackLayout>
-            </ControlTemplate>
-
-
             <Style x:Key="HeaderStyleWithName" TargetType="View">
                 <Setter Property="AbsoluteLayout.LayoutBounds" Value="-10,.3,.95,.4" />
                 <Setter Property="AbsoluteLayout.LayoutFlags" Value="YProportional,SizeProportional" />
@@ -88,6 +26,7 @@
                     </Setter.Value>
                 </Setter>
                 <Setter Property="BackgroundColor" Value="Transparent" />
+
             </Style>
 
             <FileImageSource x:Key="MainBackgroundImage" File="background.jpg" />

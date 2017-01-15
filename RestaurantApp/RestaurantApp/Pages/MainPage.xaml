@@ -22,8 +22,7 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <ContentView ControlTemplate="{StaticResource HeaderTemplate}" />
-
+                <userControls:HeaderTemplate />
                 <userControls:MenuTemplate
                     x:Name="Menu"
                     Grid.Row="1"

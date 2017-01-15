@@ -21,45 +21,6 @@
                 EventArgsConverter="{StaticResource ItemTappedConverter}"
                 EventName="ItemTapped" />
         </ListView.Behaviors>
-        <ListView.Header>
-
-            <AbsoluteLayout>
-                <BoxView
-                    AbsoluteLayout.LayoutBounds="1,1,1,1"
-                    AbsoluteLayout.LayoutFlags="All"
-                    BackgroundColor="White"
-                    Opacity="0.7">
-                    <BoxView.Margin>
-                        <OnIdiom
-                            x:TypeArguments="Thickness"
-                            Phone="5"
-                            Tablet="10" />
-                    </BoxView.Margin>
-                </BoxView>
-                <StackLayout AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All">
-                    <StackLayout.Margin>
-                        <OnIdiom
-                            x:TypeArguments="Thickness"
-                            Phone="5"
-                            Tablet="10" />
-                    </StackLayout.Margin>
-                    <Label
-                        FontAttributes="Bold"
-                        HorizontalOptions="Center"
-                        Text="{Binding Title}"
-                        TextColor="Black"
-                        VerticalOptions="CenterAndExpand">
-                        <Label.FontSize>
-                            <OnIdiom
-                                x:TypeArguments="x:Double"
-                                Phone="15"
-                                Tablet="20" />
-                        </Label.FontSize>
-                    </Label>
-                </StackLayout>
-            </AbsoluteLayout>
-
-        </ListView.Header>
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
