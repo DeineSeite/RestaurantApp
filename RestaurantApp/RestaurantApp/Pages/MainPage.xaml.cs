@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RestaurantApp.UserControls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,7 @@ namespace RestaurantApp.Pages
         public MainPage()
         {
             InitializeComponent();
-           
+            HeaderPage.TitleControl.IsVisible = false;
         }
 
         protected override void OnAppearing()

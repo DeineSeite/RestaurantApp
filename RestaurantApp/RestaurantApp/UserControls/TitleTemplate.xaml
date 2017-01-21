@@ -10,7 +10,6 @@
             <userControls:GradientContentView
                 AbsoluteLayout.LayoutBounds="1,1,1,1"
                 AbsoluteLayout.LayoutFlags="All"
-                BackgroundColor="White"
                 EndColor="Transparent"
                 Orientation="Horizontal"
                 StartColor="Black">
@@ -30,18 +29,11 @@
                 </StackLayout.Margin>
                 <Label
                     Margin="15,0,0,0"
-                    Font="Large"
+                    FontSize="Large"
                     HorizontalOptions="StartAndExpand"
                     Text="{Binding Title}"
                     TextColor="White"
-                    VerticalOptions="CenterAndExpand">
-                    <Label.FontSize>
-                        <OnIdiom
-                            x:TypeArguments="x:Double"
-                            Phone="15"
-                            Tablet="20" />
-                    </Label.FontSize>
-                </Label>
+                    VerticalOptions="CenterAndExpand" />
             </StackLayout>
         </AbsoluteLayout>
 

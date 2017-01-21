@@ -3,6 +3,10 @@
     { "name": "RestaurantApp" },
     { "name": "FreshMvvm" },
     {
+      "name": "DLToolkit.Forms.Controls.FlowListView",
+      "types": null
+    },
+    {
       "name": "UXDivers.Artina.Shared",
       "types": null
     }, 

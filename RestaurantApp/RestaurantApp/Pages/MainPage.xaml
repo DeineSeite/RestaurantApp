@@ -17,18 +17,13 @@
                 AbsoluteLayout.LayoutFlags="All"
                 Aspect="AspectFill"
                 Source="{StaticResource MainBackgroundImage}" />
-            <Grid AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <userControls:HeaderTemplate />
+            <StackLayout AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All">
+                <userControls:HeaderTemplate x:Name="HeaderPage" />
                 <userControls:MenuTemplate
                     x:Name="Menu"
-                    Grid.Row="1"
                     AbsoluteLayout.LayoutBounds="1,.8,1,.7"
                     AbsoluteLayout.LayoutFlags="All" />
-            </Grid>
+            </StackLayout>
         </AbsoluteLayout>
     </pages:BasePage.Content>
 

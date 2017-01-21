@@ -1,7 +1,9 @@
 ﻿{
   "dependencies": {
+    "DLToolkit.Forms.Controls.FlowListView": "2.0.2",
     "FreshMvvm": "2.2.0",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
+    "Xamanimation": "1.0.0",
     "Xamarin.Forms": "2.3.3.175"
   },
   "frameworks": {

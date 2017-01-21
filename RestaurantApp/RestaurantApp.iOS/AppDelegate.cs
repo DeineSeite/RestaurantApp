@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using DLToolkit.Forms.Controls;
 using Foundation;
 using RestaurantApp.Converters;
 using RestaurantApp.iOS.Renderers;
@@ -27,6 +28,8 @@ namespace RestaurantApp.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+            FlowListView.Init();
+           
 #if !GORILLA
             LoadApplication(new App());
 #else
@@ -41,6 +44,8 @@ namespace RestaurantApp.iOS
                 .RegisterAssemblyFromType<TransparentWebView>()
                 .RegisterAssemblyFromType<TransparentWebViewRenderer>()
                 .RegisterAssemblyFromType<MenuItemClickTrigger>()
+                .RegisterAssemblyFromType<GridView>()
+                .RegisterAssemblyFromType<FlowListView>()
                 ));
 #endif
 

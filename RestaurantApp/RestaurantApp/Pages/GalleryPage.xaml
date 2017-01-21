@@ -11,19 +11,16 @@
             AbsoluteLayout.LayoutFlags="All"
             Aspect="AspectFill"
             Source="{StaticResource MainBackgroundImage}" />
-        <Grid AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
+        <StackLayout AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All">
+
             <userControls:HeaderTemplate />
             <userControls:TransparentWebView
                 x:Name="GalWebView"
-                Grid.Row="1"
-                Margin="-10,0,-10,0"
+                Margin="0,0,0,0"
                 AbsoluteLayout.LayoutBounds="1,.8,1,.7"
                 AbsoluteLayout.LayoutFlags="All"
-                Source="http://www.luckywok.at/galerie/40/gallery2" />
-        </Grid>
+                Source="http://www.luckywok.at/galerie/40/gallery2"
+                VerticalOptions="FillAndExpand" />
+        </StackLayout>
     </AbsoluteLayout>
 </pages:BasePage>

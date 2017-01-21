@@ -20,7 +20,7 @@ namespace RestaurantApp.Core.PageModels
         public MainPageModel()
         {
             //Initialize menu
-            var bonusPointPage = new GalleryPageModel() {Title = AppResources.Gallery};
+            var bonusPointPage = new BonusPointPageModel() {Title = AppResources.BonusPoints};
             
             var infoPage = new MenuListPageModel
             {
@@ -45,11 +45,14 @@ namespace RestaurantApp.Core.PageModels
                }
 
            };
-           MenuItemsList = new List<BasePageModel>
+           var galeryPage= new GalleryPageModel() { Title = AppResources.Gallery};
+
+            MenuItemsList = new List<BasePageModel>
            {
               bonusPointPage,
               infoPage,
               foodCardPage,
+              galeryPage
 
            };
               

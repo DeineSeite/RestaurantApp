@@ -10,9 +10,27 @@ namespace RestaurantApp.UserControls
 {
     public partial class HeaderTemplate : ContentView
     {
+        public TitleTemplate TitleControl
+        {
+            get { return Title; }
+            set { Title = value; }
+        }
         public HeaderTemplate()
         {
             InitializeComponent();
+           var tapGesture=new TapGestureRecognizer();
+            tapGesture.Tapped += BackGesture_Tapped;
+            
+        }
+
+        private void BackGesture_Tapped(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void GoBack()
+        {
+            
         }
     }
 }

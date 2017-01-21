@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using DLToolkit.Forms.Controls;
 using RestaurantApp.Converters;
 using RestaurantApp.Droid.Renderers;
 using RestaurantApp.Pages;
@@ -28,6 +29,7 @@ namespace RestaurantApp.Droid
             base.OnCreate(bundle);
        
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            FlowListView.Init();
 #if !GORILLA
             LoadApplication(new App());
 #else
@@ -39,6 +41,9 @@ namespace RestaurantApp.Droid
               .RegisterAssemblyFromType<RoundedBox>()
               .RegisterAssemblyFromType<RoundedBoxRenderer>()
               .RegisterAssemblyFromType<MenuItemClickTrigger>()
+              .RegisterAssemblyFromType<UserControls.GridView>()
+              .RegisterAssemblyFromType<FlowListView>()
+              
               ));
 #endif
         }

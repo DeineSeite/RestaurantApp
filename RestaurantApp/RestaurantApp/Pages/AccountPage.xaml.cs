@@ -10,9 +10,11 @@ namespace RestaurantApp.Pages
 {
     public partial class AccountPage : BasePage
     {
+       
         public AccountPage()
         {
             InitializeComponent();
+           
         }
     }
 }

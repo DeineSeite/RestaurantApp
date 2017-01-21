@@ -14,8 +14,20 @@
                 Opacity="0.8"
                 Style="{StaticResource HeaderStyleWithName}" />
             <StackLayout Orientation="Horizontal" Style="{StaticResource HeaderStyleWithName}">
+                <Button
+                    Margin="15,3,0,3"
+                    Command="{Binding GoBackCommand}"
+                    Image="back.png">
+                    <Button.IsVisible>
+                        <OnPlatform
+                            x:TypeArguments="x:Boolean"
+                            Android="False"
+                            WinPhone="False"
+                            iOS="true" />
+                    </Button.IsVisible>
+                </Button>
                 <Label
-                    Margin="40,0,0,0"
+                    Margin="20,0,0,0"
                     FontSize="Medium"
                     HorizontalOptions="StartAndExpand"
                     Text="John Doe"
@@ -62,7 +74,10 @@
             Margin="0,-45,10,0"
             HorizontalOptions="EndAndExpand"
             Source="Logo.png" />
-        <userControls:TitleTemplate Margin="-10,0,-10,0" />
+        <userControls:TitleTemplate
+            x:Class="public"
+            x:Name="Title"
+            Margin="-10,0,-10,0" />
     </StackLayout>
 
 </ContentView>

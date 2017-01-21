@@ -27,8 +27,14 @@ namespace RestaurantApp.Core.PageModels
         public override void Init(object initData)
         {
             CurrentPage.Title = _title;
+            GoBackCommand = new Command(GoBack);
         }
+        public Command GoBackCommand { get; set; }
 
+        private void GoBack()
+        {
+            CurrentPage.SendBackButtonPressed();
+        }
         public BasePageModel()
       {
        

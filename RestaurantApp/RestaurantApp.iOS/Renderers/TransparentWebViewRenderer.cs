@@ -2,9 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using RestaurantApp.iOS.Renderers;
+using RestaurantApp.UserControls;
+using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
+[assembly: ExportRenderer(typeof(TransparentWebView), typeof(TransparentWebViewRenderer))]
 namespace RestaurantApp.iOS.Renderers
 {
     public class TransparentWebViewRenderer : WebViewRenderer
@@ -14,7 +18,8 @@ namespace RestaurantApp.iOS.Renderers
             base.OnElementChanged(e);
 
             this.Opaque = false;
-            this.BackgroundColor = Color.Transparent.ToUIColor();
+            this.BackgroundColor = UIColor.Clear;
+            
         }
     }
 }

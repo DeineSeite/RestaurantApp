@@ -9,18 +9,19 @@
         <ResourceDictionary>
             <Color x:Key="MainThemeColor">#637704</Color>
             <Color x:Key="SecondThemeColor">#FAECC7</Color>
-            
+
             <Style x:Key="HeaderStyleWithName" TargetType="View">
                 <Setter Property="AbsoluteLayout.LayoutBounds" Value="-10,.3,.95,.4" />
                 <Setter Property="AbsoluteLayout.LayoutFlags" Value="YProportional,SizeProportional" />
             </Style>
-            
+
+
             <OnIdiom
                 x:Key="TitleSize"
                 x:TypeArguments="x:Double"
                 Phone="70"
                 Tablet="90" />
-            
+
             <Style x:Key="MenuListStyle" TargetType="ListView">
                 <Setter Property="SeparatorVisibility" Value="None" />
                 <Setter Property="RowHeight">
@@ -40,7 +41,18 @@
                 <Setter Property="Opacity" Value="0.5" />
                 <Setter Property="Style" Value="{StaticResource SecondThemeColor}" />
             </Style>
-            
+
+            <Style x:Key="BonusPointItemStyle" TargetType="View">
+                <Setter Property="AbsoluteLayout.LayoutBounds">
+                    <Setter.Value>
+                        <OnIdiom
+                            x:TypeArguments="Rectangle"
+                            Phone="1,1,75,75"
+                            Tablet="1,1,120,120" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="AbsoluteLayout.LayoutFlags" Value="PositionProportional" />
+            </Style>
         </ResourceDictionary>
         <!--  Application resource dictionary  -->
 

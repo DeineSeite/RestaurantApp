@@ -21,22 +21,22 @@
       { "Title": "4" }
     ]
   },
-  "QuestListPage.xaml": [
-    {
-      "Name": "Alte Geshichte",
-      "Tasks": "25",
-      "Background": "questItem.jpg"
-    },
-    {
-      "Name": "Alte Geshichte",
-      "Tasks": "25",
-      "Background": "questItem.jpg"
-    },
-    {
-      "Name": "Alte Geshichte",
-      "Tasks": "25",
-      "Background": "questItem.jpg"
-    }
-  ]
-
+  "BonusPointPage.xaml": {
+    "Name": "Alte Geshichte",
+    "Title": "Test title",
+    "MenuItemsList": [
+      { "Active": true },
+      { "Active": true },
+      { "Active": true },
+      { "Active": true },
+      { "Active": true },
+      { "Active": false },
+      { "Active": false },
+      { "Active": false },
+      { "Active": false },
+      { "Active": false }
+   
+  
+    ]
+  }  
 }

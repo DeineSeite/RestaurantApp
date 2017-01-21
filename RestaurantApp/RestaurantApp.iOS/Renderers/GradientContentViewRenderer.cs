@@ -6,13 +6,14 @@ using CoreAnimation;
 using CoreGraphics;
 using RestaurantApp.iOS.Renderers;
 using RestaurantApp.UserControls;
+using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
 [assembly: ExportRenderer(typeof(GradientContentView), typeof(GradientContentViewRenderer))]
 namespace RestaurantApp.iOS.Renderers
 {
-    class GradientContentViewRenderer : VisualElementRenderer<BoxView>
+  public class GradientContentViewRenderer : BoxRenderer
     {
         /// <summary>
         /// Gets the underlying element typed as an <see cref="GradientContentView"/>.
@@ -33,25 +34,33 @@ namespace RestaurantApp.iOS.Renderers
             base.OnElementChanged(e);
 
             if (GradientContentView != null &&
-                NativeView != null)
+                NativeView == null)
             {
+               
                 // Create a gradient layer and add it to the 
                 // underlying UIView
-                GradientLayer = new CAGradientLayer();
-                GradientLayer.Frame = NativeView.Bounds;
-                GradientLayer.Colors = new CGColor[]
-                {
-                    GradientContentView.StartColor.ToCGColor(),
-                    GradientContentView.EndColor.ToCGColor()
-                };
-
-                SetOrientation();
-               
-                NativeView.Layer.InsertSublayer(GradientLayer, 0);
+             
             }
         }
 
-        /// <summary>
+      public override void LayoutSubviews()
+      {
+          base.LayoutSubviews();
+            GradientLayer = new CAGradientLayer();
+            GradientLayer.Frame = NativeView.Bounds;
+
+           
+            GradientLayer.Colors = new CGColor[]
+            {
+                    GradientContentView.StartColor.ToCGColor(),
+                    GradientContentView.EndColor.ToUIColor().ColorWithAlpha(0).CGColor
+            };
+            SetOrientation();
+            
+            NativeView.Layer.InsertSublayer(GradientLayer, 0);
+        }
+
+      /// <summary>
         /// Update the underlying controls as needed
         /// </summary>
         /// <param name="sender"></param>
