@@ -18,7 +18,7 @@ using Xamarin.Forms;
 
 namespace RestaurantApp.Droid
 {
-    [Activity(Label = "RestaurantApp", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
+    [Activity(Label = "RestaurantApp", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)
@@ -33,8 +33,7 @@ namespace RestaurantApp.Droid
 #if !GORILLA
             LoadApplication(new App());
 #else
-              LoadApplication(UXDivers.Gorilla.Droid.Player.CreateApplication(ApplicationContext,
-              new UXDivers.Gorilla.Config("Good Gorilla")
+              LoadApplication(UXDivers.Gorilla.Droid.Player.CreateApplication(ApplicationContext, config: new UXDivers.Gorilla.Config("Good Gorilla")
               .RegisterAssemblyFromType<BasePage>()
               .RegisterAssemblyFromType<AlphaColorConverter>()
               .RegisterAssemblyFromType<IValueConverter>()

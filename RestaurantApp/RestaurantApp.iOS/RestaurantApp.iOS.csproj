@@ -230,6 +230,10 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\RestaurantApp.Core\RestaurantApp.Core.csproj">
+      <Project>{14f93261-d648-43d9-a453-671fa9432705}</Project>
+      <Name>RestaurantApp.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RestaurantApp\RestaurantApp.Forms.csproj">
       <Project>{E7345AE7-6022-4A0E-BD5E-777F8D166536}</Project>
       <Name>RestaurantApp.Forms</Name>

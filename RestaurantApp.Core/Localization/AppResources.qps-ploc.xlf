@@ -5,42 +5,42 @@
       <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="3.1.1250.0" tool-company="Microsoft" />
     </header>
     <body>
-      <group id="Resx">
-        <trans-unit id="Resx/Account" translate="yes" xml:space="preserve">
+      <group id="RESTAURANTAPP.CORE/LOCALIZATION/APPRESOURCES.RESX">
+        <trans-unit id="Account" translate="yes" xml:space="preserve">
           <source>Account</source>
           <target state="new">Account</target>
         </trans-unit>
-        <trans-unit id="Resx/BonusPoints" translate="yes" xml:space="preserve">
+        <trans-unit id="BonusPoints" translate="yes" xml:space="preserve">
           <source>Bonus points</source>
           <target state="new">Bonus points</target>
         </trans-unit>
-        <trans-unit id="Resx/Contacts" translate="yes" xml:space="preserve">
+        <trans-unit id="Contacts" translate="yes" xml:space="preserve">
           <source>Contacts</source>
           <target state="new">Contacts</target>
         </trans-unit>
-        <trans-unit id="Resx/FoodCard" translate="yes" xml:space="preserve">
+        <trans-unit id="FoodCard" translate="yes" xml:space="preserve">
           <source>Menu</source>
           <target state="new">Menu</target>
         </trans-unit>
-        <trans-unit id="Resx/Gallery" translate="yes" xml:space="preserve">
+        <trans-unit id="Gallery" translate="yes" xml:space="preserve">
           <source>Gallery</source>
           <target state="new">Gallery</target>
         </trans-unit>
-        <trans-unit id="Resx/Info" translate="yes" xml:space="preserve">
+        <trans-unit id="Info" translate="yes" xml:space="preserve">
           <source>Information</source>
           <target state="new">Information</target>
         </trans-unit>
-        <trans-unit id="Resx/Tables" translate="yes" xml:space="preserve">
-          <source>Tables</source>
-          <target state="new">Tables</target>
+        <trans-unit id="OpenHours" translate="yes" xml:space="preserve">
+          <source>Open Hours</source>
+          <target state="new">Open Hours</target>
         </trans-unit>
-        <trans-unit id="Resx/ParkPlace" translate="yes" xml:space="preserve">
+        <trans-unit id="ParkPlace" translate="yes" xml:space="preserve">
           <source>Park places</source>
           <target state="new">Park places</target>
         </trans-unit>
-        <trans-unit id="Resx/OpenHours" translate="yes" xml:space="preserve">
-          <source>Open Hours</source>
-          <target state="new">Open Hours</target>
+        <trans-unit id="Tables" translate="yes" xml:space="preserve">
+          <source>Tables</source>
+          <target state="new">Tables</target>
         </trans-unit>
       </group>
     </body>

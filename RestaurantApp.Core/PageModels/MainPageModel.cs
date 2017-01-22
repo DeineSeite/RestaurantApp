@@ -20,7 +20,7 @@ namespace RestaurantApp.Core.PageModels
         public MainPageModel()
         {
             //Initialize menu
-            var bonusPointPage = new BonusPointPageModel() {Title = AppResources.BonusPoints};
+            var bonusPointPage = new BonusPointPageModel() {Title = AppResources.BonusPoints,SubTitle = "Abend"};
             
             var infoPage = new MenuListPageModel
             {

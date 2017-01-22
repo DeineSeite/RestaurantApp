@@ -27,13 +27,31 @@
                         Phone="5"
                         Tablet="10" />
                 </StackLayout.Margin>
-                <Label
-                    Margin="15,0,0,0"
-                    FontSize="Large"
-                    HorizontalOptions="StartAndExpand"
-                    Text="{Binding Title}"
-                    TextColor="White"
-                    VerticalOptions="CenterAndExpand" />
+                <StackLayout Margin="20,0,0,0">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="Large"
+                        HorizontalOptions="StartAndExpand"
+                        TextColor="White"
+                        VerticalOptions="CenterAndExpand">
+                        <Label.Triggers>
+                            <DataTrigger
+                                TargetType="Label"
+                                Text="{Binding Title, Converter={StaticResource StringCaseConverter}, ConverterParameter=Upper}"
+                                Value="">
+                                <Setter Property="IsVisble" Value="False" />
+                            </DataTrigger>
+                        </Label.Triggers>
+                    </Label>
+                    <Label
+                        Margin="0,-5,0,0"
+                        FontSize="Medium"
+                        HorizontalOptions="StartAndExpand"
+                        Text="{Binding SubTitle}"
+                        TextColor="White"
+                        VerticalOptions="CenterAndExpand" />
+                </StackLayout>
+
             </StackLayout>
         </AbsoluteLayout>
 

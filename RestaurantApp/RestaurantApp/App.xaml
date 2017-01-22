@@ -19,8 +19,16 @@
             <OnIdiom
                 x:Key="TitleSize"
                 x:TypeArguments="x:Double"
-                Phone="70"
-                Tablet="90" />
+                Tablet="90">
+                <OnIdiom.Phone>
+                    <OnPlatform
+                        x:TypeArguments="x:Double"
+                        Android="90"
+                        WinPhone="90"
+                        iOS="100" />
+                </OnIdiom.Phone>
+
+            </OnIdiom>
 
             <Style x:Key="MenuListStyle" TargetType="ListView">
                 <Setter Property="SeparatorVisibility" Value="None" />
@@ -53,6 +61,8 @@
                 </Setter>
                 <Setter Property="AbsoluteLayout.LayoutFlags" Value="PositionProportional" />
             </Style>
+
+            <converters:StringCaseConverter x:Key="StringCaseConverter" />
         </ResourceDictionary>
         <!--  Application resource dictionary  -->
 

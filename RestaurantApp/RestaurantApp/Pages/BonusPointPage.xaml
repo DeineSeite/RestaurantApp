@@ -16,7 +16,7 @@
             <userControls:HeaderTemplate />
             <controls:FlowListView
                 x:Name="FlowList"
-                Margin="-20,0,0,0"
+                Margin="5,0,10,0"
                 BackgroundColor="Transparent"
                 FlowColumnCount="4"
                 FlowItemsSource="{Binding MenuItemsList}"
@@ -28,8 +28,17 @@
                         <userControls:BonusPointItemTemplate />
                     </DataTemplate>
                 </controls:FlowListView.FlowColumnTemplate>
+                <controls:FlowListView.Footer>
+                    <Label
+                        Margin="10"
+                        FontSize="Large"
+                        HorizontalOptions="CenterAndExpand"
+                        Text="Bei 10 Besuchen ist das 11 Essen gratis"
+                        TextColor="White" />
+                </controls:FlowListView.Footer>
 
             </controls:FlowListView>
+
         </StackLayout>
     </AbsoluteLayout>
 

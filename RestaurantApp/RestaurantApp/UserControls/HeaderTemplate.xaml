@@ -71,7 +71,7 @@
                         </StackLayout>-->
         </AbsoluteLayout>
         <Image
-            Margin="0,-45,10,0"
+            Margin="5,-45,15,0"
             HorizontalOptions="EndAndExpand"
             Source="Logo.png" />
         <userControls:TitleTemplate

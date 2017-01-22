@@ -23,7 +23,8 @@
   },
   "BonusPointPage.xaml": {
     "Name": "Alte Geshichte",
-    "Title": "Test title",
+    "Title": "Bonuspunkte",
+    "SubTitle": "Abend",
     "MenuItemsList": [
       { "Active": true },
       { "Active": true },
