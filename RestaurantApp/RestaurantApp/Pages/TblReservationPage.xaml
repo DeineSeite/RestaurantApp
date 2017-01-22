@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<ContentView
+<pages:BasePage
     x:Class="RestaurantApp.Pages.TblReservationPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages="clr-namespace:RestaurantApp.Pages;assembly=RestaurantApp"
     xmlns:userControls="clr-namespace:RestaurantApp.UserControls;assembly=RestaurantApp">
 
     <AbsoluteLayout>
@@ -82,4 +83,4 @@
 
         </StackLayout>
     </AbsoluteLayout>
-</ContentView>
+</pages:BasePage>

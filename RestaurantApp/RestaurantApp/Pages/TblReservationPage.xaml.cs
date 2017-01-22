@@ -8,11 +8,12 @@ using Xamarin.Forms;
 
 namespace RestaurantApp.Pages
 {
-    public partial class TblReservationPage : ContentView
+    public partial class TblReservationPage : BasePage
     {
         public TblReservationPage()
         {
             InitializeComponent();
+           
         }
     }
 }
