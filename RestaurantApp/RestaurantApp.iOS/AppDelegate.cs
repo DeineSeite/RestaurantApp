@@ -46,6 +46,7 @@ namespace RestaurantApp.iOS
                 .RegisterAssemblyFromType<MenuItemClickTrigger>()
                 .RegisterAssemblyFromType<GridView>()
                 .RegisterAssemblyFromType<FlowListView>()
+                .RegisterAssemblyFromType<StringCaseConverter>()
                 ));
 #endif
 

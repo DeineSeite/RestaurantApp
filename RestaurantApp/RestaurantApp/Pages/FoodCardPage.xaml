@@ -12,5 +12,6 @@
             Orientation="Horizontal"
             StartColor="Black"
             WidthRequest="300" />
+      
     </StackLayout>
 </pages:BasePage>

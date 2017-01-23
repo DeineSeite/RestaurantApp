@@ -27,29 +27,32 @@
                         Phone="5"
                         Tablet="10" />
                 </StackLayout.Margin>
-                <StackLayout Margin="20,0,0,0">
+                <StackLayout Margin="20,0,0,0" VerticalOptions="CenterAndExpand">
                     <Label
                         FontAttributes="Bold"
                         FontSize="Large"
                         HorizontalOptions="StartAndExpand"
+                        IsVisible="True"
+                        Text="{Binding Title, Converter={StaticResource StringCaseConverter}, ConverterParameter=Upper}"
                         TextColor="White"
-                        VerticalOptions="CenterAndExpand">
-                        <Label.Triggers>
-                            <DataTrigger
-                                TargetType="Label"
-                                Text="{Binding Title, Converter={StaticResource StringCaseConverter}, ConverterParameter=Upper}"
-                                Value="">
-                                <Setter Property="IsVisble" Value="False" />
-                            </DataTrigger>
-                        </Label.Triggers>
-                    </Label>
+                        VerticalOptions="CenterAndExpand" />
                     <Label
+                        x:Name="SubTitle"
                         Margin="0,-5,0,0"
                         FontSize="Medium"
                         HorizontalOptions="StartAndExpand"
                         Text="{Binding SubTitle}"
                         TextColor="White"
-                        VerticalOptions="CenterAndExpand" />
+                        VerticalOptions="CenterAndExpand">
+                        <Label.Triggers>
+                            <DataTrigger
+                                Binding="{Binding Source={x:Reference SubTitle}, Path=Text.Length}"
+                                TargetType="Label"
+                                Value="0">
+                                <Setter Property="IsVisible" Value="False" />
+                            </DataTrigger>
+                        </Label.Triggers>
+                    </Label>
                 </StackLayout>
 
             </StackLayout>

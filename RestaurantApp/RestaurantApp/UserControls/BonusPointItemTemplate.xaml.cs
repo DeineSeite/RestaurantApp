@@ -19,6 +19,11 @@ namespace RestaurantApp.UserControls
         public BonusPointItemTemplate()
         {
             InitializeComponent();
+          
+           
         }
+
+   
+   
     }
 }

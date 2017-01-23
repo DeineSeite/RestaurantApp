@@ -8,39 +8,72 @@
       <group id="RESTAURANTAPP.CORE/LOCALIZATION/APPRESOURCES.RESX">
         <trans-unit id="Account" translate="yes" xml:space="preserve">
           <source>Account</source>
-          <target state="new">Account</target>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Konto</target>
         </trans-unit>
         <trans-unit id="BonusPoints" translate="yes" xml:space="preserve">
           <source>Bonus points</source>
-          <target state="new">Bonus points</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Bonus-Punkte</target>
         </trans-unit>
         <trans-unit id="Contacts" translate="yes" xml:space="preserve">
           <source>Contacts</source>
-          <target state="new">Contacts</target>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Kontakte</target>
         </trans-unit>
         <trans-unit id="FoodCard" translate="yes" xml:space="preserve">
           <source>Menu</source>
-          <target state="new">Menu</target>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Menü</target>
         </trans-unit>
         <trans-unit id="Gallery" translate="yes" xml:space="preserve">
           <source>Gallery</source>
-          <target state="new">Gallery</target>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Katalog</target>
         </trans-unit>
         <trans-unit id="Info" translate="yes" xml:space="preserve">
           <source>Information</source>
-          <target state="new">Information</target>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Informationen</target>
         </trans-unit>
         <trans-unit id="OpenHours" translate="yes" xml:space="preserve">
           <source>Open Hours</source>
-          <target state="new">Open Hours</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Öffnungszeiten</target>
         </trans-unit>
         <trans-unit id="ParkPlace" translate="yes" xml:space="preserve">
           <source>Park places</source>
-          <target state="new">Park places</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Parkplätze</target>
         </trans-unit>
         <trans-unit id="Tables" translate="yes" xml:space="preserve">
           <source>Tables</source>
-          <target state="new">Tables</target>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Tabellen</target>
+        </trans-unit>
+        <trans-unit id="ContactDate" translate="yes" xml:space="preserve">
+          <source>Date*</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Datum und Uhrzeit</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
+        </trans-unit>
+        <trans-unit id="ContactEmail" translate="yes" xml:space="preserve">
+          <source>Email*</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">E-Mail *</target>
+        </trans-unit>
+        <trans-unit id="ContactName" translate="yes" xml:space="preserve">
+          <source>First and last name*</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Erste und letzte Namen *</target>
+        </trans-unit>
+        <trans-unit id="ContactNumber" translate="yes" xml:space="preserve">
+          <source>Phone number*</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Telefon Nummer *</target>
+        </trans-unit>
+        <trans-unit id="ContactPersonCount" translate="yes" xml:space="preserve">
+          <source>Person count*</source>
+          <target state="new">Person count*</target>
+        </trans-unit>
+        <trans-unit id="ContactSmoker" translate="yes" xml:space="preserve">
+          <source>Smoker YES/NO*</source>
+          <target state="new">Smoker YES/NO*</target>
+        </trans-unit>
+        <trans-unit id="ContactTime" translate="yes" xml:space="preserve">
+          <source>Time*</source>
+          <target state="new">Time*</target>
+        </trans-unit>
+        <trans-unit id="Send" translate="yes" xml:space="preserve">
+          <source>Send</source>
+          <target state="new">Send</target>
         </trans-unit>
       </group>
     </body>

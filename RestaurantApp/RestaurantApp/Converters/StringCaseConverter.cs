@@ -12,6 +12,7 @@ namespace RestaurantApp.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            if (value == null) return null;
 
             string param = System.Convert.ToString(parameter) ?? "UPPER";
 
@@ -24,7 +25,6 @@ namespace RestaurantApp.Converters
                 default:
                     return ((string) value);
             }
-
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

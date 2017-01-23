@@ -4,7 +4,6 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:userControls="clr-namespace:RestaurantApp.UserControls;assembly=RestaurantApp">
-
     <StackLayout>
         <AbsoluteLayout>
             <userControls:RoundedBox
@@ -37,47 +36,16 @@
                     Margin="0,0,10,0"
                     HorizontalOptions="EndAndExpand"
                     Source="menu.png" />
-
             </StackLayout>
-
-            <!--<userControls:RoundedBox
-                            x:Name="LogoBox"
-                            AbsoluteLayout.LayoutFlags="XProportional,YProportional"
-                            BackgroundColor="{StaticResource MainThemeColor}">
-                            <userControls:RoundedBox.CornerRadius>
-                                <OnPlatform
-                                    x:TypeArguments="x:Double"
-                                    Android="90"
-                                    iOS="50" />
-                            </userControls:RoundedBox.CornerRadius>
-                            <AbsoluteLayout.LayoutBounds>
-                                <OnIdiom
-                                    x:TypeArguments="Rectangle"
-                                    Phone=".1,.5,100,100"
-                                    Tablet=".1,.5,150,150" />
-                            </AbsoluteLayout.LayoutBounds>
-                        </userControls:RoundedBox>-->
-            <!--<StackLayout AbsoluteLayout.LayoutFlags="XProportional,YProportional">
-                            <AbsoluteLayout.LayoutBounds>
-                                <OnIdiom
-                                    x:TypeArguments="Rectangle"
-                                    Phone=".1,.5,100,100"
-                                    Tablet=".1,.5,150,150" />
-                            </AbsoluteLayout.LayoutBounds>
-                            <Image
-                                Margin="0,20,0,20"
-                                Source="spoon.png"
-                                VerticalOptions="FillAndExpand" />
-                        </StackLayout>-->
         </AbsoluteLayout>
         <Image
             Margin="5,-45,15,0"
             HorizontalOptions="EndAndExpand"
+            IsOpaque="True"
             Source="Logo.png" />
         <userControls:TitleTemplate
             x:Class="public"
             x:Name="Title"
             Margin="-10,0,-10,0" />
     </StackLayout>
-
 </ContentView>

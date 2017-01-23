@@ -80,11 +80,74 @@ namespace RestaurantApp.Core.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Date*.
+        /// </summary>
+        public static string ContactDate {
+            get {
+                return ResourceManager.GetString("ContactDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email*.
+        /// </summary>
+        public static string ContactEmail {
+            get {
+                return ResourceManager.GetString("ContactEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to First and last name*.
+        /// </summary>
+        public static string ContactName {
+            get {
+                return ResourceManager.GetString("ContactName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phone number*.
+        /// </summary>
+        public static string ContactNumber {
+            get {
+                return ResourceManager.GetString("ContactNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Person count*.
+        /// </summary>
+        public static string ContactPersonCount {
+            get {
+                return ResourceManager.GetString("ContactPersonCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contacts.
         /// </summary>
         public static string Contacts {
             get {
                 return ResourceManager.GetString("Contacts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Smoker YES/NO*.
+        /// </summary>
+        public static string ContactSmoker {
+            get {
+                return ResourceManager.GetString("ContactSmoker", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time*.
+        /// </summary>
+        public static string ContactTime {
+            get {
+                return ResourceManager.GetString("ContactTime", resourceCulture);
             }
         }
         
@@ -130,6 +193,15 @@ namespace RestaurantApp.Core.Localization {
         public static string ParkPlace {
             get {
                 return ResourceManager.GetString("ParkPlace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send.
+        /// </summary>
+        public static string Send {
+            get {
+                return ResourceManager.GetString("Send", resourceCulture);
             }
         }
         

@@ -42,6 +42,7 @@ namespace RestaurantApp.Droid
               .RegisterAssemblyFromType<MenuItemClickTrigger>()
               .RegisterAssemblyFromType<UserControls.GridView>()
               .RegisterAssemblyFromType<FlowListView>()
+              .RegisterAssemblyFromType<StringCaseConverter>()
               
               ));
 #endif
