@@ -43,7 +43,7 @@ namespace RestaurantApp.Droid
               .RegisterAssemblyFromType<UserControls.GridView>()
               .RegisterAssemblyFromType<FlowListView>()
               .RegisterAssemblyFromType<StringCaseConverter>()
-              
+              .RegisterAssemblyFromType<InverseBooleanConverter>()
               ));
 #endif
         }

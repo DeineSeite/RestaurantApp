@@ -63,6 +63,7 @@
             </Style>
 
             <converters:StringCaseConverter x:Key="StringCaseConverter" />
+            <converters:InverseBooleanConverter x:Key="InverseBooleanConverter" />
         </ResourceDictionary>
         <!--  Application resource dictionary  -->
 

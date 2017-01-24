@@ -20,8 +20,14 @@
             <Image
                 x:Name="ActiveImage"
                 Margin="10"
-                IsVisible="{Binding Active}"
+                IsVisible="{Binding IsActivated}"
                 Source="food.png"
+                Style="{StaticResource BonusPointItemStyle}" />
+            <Image
+                x:Name="ScannImage"
+                Margin="10"
+                IsVisible="{Binding Path=IsActivated, Converter={StaticResource InverseBooleanConverter}}"
+                Source="plus.png"
                 Style="{StaticResource BonusPointItemStyle}" />
         </AbsoluteLayout>
     </ContentView.Content>

@@ -8,15 +8,15 @@ using Xamarin.Forms;
 
 namespace RestaurantApp.Core.PageModels
 {
- public class MenuListPageModel:BasePageModel
+    public class MenuListPageModel : BasePageModel
     {
         #region ctor
 
-     public MenuListPageModel()
-     {
-            MenuItemsList=new List<BasePageModel>();
-         PushPageCommand = new Command<BasePageModel>(PushPage);
-     }
+        public MenuListPageModel()
+        {
+            MenuItemsList = new List<BasePageModel>();
+            PushPageCommand = new Command<BasePageModel>(PushPage);
+        }
         #endregion
 
         #region Public properties
@@ -29,32 +29,30 @@ namespace RestaurantApp.Core.PageModels
         #endregion
 
         #region Commands
-       public Command<BasePageModel> PushPageCommand { get; set; }
+        public Command<BasePageModel> PushPageCommand { get; set; }
         #endregion
 
-        #region Public methods
-      /// <summary>
-      /// Send parameter into PushPage
-      /// </summary>
-      /// <param name="parameter"></param>
-     public void SetParameter(object parameter)
-     {
-         this._parameter = parameter;
-     }
-        #endregion
-        #region Private methods
+        #region Public/Private members
+        /// <summary>
+        /// Send parameter into PushPage
+        /// </summary>
+        /// <param name="parameter"></param>
+        public void SetParameter(object parameter)
+        {
+            this._parameter = parameter;
+        }
 
-     private async void PushPage(BasePageModel page)
-     {
+        private async void PushPage(BasePageModel page)
+        {
             var contentPage = FreshPageModelResolver.ResolvePageModel(page.GetType(), null, page);
-            await CurrentPage.Navigation.PushAsync(contentPage,false);
-         CurrentPage.SendBackButtonPressed();
-     }
-#endregion
+            await CurrentPage.Navigation.PushAsync(contentPage, false);
+            CurrentPage.SendBackButtonPressed();
+        }
+        #endregion
 
         #region Private members
         BasePageModel _selectedItem;
         object _parameter;
-     #endregion
+        #endregion
     }
 }
