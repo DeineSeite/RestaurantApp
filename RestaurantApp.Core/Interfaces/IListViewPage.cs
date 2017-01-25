@@ -3,14 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Java.Security;
 
 namespace RestaurantApp.Core.Interfaces
 {
-    public interface IBasePage
+   public interface IListViewPage
     {
-        string Title { get; set; }
-        string SubTitle { get; set; }
-        
+        void ReloadListView();
     }
 }

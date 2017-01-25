@@ -7,17 +7,25 @@ using Xamarin.Forms;
 
 namespace RestaurantApp.Converters
 {
-   public class InverseBooleanConverter : IValueConverter
-    {
+   public class LastItemBooleanConverter : IValueConverter
+   {
+       
+ 
         #region IValueConverter Members
 
         public object Convert(object value, Type targetType, object parameter,
             System.Globalization.CultureInfo culture)
         {
-            if (targetType != typeof(bool))
-                throw new InvalidOperationException("The target must be a boolean");
+            if (!(bool) value&&!App.IsLastItemAdded)
+            {
+                App.IsLastItemAdded = true;
+                if (targetType != typeof(bool))
+                    throw new InvalidOperationException("The target must be a boolean");
 
-            return !(bool)value;
+                return true;
+            }
+            return false;
+
         }
 
         public object ConvertBack(object value, Type targetType, object parameter,

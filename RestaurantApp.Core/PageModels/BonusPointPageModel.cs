@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Android.Content.Res;
+using RestaurantApp.Core.Interfaces;
 using RestaurantApp.Core.Services;
 using RestaurantApp.Data.Models;
 using Xamarin.Forms;
+
 
 namespace RestaurantApp.Core.PageModels
 {
@@ -28,6 +32,14 @@ namespace RestaurantApp.Core.PageModels
                 BonusPointList.Add(new BonusPointModel() {Id =i,IsActivated = i<5});
             }
             _currenBonusPointModel=new BonusPointModel();
+            BonusPointList.CollectionChanged += BonusPointList_CollectionChanged;
+          
+        }
+
+        private void BonusPointList_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            var listViewPage = CurrentPage as IListViewPage;
+            listViewPage?.ReloadListView();
         }
 
         private void ItemTapped(BonusPointModel pointModel)
@@ -47,15 +59,17 @@ namespace RestaurantApp.Core.PageModels
 
         private void QrService_OnResultReady(object sender, string result)
         {
-           
             int index = BonusPointList.IndexOf(_currenBonusPointModel);
             _currenBonusPointModel.Description = result;
             _currenBonusPointModel.ActivationDate=DateTime.Now;
             _currenBonusPointModel.IsActivated = true;
             BonusPointList[index] = _currenBonusPointModel;
+            BonusPointList[index+1] = new BonusPointModel() {IsActivated = false};
+          
+           
         }
 
-        
+      
 
         private BonusPointModel _currenBonusPointModel;
 

@@ -11,6 +11,7 @@ namespace RestaurantApp
 {
     public partial class App : Application
     {
+        public static bool IsLastItemAdded { get; set; } //Static variable for BonusPoint listview
         public FreshNavigationContainer BasicNavContainer { get; set; }
         public App()
         {

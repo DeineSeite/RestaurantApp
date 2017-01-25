@@ -10,12 +10,11 @@ namespace RestaurantApp.UserControls
 {
     public partial class BonusPointItemTemplate : ContentView
     {
-        public bool IsActive
+        public bool IsScannItemActived
         {
-            get { return ActiveImage.IsVisible; }
-            set { ActiveImage.IsVisible = value; }
+            get { return ScannImage.IsVisible; }
+            set { ScannImage.IsVisible = value; }
         }
-
         public BonusPointItemTemplate()
         {
             InitializeComponent();

@@ -4,31 +4,29 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:userControls="clr-namespace:RestaurantApp.UserControls;assembly=RestaurantApp">
-    <ContentView.Content>
-        <AbsoluteLayout Margin="0,5,0,5">
-            <userControls:RoundedBox
-                BackgroundColor="{StaticResource SecondThemeColor}"
-                Opacity="0.8"
-                Style="{StaticResource BonusPointItemStyle}">
-                <userControls:RoundedBox.CornerRadius>
-                    <OnPlatform
-                        x:TypeArguments="x:Double"
-                        Android="100"
-                        iOS="35" />
-                </userControls:RoundedBox.CornerRadius>
-            </userControls:RoundedBox>
-            <Image
-                x:Name="ActiveImage"
-                Margin="10"
-                IsVisible="{Binding IsActivated}"
-                Source="food.png"
-                Style="{StaticResource BonusPointItemStyle}" />
-            <Image
-                x:Name="ScannImage"
-                Margin="10"
-                IsVisible="{Binding Path=IsActivated, Converter={StaticResource InverseBooleanConverter}}"
-                Source="plus.png"
-                Style="{StaticResource BonusPointItemStyle}" />
-        </AbsoluteLayout>
-    </ContentView.Content>
+    <AbsoluteLayout Margin="0,5,0,5">
+        <userControls:RoundedBox
+            BackgroundColor="{StaticResource SecondThemeColor}"
+            Opacity="0.8"
+            Style="{StaticResource BonusPointItemStyle}">
+            <userControls:RoundedBox.CornerRadius>
+                <OnPlatform
+                    x:TypeArguments="x:Double"
+                    Android="100"
+                    iOS="35" />
+            </userControls:RoundedBox.CornerRadius>
+        </userControls:RoundedBox>
+        <Image
+            x:Name="ActiveImage"
+            Margin="10"
+            IsVisible="{Binding IsActivated}"
+            Source="food.png"
+            Style="{StaticResource BonusPointItemStyle}" />
+        <Image
+            x:Name="ScannImage"
+            Margin="10"
+            IsVisible="{Binding Path=IsActivated, Converter={StaticResource LastItemBooleanConverter}}"
+            Source="plus.png"
+            Style="{StaticResource BonusPointItemStyle}" />
+    </AbsoluteLayout>
 </ContentView>

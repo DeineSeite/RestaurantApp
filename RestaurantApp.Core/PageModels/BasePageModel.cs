@@ -72,5 +72,6 @@ namespace RestaurantApp.Core.PageModels
         string _subTitle;
 
         #endregion
+
     }
 }

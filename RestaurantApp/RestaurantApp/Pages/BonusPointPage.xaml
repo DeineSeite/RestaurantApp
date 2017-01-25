@@ -6,7 +6,13 @@
     xmlns:behaviors="clr-namespace:RestaurantApp.Behaviors;assembly=RestaurantApp"
     xmlns:controls="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
     xmlns:pages="clr-namespace:RestaurantApp.Pages;assembly=RestaurantApp"
-    xmlns:userControls="clr-namespace:RestaurantApp.UserControls;assembly=RestaurantApp">
+    xmlns:userControls="clr-namespace:RestaurantApp.UserControls;assembly=RestaurantApp"
+    xmlns:converters="clr-namespace:RestaurantApp.Converters;assembly=RestaurantApp">
+    <pages:BasePage.Resources>
+        <ResourceDictionary>
+            <converters:BonusPointDataTemplateSelector x:Key="BonusPointDataTemplateSelector" />
+        </ResourceDictionary>
+    </pages:BasePage.Resources>
     <AbsoluteLayout>
         <Image
             AbsoluteLayout.LayoutBounds="1,1,1,1"
@@ -20,17 +26,12 @@
                 Margin="5,0,10,0"
                 BackgroundColor="Transparent"
                 FlowColumnCount="4"
+           
                 FlowItemTappedCommand="{Binding ItemTappedCommand}"
                 FlowItemsSource="{Binding BonusPointList}"
                 HasUnevenRows="True"
                 HorizontalOptions="Center"
                 SeparatorVisibility="None">
-                <controls:FlowListView.FlowColumnTemplate>
-                    <DataTemplate>
-                        <userControls:BonusPointItemTemplate />
-                    </DataTemplate>
-                </controls:FlowListView.FlowColumnTemplate>
-
                 <controls:FlowListView.Footer>
                     <StackLayout>
                         <Label

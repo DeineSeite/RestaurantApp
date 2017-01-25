@@ -51,6 +51,7 @@
     <Compile Include="Behaviors\BindableBehavior.cs" />
     <Compile Include="Behaviors\EventToCommandBehavior.cs" />
     <Compile Include="Converters\AlphaColorConverter.cs" />
+    <Compile Include="Converters\BonusPointDataTemplateSelector.cs" />
     <Compile Include="Converters\InverseBooleanConverter.cs" />
     <Compile Include="Converters\ItemTappedEventArgsConverter.cs" />
     <Compile Include="Converters\StringCaseConverter.cs" />
@@ -125,6 +126,10 @@
     <ProjectReference Include="..\..\RestaurantApp.Core\RestaurantApp.Core.csproj">
       <Project>{14f93261-d648-43d9-a453-671fa9432705}</Project>
       <Name>RestaurantApp.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\RestaurantApp.Data\RestaurantApp.Data.csproj">
+      <Project>{67F9D3A8-F71E-4428-913F-C37AE82CDB24}</Project>
+      <Name>RestaurantApp.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Helpers\EventArgs.cs" />
     <Compile Include="Interfaces\IBasePage.cs" />
+    <Compile Include="Interfaces\IListViewPage.cs" />
     <Compile Include="Localization\AppResources.de-DE.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

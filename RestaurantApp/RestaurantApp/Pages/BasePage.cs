@@ -9,13 +9,16 @@ using Xamarin.Forms;
 
 namespace RestaurantApp.Pages
 {
-    public class BasePage : FreshBaseContentPage, IBasePage
+    public abstract class BasePage : FreshBaseContentPage, IBasePage
     {
         #region Public properties
         /// <summary>
         ///Addition Title for ContentPage, will be shown under main Title
         /// </summary>
         public string SubTitle { get; set; }
+
+     
+
         #endregion
 
         #region ctor
@@ -25,6 +28,14 @@ namespace RestaurantApp.Pages
 
         }
         #endregion
+#region Public/Private members
+        public virtual void ReloadListView()
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+
 
     }
 }
