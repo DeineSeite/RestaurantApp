@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Android.Content.Res;
+using FreshMvvm;
 using RestaurantApp.Core.Interfaces;
 using RestaurantApp.Core.Services;
 using RestaurantApp.Data.Models;
@@ -32,15 +33,11 @@ namespace RestaurantApp.Core.PageModels
                 BonusPointList.Add(new BonusPointModel() {Id =i,IsActivated = i<5});
             }
             _currenBonusPointModel=new BonusPointModel();
-            BonusPointList.CollectionChanged += BonusPointList_CollectionChanged;
+         
           
         }
 
-        private void BonusPointList_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
-        {
-            var listViewPage = CurrentPage as IListViewPage;
-            listViewPage?.ReloadListView();
-        }
+       
 
         private void ItemTapped(BonusPointModel pointModel)
         {
@@ -64,9 +61,9 @@ namespace RestaurantApp.Core.PageModels
             _currenBonusPointModel.ActivationDate=DateTime.Now;
             _currenBonusPointModel.IsActivated = true;
             BonusPointList[index] = _currenBonusPointModel;
-            BonusPointList[index+1] = new BonusPointModel() {IsActivated = false};
-          
-           
+            BonusPointList[index+1] = _currenBonusPointModel;
+            BonusPointList[index+2] = _currenBonusPointModel;
+
         }
 
       

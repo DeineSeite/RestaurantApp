@@ -7,7 +7,7 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using DLToolkit.Forms.Controls;
-using RestaurantApp.Converters;
+using RestaurantApp.Core.Converters;
 using RestaurantApp.Droid.Renderers;
 using RestaurantApp.Pages;
 using RestaurantApp.Triggers;
@@ -43,7 +43,6 @@ namespace RestaurantApp.Droid
               .RegisterAssemblyFromType<UserControls.GridView>()
               .RegisterAssemblyFromType<FlowListView>()
               .RegisterAssemblyFromType<StringCaseConverter>()
-              .RegisterAssemblyFromType<InverseBooleanConverter>()
               ));
 #endif
         }

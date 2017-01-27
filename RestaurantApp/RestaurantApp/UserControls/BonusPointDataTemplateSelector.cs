@@ -10,7 +10,7 @@ using RestaurantApp.UserControls;
 using Xamarin.Forms;
 
 
-namespace RestaurantApp.Converters
+namespace RestaurantApp.UserControls
 {
    public class BonusPointDataTemplateSelector: FlowTemplateSelector
    {

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using DLToolkit.Forms.Controls;
 using Foundation;
-using RestaurantApp.Converters;
 using RestaurantApp.iOS.Renderers;
 using RestaurantApp.Pages;
 using RestaurantApp.Triggers;

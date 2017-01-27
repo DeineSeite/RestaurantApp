@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\BonusPointModel.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="RestaurantApp.Data.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

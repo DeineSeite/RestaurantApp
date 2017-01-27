@@ -51,7 +51,12 @@
     <SuppressPseudoWarning Condition="'$(Configuration)' == 'Debug'">true</SuppressPseudoWarning>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Converters\AlphaColorConverter.cs" />
+    <Compile Include="Converters\InverseBooleanConverter.cs" />
+    <Compile Include="Converters\ItemTappedEventArgsConverter.cs" />
+    <Compile Include="Converters\StringCaseConverter.cs" />
     <Compile Include="Helpers\EventArgs.cs" />
+    <Compile Include="Interfaces\IApplicationContext.cs" />
     <Compile Include="Interfaces\IBasePage.cs" />
     <Compile Include="Interfaces\IListViewPage.cs" />
     <Compile Include="Localization\AppResources.de-DE.Designer.cs">
@@ -149,6 +154,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="contactInfo.html" />
     <Content Include="FodyWeavers.xml" />
   </ItemGroup>
   <ItemGroup>

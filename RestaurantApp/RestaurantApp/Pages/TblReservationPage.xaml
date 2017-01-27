@@ -3,9 +3,9 @@
     x:Class="RestaurantApp.Pages.TblReservationPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:localization="clr-namespace:RestaurantApp.Core.Localization;assembly=RestaurantApp.Core"
     xmlns:pages="clr-namespace:RestaurantApp.Pages;assembly=RestaurantApp"
     xmlns:userControls="clr-namespace:RestaurantApp.UserControls;assembly=RestaurantApp">
-
     <AbsoluteLayout>
         <Image
             AbsoluteLayout.LayoutBounds="1,1,1,1"
@@ -45,38 +45,38 @@
                             Grid.Row="0"
                             Grid.ColumnSpan="2"
                             Margin="0,0,80,0"
-                            Placeholder="NAME*" />
+                            Placeholder="{x:Static localization:AppResources.ContactName}" />
                         <Entry
                             Grid.Row="1"
                             Grid.ColumnSpan="2"
                             Margin="0,0,80,0"
                             Keyboard="Email"
-                            Placeholder="E-MAIL*" />
+                            Placeholder="{x:Static localization:AppResources.ContactEmail}" />
                         <Entry
                             Grid.Row="2"
                             Grid.ColumnSpan="2"
                             Margin="0,0,80,0"
                             Keyboard="Telephone"
-                            Placeholder="TELEFONNUMMER*" />
-                        <Entry Grid.Row="3" Placeholder="DATUM*" />
+                            Placeholder="{x:Static localization:AppResources.ContactNumber}" />
+                        <Entry Grid.Row="3" Placeholder="{x:Static localization:AppResources.ContactDate}" />
                         <Entry
                             Grid.Row="3"
                             Grid.Column="1"
-                            Placeholder="UHRZEIT*" />
+                            Placeholder="{x:Static localization:AppResources.ContactDate}" />
                         <Entry
                             Grid.Row="4"
                             Grid.Column="0"
                             Keyboard="Numeric"
-                            Placeholder="PERSONENZAHL*" />
+                            Placeholder="{x:Static localization:AppResources.ContactPersonCount}" />
                         <Entry
                             Grid.Row="4"
                             Grid.Column="1"
-                            Placeholder="RAUCHER JA/NEIN*" />
+                            Placeholder="{x:Static localization:AppResources.ContactSmoker}" />
                         <Button
                             Grid.Row="5"
                             Grid.Column="1"
                             BackgroundColor="Green"
-                            Text="SENDEN" />
+                            Text="{x:Static localization:AppResources.Send}" />
                     </Grid>
                 </AbsoluteLayout>
             </ScrollView>

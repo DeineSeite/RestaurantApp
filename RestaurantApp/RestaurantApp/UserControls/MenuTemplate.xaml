@@ -4,11 +4,11 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:behaviors="clr-namespace:RestaurantApp.Behaviors;assembly=RestaurantApp"
-    xmlns:converters="clr-namespace:RestaurantApp.Converters;assembly=RestaurantApp"
-    xmlns:userControls="clr-namespace:RestaurantApp.UserControls;assembly=RestaurantApp">
+    xmlns:userControls="clr-namespace:RestaurantApp.UserControls;assembly=RestaurantApp"
+    xmlns:converters1="clr-namespace:RestaurantApp.Core.Converters;assembly=RestaurantApp.Core">
     <ContentView.Resources>
         <ResourceDictionary>
-            <converters:ItemTappedEventArgsConverter x:Key="ItemTappedConverter" />
+            <converters1:ItemTappedEventArgsConverter x:Key="ItemTappedConverter" />
         </ResourceDictionary>
     </ContentView.Resources>
     <ListView

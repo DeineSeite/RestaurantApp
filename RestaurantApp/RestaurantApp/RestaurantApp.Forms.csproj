@@ -50,11 +50,6 @@
     </Compile>
     <Compile Include="Behaviors\BindableBehavior.cs" />
     <Compile Include="Behaviors\EventToCommandBehavior.cs" />
-    <Compile Include="Converters\AlphaColorConverter.cs" />
-    <Compile Include="Converters\BonusPointDataTemplateSelector.cs" />
-    <Compile Include="Converters\InverseBooleanConverter.cs" />
-    <Compile Include="Converters\ItemTappedEventArgsConverter.cs" />
-    <Compile Include="Converters\StringCaseConverter.cs" />
     <Compile Include="Pages\AccountPage.xaml.cs">
       <DependentUpon>AccountPage.xaml</DependentUpon>
     </Compile>
@@ -86,6 +81,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\RestaurantAppPageModelMapper.cs" />
     <Compile Include="Triggers\MenuItemClickTrigger.cs" />
+    <Compile Include="UserControls\BonusPointDataTemplateSelector.cs" />
     <Compile Include="UserControls\BonusPointItemTemplate.xaml.cs">
       <DependentUpon>BonusPointItemTemplate.xaml</DependentUpon>
     </Compile>

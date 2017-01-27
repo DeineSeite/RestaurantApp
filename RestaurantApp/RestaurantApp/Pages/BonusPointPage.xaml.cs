@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RestaurantApp.Converters;
 using RestaurantApp.Core.Interfaces;
 using RestaurantApp.Core.Services;
+using RestaurantApp.UserControls;
 using Xamarin.Forms;
 using ZXing.Mobile;
 using ZXing.Net.Mobile.Forms;
@@ -20,7 +20,7 @@ namespace RestaurantApp.Pages
         {
             InitializeComponent();
             FlowList.FlowColumnTemplate=new BonusPointDataTemplateSelector();
-
+            
         }
 
 
@@ -28,6 +28,12 @@ namespace RestaurantApp.Pages
         {
             App.IsLastItemAdded = false;
             FlowList.ForceReload();
+           
+        }
+
+        private void RefreshButton_OnClicked(object sender, EventArgs e)
+        {
+            FlowList.IsRefreshing = true;
            
         }
     }

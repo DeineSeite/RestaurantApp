@@ -9,7 +9,7 @@ using Xamarin.Forms;
 
 namespace RestaurantApp.Pages
 {
-    public abstract class BasePage : FreshBaseContentPage, IBasePage
+    public class BasePage : FreshBaseContentPage, IBasePage
     {
         #region Public properties
         /// <summary>
