@@ -9,10 +9,9 @@ using System.Threading.Tasks;
 using Android.Content.Res;
 using FreshMvvm;
 using RestaurantApp.Core.Interfaces;
-using RestaurantApp.Core.Services;
 using RestaurantApp.Data.Models;
 using Xamarin.Forms;
-
+using QrCodeScanner;
 
 namespace RestaurantApp.Core.PageModels
 {

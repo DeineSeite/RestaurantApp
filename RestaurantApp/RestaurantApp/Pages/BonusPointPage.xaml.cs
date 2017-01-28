@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RestaurantApp.Core.Interfaces;
-using RestaurantApp.Core.Services;
 using RestaurantApp.UserControls;
 using Xamarin.Forms;
 using ZXing.Mobile;

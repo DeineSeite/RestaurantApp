@@ -69,10 +69,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Localization\AppResources.qps-ploc.Designer.cs">
+    <Compile Include="Localization\AppResources.it-IT.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AppResources.qps-ploc.resx</DependentUpon>
+      <DependentUpon>AppResources.it-IT.resx</DependentUpon>
     </Compile>
     <Compile Include="PageModels\AccountPageModel.cs" />
     <Compile Include="PageModels\BasePageModel.cs" />
@@ -85,9 +85,12 @@
     <Compile Include="PageModels\QrCodeScannerPageModel.cs" />
     <Compile Include="PageModels\TblReservationPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\QrCodeScannerService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\QrCodeScanner\QrCodeScanner.csproj">
+      <Project>{642174d7-3ff5-47f5-a83a-8daf5cc5d58f}</Project>
+      <Name>QrCodeScanner</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ResaurantApp.Net\ResaurantApp.Net.csproj">
       <Project>{b4bcce92-6f7a-481d-9b89-c860e76acc0c}</Project>
       <Name>ResaurantApp.Net</Name>
@@ -158,45 +161,13 @@
     <Content Include="FodyWeavers.xml" />
   </ItemGroup>
   <ItemGroup>
-    <XliffResource Include="Localization\AppResources.de-DE.xlf">
-      <Generator>XliffResxGenerator</Generator>
-      <LastGenOutput>AppResources.de-DE.resx</LastGenOutput>
-    </XliffResource>
-    <XliffResource Include="Localization\AppResources.it-IT.xlf">
-      <Generator>XliffResxGenerator</Generator>
-      <LastGenOutput>AppResources.it-IT.resx</LastGenOutput>
-    </XliffResource>
-    <XliffResource Include="Localization\AppResources.it.xlf">
-      <Generator>XliffResxGenerator</Generator>
-      <LastGenOutput>AppResources.it.resx</LastGenOutput>
-    </XliffResource>
-    <XliffResource Include="Localization\AppResources.qps-ploc.xlf">
-      <Generator>XliffResxGenerator</Generator>
-      <LastGenOutput>AppResources.qps-ploc.resx</LastGenOutput>
-    </XliffResource>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Localization\AppResources.de-DE.resx">
-      <DependentUpon>AppResources.de-DE.xlf</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.de-DE.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Localization\AppResources.it-IT.resx">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AppResources.it-IT.xlf</DependentUpon>
-      <culture>it-IT</culture>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Localization\AppResources.it.resx">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AppResources.it.xlf</DependentUpon>
-      <culture>it</culture>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Localization\AppResources.qps-ploc.resx">
-      <DependentUpon>AppResources.qps-ploc.xlf</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.it-IT.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Localization\AppResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -206,6 +177,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Extensions\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <XliffResource Include="MultilingualResources\RestaurantApp.Core.de-DE.xlf" />
+    <XliffResource Include="MultilingualResources\RestaurantApp.Core.it-IT.xlf" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.3.3.175\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.3.175\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
