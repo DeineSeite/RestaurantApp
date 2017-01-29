@@ -231,6 +231,7 @@ Global
 		{4429A529-1002-4F0B-B893-023FBAB86C46}.AppStore|x86.ActiveCfg = AppStore|iPhone
 		{4429A529-1002-4F0B-B893-023FBAB86C46}.Debug|Any CPU.ActiveCfg = Debug|iPhoneSimulator
 		{4429A529-1002-4F0B-B893-023FBAB86C46}.Debug|Any CPU.Build.0 = Debug|iPhoneSimulator
+		{4429A529-1002-4F0B-B893-023FBAB86C46}.Debug|Any CPU.Deploy.0 = Debug|iPhoneSimulator
 		{4429A529-1002-4F0B-B893-023FBAB86C46}.Debug|ARM.ActiveCfg = Debug|iPhone
 		{4429A529-1002-4F0B-B893-023FBAB86C46}.Debug|iPhone.ActiveCfg = Debug|iPhone
 		{4429A529-1002-4F0B-B893-023FBAB86C46}.Debug|iPhone.Build.0 = Debug|iPhone
