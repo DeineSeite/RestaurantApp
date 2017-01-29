@@ -83,8 +83,9 @@ namespace RestaurantApp.UserControls
         /// </summary>
         /// <value>The checked state.</value>
         public bool Checked
+
         {
-            get { return this.GetValue<bool>(CheckedProperty); }
+            get { return (bool) this.GetValue(CheckedProperty); }
 
 
             set
@@ -94,7 +95,7 @@ namespace RestaurantApp.UserControls
                 {
                     this.SetValue(CheckedProperty, value);
 
-                    this.CheckedChanged.Invoke(this, new EventArgs<bool>(value));
+                    this.CheckedChanged?.Invoke(this, new EventArgs<bool>(value));
                 }
             }
         }
@@ -110,7 +111,7 @@ namespace RestaurantApp.UserControls
         public string CheckedText
 
         {
-            get { return this.GetValue<string>(CheckedTextProperty); }
+            get { return (string) this.GetValue(CheckedTextProperty); }
 
 
             set { this.SetValue(CheckedTextProperty, value); }
@@ -127,7 +128,7 @@ namespace RestaurantApp.UserControls
         public string UncheckedText
 
         {
-            get { return this.GetValue<string>(UncheckedTextProperty); }
+            get { return (string)this.GetValue(UncheckedTextProperty); }
 
 
             set { this.SetValue(UncheckedTextProperty, value); }
@@ -140,7 +141,7 @@ namespace RestaurantApp.UserControls
         public string DefaultText
 
         {
-            get { return this.GetValue<string>(DefaultTextProperty); }
+            get { return (string)this.GetValue(DefaultTextProperty); }
 
 
             set { this.SetValue(DefaultTextProperty, value); }
@@ -154,15 +155,10 @@ namespace RestaurantApp.UserControls
         public Color TextColor
 
         {
-            get { return this.GetValue<Color>(TextColorProperty); }
+            get { return (Color)this.GetValue(TextColorProperty); }
 
 
             set { this.SetValue(TextColorProperty, value); }
-        }
-
-        private T GetValue<T>(BindableProperty textColorProperty)
-        {
-            throw new NotImplementedException();
         }
 
 

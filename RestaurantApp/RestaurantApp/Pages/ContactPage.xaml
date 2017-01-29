@@ -1,67 +1,89 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<pages:BasePage
-    x:Class="RestaurantApp.Pages.ContactPage"
-    xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:localization="clr-namespace:RestaurantApp.Core.Localization;assembly=RestaurantApp.Core"
-    xmlns:pageModels="clr-namespace:RestaurantApp.Core.PageModels;assembly=RestaurantApp.Core"
-    xmlns:pages="clr-namespace:RestaurantApp.Pages;assembly=RestaurantApp"
-    xmlns:userControls="clr-namespace:RestaurantApp.UserControls;assembly=RestaurantApp">
-    <pages:BasePage.BindingContext>
-        <pageModels:ContactPageModel />
-    </pages:BasePage.BindingContext>
-    <AbsoluteLayout>
-        <Image
-            AbsoluteLayout.LayoutBounds="1,1,1,1"
-            AbsoluteLayout.LayoutFlags="All"
-            Aspect="AspectFill"
-            Source="{StaticResource MainBackgroundImage}" />
-<ScrollView  AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All">
-        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+<pages:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:RestaurantApp.Pages;assembly=RestaurantApp"
+             xmlns:pageModels="clr-namespace:RestaurantApp.Core.PageModels;assembly=RestaurantApp.Core"
+             xmlns:userControls="clr-namespace:RestaurantApp.UserControls;assembly=RestaurantApp"
+             xmlns:shared="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+             x:Class="RestaurantApp.Pages.ContactPage">
+  <pages:BasePage.BindingContext>
+    <pageModels:ContactPageModel />
+  </pages:BasePage.BindingContext>
+  <AbsoluteLayout>
+    <Image
+        AbsoluteLayout.LayoutBounds="1,1,1,1"
+        AbsoluteLayout.LayoutFlags="All"
+        Aspect="AspectFill"
+        Source="{StaticResource MainBackgroundImage}" />
+    <ScrollView  AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All">
+      <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
 
-            <userControls:HeaderTemplate />
-            <AbsoluteLayout Margin="0,0,0,20">
-              <BoxView
-                  AbsoluteLayout.LayoutBounds="1,1,1,1"
-                  AbsoluteLayout.LayoutFlags="All"
-                  BackgroundColor="{StaticResource SecondThemeColor}"
-                  Opacity="0.7" />
-              <StackLayout
-                 AbsoluteLayout.LayoutBounds="1,1,1,1"
-                  AbsoluteLayout.LayoutFlags="All"
-                    Margin="10,10,10,20"
-                    HorizontalOptions="FillAndExpand"
-                    
-                    VerticalOptions="FillAndExpand">
-                <StackLayout.Orientation>
-                  <OnIdiom x:TypeArguments="StackOrientation" Phone="Vertical" Tablet="Horizontal"></OnIdiom>
-                </StackLayout.Orientation>
-                <userControls:HtmlLabel Text="{Binding HtmlContent}" FontSize="Medium"></userControls:HtmlLabel>
-
-
-                <StackLayout>
-
-                  <Image
-                      HeightRequest="300"
-                      
-                      Source="{Binding MapUrl}"
-                      VerticalOptions="Start"
-                      WidthRequest="280" >
-                      <Image.HorizontalOptions>
-                        <OnIdiom x:TypeArguments="LayoutOptions" Phone="CenterAndExpand" Tablet="EndAndExpand"></OnIdiom>
-                      </Image.HorizontalOptions>
-                  
-                  </Image>
-                  <Button
-                     WidthRequest="280"
-                      BackgroundColor="Green"
-                      Command="{Binding NavigateToMap}"
-                      Text="Navigate" />
-                </StackLayout>
-
+        <userControls:HeaderTemplate />
+        <StackLayout Spacing="0" HorizontalOptions="CenterAndExpand" BackgroundColor="{StaticResource SecondThemeColorAlpha80}">
+          <ContentView Padding="10">
+            <StackLayout Orientation="Horizontal" Spacing="10">
+              <AbsoluteLayout>
+                <shared:CircleImage HorizontalOptions="Center" Aspect="AspectFill" VerticalOptions="Center" WidthRequest="90" HeightRequest="90" Source="logo_circle.jpg"/>
+              </AbsoluteLayout>
+              <StackLayout>
+                <ContentView>
+                  <StackLayout Spacing="0">
+                    <Label Text="we ha bee" />
+                    <Label Text="{Binding Restaurant.Company}" />
+                    <Label Text="{Binding Restaurant.JobTitle}" FontSize="Small" TextColor="Silver" />
+                  </StackLayout>
+                </ContentView>
+                <ContentView IsEnabled="True" IsVisible="True">
+                  <StackLayout Orientation="Horizontal" Spacing="10">
+                    <Image Source="directions.png" Aspect="AspectFit" HeightRequest="20" WidthRequest="20">
+                      <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GetDirectionsCommand}" />
+                      </Image.GestureRecognizers>
+                    </Image>
+                    <StackLayout Spacing="0">
+                      <Label Text="{Binding Restaurant.Street}" FontSize="Medium" LineBreakMode="TailTruncation" />
+                      <Label Text="{Binding Restaurant.City}" FontSize="Medium" LineBreakMode="TailTruncation" />
+                      <Label Text="{Binding Restaurant.StatePostal}" FontSize="Medium" LineBreakMode="TailTruncation" />
+                    </StackLayout>
+                  </StackLayout>
+                </ContentView>
+                <ContentView  IsVisible="True">
+                  <StackLayout Orientation="Horizontal" Spacing="10">
+                    <Image Source="message.png" Aspect="AspectFit" HeightRequest="20" WidthRequest="20">
+                      <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding MessageNumberCommand}" NumberOfTapsRequired="1" />
+                      </Image.GestureRecognizers>
+                    </Image>
+                    <Label Text="{Binding Restaurant.Phone}" FontSize="Small" HeightRequest="20" VerticalTextAlignment="Center" LineBreakMode="TailTruncation" />
+                    <Image Source="phone.png" Aspect="AspectFit" HeightRequest="20" WidthRequest="20">
+                      <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding DialNumberCommand}" NumberOfTapsRequired="1" />
+                      </Image.GestureRecognizers>
+                    </Image>
+                  </StackLayout>
+                </ContentView>
+                <ContentView IsEnabled="True" IsVisible="True">
+                  <StackLayout Orientation="Horizontal" Spacing="10">
+                    <Image Source="email.png" Aspect="AspectFit" HeightRequest="20" WidthRequest="20">
+                      <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding EmailCommand}" NumberOfTapsRequired="1" />
+                      </Image.GestureRecognizers>
+                    </Image>
+                    <Label Text="{Binding Restaurant.Email}" FontSize="Medium" HeightRequest="20" LineBreakMode="TailTruncation" VerticalTextAlignment="Center" />
+                  </StackLayout>
+                </ContentView>
               </StackLayout>
+            </StackLayout>
+          </ContentView>
+          <ContentView HeightRequest="1" BackgroundColor="Silver" />
+          <AbsoluteLayout VerticalOptions="FillAndExpand">
+            <AbsoluteLayout  IsVisible="True" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0,2.0, 2.0">
+              <ActivityIndicator IsVisible="False" IsRunning="False" AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional" AbsoluteLayout.LayoutBounds="0.5, 0.5, 0.2, AutoSize" />
+              <Image  Source="{Binding MapUrl}" Aspect="AspectFill" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1.0, 1.0" />
             </AbsoluteLayout>
+          </AbsoluteLayout>
         </StackLayout>
-</ScrollView>
-    </AbsoluteLayout>
+      </StackLayout>
+    </ScrollView>
+  </AbsoluteLayout>
 </pages:BasePage>

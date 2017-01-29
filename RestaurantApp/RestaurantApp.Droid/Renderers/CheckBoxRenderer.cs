@@ -19,12 +19,13 @@ using CheckBox = RestaurantApp.UserControls.CheckBox;
 
 
 [assembly: ExportRenderer(typeof(CheckBox), typeof(CheckBoxRenderer))]
+
 namespace RestaurantApp.Droid.Renderers
 {
     /// <summary>
     /// Class CheckBoxRenderer.
     /// </summary>
-    public class CheckBoxRenderer : ViewRenderer<UserControls.CheckBox, Android.Widget.CheckBox>
+    public class CheckBoxRenderer : ViewRenderer<CheckBox, Android.Widget.CheckBox>
 
     {
         private ColorStateList defaultTextColor;
@@ -34,7 +35,7 @@ namespace RestaurantApp.Droid.Renderers
         /// Called when [element changed].
         /// </summary>
         /// <param name="e">The e.</param>
-        protected override void OnElementChanged(ElementChangedEventArgs<UserControls.CheckBox> e)
+        protected override void OnElementChanged(ElementChangedEventArgs<CheckBox> e)
 
         {
             base.OnElementChanged(e);

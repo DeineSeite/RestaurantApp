@@ -13,17 +13,15 @@ namespace RestaurantApp.Core.Converters
  
         #region IValueConverter Members
 
-        public object Convert(object value, Type targetType, object parameter,
-            System.Globalization.CultureInfo culture)
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            //if (!(bool) value&&!App.IsLastItemAdded)
-            //{
-            //    App.IsLastItemAdded = true;
-            //    if (targetType != typeof(bool))
-            //        throw new InvalidOperationException("The target must be a boolean");
-
-            //    return true;
-            //}
+            
+            if (targetType != typeof(bool))
+                throw new InvalidOperationException("The target must be a boolean");
+            if (!(bool) value)
+            {
+                return true;
+            }
             return false;
 
         }

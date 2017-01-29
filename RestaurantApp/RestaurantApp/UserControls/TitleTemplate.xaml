@@ -37,7 +37,7 @@
                         TextColor="White"
                         VerticalOptions="CenterAndExpand" />
                     <Label
-                        x:Name="SubTitle"
+                        x:Name="SubTitleLabel"
                         Margin="0,-5,0,0"
                         FontSize="Medium"
                         HorizontalOptions="StartAndExpand"
@@ -46,9 +46,9 @@
                         VerticalOptions="CenterAndExpand">
                         <Label.Triggers>
                             <DataTrigger
-                                Binding="{Binding Source={x:Reference SubTitle}, Path=Text.Length}"
+                                Binding="{Binding Source={x:Reference SubTitleLabel}, Path=Text}"
                                 TargetType="Label"
-                                Value="0">
+                                Value="{x:Null}">
                                 <Setter Property="IsVisible" Value="False" />
                             </DataTrigger>
                         </Label.Triggers>

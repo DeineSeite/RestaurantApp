@@ -51,15 +51,23 @@ namespace RestaurantApp.Core.PageModels
         {
             CurrentPage.Title = _title;
             GoBackCommand = new Command(GoBack);
+            GoToAccountCommand = new Command(GoToAccountPage);
         }
         #endregion
 
         #region Commands
         public Command GoBackCommand { get; set; }
+        public Command GoToAccountCommand { get; set; }
 
         #endregion
 
         #region Methods
+        private async void GoToAccountPage()
+        {
+            var accountPage = FreshPageModelResolver.ResolvePageModel<AccountPageModel>();
+            
+            await CurrentPage.Navigation.PushAsync(accountPage, false);
+        }
         private void GoBack()
         {
             CurrentPage.SendBackButtonPressed();

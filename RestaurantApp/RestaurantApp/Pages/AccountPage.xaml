@@ -15,7 +15,8 @@
     <StackLayout AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All">
       <userControls:HeaderTemplate />
       <StackLayout Orientation="Vertical" BackgroundColor="{StaticResource SecondThemeColorAlpha80}">
-        
+        <userControls:CheckBox HorizontalOptions="CenterAndExpand" FontSize="20" DefaultText="Ja, ich möchte gratis Essen"></userControls:CheckBox>
+        <userControls:CheckBox HorizontalOptions="CenterAndExpand" FontSize="20" DefaultText="Nein, ich möchte ... werden"></userControls:CheckBox>
       </StackLayout>
   
     </StackLayout>

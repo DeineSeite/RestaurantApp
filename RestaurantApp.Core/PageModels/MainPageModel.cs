@@ -27,7 +27,7 @@ namespace RestaurantApp.Core.PageModels
                 Title = AppResources.Info,
                 MenuItemsList = new List<BasePageModel>()
                 {
-                    new AccountPageModel() {Title = AppResources.OpenHours},
+                    new OpenHoursPageModel() {Title = AppResources.OpenHours},
                     new ContactPageModel() {Title = AppResources.Contacts},
                     new TblReservationPage() {Title = AppResources.Tables},
                     new AccountPageModel() {Title = AppResources.ParkPlace}

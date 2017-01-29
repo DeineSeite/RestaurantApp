@@ -6,6 +6,7 @@ using System.Net;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using RestaurantApp.Data.Models;
 using Xamarin.Forms;
 
 namespace RestaurantApp.Core.PageModels
@@ -15,20 +16,30 @@ namespace RestaurantApp.Core.PageModels
         public Command NavigateToMap { get; set; } 
         public  string HtmlContent { get; set; }
         public  string MapUrl { get; set; }
-       public ContactPageModel()
+        public RestaurantModel Restaurant { get; set; }
+
+        public ContactPageModel()
        {
-           string fileName = "RestaurantApp.Core.contactInfo.html";
-            var assembly = typeof(ContactPageModel).GetTypeInfo().Assembly;
-            Stream stream = assembly.GetManifestResourceStream(fileName);
-            string text = "";
-            using (var reader = new System.IO.StreamReader(stream))
-            {
-                text = reader.ReadToEnd();
-            }
-            HtmlContent = text;
+            Restaurant = new RestaurantModel();
+            Restaurant.Phone = "01/256 89 80";
+            Restaurant.Email = "lokal@luckywok.at";
+            Restaurant.Street = "Wagramer Strasse 189b";
+            Restaurant.PostalCode = "1210";
+            Restaurant.State = "Wien";
            MapUrl =
-               "https://maps.googleapis.com/maps/api/staticmap?center=Wagramer+Str.+189B,+1210+Wien&zoom=14&scale=2&size=400x450&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:%7CWagramer+Str.+189B,+1210+Wien";
-            NavigateToMap=new Command(NavigateTo);
+               @"https://maps.googleapis.com/maps/api/staticmap?center=Wagramer+Strasse+189b,+1210+Wien&zoom=13&scale=false&size=600x300&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:1%7CWagramer+Strasse+189b,+1210+Wien";
+           // string fileName = "RestaurantApp.Core.contactInfo.html";
+           // var assembly = typeof(ContactPageModel).GetTypeInfo().Assembly;
+           // Stream stream = assembly.GetManifestResourceStream(fileName);
+           // string text = "";
+           // using (var reader = new System.IO.StreamReader(stream))
+           // {
+           //     text = reader.ReadToEnd();
+           // }
+           // HtmlContent = text;
+           //MapUrl =
+           //    "https://maps.googleapis.com/maps/api/staticmap?center=Wagramer+Str.+189B,+1210+Wien&zoom=14&scale=2&size=400x450&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:%7CWagramer+Str.+189B,+1210+Wien";
+           // NavigateToMap=new Command(NavigateTo);
        }
 
        private void NavigateTo()

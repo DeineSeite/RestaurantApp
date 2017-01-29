@@ -32,10 +32,16 @@
                     Text="John Doe"
                     TextColor="White"
                     VerticalOptions="CenterAndExpand" />
-                <Image
-                    Margin="0,0,10,0"
-                    HorizontalOptions="EndAndExpand"
-                    Source="menu.png" />
+              <Image
+                  Margin="0,0,10,0"
+                  IsOpaque="True"
+                    
+                  HorizontalOptions="EndAndExpand"
+                  Source="menu.png" >
+                <Image.GestureRecognizers>
+                  <TapGestureRecognizer Command="{Binding GoToAccountCommand}"></TapGestureRecognizer>
+                </Image.GestureRecognizers>
+              </Image>
             </StackLayout>
         </AbsoluteLayout>
         <Image
