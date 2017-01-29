@@ -33,12 +33,13 @@
               SeparatorVisibility="None">
             <controls:FlowListView.Footer>
               <StackLayout>
-                <Button x:Name="RefreshButton" Clicked="RefreshButton_OnClicked" Text="Refresh"></Button>
+                <!-- 
+                <Button x:Name="RefreshButton" Clicked="RefreshButton_OnClicked" Text="Refresh"></Button> -->
                 <Label
                     Margin="10"
                     FontSize="Large"
                     HorizontalOptions="CenterAndExpand"
-                    Text="Bei 10 Besuchen ist das 11 Essen gratis"
+                    Text=""
                     TextColor="White" />
               </StackLayout>
             </controls:FlowListView.Footer>

@@ -71,6 +71,15 @@ namespace RestaurantApp.Core.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to For 10 visits the 11 food is free.
+        /// </summary>
+        public static string BonusPageInfo {
+            get {
+                return ResourceManager.GetString("BonusPageInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bonus points.
         /// </summary>
         public static string BonusPoints {

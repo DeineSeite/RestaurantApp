@@ -168,4 +168,8 @@
   <data name="Tables" xml:space="preserve">
     <value>Tables</value>
   </data>
+  <data name="BonusPageInfo" xml:space="preserve">
+    <value>For 10 visits the 11 food is free</value>
+    <comment>Bei 10 Besuchen ist das 11 Essen gratis</comment>
+  </data>
 </root>
