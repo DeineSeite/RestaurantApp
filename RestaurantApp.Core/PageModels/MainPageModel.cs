@@ -33,18 +33,9 @@ namespace RestaurantApp.Core.PageModels
                     new AccountPageModel() {Title = AppResources.ParkPlace}
                 }
             };
-           
-           var foodCardPage = new MenuListPageModel
-           {
-               Title = AppResources.FoodCard,
-           MenuItemsList = new List<BasePageModel>()
-               {
-                   new AccountPageModel() {Title = "Test2"},
-                   new AccountPageModel() {Title = "Test2"},
-                   new AccountPageModel() {Title = "Test2"}
-               }
 
-           };
+            var foodCardPage = new FoodCardPageModel() {Title=AppResources.FoodCard};
+          
            var galeryPage= new GalleryPageModel() { Title = AppResources.Gallery};
 
             MenuItemsList = new List<BasePageModel>

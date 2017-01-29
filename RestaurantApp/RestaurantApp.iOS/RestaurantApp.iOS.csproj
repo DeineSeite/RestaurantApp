@@ -11,7 +11,8 @@
     <RootNamespace>RestaurantApp.iOS</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <AssemblyName>RestaurantApp.iOS</AssemblyName>
-    <NuGetPackageImportStamp></NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -128,15 +129,20 @@
     <SuppressPseudoWarning Condition="'$(Configuration)' == 'Debug'">true</SuppressPseudoWarning>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ColorExtentions.cs" />
+    <Compile Include="CustomElements\CheckBoxView.cs" />
     <Compile Include="CustomElements\GridCollectionView.cs" />
     <Compile Include="CustomElements\GridDataSource.cs" />
     <Compile Include="CustomElements\GridViewCell.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="Renderers\CheckBox.cs" />
     <Compile Include="Renderers\GradientContentViewRenderer.cs" />
     <Compile Include="Renderers\GridViewRenderer.cs" />
+    <Compile Include="Renderers\HtmlLabelRenderer.cs" />
     <Compile Include="Renderers\RoundedBoxRenderer.cs" />
     <Compile Include="Renderers\TransparentWebViewRenderer.cs" />
+    <Compile Include="StringExtentions.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist">
       <SubType>Designer</SubType>

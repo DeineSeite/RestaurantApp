@@ -18,7 +18,7 @@
                 Aspect="AspectFill"
                 Source="{StaticResource MainBackgroundImage}" />
             <StackLayout AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All">
-                <userControls:HeaderTemplate x:Name="HeaderPage" />
+               <userControls:HeaderTemplate x:Name="HeaderPage" />
                 <userControls:MenuTemplate
                     x:Name="Menu"
                     AbsoluteLayout.LayoutBounds="1,.8,1,.7"

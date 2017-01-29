@@ -9,6 +9,14 @@ namespace RestaurantApp.UserControls
 {
    public class TransparentWebView:WebView
     {
+        public TransparentWebView()
+        {
+            Navigated += TransparentWebView_Navigated;
+        }
 
+        private void TransparentWebView_Navigated(object sender, WebNavigatedEventArgs e)
+        {
+                Eval("AppHidden()");
+        }
     }
 }

@@ -21,7 +21,11 @@ namespace RestaurantApp.UserControls
         public double CornerRadius
         {
             get { return (double)GetValue(CornerRadiusProperty); }
-            set { SetValue(CornerRadiusProperty, value); }
+            set
+            {
+
+                SetValue(CornerRadiusProperty, value);
+            }
         }
     }
 }

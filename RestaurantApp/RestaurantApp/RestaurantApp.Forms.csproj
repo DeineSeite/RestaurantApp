@@ -14,7 +14,8 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Profile259</TargetFrameworkProfile>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <NuGetPackageImportStamp></NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
     <SupportedCultures>de-DE;qps-ploc</SupportedCultures>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -77,9 +78,6 @@
     <Compile Include="Pages\MenuListPage.xaml.cs">
       <DependentUpon>MenuListPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\QrCodeScannerPage.xaml.cs">
-      <DependentUpon>QrCodeScannerPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\TblReservationPage.xaml.cs">
       <DependentUpon>TblReservationPage.xaml</DependentUpon>
     </Compile>
@@ -90,11 +88,13 @@
     <Compile Include="UserControls\BonusPointItemTemplate.xaml.cs">
       <DependentUpon>BonusPointItemTemplate.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\CheckBox.cs" />
     <Compile Include="UserControls\GradientContentView.cs" />
     <Compile Include="UserControls\GridView.cs" />
     <Compile Include="UserControls\HeaderTemplate.xaml.cs">
       <DependentUpon>HeaderTemplate.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\HtmlLabel.cs" />
     <Compile Include="UserControls\MenuItemCellTemplate.xaml.cs">
       <DependentUpon>MenuItemCellTemplate.xaml</DependentUpon>
     </Compile>
@@ -255,12 +255,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="UserControls\BonusPointItemTemplate.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Pages\QrCodeScannerPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

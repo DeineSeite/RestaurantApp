@@ -16,43 +16,52 @@
             AbsoluteLayout.LayoutFlags="All"
             Aspect="AspectFill"
             Source="{StaticResource MainBackgroundImage}" />
-
-        <StackLayout AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All">
+<ScrollView  AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All">
+        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
 
             <userControls:HeaderTemplate />
-            <Grid VerticalOptions="FillAndExpand">
-                <BoxView
-                    AbsoluteLayout.LayoutBounds="1,1,1,1"
-                    AbsoluteLayout.LayoutFlags="All"
-                    BackgroundColor="{StaticResource SecondThemeColor}"
-                    Opacity="0.7" />
-                <StackLayout
-                    Margin="10"
+            <AbsoluteLayout Margin="0,0,0,20">
+              <BoxView
+                  AbsoluteLayout.LayoutBounds="1,1,1,1"
+                  AbsoluteLayout.LayoutFlags="All"
+                  BackgroundColor="{StaticResource SecondThemeColor}"
+                  Opacity="0.7" />
+              <StackLayout
+                 AbsoluteLayout.LayoutBounds="1,1,1,1"
+                  AbsoluteLayout.LayoutFlags="All"
+                    Margin="10,10,10,20"
                     HorizontalOptions="FillAndExpand"
-                    Orientation="Horizontal"
+                    
                     VerticalOptions="FillAndExpand">
-                    <userControls:TransparentWebView
-                        x:Name="GalWebView"
-                        HorizontalOptions="FillAndExpand"
-                        VerticalOptions="FillAndExpand">
-                        <userControls:TransparentWebView.Source>
-                            <HtmlWebViewSource Html="{Binding HtmlContent}" />
-                        </userControls:TransparentWebView.Source>
-                    </userControls:TransparentWebView>
-                    <StackLayout>
-                        <Image
-                            HeightRequest="300"
-                            HorizontalOptions="EndAndExpand"
-                            Source="{Binding MapUrl}"
-                            VerticalOptions="Start"
-                            WidthRequest="280" />
-                        <Button
-                            BackgroundColor="Green"
-                            Command="{Binding NavigateToMap}"
-                            Text="Navigate" />
-                    </StackLayout>
+                <StackLayout.Orientation>
+                  <OnIdiom x:TypeArguments="StackOrientation" Phone="Vertical" Tablet="Horizontal"></OnIdiom>
+                </StackLayout.Orientation>
+                <userControls:HtmlLabel Text="{Binding HtmlContent}" FontSize="Medium"></userControls:HtmlLabel>
+
+
+                <StackLayout>
+
+                  <Image
+                      HeightRequest="300"
+                      
+                      Source="{Binding MapUrl}"
+                      VerticalOptions="Start"
+                      WidthRequest="280" >
+                      <Image.HorizontalOptions>
+                        <OnIdiom x:TypeArguments="LayoutOptions" Phone="CenterAndExpand" Tablet="EndAndExpand"></OnIdiom>
+                      </Image.HorizontalOptions>
+                  
+                  </Image>
+                  <Button
+                     WidthRequest="280"
+                      BackgroundColor="Green"
+                      Command="{Binding NavigateToMap}"
+                      Text="Navigate" />
                 </StackLayout>
-            </Grid>
+
+              </StackLayout>
+            </AbsoluteLayout>
         </StackLayout>
+</ScrollView>
     </AbsoluteLayout>
 </pages:BasePage>

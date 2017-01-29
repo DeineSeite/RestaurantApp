@@ -46,6 +46,7 @@ namespace RestaurantApp.iOS
                 .RegisterAssemblyFromType<GridView>()
                 .RegisterAssemblyFromType<FlowListView>()
                 .RegisterAssemblyFromType<StringCaseConverter>()
+                .RegisterAssemblyFromType<HtmlLabelRenderer>()
                 ));
 #endif
 

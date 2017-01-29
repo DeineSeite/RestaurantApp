@@ -17,7 +17,7 @@ namespace RestaurantApp.Pages
         /// </summary>
         public string SubTitle { get; set; }
 
-     
+
 
         #endregion
 
@@ -28,7 +28,8 @@ namespace RestaurantApp.Pages
 
         }
         #endregion
-#region Public/Private members
+
+        #region Public/Private members
         public virtual void ReloadListView()
         {
             throw new NotImplementedException();

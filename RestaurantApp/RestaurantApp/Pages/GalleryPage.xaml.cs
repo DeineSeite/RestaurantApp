@@ -13,24 +13,9 @@ namespace RestaurantApp.Pages
         public GalleryPage()
         {
             InitializeComponent();
-            GalWebView.Navigated += GalWebView_Navigated;
-            GalWebView.Navigating += GalWebView_Navigating;
-            GalWebView.PropertyChanged += GalWebView_PropertyChanged;
         }
 
-        private void GalWebView_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-        {
-            
-        }
-
-        private void GalWebView_Navigating(object sender, WebNavigatingEventArgs e)
-        {
       
-        }
-
-        private void GalWebView_Navigated(object sender, WebNavigatedEventArgs e)
-        {
-            GalWebView.Eval("AppHidden()");
-        }
+       
     }
 }

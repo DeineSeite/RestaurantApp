@@ -5,13 +5,25 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pages="clr-namespace:RestaurantApp.Pages;assembly=RestaurantApp"
     xmlns:userControls="clr-namespace:RestaurantApp.UserControls;assembly=RestaurantApp">
-    <StackLayout>
-        <userControls:GradientContentView
-            EndColor="Transparent"
-            HeightRequest="200"
-            Orientation="Horizontal"
-            StartColor="Black"
-            WidthRequest="300" />
-      
+  <AbsoluteLayout>
+    <Image
+        AbsoluteLayout.LayoutBounds="1,1,1,1"
+        AbsoluteLayout.LayoutFlags="All"
+        Aspect="AspectFill"
+        Source="{StaticResource MainBackgroundImage}" />
+    
+   
+    <StackLayout
+        AbsoluteLayout.LayoutBounds="1,1,1,1"
+        AbsoluteLayout.LayoutFlags="All"
+        Orientation="Vertical">
+      <userControls:HeaderTemplate />
+            <userControls:TransparentWebView
+              x:Name="MenuWebView"
+              BackgroundColor="{StaticResource SecondThemeColorAlpha80}"
+              Source="http://www.luckywok.at/speisekarte/55"
+              VerticalOptions="FillAndExpand" />
     </StackLayout>
+  </AbsoluteLayout>
+  
 </pages:BasePage>

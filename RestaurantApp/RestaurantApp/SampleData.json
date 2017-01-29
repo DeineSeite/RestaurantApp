@@ -25,17 +25,17 @@
     "Name": "Alte Geshichte",
     "Title": "Bonuspunkte",
     "SubTitle": "Abend",
-    "MenuItemsList": [
-      { "Active": true },
-      { "Active": true },
-      { "Active": true },
-      { "Active": true },
-      { "Active": true },
-      { "Active": false },
-      { "Active": false },
-      { "Active": false },
-      { "Active": false },
-      { "Active": false }
+    "BonusPointList": [
+      { "IsActivated": true },
+      { "IsActivated": true },
+      { "IsActivated": true },
+      { "IsActivated": true },
+      { "IsActivated": true },
+      { "IsActivated": false },
+      { "IsActivated": false },
+      { "IsActivated": false },
+      { "IsActivated": false },
+      { "IsActivated": false }
    
   
     ]

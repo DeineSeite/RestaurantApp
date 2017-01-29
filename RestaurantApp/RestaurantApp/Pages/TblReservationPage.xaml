@@ -19,12 +19,8 @@
             <userControls:HeaderTemplate />
             <ScrollView>
                 <AbsoluteLayout>
-                    <BoxView
-                        AbsoluteLayout.LayoutBounds="1,1,1,1"
-                        AbsoluteLayout.LayoutFlags="All"
-                        BackgroundColor="{StaticResource SecondThemeColor}"
-                        Opacity="0.7" />
                     <Grid
+                      BackgroundColor="{StaticResource SecondThemeColorAlpha80}"
                         Padding="20"
                         AbsoluteLayout.LayoutBounds="1,1,1,1"
                         AbsoluteLayout.LayoutFlags="All"

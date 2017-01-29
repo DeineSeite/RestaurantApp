@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 
@@ -22,7 +23,11 @@ namespace RestaurantApp.Droid.Renderers
         protected override void OnElementChanged(ElementChangedEventArgs<WebView> e)
         {
             base.OnElementChanged(e);
-            this.Control.SetBackgroundColor(Android.Graphics.Color.Transparent);
+             this.Control.SetBackgroundColor(Color.Transparent.ToAndroid());
+           
+            
         }
+
+       
     }
 }

@@ -21,5 +21,6 @@ namespace RestaurantApp.iOS.Renderers
             this.BackgroundColor = UIColor.Clear;
             
         }
+       
     }
 }

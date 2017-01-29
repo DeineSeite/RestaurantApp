@@ -70,7 +70,6 @@
     <EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
     <BundleAssemblies>False</BundleAssemblies>
     <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
-    <AndroidSupportedAbis>armeabi-v7a</AndroidSupportedAbis>
     <Debugger>Xamarin</Debugger>
     <AotAssemblies>False</AotAssemblies>
     <EnableLLVM>False</EnableLLVM>
@@ -213,8 +212,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
+    <Compile Include="Renderers\CheckBoxRenderer.cs" />
     <Compile Include="Renderers\GradientContentViewRenderer.cs" />
     <Compile Include="Renderers\GridViewRenderer.cs" />
+    <Compile Include="Renderers\HtmlLabelRenderer.cs" />
     <Compile Include="Renderers\RoundedBoxRenderer.cs" />
     <Compile Include="Renderers\TransparentWebViewRenderer.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
