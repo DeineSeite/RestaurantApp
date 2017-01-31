@@ -4,7 +4,8 @@
              xmlns:pages="clr-namespace:RestaurantApp.Pages;assembly=RestaurantApp"
              xmlns:pageModels="clr-namespace:RestaurantApp.Core.PageModels;assembly=RestaurantApp.Core"
              xmlns:userControls="clr-namespace:RestaurantApp.UserControls;assembly=RestaurantApp"
-             xmlns:abstractions="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             xmlns:shared="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+
 
              x:Class="RestaurantApp.Pages.ContactPage">
   <pages:BasePage.BindingContext>
@@ -24,7 +25,7 @@
           <ContentView Padding="5,10,0,0"  HorizontalOptions="CenterAndExpand">
             <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand" VerticalOptions="Start" Spacing="15">
               <AbsoluteLayout VerticalOptions="CenterAndExpand">
-               <Image HorizontalOptions="Center"  Aspect="AspectFill" VerticalOptions="CenterAndExpand" WidthRequest="230" HeightRequest="250" Source="logo_circle.jpg"/>
+               <shared:CircleImage HorizontalOptions="Center"  Aspect="AspectFill" VerticalOptions="CenterAndExpand" WidthRequest="90" HeightRequest="90" Source="logo_circle.jpg"/>
               </AbsoluteLayout>
               <StackLayout>
                 <ContentView >
@@ -75,7 +76,7 @@
             </StackLayout>
           </ContentView>
         
-          <AbsoluteLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+          <AbsoluteLayout VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand">
             <AbsoluteLayout  IsVisible="True" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0,1.0, 1.0">
               <ActivityIndicator IsVisible="False" IsRunning="False" AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional" AbsoluteLayout.LayoutBounds="0.5, 0.5, 0.2, AutoSize" />
               <Image  Source="{Binding MapUrl}"  AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0, 1,1" />

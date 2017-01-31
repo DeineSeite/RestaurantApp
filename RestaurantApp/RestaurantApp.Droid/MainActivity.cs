@@ -2,14 +2,13 @@
 using Android.Content.PM;
 using Android.OS;
 using DLToolkit.Forms.Controls;
-using ImageCircle.Forms.Plugin.Droid;
 using RestaurantApp.Core.Converters;
 using RestaurantApp.Droid.Renderers;
 using RestaurantApp.Pages;
 using RestaurantApp.Triggers;
 using RestaurantApp.UserControls;
+using UXDivers.Artina.Shared;
 using Xamarin.Forms;
-
 #if  GORILLA
  using UXDivers.Gorilla;   
 #endif
@@ -29,10 +28,9 @@ namespace RestaurantApp.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(bundle);
-       
+
             global::Xamarin.Forms.Forms.Init(this, bundle);
             FlowListView.Init();
-            ImageCircleRenderer.Init();
 
 
 #if !GORILLA
@@ -43,6 +41,8 @@ namespace RestaurantApp.Droid
               .RegisterAssemblyFromType<AlphaColorConverter>()
               .RegisterAssemblyFromType<IValueConverter>()
               .RegisterAssemblyFromType<RoundedBox>()
+            .RegisterAssemblyFromType<CircleImage>()
+            .RegisterAssemblyFromType<ImageCircleRenderer>()
               .RegisterAssemblyFromType<RoundedBoxRenderer>()
               .RegisterAssemblyFromType<MenuItemClickTrigger>()
               .RegisterAssemblyFromType<UserControls.GridView>()

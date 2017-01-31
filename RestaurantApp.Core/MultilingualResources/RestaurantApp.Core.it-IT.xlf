@@ -74,6 +74,11 @@
           <source>Tables</source>
           <target state="needs-review-translation" state-qualifier="tm-suggestion">Tabelle</target>
         </trans-unit>
+        <trans-unit id="BonusPageInfo" translate="yes" xml:space="preserve">
+          <source>For 10 visits the 11 food is free</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Per 10 visite il cibo 11 è gratuito</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Bei 10 Besuchen ist das 11 Essen gratis</note>
+        </trans-unit>
       </group>
     </body>
   </file>

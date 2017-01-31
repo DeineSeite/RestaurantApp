@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using DLToolkit.Forms.Controls;
 using Foundation;
-using ImageCircle.Forms.Plugin.iOS;
 using RestaurantApp.iOS.Renderers;
 using RestaurantApp.Pages;
 using RestaurantApp.Triggers;
 using RestaurantApp.UserControls;
 using UIKit;
+using UXDivers.Artina.Shared;
 
 namespace RestaurantApp.iOS
 {
@@ -29,7 +29,6 @@ namespace RestaurantApp.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             FlowListView.Init();
-            ImageCircleRenderer.Init();
 
 #if !GORILLA
             LoadApplication(new App());
@@ -37,6 +36,8 @@ namespace RestaurantApp.iOS
             LoadApplication(UXDivers.Gorilla.iOS.Player.CreateApplication(
                 new UXDivers.Gorilla.Config("Good Gorilla")
                 .RegisterAssemblyFromType<BasePage>()
+             .RegisterAssemblyFromType<CircleImage>()
+            .RegisterAssemblyFromType<ImageCircleRenderer>()
                 .RegisterAssemblyFromType<AlphaColorConverter>()
                 .RegisterAssemblyFromType<RoundedBox>()
                 .RegisterAssemblyFromType<RoundedBoxRenderer>()
