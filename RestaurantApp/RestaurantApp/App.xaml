@@ -5,68 +5,71 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:userControls="clr-namespace:RestaurantApp.UserControls;assembly=RestaurantApp"
     xmlns:converters="clr-namespace:RestaurantApp.Core.Converters;assembly=RestaurantApp.Core">
-    <Application.Resources>
-        <ResourceDictionary>
-            <Color x:Key="MainThemeColor">#637704</Color>
-            <Color x:Key="SecondThemeColor">#FAECC7</Color>
-            <Color x:Key="SecondThemeColorAlpha80">#B3FAECC7</Color>
+  <Application.Resources>
+    <ResourceDictionary>
+      <Color x:Key="MainThemeColor">#637704</Color>
+      <Color x:Key="SecondThemeColor">#FAECC7</Color>
+      <Color x:Key="SecondThemeColorAlpha80">#B3FAECC7</Color>
 
-            <Style x:Key="HeaderStyleWithName" TargetType="View">
-                <Setter Property="AbsoluteLayout.LayoutBounds" Value="-10,.3,.95,.4" />
-                <Setter Property="AbsoluteLayout.LayoutFlags" Value="YProportional,SizeProportional" />
-            </Style>
+      <Style x:Key="HeaderStyleWithName" TargetType="View">
+        <Setter Property="AbsoluteLayout.LayoutBounds" Value="-10,.3,.95,.4" />
+        <Setter Property="AbsoluteLayout.LayoutFlags" Value="YProportional,SizeProportional" />
+      </Style>
 
 
+      <OnIdiom
+          x:Key="TitleSize"
+          x:TypeArguments="x:Double"
+          Tablet="90">
+        <OnIdiom.Phone>
+          <OnPlatform
+              x:TypeArguments="x:Double"
+              Android="70"
+              WinPhone="90"
+              iOS="100" />
+        </OnIdiom.Phone>
+
+      </OnIdiom>
+
+      <Style x:Key="MenuListStyle" TargetType="ListView">
+        <Setter Property="SeparatorVisibility" Value="None" />
+        <Setter Property="RowHeight">
+          <Setter.Value>
             <OnIdiom
-                x:Key="TitleSize"
-                x:TypeArguments="x:Double"
-                Tablet="90">
-                <OnIdiom.Phone>
-                    <OnPlatform
-                        x:TypeArguments="x:Double"
-                        Android="70"
-                        WinPhone="90"
-                        iOS="100" />
-                </OnIdiom.Phone>
+                x:TypeArguments="x:Int32"
+                Phone="70"
+                Tablet="90" />
+          </Setter.Value>
+        </Setter>
+        <Setter Property="BackgroundColor" Value="Transparent" />
+      </Style>
 
-            </OnIdiom>
+      <FileImageSource x:Key="MainBackgroundImage" File="background.jpg" />
 
-            <Style x:Key="MenuListStyle" TargetType="ListView">
-                <Setter Property="SeparatorVisibility" Value="None" />
-                <Setter Property="RowHeight">
-                    <Setter.Value>
-                        <OnIdiom
-                            x:TypeArguments="x:Int32"
-                            Phone="70"
-                            Tablet="90" />
-                    </Setter.Value>
-                </Setter>
-                <Setter Property="BackgroundColor" Value="Transparent" />
-            </Style>
+      <Style x:Key="MenuItemCellStyle" TargetType="BoxView">
+        <Setter Property="Opacity" Value="0.5" />
+        <Setter Property="Style" Value="{StaticResource SecondThemeColor}" />
+      </Style>
 
-            <FileImageSource x:Key="MainBackgroundImage" File="background.jpg" />
+      <Style x:Key="BonusPointItemStyle" TargetType="View">
+        <Setter Property="AbsoluteLayout.LayoutBounds">
+          <Setter.Value>
+            <OnIdiom
+                x:TypeArguments="Rectangle"
+                Phone="1,1,75,75"
+                Tablet="1,1,120,120" />
+          </Setter.Value>
+        </Setter>
+        <Setter Property="AbsoluteLayout.LayoutFlags" Value="PositionProportional" />
+      </Style>
+      <Style x:Key="ButtonStyle" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="{StaticResource MainThemeColor}"></Setter>
+        <Setter Property="TextColor" Value="White"></Setter>
+      </Style>
+      <converters:StringCaseConverter x:Key="StringCaseConverter" />
+      <converters:InverseBooleanConverter x:Key="InverseBooleanConverter" />
+    </ResourceDictionary>
+    <!--  Application resource dictionary  -->
 
-            <Style x:Key="MenuItemCellStyle" TargetType="BoxView">
-                <Setter Property="Opacity" Value="0.5" />
-                <Setter Property="Style" Value="{StaticResource SecondThemeColor}" />
-            </Style>
-
-            <Style x:Key="BonusPointItemStyle" TargetType="View">
-                <Setter Property="AbsoluteLayout.LayoutBounds">
-                    <Setter.Value>
-                        <OnIdiom
-                            x:TypeArguments="Rectangle"
-                            Phone="1,1,75,75"
-                            Tablet="1,1,120,120" />
-                    </Setter.Value>
-                </Setter>
-                <Setter Property="AbsoluteLayout.LayoutFlags" Value="PositionProportional" />
-            </Style>
-
-            <converters:StringCaseConverter x:Key="StringCaseConverter" />
-            <converters:LastItemBooleanConverter x:Key="LastItemBooleanConverter" />
-        </ResourceDictionary>
-        <!--  Application resource dictionary  -->
-
-    </Application.Resources>
+  </Application.Resources>
 </Application>

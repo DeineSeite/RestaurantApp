@@ -37,7 +37,7 @@ namespace RestaurantApp.Droid
             LoadApplication(new App());
 #else
             LoadApplication(UXDivers.Gorilla.Droid.Player.CreateApplication(ApplicationContext, config: new UXDivers.Gorilla.Config("Good Gorilla")
-              .RegisterAssemblyFromType<BasePage>()
+             .RegisterAssemblyFromType<BasePage>()
               .RegisterAssemblyFromType<AlphaColorConverter>()
               .RegisterAssemblyFromType<IValueConverter>()
               .RegisterAssemblyFromType<RoundedBox>()
@@ -49,6 +49,7 @@ namespace RestaurantApp.Droid
               .RegisterAssemblyFromType<FlowListView>()
               .RegisterAssemblyFromType<StringCaseConverter>()
               .RegisterAssemblyFromType<HtmlLabelRenderer>()
+                 .RegisterAssemblyFromType<InverseBooleanConverter>()
               ));
 #endif
         }

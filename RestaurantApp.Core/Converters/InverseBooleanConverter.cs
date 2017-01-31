@@ -7,7 +7,7 @@ using Xamarin.Forms;
 
 namespace RestaurantApp.Core.Converters
 {
-   public class LastItemBooleanConverter : IValueConverter
+   public class InverseBooleanConverter : IValueConverter
    {
        
  

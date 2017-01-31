@@ -172,4 +172,7 @@
     <value>For 10 visits the 11 food is free</value>
     <comment>Bei 10 Besuchen ist das 11 Essen gratis</comment>
   </data>
+  <data name="Next" xml:space="preserve">
+    <value>Next</value>
+  </data>
 </root>

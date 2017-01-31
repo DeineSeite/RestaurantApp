@@ -44,8 +44,7 @@ namespace RestaurantApp.Core.PageModels
 
         private async void PushPage(BasePageModel page)
         {
-            var contentPage = FreshPageModelResolver.ResolvePageModel(page.GetType(), null, page);
-            await CurrentPage.Navigation.PushModalAsync(contentPage, false);
+            await CoreMethods.PushPageModel(page.GetType(), false);
         }
         #endregion
 

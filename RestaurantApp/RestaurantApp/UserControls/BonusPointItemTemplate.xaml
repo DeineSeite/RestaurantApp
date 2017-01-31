@@ -25,7 +25,7 @@
         <Image
             x:Name="ScannImage"
             Margin="10"
-            IsVisible="{Binding Path=IsActivated, Converter={StaticResource LastItemBooleanConverter}}"
+            IsVisible="{Binding Path=IsActivated, Converter={StaticResource InverseBooleanConverter}}"
             Source="plus.png"
             Style="{StaticResource BonusPointItemStyle}" />
     </AbsoluteLayout>

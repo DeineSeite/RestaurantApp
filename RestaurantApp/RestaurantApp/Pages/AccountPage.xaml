@@ -5,7 +5,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
     xmlns:pages="clr-namespace:RestaurantApp.Pages;assembly=RestaurantApp"
-    xmlns:userControls="clr-namespace:RestaurantApp.UserControls;assembly=RestaurantApp" >
+    xmlns:userControls="clr-namespace:RestaurantApp.UserControls;assembly=RestaurantApp"
+    xmlns:localization="clr-namespace:RestaurantApp.Core.Localization;assembly=RestaurantApp.Core">
   <AbsoluteLayout>
     <Image
         AbsoluteLayout.LayoutBounds="1,1,1,1"
@@ -15,10 +16,29 @@
     <StackLayout AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All">
       <userControls:HeaderTemplate />
       <StackLayout Orientation="Vertical" BackgroundColor="{StaticResource SecondThemeColorAlpha80}">
-        <userControls:CheckBox HorizontalOptions="CenterAndExpand" FontSize="20" DefaultText="Ja, ich möchte gratis Essen"></userControls:CheckBox>
-        <userControls:CheckBox HorizontalOptions="CenterAndExpand" FontSize="20" DefaultText="Nein, ich möchte ... werden"></userControls:CheckBox>
+        <ContentView x:Name="FirstLoginPage" IsVisible="{Binding IsLogin, Converter={StaticResource InverseBooleanConverter}}">
+          <ContentView.Triggers>
+            <DataTrigger TargetType="ContentView" Binding="{Binding Source={x:Reference LoginCheckBox}, Path=Checked}" Value="True" >
+              <Setter Property="IsVisible" Value="False"></Setter>
+            </DataTrigger>
+          </ContentView.Triggers>
+          <StackLayout>
+            <userControls:CheckBox x:Name="LoginCheckBox" HorizontalOptions="CenterAndExpand" FontSize="20" DefaultText="Ja, ich möchte gratis Essen">           
+            </userControls:CheckBox>
+            <userControls:CheckBox HorizontalOptions="CenterAndExpand" FontSize="20" DefaultText="Nein, ich möchte ... werden"></userControls:CheckBox>         
+      
+          </StackLayout>
+        </ContentView>
+        <ContentView x:Name="LoginPage" IsVisible="False">
+          <ContentView.Triggers>
+            <DataTrigger TargetType="ContentView" Binding="{Binding Source={x:Reference LoginCheckBox}, Path=Checked}" Value="True" >
+              <Setter Property="IsVisible" Value="True"></Setter>
+            </DataTrigger>
+          </ContentView.Triggers>
+          <StackLayout>
+          </StackLayout>
+        </ContentView>
       </StackLayout>
-  
     </StackLayout>
   </AbsoluteLayout>
 </pages:BasePage>

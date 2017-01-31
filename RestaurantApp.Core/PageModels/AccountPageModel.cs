@@ -9,14 +9,14 @@ using Xamarin.Forms;
 
 namespace RestaurantApp.Core.PageModels
 {
-   public class AccountPageModel: BasePageModel
+    public class AccountPageModel : BasePageModel
     {
-      
+        public bool IsLogin { get; set; }
         public AccountPageModel()
         {
             Title = AppResources.Account;
         }
 
-       
+
     }
 }

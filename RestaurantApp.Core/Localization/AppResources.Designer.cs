@@ -188,6 +188,15 @@ namespace RestaurantApp.Core.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Next.
+        /// </summary>
+        public static string Next {
+            get {
+                return ResourceManager.GetString("Next", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Open Hours.
         /// </summary>
         public static string OpenHours {
