@@ -121,6 +121,18 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <MtouchLink>SdkOnly</MtouchLink>
+    <MtouchDebug>False</MtouchDebug>
+    <MtouchProfiling>False</MtouchProfiling>
+    <MtouchFastDev>False</MtouchFastDev>
+    <MtouchArch>ARMv7</MtouchArch>
+    <MtouchUseLlvm>False</MtouchUseLlvm>
+    <MtouchUseThumb>False</MtouchUseThumb>
+    <MtouchEnableBitcode>False</MtouchEnableBitcode>
+    <MtouchUseSGen>False</MtouchUseSGen>
+    <MtouchUseRefCounting>False</MtouchUseRefCounting>
+    <OptimizePNGs>True</OptimizePNGs>
+    <MtouchFloat32>False</MtouchFloat32>
   </PropertyGroup>
   <PropertyGroup Label="MultilingualAppToolkit">
     <MultilingualAppToolkitVersion>4.0</MultilingualAppToolkitVersion>
@@ -143,6 +155,7 @@
     <Compile Include="Renderers\RoundedBoxRenderer.cs" />
     <Compile Include="Renderers\TransparentWebViewRenderer.cs" />
     <Compile Include="StringExtentions.cs" />
+    <None Include="app.config" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist">
       <SubType>Designer</SubType>
@@ -187,6 +200,14 @@
       <HintPath>..\..\packages\FreshMvvm.2.2.0\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\FreshMvvm.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="ImageCircle.Forms.Plugin.Abstractions, Version=1.8.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xam.Plugins.Forms.ImageCircle.1.8.1\lib\Xamarin.iOS10\ImageCircle.Forms.Plugin.Abstractions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ImageCircle.Forms.Plugin.iOS, Version=1.8.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xam.Plugins.Forms.ImageCircle.1.8.1\lib\Xamarin.iOS10\ImageCircle.Forms.Plugin.iOS.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\packages\Newtonsoft.Json.8.0.3\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -198,9 +219,6 @@
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
-    <Reference Include="UXDivers.Artina.Shared.iOS">
-      <HintPath>..\..\Libraries\UXDivers.Artina.Shared.iOS.dll</HintPath>
-    </Reference>
     <Reference Include="UXDivers.Gorilla.Common">
       <HintPath>..\..\packages\UXDivers.GorillaPlayer.Common.0.9.1.2\lib\Xamarin.iOS10\UXDivers.Gorilla.Common.dll</HintPath>
       <Private>True</Private>

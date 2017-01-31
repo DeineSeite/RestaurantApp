@@ -1,19 +1,22 @@
-﻿using System;
-
-using Android.App;
+﻿using Android.App;
 using Android.Content.PM;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.OS;
 using DLToolkit.Forms.Controls;
+using ImageCircle.Forms.Plugin.Droid;
+using RestaurantApp.Core.Converters;
 using RestaurantApp.Droid.Renderers;
 using RestaurantApp.Pages;
 using RestaurantApp.Triggers;
 using RestaurantApp.UserControls;
-using UXDivers.Gorilla;
 using Xamarin.Forms;
 
+#if  GORILLA
+ using UXDivers.Gorilla;   
+#endif
+
+
+
+[assembly: Application(Debuggable = true)]
 
 namespace RestaurantApp.Droid
 {
@@ -29,10 +32,13 @@ namespace RestaurantApp.Droid
        
             global::Xamarin.Forms.Forms.Init(this, bundle);
             FlowListView.Init();
+            ImageCircleRenderer.Init();
+
+
 #if !GORILLA
             LoadApplication(new App());
 #else
-              LoadApplication(UXDivers.Gorilla.Droid.Player.CreateApplication(ApplicationContext, config: new UXDivers.Gorilla.Config("Good Gorilla")
+            LoadApplication(UXDivers.Gorilla.Droid.Player.CreateApplication(ApplicationContext, config: new UXDivers.Gorilla.Config("Good Gorilla")
               .RegisterAssemblyFromType<BasePage>()
               .RegisterAssemblyFromType<AlphaColorConverter>()
               .RegisterAssemblyFromType<IValueConverter>()
@@ -46,6 +52,9 @@ namespace RestaurantApp.Droid
               ));
 #endif
         }
+
+#if GRILLA
+
         public override bool OnKeyUp(Android.Views.Keycode keyCode, Android.Views.KeyEvent e)
         {
             if (keyCode == Android.Views.Keycode.F1 && Coordinator.Instance != null)
@@ -56,6 +65,8 @@ namespace RestaurantApp.Droid
 
             return base.OnKeyUp(keyCode, e);
         }
+                
+#endif
     }
 }
 

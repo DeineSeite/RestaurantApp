@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using ImageCircle.Forms.Plugin.Abstractions;
 using Xamarin.Forms;
+
 
 namespace RestaurantApp.Pages
 {
@@ -13,6 +14,7 @@ namespace RestaurantApp.Pages
         public ContactPage()
         {
             InitializeComponent();
+         
         }
     }
 }

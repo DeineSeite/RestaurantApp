@@ -55,6 +55,17 @@
     <WarningLevel>4</WarningLevel>
     <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
+    <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
+    <BundleAssemblies>False</BundleAssemblies>
+    <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
+    <Debugger>Xamarin</Debugger>
+    <AotAssemblies>False</AotAssemblies>
+    <EnableLLVM>False</EnableLLVM>
+    <AndroidEnableMultiDex>False</AndroidEnableMultiDex>
+    <EnableProguard>True</EnableProguard>
+    <DebugSymbols>False</DebugSymbols>
+    <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
+    <AndroidLinkSkip>RestaurantApp.Core.Converters.StringCaseConverter </AndroidLinkSkip>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Gorilla|AnyCPU'">
     <DebugSymbols>True</DebugSymbols>
@@ -75,6 +86,7 @@
     <EnableLLVM>False</EnableLLVM>
     <AndroidEnableMultiDex>False</AndroidEnableMultiDex>
     <EnableProguard>False</EnableProguard>
+    <AndroidLinkSkip>ImageCircle.Forms.Plugin.Abstractions;ImageCircle.Forms.Plugin.Android;</AndroidLinkSkip>
   </PropertyGroup>
   <PropertyGroup Label="MultilingualAppToolkit">
     <MultilingualAppToolkitVersion>4.0</MultilingualAppToolkitVersion>
@@ -103,6 +115,14 @@
       <HintPath>..\..\packages\FreshMvvm.2.2.0\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\FreshMvvm.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="ImageCircle.Forms.Plugin.Abstractions, Version=1.8.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xam.Plugins.Forms.ImageCircle.1.8.1\lib\MonoAndroid10\ImageCircle.Forms.Plugin.Abstractions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ImageCircle.Forms.Plugin.Android, Version=1.8.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xam.Plugins.Forms.ImageCircle.1.8.1\lib\MonoAndroid10\ImageCircle.Forms.Plugin.Android.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Java.Interop" />
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
@@ -118,9 +138,6 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
-    <Reference Include="UXDivers.Artina.Shared.Droid">
-      <HintPath>..\..\Libraries\UXDivers.Artina.Shared.Droid.dll</HintPath>
-    </Reference>
     <Reference Include="UXDivers.Gorilla.Common, Version=0.9.1.2, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\UXDivers.GorillaPlayer.Common.0.9.1.2\lib\MonoAndroid10\UXDivers.Gorilla.Common.dll</HintPath>
       <Private>True</Private>
@@ -227,6 +244,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <ProguardConfiguration Include="Proguard.cfg" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
   </ItemGroup>
@@ -237,7 +255,9 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Properties\AndroidManifest.xml" />
+    <None Include="Properties\AndroidManifest.xml">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Tabbar.axml" />

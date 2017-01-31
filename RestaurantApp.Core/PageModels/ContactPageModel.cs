@@ -25,7 +25,8 @@ namespace RestaurantApp.Core.PageModels
             Restaurant.Email = "lokal@luckywok.at";
             Restaurant.Street = "Wagramer Strasse 189b";
             Restaurant.PostalCode = "1210";
-            Restaurant.State = "Wien";
+            Restaurant.City = "Wien";
+           Restaurant.Company = "Grill Asia";
            MapUrl =
                @"https://maps.googleapis.com/maps/api/staticmap?center=Wagramer+Strasse+189b,+1210+Wien&zoom=13&scale=false&size=600x300&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:1%7CWagramer+Strasse+189b,+1210+Wien";
            // string fileName = "RestaurantApp.Core.contactInfo.html";

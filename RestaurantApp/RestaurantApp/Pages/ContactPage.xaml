@@ -4,7 +4,8 @@
              xmlns:pages="clr-namespace:RestaurantApp.Pages;assembly=RestaurantApp"
              xmlns:pageModels="clr-namespace:RestaurantApp.Core.PageModels;assembly=RestaurantApp.Core"
              xmlns:userControls="clr-namespace:RestaurantApp.UserControls;assembly=RestaurantApp"
-             xmlns:shared="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+             xmlns:abstractions="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+
              x:Class="RestaurantApp.Pages.ContactPage">
   <pages:BasePage.BindingContext>
     <pageModels:ContactPageModel />
@@ -16,31 +17,29 @@
         Aspect="AspectFill"
         Source="{StaticResource MainBackgroundImage}" />
     <ScrollView  AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All">
-      <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+      <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="CenterAndExpand">
 
         <userControls:HeaderTemplate />
-        <StackLayout Spacing="0" HorizontalOptions="CenterAndExpand" BackgroundColor="{StaticResource SecondThemeColorAlpha80}">
-          <ContentView Padding="10">
-            <StackLayout Orientation="Horizontal" Spacing="10">
-              <AbsoluteLayout>
-                <shared:CircleImage HorizontalOptions="Center" Aspect="AspectFill" VerticalOptions="Center" WidthRequest="90" HeightRequest="90" Source="logo_circle.jpg"/>
+        <StackLayout  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource SecondThemeColorAlpha80}">
+          <ContentView Padding="5,10,0,0"  HorizontalOptions="CenterAndExpand">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand" VerticalOptions="Start" Spacing="15">
+              <AbsoluteLayout VerticalOptions="CenterAndExpand">
+               <Image HorizontalOptions="Center"  Aspect="AspectFill" VerticalOptions="CenterAndExpand" WidthRequest="230" HeightRequest="250" Source="logo_circle.jpg"/>
               </AbsoluteLayout>
               <StackLayout>
-                <ContentView>
-                  <StackLayout Spacing="0">
-                    <Label Text="we ha bee" />
-                    <Label Text="{Binding Restaurant.Company}" />
-                    <Label Text="{Binding Restaurant.JobTitle}" FontSize="Small" TextColor="Silver" />
+                <ContentView >
+                  <StackLayout >
+                    <Label  Text="{Binding Restaurant.Company}" Margin="30,0,0,0" FontSize="Large"  />
                   </StackLayout>
                 </ContentView>
                 <ContentView IsEnabled="True" IsVisible="True">
                   <StackLayout Orientation="Horizontal" Spacing="10">
-                    <Image Source="directions.png" Aspect="AspectFit" HeightRequest="20" WidthRequest="20">
+                    <Image Source="directions.png" Aspect="AspectFit" HeightRequest="20" VerticalOptions="CenterAndExpand" WidthRequest="20">
                       <Image.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding GetDirectionsCommand}" />
                       </Image.GestureRecognizers>
                     </Image>
-                    <StackLayout Spacing="0">
+                    <StackLayout Spacing="10">
                       <Label Text="{Binding Restaurant.Street}" FontSize="Medium" LineBreakMode="TailTruncation" />
                       <Label Text="{Binding Restaurant.City}" FontSize="Medium" LineBreakMode="TailTruncation" />
                       <Label Text="{Binding Restaurant.StatePostal}" FontSize="Medium" LineBreakMode="TailTruncation" />
@@ -54,7 +53,7 @@
                         <TapGestureRecognizer Command="{Binding MessageNumberCommand}" NumberOfTapsRequired="1" />
                       </Image.GestureRecognizers>
                     </Image>
-                    <Label Text="{Binding Restaurant.Phone}" FontSize="Small" HeightRequest="20" VerticalTextAlignment="Center" LineBreakMode="TailTruncation" />
+                    <Label Text="{Binding Restaurant.Phone}" FontSize="Medium" HeightRequest="20" VerticalTextAlignment="Center" LineBreakMode="TailTruncation" />
                     <Image Source="phone.png" Aspect="AspectFit" HeightRequest="20" WidthRequest="20">
                       <Image.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding DialNumberCommand}" NumberOfTapsRequired="1" />
@@ -75,11 +74,11 @@
               </StackLayout>
             </StackLayout>
           </ContentView>
-          <ContentView HeightRequest="1" BackgroundColor="Silver" />
-          <AbsoluteLayout VerticalOptions="FillAndExpand">
-            <AbsoluteLayout  IsVisible="True" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0,2.0, 2.0">
+        
+          <AbsoluteLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <AbsoluteLayout  IsVisible="True" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0,1.0, 1.0">
               <ActivityIndicator IsVisible="False" IsRunning="False" AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional" AbsoluteLayout.LayoutBounds="0.5, 0.5, 0.2, AutoSize" />
-              <Image  Source="{Binding MapUrl}" Aspect="AspectFill" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1.0, 1.0" />
+              <Image  Source="{Binding MapUrl}"  AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0, 1,1" />
             </AbsoluteLayout>
           </AbsoluteLayout>
         </StackLayout>

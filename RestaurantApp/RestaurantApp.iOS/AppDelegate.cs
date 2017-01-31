@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using DLToolkit.Forms.Controls;
 using Foundation;
+using ImageCircle.Forms.Plugin.iOS;
 using RestaurantApp.iOS.Renderers;
 using RestaurantApp.Pages;
 using RestaurantApp.Triggers;
@@ -28,7 +29,8 @@ namespace RestaurantApp.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             FlowListView.Init();
-           
+            ImageCircleRenderer.Init();
+
 #if !GORILLA
             LoadApplication(new App());
 #else

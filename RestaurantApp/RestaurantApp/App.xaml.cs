@@ -7,6 +7,7 @@ using RestaurantApp.Core.Interfaces;
 using RestaurantApp.Core.PageModels;
 using RestaurantApp.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace RestaurantApp
 {

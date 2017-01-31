@@ -56,15 +56,20 @@
     <Compile Include="Interfaces\IApplicationContext.cs" />
     <Compile Include="Interfaces\IBasePage.cs" />
     <Compile Include="Interfaces\IListViewPage.cs" />
-    <Compile Include="Localization\AppResources.de.Designer.cs">
+    <Compile Include="Localization\AppResources.de-DE.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AppResources.de.resx</DependentUpon>
+      <DependentUpon>AppResources.de-DE.resx</DependentUpon>
     </Compile>
     <Compile Include="Localization\AppResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AppResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Localization\AppResources.it-IT.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppResources.it-IT.resx</DependentUpon>
     </Compile>
     <Compile Include="PageModels\AccountPageModel.cs" />
     <Compile Include="PageModels\BasePageModel.cs" />
@@ -152,28 +157,14 @@
   <ItemGroup>
     <EmbeddedResource Include="contactInfo.html" />
     <EmbeddedResource Include="Localization\AppResources.de-DE.resx">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AppResources.de-DE.xlf</DependentUpon>
-      <culture>de-DE</culture>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Localization\AppResources.de.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>AppResources.de.Designer.cs</LastGenOutput>
+      <LastGenOutput>AppResources.de-DE.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Localization\AppResources.it-IT.resx">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AppResources.it-IT.xlf</DependentUpon>
-      <culture>it-IT</culture>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.it-IT.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-
-    <EmbeddedResource Include="Localization\AppResources.qps-ploc.resx">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AppResources.qps-ploc.xlf</DependentUpon>
-      <culture>qps-ploc</culture>
-    </EmbeddedResource>    <EmbeddedResource Include="Localization\AppResources.resx">
+    <EmbeddedResource Include="Localization\AppResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
@@ -184,20 +175,7 @@
     <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
-    <XliffResource Include="Localization\AppResources.de-DE.xlf">
-      <Generator>XliffResxGenerator</Generator>
-      <LastGenOutput>AppResources.de-DE.resx</LastGenOutput>
-    </XliffResource>
-    <XliffResource Include="Localization\AppResources.it-IT.xlf">
-      <Generator>XliffResxGenerator</Generator>
-      <LastGenOutput>AppResources.it-IT.resx</LastGenOutput>
-    </XliffResource>
-    <XliffResource Include="Localization\AppResources.qps-ploc.xlf">
-      <Generator>XliffResxGenerator</Generator>
-      <LastGenOutput>AppResources.qps-ploc.resx</LastGenOutput>
-    </XliffResource>
     <XliffResource Include="MultilingualResources\RestaurantApp.Core.de-DE.xlf" />
-    <XliffResource Include="MultilingualResources\RestaurantApp.Core.de.xlf" />
     <XliffResource Include="MultilingualResources\RestaurantApp.Core.it-IT.xlf" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
@@ -210,8 +188,6 @@
     <Error Condition="!Exists('..\packages\Fody.1.29.2\build\portable-net+sl+win+wpa+wp\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.1.29.2\build\portable-net+sl+win+wpa+wp\Fody.targets'))" />
   </Target>
   <Import Project="..\packages\Fody.1.29.2\build\portable-net+sl+win+wpa+wp\Fody.targets" Condition="Exists('..\packages\Fody.1.29.2\build\portable-net+sl+win+wpa+wp\Fody.targets')" />
-  
- 
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

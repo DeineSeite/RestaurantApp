@@ -33,7 +33,7 @@
                         FontSize="Large"
                         HorizontalOptions="StartAndExpand"
                         IsVisible="True"
-                        Text="{Binding Title, Converter={StaticResource StringCaseConverter}, ConverterParameter=Upper}"
+                        Text="{Binding Title}"
                         TextColor="White"
                         VerticalOptions="CenterAndExpand" />
                     <Label
