@@ -92,6 +92,7 @@
       <DependentUpon>BonusPointItemTemplate.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\CheckBox.cs" />
+    <Compile Include="UserControls\CircleImage.cs" />
     <Compile Include="UserControls\GradientContentView.cs" />
     <Compile Include="UserControls\GridView.cs" />
     <Compile Include="UserControls\HeaderTemplate.xaml.cs">
@@ -153,9 +154,6 @@
     <Reference Include="PropertyChanged, Version=1.52.1.0, Culture=neutral, PublicKeyToken=ee3ee20bcf148ddd, processorArchitecture=MSIL">
       <HintPath>..\..\packages\PropertyChanged.Fody.1.52.1\lib\portable-net4+sl4+wp8+win8+wpa81+MonoAndroid16+MonoTouch40\PropertyChanged.dll</HintPath>
       <Private>False</Private>
-    </Reference>
-    <Reference Include="UXDivers.Artina.Shared">
-      <HintPath>..\..\Libraries\UXDivers.Artina.Shared.dll</HintPath>
     </Reference>
     <Reference Include="UXDivers.Gorilla.Common, Version=0.9.1.2, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\UXDivers.GorillaPlayer.Common.0.9.1.2\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\UXDivers.Gorilla.Common.dll</HintPath>

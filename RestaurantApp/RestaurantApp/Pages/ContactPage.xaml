@@ -4,9 +4,6 @@
              xmlns:pages="clr-namespace:RestaurantApp.Pages;assembly=RestaurantApp"
              xmlns:pageModels="clr-namespace:RestaurantApp.Core.PageModels;assembly=RestaurantApp.Core"
              xmlns:userControls="clr-namespace:RestaurantApp.UserControls;assembly=RestaurantApp"
-             xmlns:shared="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
-
-
              x:Class="RestaurantApp.Pages.ContactPage">
   <pages:BasePage.BindingContext>
     <pageModels:ContactPageModel />
@@ -19,13 +16,12 @@
         Source="{StaticResource MainBackgroundImage}" />
     <ScrollView  AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All">
       <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="CenterAndExpand">
-
         <userControls:HeaderTemplate />
         <StackLayout  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource SecondThemeColorAlpha80}">
           <ContentView Padding="5,10,0,0"  HorizontalOptions="CenterAndExpand">
             <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand" VerticalOptions="Start" Spacing="15">
               <AbsoluteLayout VerticalOptions="CenterAndExpand">
-               <shared:CircleImage HorizontalOptions="Center"  Aspect="AspectFill" VerticalOptions="CenterAndExpand" WidthRequest="90" HeightRequest="90" Source="logo_circle.jpg"/>
+               <userControls:CircleImage HorizontalOptions="Center"  Aspect="AspectFill" VerticalOptions="CenterAndExpand" WidthRequest="90" HeightRequest="90" Source="logo_circle.jpg"/>
               </AbsoluteLayout>
               <StackLayout>
                 <ContentView >

@@ -25,7 +25,7 @@ namespace RestaurantApp.Pages
 
         public override void ReloadListView()
         {
-            App.IsLastItemAdded = false;
+            
             FlowList.ForceReload();
            
         }

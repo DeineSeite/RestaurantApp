@@ -8,6 +8,6 @@ namespace RestaurantApp.Core.Interfaces
 {
     public interface IApplicationContext
     {
-        void ReloadVariable();
+       
     }
 }

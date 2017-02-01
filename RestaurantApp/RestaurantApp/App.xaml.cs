@@ -11,24 +11,27 @@ using Xamarin.Forms.Xaml;
 
 namespace RestaurantApp
 {
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class App : Application, IApplicationContext
     {
-        public static bool IsLastItemAdded { get; set; }//Static variable for BonusPoint listview
+
         public FreshNavigationContainer BasicNavContainer { get; set; }
+
         public App()
         {
             InitializeComponent();
             InitializeFreshMvvm();
             MainPage = BasicNavContainer;
         }
+
         void InitializeFreshMvvm()
         {
             FreshIOC.Container.Register<IApplicationContext, App>();
             FreshPageModelResolver.PageModelMapper = new RestaurantAppPageModelMapper();
             var mainPage = FreshPageModelResolver.ResolvePageModel<MainPageModel>();
             BasicNavContainer = new FreshNavigationContainer(mainPage);
-            
         }
+
         protected override void OnStart()
         {
             // Handle when your app starts
@@ -45,9 +48,6 @@ namespace RestaurantApp
         }
 
 
-        public void ReloadVariable()
-        {
-            IsLastItemAdded = false;
-        }
+       
     }
 }

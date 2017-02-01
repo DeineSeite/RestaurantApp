@@ -7,7 +7,6 @@ using RestaurantApp.Droid.Renderers;
 using RestaurantApp.Pages;
 using RestaurantApp.Triggers;
 using RestaurantApp.UserControls;
-using UXDivers.Artina.Shared;
 using Xamarin.Forms;
 #if  GORILLA
  using UXDivers.Gorilla;   
@@ -42,7 +41,7 @@ namespace RestaurantApp.Droid
               .RegisterAssemblyFromType<IValueConverter>()
               .RegisterAssemblyFromType<RoundedBox>()
             .RegisterAssemblyFromType<CircleImage>()
-            .RegisterAssemblyFromType<ImageCircleRenderer>()
+             .RegisterAssemblyFromType<CircleImageRenderer>()
               .RegisterAssemblyFromType<RoundedBoxRenderer>()
               .RegisterAssemblyFromType<MenuItemClickTrigger>()
               .RegisterAssemblyFromType<UserControls.GridView>()

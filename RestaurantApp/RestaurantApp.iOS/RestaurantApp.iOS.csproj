@@ -149,6 +149,7 @@
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Renderers\CheckBox.cs" />
+    <Compile Include="Renderers\CircleImageRenderer.cs" />
     <Compile Include="Renderers\GradientContentViewRenderer.cs" />
     <Compile Include="Renderers\GridViewRenderer.cs" />
     <Compile Include="Renderers\HtmlLabelRenderer.cs" />
@@ -211,12 +212,6 @@
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
-    <Reference Include="UXDivers.Artina.Shared">
-      <HintPath>..\..\Libraries\UXDivers.Artina.Shared.dll</HintPath>
-    </Reference>
-    <Reference Include="UXDivers.Artina.Shared.iOS">
-      <HintPath>..\..\Libraries\UXDivers.Artina.Shared.iOS.dll</HintPath>
-    </Reference>
     <Reference Include="UXDivers.Gorilla.Common">
       <HintPath>..\..\packages\UXDivers.GorillaPlayer.Common.0.9.1.2\lib\Xamarin.iOS10\UXDivers.Gorilla.Common.dll</HintPath>
       <Private>True</Private>
@@ -285,7 +280,7 @@
       <Name>RestaurantApp.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\RestaurantApp\RestaurantApp.Forms.csproj">
-      <Project>{E7345AE7-6022-4A0E-BD5E-777F8D166536}</Project>
+      <Project>{e7345ae7-6022-4a0e-bd5e-777f8d166536}</Project>
       <Name>RestaurantApp.Forms</Name>
     </ProjectReference>
   </ItemGroup>

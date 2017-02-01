@@ -139,9 +139,12 @@
       <Name>RestaurantApp.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\RestaurantApp\RestaurantApp.Forms.csproj">
-      <Project>{E7345AE7-6022-4A0E-BD5E-777F8D166536}</Project>
+      <Project>{e7345ae7-6022-4a0e-bd5e-777f8d166536}</Project>
       <Name>RestaurantApp.Forms</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Renderers\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using DLToolkit.Forms.Controls;
 using Foundation;
+using RestaurantApp.Core.Converters;
 using RestaurantApp.iOS.Renderers;
 using RestaurantApp.Pages;
 using RestaurantApp.Triggers;
 using RestaurantApp.UserControls;
 using UIKit;
-using UXDivers.Artina.Shared;
 
 namespace RestaurantApp.iOS
 {
@@ -37,7 +37,7 @@ namespace RestaurantApp.iOS
                 new UXDivers.Gorilla.Config("Good Gorilla")
                 .RegisterAssemblyFromType<BasePage>()
              .RegisterAssemblyFromType<CircleImage>()
-            .RegisterAssemblyFromType<ImageCircleRenderer>()
+            .RegisterAssemblyFromType<CircleImageRenderer>()
                 .RegisterAssemblyFromType<AlphaColorConverter>()
                 .RegisterAssemblyFromType<RoundedBox>()
                 .RegisterAssemblyFromType<RoundedBoxRenderer>()
