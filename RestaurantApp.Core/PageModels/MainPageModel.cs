@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using FreshMvvm;
 using PropertyChanged;
-using RestaurantApp.Core.Localization;
+using RestaurantApp.Core.Resources;
 using Xamarin.Forms;
 using Page = Xamarin.Forms.Page;
 

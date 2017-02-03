@@ -46,6 +46,9 @@
   </PropertyGroup>
   <PropertyGroup Label="MultilingualAppToolkit">
     <MultilingualAppToolkitVersion>4.0</MultilingualAppToolkitVersion>
+    <MultilingualFallbackLanguage>en</MultilingualFallbackLanguage>
+    <TranslationReport Condition="'$(Configuration)' == 'Release'">true</TranslationReport>
+    <SuppressPseudoWarning Condition="'$(Configuration)' == 'Debug'">true</SuppressPseudoWarning>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Converters\AlphaColorConverter.cs" />
@@ -56,20 +59,16 @@
     <Compile Include="Interfaces\IApplicationContext.cs" />
     <Compile Include="Interfaces\IBasePage.cs" />
     <Compile Include="Interfaces\IListViewPage.cs" />
-    <Compile Include="Localization\AppResources.de-DE.Designer.cs">
+    <Compile Include="Interfaces\ILocalize.cs" />
+    <Compile Include="Resources\AppResources.de.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AppResources.de-DE.resx</DependentUpon>
+      <DependentUpon>AppResources.de.resx</DependentUpon>
     </Compile>
-    <Compile Include="Localization\AppResources.Designer.cs">
+    <Compile Include="Resources\AppResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AppResources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Localization\AppResources.it-IT.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AppResources.it-IT.resx</DependentUpon>
     </Compile>
     <Compile Include="PageModels\AccountPageModel.cs" />
     <Compile Include="PageModels\BasePageModel.cs" />
@@ -152,22 +151,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="contactInfo.html" />
-    <EmbeddedResource Include="Localization\AppResources.de-DE.resx">
+    <EmbeddedResource Include="Resources\AppResources.de.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>AppResources.de-DE.Designer.cs</LastGenOutput>
+      <LastGenOutput>AppResources.de.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Localization\AppResources.it-IT.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>AppResources.it-IT.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Localization\AppResources.resx">
+    <EmbeddedResource Include="Resources\AppResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -175,8 +171,7 @@
     <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
-    <XliffResource Include="MultilingualResources\RestaurantApp.Core.de-DE.xlf" />
-    <XliffResource Include="MultilingualResources\RestaurantApp.Core.it-IT.xlf" />
+    <XliffResource Include="MultilingualResources\RestaurantApp.Core.de.xlf" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.3.3.175\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.3.175\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
@@ -188,6 +183,10 @@
     <Error Condition="!Exists('..\packages\Fody.1.29.2\build\portable-net+sl+win+wpa+wp\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.1.29.2\build\portable-net+sl+win+wpa+wp\Fody.targets'))" />
   </Target>
   <Import Project="..\packages\Fody.1.29.2\build\portable-net+sl+win+wpa+wp\Fody.targets" Condition="Exists('..\packages\Fody.1.29.2\build\portable-net+sl+win+wpa+wp\Fody.targets')" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Multilingual App Toolkit\Microsoft.Multilingual.ResxResources.targets" Label="MultilingualAppToolkit" Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\Multilingual App Toolkit\v$(MultilingualAppToolkitVersion)\Microsoft.Multilingual.ResxResources.targets')" />
+  <Target Name="MATPrerequisite" BeforeTargets="PrepareForBuild" Condition="!Exists('$(MSBuildExtensionsPath)\Microsoft\Multilingual App Toolkit\Microsoft.Multilingual.ResxResources.targets')" Label="MultilingualAppToolkit">
+    <Warning Text="$(MSBuildProjectFile) is Multilingual build enabled, but the Multilingual App Toolkit is unavailable during the build. If building with Visual Studio, please check to ensure that toolkit is properly installed." />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

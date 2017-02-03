@@ -24,8 +24,8 @@ namespace RestaurantApp.Pages
         #region ctor
         public BasePage()
         {
+            
             NavigationPage.SetHasNavigationBar(this, false);//Hide navigation bar
-
         }
         #endregion
 
@@ -33,6 +33,13 @@ namespace RestaurantApp.Pages
         public virtual void ReloadListView()
         {
             throw new NotImplementedException();
+        }
+
+        public void GoBackButton()
+        {
+            
+            OnBackButtonPressed();
+            SendBackButtonPressed();
         }
 
         #endregion

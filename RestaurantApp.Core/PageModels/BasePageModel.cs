@@ -14,6 +14,7 @@ namespace RestaurantApp.Core.PageModels
     public class BasePageModel : FreshMvvm.FreshBasePageModel
     {
         #region Public properties
+
         /// <summary>
         /// Set title for ContentPage
         /// </summary>
@@ -37,41 +38,50 @@ namespace RestaurantApp.Core.PageModels
             set
             {
                 _subTitle = value;
-                if (CurrentPage != null) ((IBasePage)CurrentPage).SubTitle = _subTitle;
+                if (CurrentPage != null) ((IBasePage) CurrentPage).SubTitle = _subTitle;
             }
         }
+
         #endregion
 
         #region ctor
+
         public BasePageModel()
         {
-
         }
+
         public override void Init(object initData)
         {
             CurrentPage.Title = _title;
             GoBackCommand = new Command(GoBack);
             GoToAccountCommand = new Command(GoToAccountPage);
         }
+
         #endregion
 
         #region Commands
+
         public Command GoBackCommand { get; set; }
         public Command GoToAccountCommand { get; set; }
 
         #endregion
 
         #region Methods
+
         private async void GoToAccountPage()
         {
             var accountPage = FreshPageModelResolver.ResolvePageModel<AccountPageModel>();
-            
+
             await CurrentPage.Navigation.PushAsync(accountPage, false);
         }
+
         private void GoBack()
         {
-            CurrentPage.SendBackButtonPressed();
+            var app = FreshIOC.Container.Resolve<IApplicationContext>();
+            CoreMethods.PushPageModel<MainPageModel>();
+            // ((IBasePage) CurrentPage)?.GoBackButton();
         }
+
         #endregion
 
         #region Private members
@@ -80,6 +90,5 @@ namespace RestaurantApp.Core.PageModels
         string _subTitle;
 
         #endregion
-
     }
 }

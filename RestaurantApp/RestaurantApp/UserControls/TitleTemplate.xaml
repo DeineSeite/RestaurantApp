@@ -33,7 +33,7 @@
                         FontSize="Large"
                         HorizontalOptions="StartAndExpand"
                         IsVisible="True"
-                        Text="{Binding Title}"
+                        Text="{Binding Title, Converter={StaticResource StringCaseConverter},ConverterParameter=Upper}"
                         TextColor="White"
                         VerticalOptions="CenterAndExpand" />
                     <Label
@@ -46,9 +46,9 @@
                         VerticalOptions="CenterAndExpand">
                         <Label.Triggers>
                             <DataTrigger
-                                Binding="{Binding Source={x:Reference SubTitleLabel}, Path=Text}"
+                                Binding="{Binding Source={x:Reference SubTitleLabel}, Path=Text.Length}"
                                 TargetType="Label"
-                                Value="{x:Null}">
+                                Value="0">
                                 <Setter Property="IsVisible" Value="False" />
                             </DataTrigger>
                         </Label.Triggers>

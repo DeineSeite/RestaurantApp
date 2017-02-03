@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FreshMvvm;
-using RestaurantApp.Core.Localization;
+
+using RestaurantApp.Core.Resources;
 using Xamarin.Forms;
 
 namespace RestaurantApp.Core.PageModels

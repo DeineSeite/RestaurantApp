@@ -20,7 +20,7 @@
             x:Name="ActiveImage"
             Margin="10"
             IsVisible="{Binding IsActivated}"
-            Source="food.png"
+            Source="bonusPointUnit.png"
             Style="{StaticResource BonusPointItemStyle}" />
         <Image
             x:Name="ScannImage"
