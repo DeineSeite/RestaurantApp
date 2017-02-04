@@ -156,6 +156,7 @@
     <Compile Include="CustomElements\GridDataSource.cs" />
     <Compile Include="CustomElements\GridViewCell.cs" />
     <Compile Include="Dependencies\Localize.cs" />
+    <Compile Include="Dependencies\NativeHelper.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Renderers\CheckBox.cs" />

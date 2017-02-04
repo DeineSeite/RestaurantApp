@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<viewModels:BaseContentView
+    x:Class="RestaurantApp.ContentViews.ContactView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:localizations="clr-namespace:RestaurantApp.Localizations;assembly=RestaurantApp"
+    xmlns:userControls="clr-namespace:RestaurantApp.UserControls;assembly=RestaurantApp"
+    xmlns:viewModels="clr-namespace:RestaurantApp.Core.ViewModels;assembly=RestaurantApp.Core"
+    Title="{x:Static localizations:AppResources.Contacts}">
+    <viewModels:BaseContentView.BindingContext>
+        <viewModels:ContactViewModel />
+    </viewModels:BaseContentView.BindingContext>
+    <StackLayout>
+        <ContentView Padding="5,10,0,0" HorizontalOptions="CenterAndExpand">
+            <StackLayout
+                HorizontalOptions="StartAndExpand"
+                Orientation="Horizontal"
+                Spacing="15"
+                VerticalOptions="Start">
+                <AbsoluteLayout VerticalOptions="CenterAndExpand">
+                    <userControls:CircleImage
+                        Aspect="AspectFill"
+                        HeightRequest="90"
+                        HorizontalOptions="Center"
+                        Source="logo_circle.jpg"
+                        VerticalOptions="CenterAndExpand"
+                        WidthRequest="90" />
+                </AbsoluteLayout>
+                <StackLayout>
+                    <ContentView>
+                        <StackLayout>
+                            <Label
+                                Margin="30,0,0,0"
+                                FontSize="Large"
+                                Text="{Binding Restaurant.Company}" />
+                        </StackLayout>
+                    </ContentView>
+                    <ContentView IsEnabled="True" IsVisible="True">
+                        <StackLayout Orientation="Horizontal" Spacing="10">
+                            <Image
+                                Aspect="AspectFit"
+                                HeightRequest="20"
+                                Source="directions.png"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="20">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding GetDirectionsCommand}" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <StackLayout Spacing="10">
+                                <Label
+                                    FontSize="Medium"
+                                    LineBreakMode="TailTruncation"
+                                    Text="{Binding Restaurant.Street}" />
+                                <Label
+                                    FontSize="Medium"
+                                    LineBreakMode="TailTruncation"
+                                    Text="{Binding Restaurant.City}" />
+                                <Label
+                                    FontSize="Medium"
+                                    LineBreakMode="TailTruncation"
+                                    Text="{Binding Restaurant.StatePostal}" />
+                            </StackLayout>
+                        </StackLayout>
+                    </ContentView>
+                    <ContentView IsVisible="True">
+                        <StackLayout Orientation="Horizontal" Spacing="10">
+                            <Image
+                                Aspect="AspectFit"
+                                HeightRequest="20"
+                                Source="message.png"
+                                WidthRequest="20">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding MessageNumberCommand}" NumberOfTapsRequired="1" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Label
+                                FontSize="Medium"
+                                HeightRequest="20"
+                                LineBreakMode="TailTruncation"
+                                Text="{Binding Restaurant.Phone}"
+                                VerticalTextAlignment="Center" />
+                            <Image
+                                Aspect="AspectFit"
+                                HeightRequest="20"
+                                Source="phone.png"
+                                WidthRequest="20">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding DialNumberCommand}" NumberOfTapsRequired="1" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </StackLayout>
+                    </ContentView>
+                    <ContentView IsEnabled="True" IsVisible="True">
+                        <StackLayout Orientation="Horizontal" Spacing="10">
+                            <Image
+                                Aspect="AspectFit"
+                                HeightRequest="20"
+                                Source="email.png"
+                                WidthRequest="20">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding EmailCommand}" NumberOfTapsRequired="1" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Label
+                                FontSize="Medium"
+                                HeightRequest="20"
+                                LineBreakMode="TailTruncation"
+                                Text="{Binding Restaurant.Email}"
+                                VerticalTextAlignment="Center" />
+                        </StackLayout>
+                    </ContentView>
+                </StackLayout>
+            </StackLayout>
+        </ContentView>
+
+        <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand">
+            <AbsoluteLayout
+                AbsoluteLayout.LayoutBounds="0, 0,1.0, 1.0"
+                AbsoluteLayout.LayoutFlags="All"
+                IsVisible="True">
+                <ActivityIndicator
+                    AbsoluteLayout.LayoutBounds="0.5, 0.5, 0.2, AutoSize"
+                    AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional"
+                    IsRunning="False"
+                    IsVisible="False" />
+                <Image
+                    AbsoluteLayout.LayoutBounds="0,0, 1,1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    Source="{Binding MapUrl}" />
+            </AbsoluteLayout>
+        </AbsoluteLayout>
+    </StackLayout>
+</viewModels:BaseContentView>

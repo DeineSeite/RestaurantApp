@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<viewModels:BaseContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:userControls="clr-namespace:RestaurantApp.UserControls;assembly=RestaurantApp"
+             xmlns:viewModels="clr-namespace:RestaurantApp.Core.ViewModels;assembly=RestaurantApp.Core"
+             x:Class="RestaurantApp.ContentViews.MenuView">
+  <StackLayout >
+    <userControls:MenuTemplate />
+  </StackLayout>
+</viewModels:BaseContentView>

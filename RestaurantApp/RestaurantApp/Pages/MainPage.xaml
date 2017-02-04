@@ -3,29 +3,42 @@
     x:Class="RestaurantApp.Pages.MainPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:gorilla="clr-namespace:UXDivers.Gorilla;assembly=UXDivers.Gorilla.Common"
-    xmlns:local="clr-namespace:RestaurantApp"
-    xmlns:pageModels="clr-namespace:RestaurantApp.Core.PageModels;assembly=RestaurantApp.Core"
     xmlns:pages="clr-namespace:RestaurantApp.Pages;assembly=RestaurantApp"
-    xmlns:triggers="clr-namespace:RestaurantApp.Triggers;assembly=RestaurantApp"
-    xmlns:userControls="clr-namespace:RestaurantApp.UserControls;assembly=RestaurantApp">
-
-    <pages:BasePage.Content>
-        <AbsoluteLayout>
-            <Image
-                AbsoluteLayout.LayoutBounds="1,1,1,1"
-                AbsoluteLayout.LayoutFlags="All"
-                Aspect="AspectFill"
-                Source="{StaticResource MainBackgroundImage}" />
-            <StackLayout AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All">
-               <userControls:HeaderTemplate x:Name="HeaderPage" />
-                <userControls:MenuTemplate
+    xmlns:userControls="clr-namespace:RestaurantApp.UserControls;assembly=RestaurantApp"
+    xmlns:viewModels="clr-namespace:RestaurantApp.Core.ViewModels;assembly=RestaurantApp.Core"
+    xmlns:xamanimation="clr-namespace:Xamanimation;assembly=Xamanimation">
+    <pages:BasePage.Resources>
+        <ResourceDictionary>
+            <xamanimation:TranslateToAnimation
+                x:Key="TranslateToAnimation"
+                Duration="100"
+                Target="{x:Reference MainContentView}"
+                TranslateX="300" />
+            <xamanimation:TranslateToAnimation
+                x:Key="TranslateOutAnimation"
+                Duration="100"
+                Target="{x:Reference MainContentView}"
+                TranslateX="-300" />
+        </ResourceDictionary>
+    </pages:BasePage.Resources>
+    <AbsoluteLayout>
+        <Image
+            AbsoluteLayout.LayoutBounds="1,1,1,1"
+            AbsoluteLayout.LayoutFlags="All"
+            Aspect="AspectFill"
+            Source="{StaticResource MainBackgroundImage}" />
+        <StackLayout AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All">
+            <userControls:HeaderTemplate x:Name="HeaderPage" />
+            <viewModels:BaseContentView
+                x:Name="MainContentView"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand" />
+            <!--<userControls:MenuTemplate
                     x:Name="Menu"
                     AbsoluteLayout.LayoutBounds="1,.8,1,.7"
-                    AbsoluteLayout.LayoutFlags="All" />
-            </StackLayout>
-        </AbsoluteLayout>
-    </pages:BasePage.Content>
+                    AbsoluteLayout.LayoutFlags="All" />-->
+        </StackLayout>
+    </AbsoluteLayout>
 
 
 </pages:BasePage>

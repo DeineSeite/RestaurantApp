@@ -22,9 +22,9 @@ namespace QrCodeScanner
         #endregion
 
         #region ctor
-        public QrCodeScannerService(Page page)
+        public QrCodeScannerService()
         {
-            _contentPage = page;
+            
             //setup options
             Options = new MobileBarcodeScanningOptions
             {
@@ -47,7 +47,7 @@ namespace QrCodeScanner
         public async void StartScan()
         {
             // Navigate to our scanner page
-            await _contentPage.Navigation.PushAsync(new NavigationPage(_scannerPage));
+          //  await _contentPage.Navigation.PushAsync(new NavigationPage(_scannerPage));
             _scannerPage.OnScanResult += ScanPage_OnScanResult;
         }
 

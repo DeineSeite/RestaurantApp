@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<viewModels:BaseContentView
+    x:Class="RestaurantApp.ContentViews.AccountView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:localizations="clr-namespace:RestaurantApp.Localizations;assembly=RestaurantApp"
+    xmlns:userControls="clr-namespace:RestaurantApp.UserControls;assembly=RestaurantApp"
+    xmlns:viewModels="clr-namespace:RestaurantApp.Core.ViewModels;assembly=RestaurantApp.Core"
+    Title="{x:Static localizations:AppResources.Account}">
+    <viewModels:BaseContentView.BindingContext>
+        <viewModels:AccountViewModel />
+    </viewModels:BaseContentView.BindingContext>
+
+    <StackLayout>
+        <ContentView x:Name="FirstLoginPage" IsVisible="{Binding IsLogin, Converter={StaticResource InverseBooleanConverter}}">
+            <ContentView.Triggers>
+                <DataTrigger
+                    Binding="{Binding Source={x:Reference LoginCheckBox}, Path=Checked}"
+                    TargetType="ContentView"
+                    Value="True">
+                    <Setter Property="IsVisible" Value="False" />
+                </DataTrigger>
+            </ContentView.Triggers>
+            <StackLayout>
+                <userControls:CheckBox
+                    x:Name="LoginCheckBox"
+                    FontSize="20"
+                    DefaultText="Ja, ich möchte gratis Essen"
+                    HorizontalOptions="CenterAndExpand" />
+                <userControls:CheckBox
+                    FontSize="20"
+                    DefaultText="Nein, ich möchte ... werden"
+                    HorizontalOptions="CenterAndExpand" />
+            </StackLayout>
+        </ContentView>
+        <ContentView x:Name="LoginPage" IsVisible="False">
+            <ContentView.Triggers>
+                <DataTrigger
+                    Binding="{Binding Source={x:Reference LoginCheckBox}, Path=Checked}"
+                    TargetType="ContentView"
+                    Value="True">
+                    <Setter Property="IsVisible" Value="True" />
+                </DataTrigger>
+            </ContentView.Triggers>
+            <StackLayout />
+        </ContentView>
+    </StackLayout>
+</viewModels:BaseContentView>

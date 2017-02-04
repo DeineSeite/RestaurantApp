@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace RestaurantApp.UserControls
 {
@@ -13,6 +7,18 @@ namespace RestaurantApp.UserControls
         public TitleTemplate()
         {
             InitializeComponent();
+        }
+
+        public string TitleText
+        {
+            get { return TitleLabel.Text; }
+            set { TitleLabel.Text = value; }
+        }
+
+        public string SubTitleText
+        {
+            get { return SubTitleLabel.Text; }
+            set { SubTitleLabel.Text = value; }
         }
     }
 }

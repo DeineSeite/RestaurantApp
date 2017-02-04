@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FreshMvvm;
+using Xamarin.Forms;
 
 namespace RestaurantApp.Core.Interfaces
 {
@@ -13,5 +14,6 @@ namespace RestaurantApp.Core.Interfaces
         FreshNavigationContainer BasicNavContainer { get; set; }
         void ChangeCurrentCultureInfo(string langCode);
         CultureInfo CurrentCulture { get; set; }
+        Application Instance { get; }
     }
 }

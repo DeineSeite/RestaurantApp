@@ -220,6 +220,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dependencies\NativeHelper.cs" />
     <Compile Include="Dependencies\Localize.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Renderers\CheckBoxRenderer.cs" />

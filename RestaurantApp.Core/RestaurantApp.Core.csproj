@@ -58,30 +58,29 @@
     <Compile Include="Helpers\EventArgs.cs" />
     <Compile Include="Interfaces\IApplicationContext.cs" />
     <Compile Include="Interfaces\IBasePage.cs" />
+    <Compile Include="Interfaces\IContentService.cs" />
+    <Compile Include="Interfaces\IContentViewModelMapper.cs" />
+    <Compile Include="Interfaces\IDynamicContent.cs" />
     <Compile Include="Interfaces\IListViewPage.cs" />
     <Compile Include="Interfaces\ILocalize.cs" />
-    <Compile Include="Resources\AppResources.de.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AppResources.de.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Resources\AppResources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AppResources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="PageModels\AccountPageModel.cs" />
+    <Compile Include="Interfaces\INativeHelper.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="PageModels\BasePageModel.cs" />
-    <Compile Include="PageModels\BonusPointPageModel.cs" />
-    <Compile Include="PageModels\ContactPageModel.cs" />
-    <Compile Include="PageModels\FoodCardPageModel.cs" />
-    <Compile Include="PageModels\GalleryPageModel.cs" />
     <Compile Include="PageModels\MainPageModel.cs" />
-    <Compile Include="PageModels\MenuListPageModel.cs" />
-    <Compile Include="PageModels\OpenHoursPageModel.cs" />
-    <Compile Include="PageModels\QrCodeScannerPageModel.cs" />
-    <Compile Include="PageModels\TblReservationPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ContentService.cs" />
+    <Compile Include="Services\ContentViewModelMapper.cs" />
+    <Compile Include="Services\ContentViewModelResolver.cs" />
+    <Compile Include="ViewModels\AccountViewModel.cs" />
+    <Compile Include="ViewModels\BaseContentView.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\BonusPointViewModel.cs" />
+    <Compile Include="ViewModels\ContactViewModel.cs" />
+    <Compile Include="ViewModels\FoodCardViewModel.cs" />
+    <Compile Include="ViewModels\GalleryViewModel.cs" />
+    <Compile Include="ViewModels\MenuViewModel.cs" />
+    <Compile Include="ViewModels\OpenHoursViewModel.cs" />
+    <Compile Include="ViewModels\TableOrderViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\QrCodeScanner\QrCodeScanner.csproj">
@@ -157,21 +156,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="contactInfo.html" />
-    <EmbeddedResource Include="Resources\AppResources.de.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>AppResources.de.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\AppResources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Extensions\" />
-    <Folder Include="Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <XliffResource Include="MultilingualResources\RestaurantApp.Core.de.xlf" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.3.3.175\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.3.175\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />

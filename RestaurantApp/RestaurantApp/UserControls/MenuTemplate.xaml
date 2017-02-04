@@ -18,7 +18,7 @@
         Style="{StaticResource MenuListStyle}">
         <ListView.Behaviors>
             <behaviors:EventToCommandBehavior
-                Command="{Binding PushPageCommand}"
+                Command="{Binding PushContentCommand}"
                 EventArgsConverter="{StaticResource ItemTappedConverter}"
                 EventName="ItemTapped" />
         </ListView.Behaviors>

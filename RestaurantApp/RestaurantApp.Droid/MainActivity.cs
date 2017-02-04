@@ -3,6 +3,7 @@ using Android.Content.PM;
 using Android.OS;
 using DLToolkit.Forms.Controls;
 using RestaurantApp.Core.Converters;
+using RestaurantApp.Core.ViewModels;
 using RestaurantApp.Droid.Renderers;
 using RestaurantApp.Pages;
 using RestaurantApp.Triggers;
@@ -30,7 +31,7 @@ namespace RestaurantApp.Droid
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             FlowListView.Init();
-
+          
 
 #if !GORILLA
             LoadApplication(new App());
@@ -49,6 +50,8 @@ namespace RestaurantApp.Droid
               .RegisterAssemblyFromType<StringCaseConverter>()
               .RegisterAssemblyFromType<HtmlLabelRenderer>()
                  .RegisterAssemblyFromType<InverseBooleanConverter>()
+                 .RegisterAssemblyFromType<InverseBooleanConverter>()
+              .RegisterAssemblyFromType<BaseContentView>()
               ));
 #endif
         }

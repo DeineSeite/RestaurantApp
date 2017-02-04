@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<viewModels:BaseContentView
+    x:Class="RestaurantApp.ContentViews.OpenHoursView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:localizations="clr-namespace:RestaurantApp.Localizations;assembly=RestaurantApp"
+    xmlns:userControls="clr-namespace:RestaurantApp.UserControls;assembly=RestaurantApp"
+    xmlns:viewModels="clr-namespace:RestaurantApp.Core.ViewModels;assembly=RestaurantApp.Core"
+    Title="{x:Static localizations:AppResources.OpenHours}">
+
+    <viewModels:BaseContentView.BindingContext>
+        <viewModels:OpenHoursViewModel />
+    </viewModels:BaseContentView.BindingContext>
+
+    <StackLayout
+        Margin="10,10,10,20"
+        AbsoluteLayout.LayoutBounds="1,1,1,1"
+        AbsoluteLayout.LayoutFlags="All"
+        HorizontalOptions="FillAndExpand"
+        VerticalOptions="FillAndExpand">
+        <userControls:HtmlLabel FontSize="Medium" Text="{Binding HtmlContent}" />
+    </StackLayout>
+</viewModels:BaseContentView>

@@ -1,22 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FreshMvvm;
+﻿using FreshMvvm;
 using PropertyChanged;
 using RestaurantApp.Core.Interfaces;
+using RestaurantApp.Core.Services;
+using RestaurantApp.Core.ViewModels;
 using Xamarin.Forms;
 
 namespace RestaurantApp.Core.PageModels
 {
     [ImplementPropertyChanged]
-    public class BasePageModel : FreshMvvm.FreshBasePageModel
+    public class BasePageModel : FreshBasePageModel
     {
         #region Public properties
 
         /// <summary>
-        /// Set title for ContentPage
+        ///     Set title for ContentPage
         /// </summary>
         public string Title
         {
@@ -30,7 +27,7 @@ namespace RestaurantApp.Core.PageModels
 
 
         /// <summary>
-        ///Addition Title for ContentPage, will be shown under main Title
+        ///     Addition Title for ContentPage, will be shown under main Title
         /// </summary>
         public string SubTitle
         {
@@ -45,10 +42,6 @@ namespace RestaurantApp.Core.PageModels
         #endregion
 
         #region ctor
-
-        public BasePageModel()
-        {
-        }
 
         public override void Init(object initData)
         {
@@ -70,9 +63,9 @@ namespace RestaurantApp.Core.PageModels
 
         private async void GoToAccountPage()
         {
-            var accountPage = FreshPageModelResolver.ResolvePageModel<AccountPageModel>();
+            var accountView = ContentViewModelResolver.ResolveViewModel<AccountViewModel>();
 
-            await CurrentPage.Navigation.PushAsync(accountPage, false);
+         
         }
 
         private void GoBack()
@@ -86,8 +79,8 @@ namespace RestaurantApp.Core.PageModels
 
         #region Private members
 
-        string _title;
-        string _subTitle;
+        private string _title;
+        private string _subTitle;
 
         #endregion
     }

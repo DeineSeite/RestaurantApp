@@ -56,36 +56,46 @@
     </Compile>
     <Compile Include="Behaviors\BindableBehavior.cs" />
     <Compile Include="Behaviors\EventToCommandBehavior.cs" />
-    <Compile Include="Pages\AccountPage.xaml.cs">
-      <DependentUpon>AccountPage.xaml</DependentUpon>
+    <Compile Include="ContentViews\AccountView.xaml.cs">
+      <DependentUpon>AccountView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\BonusPointPage.xaml.cs">
-      <DependentUpon>BonusPointPage.xaml</DependentUpon>
+    <Compile Include="ContentViews\BonusPointView.xaml.cs">
+      <DependentUpon>BonusPointView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\ContactPage.xaml.cs">
-      <DependentUpon>ContactPage.xaml</DependentUpon>
+    <Compile Include="ContentViews\ContactView.xaml.cs">
+      <DependentUpon>ContactView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\FoodCardPage.xaml.cs">
-      <DependentUpon>FoodCardPage.xaml</DependentUpon>
+    <Compile Include="ContentViews\FoodCardView.xaml.cs">
+      <DependentUpon>FoodCardView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\GalleryPage.xaml.cs">
-      <DependentUpon>GalleryPage.xaml</DependentUpon>
+    <Compile Include="ContentViews\GalleryView.xaml.cs">
+      <DependentUpon>GalleryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ContentViews\MenuView.xaml.cs">
+      <DependentUpon>MenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ContentViews\OpenHoursView.xaml.cs">
+      <DependentUpon>OpenHoursView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ContentViews\TableOrderView.xaml.cs">
+      <DependentUpon>TableOrderView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Localizations\AppResources.de.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppResources.de.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Localizations\AppResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
     <Compile Include="Pages\BasePage.cs" />
     <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\MenuListPage.xaml.cs">
-      <DependentUpon>MenuListPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\OpenHoursPage.xaml.cs">
-      <DependentUpon>OpenHoursPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\TblReservationPage.xaml.cs">
-      <DependentUpon>TblReservationPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\RestaurantAppPageModelMapper.cs" />
+    <Compile Include="Services\RestaurantAppModelMapper.cs" />
     <Compile Include="Triggers\MenuItemClickTrigger.cs" />
     <Compile Include="UserControls\BonusPointDataTemplateSelector.cs" />
     <Compile Include="UserControls\BonusPointItemTemplate.xaml.cs">
@@ -112,6 +122,14 @@
     <Compile Include="UserControls\TransparentWebView.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Localizations\AppResources.de.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.de.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localizations\AppResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pages\MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
@@ -206,12 +224,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\MenuListPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="UserControls\MenuItemCellTemplate.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
@@ -230,43 +242,58 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\AccountPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\BonusPointPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\GalleryPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\FoodCardPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Pages\TblReservationPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="UserControls\BonusPointItemTemplate.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\OpenHoursPage.xaml">
+    <EmbeddedResource Include="ContentViews\MenuView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\ContactPage.xaml">
+    <EmbeddedResource Include="ContentViews\GalleryView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ContentViews\AccountView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <XliffResource Include="MultilingualResources\RestaurantApp.Forms.de.xlf" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ContentViews\BonusPointView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ContentViews\ContactView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ContentViews\FoodCardView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ContentViews\OpenHoursView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ContentViews\TableOrderView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

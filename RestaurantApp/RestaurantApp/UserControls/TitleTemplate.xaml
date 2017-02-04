@@ -29,11 +29,12 @@
                 </StackLayout.Margin>
                 <StackLayout Margin="20,0,0,0" VerticalOptions="CenterAndExpand">
                     <Label
-                        FontAttributes="Bold"
+                        x:Name="TitleLabel"
                         FontSize="Large"
+                        FontAttributes="Bold"
                         HorizontalOptions="StartAndExpand"
                         IsVisible="True"
-                        Text="{Binding Title, Converter={StaticResource StringCaseConverter},ConverterParameter=Upper}"
+                        Text="{Binding Title, Converter={StaticResource StringCaseConverter}, ConverterParameter=Upper}"
                         TextColor="White"
                         VerticalOptions="CenterAndExpand" />
                     <Label
