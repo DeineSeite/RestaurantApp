@@ -10,5 +10,7 @@ namespace RestaurantApp.Core.Interfaces
     {
         string Title { get; set; }
         string SubTitle { get; set; }
+
+        object BindingContext { get; set; }
     }
 }

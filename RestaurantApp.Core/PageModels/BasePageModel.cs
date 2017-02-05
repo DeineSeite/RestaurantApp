@@ -61,11 +61,11 @@ namespace RestaurantApp.Core.PageModels
 
         #region Methods
 
-        private async void GoToAccountPage()
+        private void GoToAccountPage()
         {
             var accountView = ContentViewModelResolver.ResolveViewModel<AccountViewModel>();
-
-         
+            var content = FreshIOC.Container.Resolve<IDynamicContent>();
+            content.MainContentView = accountView;
         }
 
         private void GoBack()

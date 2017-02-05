@@ -11,13 +11,13 @@ namespace RestaurantApp.Core.Services
         public static IContentViewModelMapper ViewModelMapper { get; set; } = new ContentViewModelMapper();
 
 
-        public static ContentView ResolveViewModel<T>() where T : BaseViewModel
+        public static IBaseContentView ResolveViewModel<T>() where T : BaseViewModel
         {
             return ResolveViewModel<T>(null);
         }
 
 
-        public static ContentView ResolveViewModel<T>(object initData) where T : BaseViewModel
+        public static IBaseContentView ResolveViewModel<T>(object initData) where T : BaseViewModel
         {
             var pageModel = FreshIOC.Container.Resolve<T>();
 
@@ -26,7 +26,7 @@ namespace RestaurantApp.Core.Services
         }
 
 
-        public static ContentView ResolveViewModel<T>(object data, T viewModel) where T : BaseViewModel
+        public static IBaseContentView ResolveViewModel<T>(object data, T viewModel) where T : BaseViewModel
         {
             var type = viewModel.GetType();
 
@@ -34,7 +34,7 @@ namespace RestaurantApp.Core.Services
         }
 
 
-        public static ContentView ResolveViewModel(Type type, object data)
+        public static IBaseContentView ResolveViewModel(Type type, object data)
         {
             var viewModel = FreshIOC.Container.Resolve(type) as BaseViewModel;
 
@@ -42,7 +42,7 @@ namespace RestaurantApp.Core.Services
         }
 
 
-        public static ContentView ResolveViewModel(Type type, object data, BaseViewModel viewModel)
+        public static IBaseContentView ResolveViewModel(Type type, object data, BaseViewModel viewModel)
         {
             var name = ViewModelMapper.GetViewTypeName(type);
 
@@ -52,21 +52,21 @@ namespace RestaurantApp.Core.Services
 
                 throw new Exception(name + " not found");
 
-            var view =(ContentView)FreshIOC.Container.Resolve(viewType);
+            var view =(IBaseContentView)FreshIOC.Container.Resolve(viewType);
 
 
-         BindingPageModel(data, view, viewModel);
+            BindingPageModel(data, view, viewModel);
 
 
             return view;
         }
 
 
-        public static ContentView BindingPageModel(object data, ContentView targetPage, BaseViewModel viewModel)
+        public static IBaseContentView BindingPageModel(object data, IBaseContentView targetPage, BaseViewModel viewModel)
         {
             // viewModel.WireEvents(targetPage);
 
-            viewModel.CurreContentView = targetPage;
+            viewModel.CurrentContentView = targetPage;
 
             //  viewModel.CoreMethods = new PageModelCoreMethods(targetPage, pageModel);
 

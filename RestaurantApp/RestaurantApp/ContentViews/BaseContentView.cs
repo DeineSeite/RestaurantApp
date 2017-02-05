@@ -6,6 +6,7 @@ namespace RestaurantApp.ContentViews
 {
     public class BaseContentView : ContentView, IBaseContentView
     {
+        
         public BaseContentView()
         {
               var app = FreshIOC.Container.Resolve<IApplicationContext>();
@@ -15,5 +16,11 @@ namespace RestaurantApp.ContentViews
 
         public string Title { get; set; }
         public string SubTitle { get; set; }
+
+        public new object BindingContext
+        {
+            get { return base.BindingContext; }
+            set { base.BindingContext = value; }
+        }
     }
 }

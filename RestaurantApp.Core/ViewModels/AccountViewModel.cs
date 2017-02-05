@@ -8,5 +8,6 @@ namespace RestaurantApp.Core.ViewModels
 {
   public  class AccountViewModel:BaseViewModel
     {
+
     }
 }

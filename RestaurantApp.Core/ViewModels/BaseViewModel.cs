@@ -6,13 +6,14 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using RestaurantApp.Core.Annotations;
+using RestaurantApp.Core.Interfaces;
 using Xamarin.Forms;
 
 namespace RestaurantApp.Core.ViewModels
 {
   public abstract class BaseViewModel:INotifyPropertyChanged
     {
-        public ContentView CurreContentView { get; set; }
+        public IBaseContentView CurrentContentView { get; set; }
 
         public void Init(object data)
         {
