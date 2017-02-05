@@ -3,9 +3,9 @@
     x:Class="RestaurantApp.ContentViews.TableOrderView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:contentViews="clr-namespace:RestaurantApp.ContentViews;assembly=RestaurantApp"
     xmlns:localizations="clr-namespace:RestaurantApp.Localizations;assembly=RestaurantApp"
     xmlns:viewModels="clr-namespace:RestaurantApp.Core.ViewModels;assembly=RestaurantApp.Core"
-    xmlns:contentViews="clr-namespace:RestaurantApp.ContentViews;assembly=RestaurantApp"
     Title="{x:Static localizations:AppResources.Tables}">
     <contentViews:BaseContentView.BindingContext>
         <viewModels:TableOrderViewModel />

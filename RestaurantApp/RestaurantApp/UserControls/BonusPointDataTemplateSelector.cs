@@ -1,28 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DLToolkit.Forms.Controls;
-using RestaurantApp.Core.PageModels;
-using RestaurantApp.Data.Models;
-using RestaurantApp.UserControls;
+﻿using RestaurantApp.Data.Models;
 using Xamarin.Forms;
-
 
 namespace RestaurantApp.UserControls
 {
-   public class BonusPointDataTemplateSelector: FlowTemplateSelector
-   {
-       
+    public class BonusPointDataTemplateSelector : DataTemplateSelector
+    {
+        private DataTemplate _bonusPointItemTemplate;
+        private bool _isLastItemReplaced;
+
         public BonusPointDataTemplateSelector()
         {
             _isLastItemReplaced = false;
         }
-       
-       
-       protected override DataTemplate OnSelectTemplate(object item, int columnIndex, BindableObject container)
-       {
+
+        protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
+        {
             var bonusPointModel = item as BonusPointModel;
             var template = new BonusPointItemTemplate();
             if (bonusPointModel == null)
@@ -36,10 +28,8 @@ namespace RestaurantApp.UserControls
 
 
             // Retain instances!
-            this._bonusPointItemTemplate = new DataTemplate(() => template);
+            _bonusPointItemTemplate = new DataTemplate(() => template);
             return _bonusPointItemTemplate;
         }
-        private DataTemplate _bonusPointItemTemplate;
-        private bool _isLastItemReplaced;
     }
 }

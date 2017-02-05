@@ -14,10 +14,12 @@
             Source="{StaticResource MainBackgroundImage}" />
         <StackLayout AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All">
             <userControls:HeaderTemplate x:Name="HeaderPage" />
-            <ContentView
-                x:Name="MainContentView"
-                HorizontalOptions="FillAndExpand"
-                VerticalOptions="FillAndExpand" />
+            <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <ContentView
+                    x:Name="MainContentView"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand" />
+            </ScrollView>
             <!--<userControls:MenuTemplate
                     x:Name="Menu"
                     AbsoluteLayout.LayoutBounds="1,.8,1,.7"

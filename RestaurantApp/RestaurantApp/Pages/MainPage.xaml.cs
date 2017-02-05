@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using FreshMvvm;
 using RestaurantApp.ContentViews;
 using RestaurantApp.Core.Interfaces;
-using RestaurantApp.Core.Services;
-using RestaurantApp.Core.ViewModels;
-using RestaurantApp.UserControls;
 using Xamanimation;
 using Xamarin.Forms;
 
@@ -50,30 +45,23 @@ namespace RestaurantApp.Pages
                     //Hide Title if MenuView
                     if (newValue.GetType() != typeof(MenuView))
                     {
-                        
                         titleControl.IsVisible = true;
-                       
+
                         //Set Title and Subtitle text for current view
                         titleControl.TitleText = ((BaseContentView) newValue).Title.ToUpper();
                         titleControl.SubTitleText = ((BaseContentView) newValue).SubTitle;
-                       
                     }
                     else
                     {
-                      titleControl.IsVisible = false;
-
-                    
+                        titleControl.IsVisible = false;
                     }
 
-                    if (currentPage.StackNavigation.Count <2)
-                    {
+                    if (currentPage.StackNavigation.Count < 2)
                         currentPage.StackNavigation.Add((BaseContentView) oldValue);
-                    }
+                   await currentPage.MainContentView.Animate(new TranslateToAnimation() {Duration = "300", TranslateX = 700} );
+                    currentPage.MainContentView.TranslationX = -700;
                     currentPage.MainContentView.Content = newValue;
-                    
-
-
-
+                    await currentPage.MainContentView.Animate(new TranslateToAnimation() { Duration = "300", TranslateX = 0 });
                 }
             }
             catch (Exception)
@@ -86,7 +74,7 @@ namespace RestaurantApp.Pages
         {
             if (StackNavigation.Count > 0)
             {
-                MainContent= StackNavigation[1];
+                MainContent = StackNavigation[1];
             }
             else
             {
