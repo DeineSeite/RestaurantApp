@@ -8,5 +8,9 @@ namespace RestaurantApp.Core.ViewModels
 {
   public  class GalleryViewModel:BaseViewModel
     {
+        public String Url
+        {
+            get;
+        } = "http://www.luckywok.at/galerie/40/gallery2";
     }
 }

@@ -55,7 +55,7 @@
                         </Label.Triggers>
                     </Label>
                 </StackLayout>
-                <ActivityIndicator IsVisible="{Binding IsBusy,Mode=TwoWay}" HorizontalOptions="EndAndExpand"  IsRunning="{Binding IsBusy,Mode=TwoWay}" AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional" AbsoluteLayout.LayoutBounds="0.5, 0.5, 0.2, AutoSize" />
+                <ActivityIndicator IsVisible="{Binding IsBusy,Mode=OneWay}" HorizontalOptions="EndAndExpand"  IsRunning="{Binding IsBusy,Mode=OneWay}" />
             </StackLayout>
         </AbsoluteLayout>
 

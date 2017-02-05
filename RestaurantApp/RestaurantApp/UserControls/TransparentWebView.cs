@@ -12,18 +12,24 @@ namespace RestaurantApp.UserControls
    public class TransparentWebView:WebView
    {
        private IDynamicContent mainContent;
-
+        
         public TransparentWebView()
         {
             mainContent = FreshIOC.Container.Resolve<IDynamicContent>();
-            mainContent.IsBusy = true;
+
+            Navigating += TransparentWebView_Navigating;
             Navigated += TransparentWebView_Navigated;
+        }
+
+        private void TransparentWebView_Navigating(object sender, WebNavigatingEventArgs e)
+        {
+            mainContent.IsBusy = true;
         }
 
         private void TransparentWebView_Navigated(object sender, WebNavigatedEventArgs e)
         {
             Eval("AppHidden()");
-            mainContent.IsBusy = false;
+            mainContent.IsBusy = true;
         }
     }
 }

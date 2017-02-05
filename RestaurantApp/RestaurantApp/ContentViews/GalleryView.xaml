@@ -6,15 +6,18 @@
     xmlns:contentViews="clr-namespace:RestaurantApp.ContentViews;assembly=RestaurantApp"
     xmlns:localizations="clr-namespace:RestaurantApp.Localizations;assembly=RestaurantApp"
     xmlns:userControls="clr-namespace:RestaurantApp.UserControls;assembly=RestaurantApp"
+    xmlns:viewModels="clr-namespace:RestaurantApp.Core.ViewModels;assembly=RestaurantApp.Core"
     Title="{x:Static localizations:AppResources.Gallery}">
-
+   <contentViews:BaseContentView.BindingContext>
+        <viewModels:GalleryViewModel />
+    </contentViews:BaseContentView.BindingContext>
     <StackLayout>
         <userControls:TransparentWebView
             x:Name="GalWebView"
             Margin="0,0,0,0"
             AbsoluteLayout.LayoutBounds="1,.8,1,.7"
             AbsoluteLayout.LayoutFlags="All"
-            Source="http://www.luckywok.at/galerie/40/gallery2"
+            Source="{Binding Url}"
             VerticalOptions="FillAndExpand" />
     </StackLayout>
 </contentViews:BaseContentView>

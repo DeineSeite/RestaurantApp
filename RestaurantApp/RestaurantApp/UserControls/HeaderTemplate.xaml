@@ -3,7 +3,8 @@
     x:Class="RestaurantApp.UserControls.HeaderTemplate"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:userControls="clr-namespace:RestaurantApp.UserControls;assembly=RestaurantApp">
+    xmlns:userControls="clr-namespace:RestaurantApp.UserControls;assembly=RestaurantApp"
+    xmlns:pageModels="clr-namespace:RestaurantApp.Core.PageModels;assembly=RestaurantApp.Core">
     <StackLayout>
         <AbsoluteLayout>
             <userControls:RoundedBox
@@ -49,6 +50,10 @@
             IsOpaque="True"
             Scale="0.7"
             Source="Logo.png" />
-        <userControls:TitleTemplate x:Name="Title" Margin="-10,-20,-10,0" />
+      <userControls:TitleTemplate x:Name="Title" Margin="-10,-20,-10,0" >
+        <userControls:TitleTemplate.BindingContext>
+          <pageModels:MainPageModel></pageModels:MainPageModel>
+        </userControls:TitleTemplate.BindingContext>
+       </userControls:TitleTemplate>
     </StackLayout>
 </ContentView>
