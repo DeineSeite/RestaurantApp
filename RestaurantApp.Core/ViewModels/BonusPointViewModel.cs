@@ -4,12 +4,16 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FreshMvvm;
+using PropertyChanged;
 using QrCodeScanner;
+using RestaurantApp.Core.Interfaces;
 using RestaurantApp.Data.Models;
 using Xamarin.Forms;
 
 namespace RestaurantApp.Core.ViewModels
 {
+    [ImplementPropertyChanged]
   public  class BonusPointViewModel:BaseViewModel
     {
         #region Public properties
@@ -25,7 +29,7 @@ namespace RestaurantApp.Core.ViewModels
             {
                 BonusPointList.Add(new BonusPointModel() { Id = i, IsActivated = i < 5 });
             }
-            _currenBonusPointModel = new BonusPointModel();
+            
 
 
         }
@@ -39,7 +43,8 @@ namespace RestaurantApp.Core.ViewModels
         }
         private void ScanQrCode()
         {
-            QrCodeScannerService qrService = new QrCodeScannerService();
+            var mainPage = FreshIOC.Container.Resolve<IApplicationContext>().BasicNavContainer.CurrentPage;
+            QrCodeScannerService qrService = new QrCodeScannerService(mainPage);
             qrService.StartScan();
             qrService.OnResultReady += QrService_OnResultReady; ;
         }
@@ -51,8 +56,7 @@ namespace RestaurantApp.Core.ViewModels
             _currenBonusPointModel.ActivationDate = DateTime.Now;
             _currenBonusPointModel.IsActivated = true;
             BonusPointList[index] = _currenBonusPointModel;
-            BonusPointList[index + 1] = _currenBonusPointModel;
-            BonusPointList[index + 2] = _currenBonusPointModel;
+         
 
         }
 

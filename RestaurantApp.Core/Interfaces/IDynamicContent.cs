@@ -10,5 +10,6 @@ namespace RestaurantApp.Core.Interfaces
     public interface IDynamicContent
     {
         IBaseContentView MainContentView { get; set; }
+
     }
 }
