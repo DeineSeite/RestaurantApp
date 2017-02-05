@@ -20,7 +20,7 @@
                         Tablet="10" />
                 </BoxView.Margin>
             </userControls:GradientContentView>
-            <StackLayout AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All">
+            <StackLayout AbsoluteLayout.LayoutBounds="1,1,1,1" Orientation="Horizontal" AbsoluteLayout.LayoutFlags="All">
                 <StackLayout.Margin>
                     <OnIdiom
                         x:TypeArguments="Thickness"
@@ -55,7 +55,7 @@
                         </Label.Triggers>
                     </Label>
                 </StackLayout>
-
+                <ActivityIndicator IsVisible="{Binding IsBusy,Mode=TwoWay}" HorizontalOptions="EndAndExpand"  IsRunning="{Binding IsBusy,Mode=TwoWay}" AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional" AbsoluteLayout.LayoutBounds="0.5, 0.5, 0.2, AutoSize" />
             </StackLayout>
         </AbsoluteLayout>
 

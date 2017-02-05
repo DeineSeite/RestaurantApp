@@ -15,6 +15,7 @@ namespace RestaurantApp.Core.ViewModels
     {
         public IBaseContentView CurrentContentView { get; set; }
 
+
         public void Init(object data)
         {
             

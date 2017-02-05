@@ -10,11 +10,11 @@ namespace RestaurantApp.Core.PageModels
     public class MainPageModel : BasePageModel,IDynamicContent
     {
         public IBaseContentView MainContentView { get; set; }
-
+        public bool IsBusy { get; set; }
         #region ctor
         public MainPageModel()
         {
-            
+            IsBusy = false;
         }
         
         #endregion
