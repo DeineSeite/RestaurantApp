@@ -57,6 +57,7 @@
     <Compile Include="Converters\StringCaseConverter.cs" />
     <Compile Include="Helpers\EventArgs.cs" />
     <Compile Include="Interfaces\IApplicationContext.cs" />
+    <Compile Include="Interfaces\IBaseContentView.cs" />
     <Compile Include="Interfaces\IBasePage.cs" />
     <Compile Include="Interfaces\IContentService.cs" />
     <Compile Include="Interfaces\IContentViewModelMapper.cs" />
@@ -72,7 +73,6 @@
     <Compile Include="Services\ContentViewModelMapper.cs" />
     <Compile Include="Services\ContentViewModelResolver.cs" />
     <Compile Include="ViewModels\AccountViewModel.cs" />
-    <Compile Include="ViewModels\BaseContentView.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\BonusPointViewModel.cs" />
     <Compile Include="ViewModels\ContactViewModel.cs" />

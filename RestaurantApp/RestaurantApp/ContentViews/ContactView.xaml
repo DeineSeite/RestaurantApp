@@ -1,15 +1,16 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<viewModels:BaseContentView
+<contentViews:BaseContentView
     x:Class="RestaurantApp.ContentViews.ContactView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:contentViews="clr-namespace:RestaurantApp.ContentViews;assembly=RestaurantApp"
     xmlns:localizations="clr-namespace:RestaurantApp.Localizations;assembly=RestaurantApp"
     xmlns:userControls="clr-namespace:RestaurantApp.UserControls;assembly=RestaurantApp"
     xmlns:viewModels="clr-namespace:RestaurantApp.Core.ViewModels;assembly=RestaurantApp.Core"
     Title="{x:Static localizations:AppResources.Contacts}">
-    <viewModels:BaseContentView.BindingContext>
+    <contentViews:BaseContentView.BindingContext>
         <viewModels:ContactViewModel />
-    </viewModels:BaseContentView.BindingContext>
+    </contentViews:BaseContentView.BindingContext>
     <StackLayout>
         <ContentView Padding="5,10,0,0" HorizontalOptions="CenterAndExpand">
             <StackLayout
@@ -131,4 +132,4 @@
             </AbsoluteLayout>
         </AbsoluteLayout>
     </StackLayout>
-</viewModels:BaseContentView>
+</contentViews:BaseContentView>

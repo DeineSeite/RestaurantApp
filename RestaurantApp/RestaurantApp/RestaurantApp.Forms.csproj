@@ -59,6 +59,7 @@
     <Compile Include="ContentViews\AccountView.xaml.cs">
       <DependentUpon>AccountView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ContentViews\BaseContentView.cs" />
     <Compile Include="ContentViews\BonusPointView.xaml.cs">
       <DependentUpon>BonusPointView.xaml</DependentUpon>
     </Compile>

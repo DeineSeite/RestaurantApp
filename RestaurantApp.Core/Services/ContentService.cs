@@ -19,7 +19,7 @@ namespace RestaurantApp.Core.Services
             CurrentPageModel = FreshIOC.Container.Resolve<IDynamicContent>();
         }
 
-        public async Task PushContentViewAsync(BaseContentView contentView)
+        public async Task PushContentViewAsync(IBaseContentView contentView)
         {
             await Task.Run(() => { 
             CurrentPageModel.MainContentView = contentView;

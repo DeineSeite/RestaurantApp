@@ -9,7 +9,7 @@ namespace RestaurantApp.Core.PageModels
     [ImplementPropertyChanged]
     public class MainPageModel : BasePageModel,IDynamicContent
     {
-        public BaseContentView MainContentView { get; set; }
+        public IBaseContentView MainContentView { get; set; }
 
         #region ctor
         public MainPageModel()

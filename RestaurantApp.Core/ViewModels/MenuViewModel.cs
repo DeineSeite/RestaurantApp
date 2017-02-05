@@ -13,8 +13,8 @@ namespace RestaurantApp.Core.ViewModels
 
         public MenuViewModel()
         {
-            MenuItemsList = new List<BaseContentView>();
-            PushContentCommand = new Command<BaseContentView>(PushContent);
+            MenuItemsList = new List<IBaseContentView>();
+            PushContentCommand = new Command<IBaseContentView>(PushContent);
             _contentNavigationService = FreshIOC.Container.Resolve<IContentNavigationService>();
         }
 
@@ -22,7 +22,7 @@ namespace RestaurantApp.Core.ViewModels
 
         #region Commands
 
-        public Command<BaseContentView> PushContentCommand { get; set; }
+        public Command<IBaseContentView> PushContentCommand { get; set; }
 
         #endregion
 
@@ -32,7 +32,7 @@ namespace RestaurantApp.Core.ViewModels
 
         /// <summary>
         /// </summary>
-        public List<BaseContentView> MenuItemsList { get; set; }
+        public List<IBaseContentView> MenuItemsList { get; set; }
 
         #endregion
 
@@ -47,7 +47,7 @@ namespace RestaurantApp.Core.ViewModels
             new NotImplementedException();
         }
 
-        private async void PushContent(BaseContentView view)
+        private async void PushContent(IBaseContentView view)
         {
           //  var viewContent = ContentViewModelResolver.ResolveViewModel((object) null, view);
            await _contentNavigationService.PushContentViewAsync(view);

@@ -3,10 +3,11 @@
     x:Class="RestaurantApp.App"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:converters="clr-namespace:RestaurantApp.Core.Converters;assembly=RestaurantApp.Core"
-    xmlns:userControls="clr-namespace:RestaurantApp.UserControls;assembly=RestaurantApp">
+    xmlns:converters="clr-namespace:RestaurantApp.Core.Converters;assembly=RestaurantApp.Core">
     <Application.Resources>
         <ResourceDictionary>
+            <converters:StringCaseConverter x:Key="StringCaseConverter" />
+            <converters:InverseBooleanConverter x:Key="InverseBooleanConverter" />
             <Color x:Key="MainThemeColor">#637704</Color>
             <Color x:Key="SecondThemeColor">#FAECC7</Color>
             <Color x:Key="SecondThemeColorAlpha80">#B3FAECC7</Color>
@@ -66,8 +67,7 @@
                 <Setter Property="BackgroundColor" Value="{StaticResource MainThemeColor}" />
                 <Setter Property="TextColor" Value="White" />
             </Style>
-            <converters:StringCaseConverter x:Key="StringCaseConverter" />
-            <converters:InverseBooleanConverter x:Key="InverseBooleanConverter" />
+
         </ResourceDictionary>
         <!--  Application resource dictionary  -->
 

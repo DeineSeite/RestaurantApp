@@ -1,16 +1,18 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<viewModels:BaseContentView
+<contentViews:BaseContentView
     x:Class="RestaurantApp.ContentViews.BonusPointView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:contentViews="clr-namespace:RestaurantApp.ContentViews;assembly=RestaurantApp"
     xmlns:controls="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
     xmlns:localizations="clr-namespace:RestaurantApp.Localizations;assembly=RestaurantApp"
     xmlns:viewModels="clr-namespace:RestaurantApp.Core.ViewModels;assembly=RestaurantApp.Core"
-    Title="{x:Static localizations:AppResources.BonusPoints}">
+    Title="{x:Static localizations:AppResources.BonusPoints}"
+    BackgroundColor="Transparent">
 
-    <viewModels:BaseContentView.BindingContext>
+    <contentViews:BaseContentView.BindingContext>
         <viewModels:BonusPointViewModel />
-    </viewModels:BaseContentView.BindingContext>
+    </contentViews:BaseContentView.BindingContext>
 
     <StackLayout>
         <controls:FlowListView
@@ -37,4 +39,4 @@
             </controls:FlowListView.Footer>
         </controls:FlowListView>
     </StackLayout>
-</viewModels:BaseContentView>
+</contentViews:BaseContentView>

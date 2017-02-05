@@ -61,16 +61,16 @@ namespace RestaurantApp
             //Initialize menu items
             StartMenu = new MenuViewModel();
             var infoMenu = new MenuViewModel();
-            infoMenu.MenuItemsList = new List<BaseContentView>()
+            infoMenu.MenuItemsList = new List<IBaseContentView>()
               {
                   new OpenHoursView(),
                   new TableOrderView(),
                   new GalleryView()
               };
 
-            var infoMenuView = ContentViewModelResolver.ResolveViewModel((object)null, infoMenu);
+            var infoMenuView = (BaseContentView)ContentViewModelResolver.ResolveViewModel((object)null, infoMenu);
             infoMenuView.Title = AppResources.Info;
-            StartMenu.MenuItemsList = new List<BaseContentView>
+            StartMenu.MenuItemsList = new List<IBaseContentView>
               {
                   new BonusPointView(),
                  infoMenuView,
@@ -79,11 +79,11 @@ namespace RestaurantApp
               };
 
             //Set menu as content
-            var startMenuView = ContentViewModelResolver.ResolveViewModel((object)null, StartMenu);
+            var startMenuView = (BaseContentView)ContentViewModelResolver.ResolveViewModel((object)null, StartMenu);
             mainPageModel.MainContentView = startMenuView;
 
             //Resolve Page and start
-            var mainContentPage = FreshPageModelResolver.ResolvePageModel((object)null, mainPageModel);
+            var mainContentPage = FreshPageModelResolver.ResolvePageModel((object)null,mainPageModel);
             BasicNavContainer = new FreshNavigationContainer(mainContentPage);
         }
         #endregion

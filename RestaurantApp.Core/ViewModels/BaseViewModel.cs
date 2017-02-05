@@ -12,7 +12,7 @@ namespace RestaurantApp.Core.ViewModels
 {
   public abstract class BaseViewModel:INotifyPropertyChanged
     {
-        public BaseContentView CurreContentView { get; set; }
+        public ContentView CurreContentView { get; set; }
 
         public void Init(object data)
         {

@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using FreshMvvm;
 using RestaurantApp.ContentViews;
 using RestaurantApp.Core.Interfaces;
 using RestaurantApp.Core.Services;
 using RestaurantApp.Core.ViewModels;
+using RestaurantApp.UserControls;
 using Xamanimation;
 using Xamarin.Forms;
 
@@ -16,6 +18,7 @@ namespace RestaurantApp.Pages
             BindableProperty.Create<MainPage, View>(p => p.Content, null,
                 BindingMode.TwoWay, null,
                 ContentChanged, null, null);
+
 
         public MainPage()
         {
@@ -43,43 +46,34 @@ namespace RestaurantApp.Pages
                 if (currentPage != null)
                 {
                     var titleControl = currentPage.HeaderPage.TitleControl;
+
                     //Hide Title if MenuView
                     if (newValue.GetType() != typeof(MenuView))
                     {
+                        
                         titleControl.IsVisible = true;
-                      //  await titleControl.Animate(new TranslateToAnimation { TranslateY = 0, Duration = "300" });
+                       
                         //Set Title and Subtitle text for current view
-                        titleControl.TitleText = ((BaseContentView) newValue).Title;
+                        titleControl.TitleText = ((BaseContentView) newValue).Title.ToUpper();
                         titleControl.SubTitleText = ((BaseContentView) newValue).SubTitle;
-
                        
                     }
                     else
                     {
-                        //await titleControl.Animate(new TranslateToAnimation {TranslateY = 700, Duration = "300"})
-                        //    .ContinueWith(
-                        //        x =>
-                        //        {
-                        //            titleControl.IsVisible = false;
-                        //        });
-                  
+                      titleControl.IsVisible = false;
 
+                    
                     }
 
-
-                    //await currentPage.MainContentView.Animate(new TranslateToAnimation
-                    //{
-                    //    TranslateY = 700,
-                    //    Duration = "300"
-                    //});
-                    
-                    currentPage.StackNavigation.Add((BaseContentView) oldValue);
+                    if (currentPage.StackNavigation.Count <2)
+                    {
+                        currentPage.StackNavigation.Add((BaseContentView) oldValue);
+                    }
                     currentPage.MainContentView.Content = newValue;
-                    //await currentPage.MainContentView.Animate(new TranslateToAnimation
-                    //{
-                    //    TranslateY = 0,
-                    //    Duration = "300"
-                    //});
+                    
+
+
+
                 }
             }
             catch (Exception)
@@ -88,17 +82,11 @@ namespace RestaurantApp.Pages
             }
         }
 
-
         protected override bool OnBackButtonPressed()
         {
             if (StackNavigation.Count > 0)
             {
-                var menu = ((App) Application.Current).StartMenu;
-                var startMenu = ContentViewModelResolver.ResolveViewModel((object) null,
-                   menu);
-                var dynamicContent = FreshIOC.Container.Resolve<IDynamicContent>();
-                dynamicContent.MainContentView = startMenu;
-                StackNavigation.Clear();
+                MainContent= StackNavigation[1];
             }
             else
             {

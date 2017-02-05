@@ -1,14 +1,15 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<viewModels:BaseContentView
+<contentViews:BaseContentView
     x:Class="RestaurantApp.ContentViews.TableOrderView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:localizations="clr-namespace:RestaurantApp.Localizations;assembly=RestaurantApp"
     xmlns:viewModels="clr-namespace:RestaurantApp.Core.ViewModels;assembly=RestaurantApp.Core"
+    xmlns:contentViews="clr-namespace:RestaurantApp.ContentViews;assembly=RestaurantApp"
     Title="{x:Static localizations:AppResources.Tables}">
-    <viewModels:BaseContentView.BindingContext>
+    <contentViews:BaseContentView.BindingContext>
         <viewModels:TableOrderViewModel />
-    </viewModels:BaseContentView.BindingContext>
+    </contentViews:BaseContentView.BindingContext>
     <StackLayout>
         <ScrollView>
             <AbsoluteLayout>
@@ -16,7 +17,6 @@
                     Padding="20"
                     AbsoluteLayout.LayoutBounds="1,1,1,1"
                     AbsoluteLayout.LayoutFlags="All"
-                    BackgroundColor="{StaticResource SecondThemeColorAlpha80}"
                     VerticalOptions="FillAndExpand">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*" />
@@ -70,4 +70,4 @@
             </AbsoluteLayout>
         </ScrollView>
     </StackLayout>
-</viewModels:BaseContentView>
+</contentViews:BaseContentView>
