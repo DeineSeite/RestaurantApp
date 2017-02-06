@@ -14,7 +14,7 @@
 
     <StackLayout>
         <ContentView x:Name="FirstLoginPage" IsVisible="{Binding IsLogin, Converter={StaticResource InverseBooleanConverter}}">
-            <ContentView.Triggers>
+            <!--<ContentView.Triggers>
                 <DataTrigger
                     Binding="{Binding Source={x:Reference LoginCheckBox}, Path=Checked}"
                     TargetType="ContentView"
@@ -32,9 +32,40 @@
                     FontSize="20"
                     DefaultText="Nein, ich möchte ... werden"
                     HorizontalOptions="CenterAndExpand" />
-            </StackLayout>
+            </StackLayout>-->
+            <Grid
+                Padding="20"
+                AbsoluteLayout.LayoutBounds="1,1,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                VerticalOptions="FillAndExpand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Entry Grid.Row="0" Placeholder="{x:Static localizations:AppResources.ContactEmail}" />
+                <Entry
+                    Grid.Row="1"
+                    Keyboard="Email"
+                    Placeholder="{x:Static localizations:AppResources.Password}" />
+                <Button
+                    Grid.Row="2"
+                    BackgroundColor="Green"
+                    Text="{x:Static localizations:AppResources.Login}"
+                    TextColor="White" />
+                <Button
+                    Grid.Row="3"
+                    BackgroundColor="#3b5998"
+                    HeightRequest="50"
+                    Text="Facebook"
+                    TextColor="White" />
+            </Grid>
         </ContentView>
-        <ContentView x:Name="LoginPage" IsVisible="False">
+        <!--<ContentView x:Name="SignUpPage" IsVisible="False">
             <ContentView.Triggers>
                 <DataTrigger
                     Binding="{Binding Source={x:Reference LoginCheckBox}, Path=Checked}"
@@ -44,6 +75,6 @@
                 </DataTrigger>
             </ContentView.Triggers>
             <StackLayout />
-        </ContentView>
+        </ContentView>-->
     </StackLayout>
 </contentViews:BaseContentView>

@@ -2,8 +2,8 @@
 using Android.Content.PM;
 using Android.OS;
 using DLToolkit.Forms.Controls;
+using RestaurantApp.ContentViews;
 using RestaurantApp.Core.Converters;
-using RestaurantApp.Core.ViewModels;
 using RestaurantApp.Droid.Renderers;
 using RestaurantApp.Pages;
 using RestaurantApp.Triggers;

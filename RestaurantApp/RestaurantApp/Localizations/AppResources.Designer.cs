@@ -23,7 +23,7 @@ namespace RestaurantApp.Localizations {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class AppResources {
+    public class AppResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -37,7 +37,7 @@ namespace RestaurantApp.Localizations {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("RestaurantApp.Localizations.AppResources", typeof(AppResources).GetTypeInfo().Assembly);
@@ -52,7 +52,7 @@ namespace RestaurantApp.Localizations {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -64,7 +64,7 @@ namespace RestaurantApp.Localizations {
         /// <summary>
         ///   Looks up a localized string similar to Account.
         /// </summary>
-        internal static string Account {
+        public static string Account {
             get {
                 return ResourceManager.GetString("Account", resourceCulture);
             }
@@ -73,7 +73,7 @@ namespace RestaurantApp.Localizations {
         /// <summary>
         ///   Looks up a localized string similar to For 10 visits the 11 food is free.
         /// </summary>
-        internal static string BonusPageInfo {
+        public static string BonusPageInfo {
             get {
                 return ResourceManager.GetString("BonusPageInfo", resourceCulture);
             }
@@ -82,7 +82,7 @@ namespace RestaurantApp.Localizations {
         /// <summary>
         ///   Looks up a localized string similar to Bonus points.
         /// </summary>
-        internal static string BonusPoints {
+        public static string BonusPoints {
             get {
                 return ResourceManager.GetString("BonusPoints", resourceCulture);
             }
@@ -91,7 +91,7 @@ namespace RestaurantApp.Localizations {
         /// <summary>
         ///   Looks up a localized string similar to Date*.
         /// </summary>
-        internal static string ContactDate {
+        public static string ContactDate {
             get {
                 return ResourceManager.GetString("ContactDate", resourceCulture);
             }
@@ -100,7 +100,7 @@ namespace RestaurantApp.Localizations {
         /// <summary>
         ///   Looks up a localized string similar to Email*.
         /// </summary>
-        internal static string ContactEmail {
+        public static string ContactEmail {
             get {
                 return ResourceManager.GetString("ContactEmail", resourceCulture);
             }
@@ -109,7 +109,7 @@ namespace RestaurantApp.Localizations {
         /// <summary>
         ///   Looks up a localized string similar to First and last name*.
         /// </summary>
-        internal static string ContactName {
+        public static string ContactName {
             get {
                 return ResourceManager.GetString("ContactName", resourceCulture);
             }
@@ -118,7 +118,7 @@ namespace RestaurantApp.Localizations {
         /// <summary>
         ///   Looks up a localized string similar to Phone number*.
         /// </summary>
-        internal static string ContactNumber {
+        public static string ContactNumber {
             get {
                 return ResourceManager.GetString("ContactNumber", resourceCulture);
             }
@@ -127,7 +127,7 @@ namespace RestaurantApp.Localizations {
         /// <summary>
         ///   Looks up a localized string similar to Person count*.
         /// </summary>
-        internal static string ContactPersonCount {
+        public static string ContactPersonCount {
             get {
                 return ResourceManager.GetString("ContactPersonCount", resourceCulture);
             }
@@ -136,7 +136,7 @@ namespace RestaurantApp.Localizations {
         /// <summary>
         ///   Looks up a localized string similar to Contacts.
         /// </summary>
-        internal static string Contacts {
+        public static string Contacts {
             get {
                 return ResourceManager.GetString("Contacts", resourceCulture);
             }
@@ -145,7 +145,7 @@ namespace RestaurantApp.Localizations {
         /// <summary>
         ///   Looks up a localized string similar to Smoker YES/NO*.
         /// </summary>
-        internal static string ContactSmoker {
+        public static string ContactSmoker {
             get {
                 return ResourceManager.GetString("ContactSmoker", resourceCulture);
             }
@@ -154,7 +154,7 @@ namespace RestaurantApp.Localizations {
         /// <summary>
         ///   Looks up a localized string similar to Time*.
         /// </summary>
-        internal static string ContactTime {
+        public static string ContactTime {
             get {
                 return ResourceManager.GetString("ContactTime", resourceCulture);
             }
@@ -163,7 +163,7 @@ namespace RestaurantApp.Localizations {
         /// <summary>
         ///   Looks up a localized string similar to Menu.
         /// </summary>
-        internal static string FoodCard {
+        public static string FoodCard {
             get {
                 return ResourceManager.GetString("FoodCard", resourceCulture);
             }
@@ -172,7 +172,7 @@ namespace RestaurantApp.Localizations {
         /// <summary>
         ///   Looks up a localized string similar to Gallery.
         /// </summary>
-        internal static string Gallery {
+        public static string Gallery {
             get {
                 return ResourceManager.GetString("Gallery", resourceCulture);
             }
@@ -181,16 +181,25 @@ namespace RestaurantApp.Localizations {
         /// <summary>
         ///   Looks up a localized string similar to Information.
         /// </summary>
-        internal static string Info {
+        public static string Info {
             get {
                 return ResourceManager.GetString("Info", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Log in.
+        /// </summary>
+        public static string Login {
+            get {
+                return ResourceManager.GetString("Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Next.
         /// </summary>
-        internal static string Next {
+        public static string Next {
             get {
                 return ResourceManager.GetString("Next", resourceCulture);
             }
@@ -199,7 +208,7 @@ namespace RestaurantApp.Localizations {
         /// <summary>
         ///   Looks up a localized string similar to Open Hours.
         /// </summary>
-        internal static string OpenHours {
+        public static string OpenHours {
             get {
                 return ResourceManager.GetString("OpenHours", resourceCulture);
             }
@@ -208,16 +217,25 @@ namespace RestaurantApp.Localizations {
         /// <summary>
         ///   Looks up a localized string similar to Park places.
         /// </summary>
-        internal static string ParkPlace {
+        public static string ParkPlace {
             get {
                 return ResourceManager.GetString("ParkPlace", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Password.
+        /// </summary>
+        public static string Password {
+            get {
+                return ResourceManager.GetString("Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Send.
         /// </summary>
-        internal static string Send {
+        public static string Send {
             get {
                 return ResourceManager.GetString("Send", resourceCulture);
             }
@@ -226,7 +244,7 @@ namespace RestaurantApp.Localizations {
         /// <summary>
         ///   Looks up a localized string similar to Tables.
         /// </summary>
-        internal static string Tables {
+        public static string Tables {
             get {
                 return ResourceManager.GetString("Tables", resourceCulture);
             }

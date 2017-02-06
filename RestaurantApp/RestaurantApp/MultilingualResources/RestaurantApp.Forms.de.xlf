@@ -82,6 +82,14 @@
           <source>Tables</source>
           <target state="needs-review-translation" state-qualifier="tm-suggestion">Tabellen</target>
         </trans-unit>
+        <trans-unit id="Password" translate="yes" xml:space="preserve">
+          <source>Password</source>
+          <target state="new">Password</target>
+        </trans-unit>
+        <trans-unit id="Login" translate="yes" xml:space="preserve">
+          <source>Log in</source>
+          <target state="new">Log in</target>
+        </trans-unit>
       </group>
     </body>
   </file>

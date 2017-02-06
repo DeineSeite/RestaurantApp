@@ -9,9 +9,11 @@ namespace RestaurantApp.ContentViews
         
         public BaseContentView()
         {
-              var app = FreshIOC.Container.Resolve<IApplicationContext>();
+#if !GORILLA
+            var app = FreshIOC.Container.Resolve<IApplicationContext>();
               var backgroundColor = (Color) app.Instance.Resources["SecondThemeColorAlpha80"];
               BackgroundColor = backgroundColor;
+#endif
         }
 
         public string Title { get; set; }
