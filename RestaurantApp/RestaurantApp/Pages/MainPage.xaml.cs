@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Diagnostics;
 using FreshMvvm;
 using RestaurantApp.ContentViews;
 using RestaurantApp.Core.Interfaces;
+using RestaurantApp.UserControls;
 using Xamanimation;
 using Xamarin.Forms;
 
@@ -39,18 +41,11 @@ namespace RestaurantApp.Pages
                     var titleControl = currentPage.HeaderPage.TitleControl;
 
                     //Hide Title if MenuView
-                    if (newValue.GetType() != typeof(MenuView))
-                    {
-                        titleControl.IsVisible = true;
+                    titleControl.IsVisible = newValue.GetType() != typeof(MenuView);
 
-                        //Set Title and Subtitle text for current view
-                        titleControl.TitleText = ((BaseContentView) newValue).Title.ToUpper();
-                        titleControl.SubTitleText = ((BaseContentView) newValue).SubTitle;
-                    }
-                    else
-                    {
-                        titleControl.IsVisible = false;
-                    }
+                    //Set Title and Subtitle text for current view
+                    titleControl.TitleText = ((BaseContentView) newValue).Title?.ToUpper();
+                    titleControl.SubTitleText = ((BaseContentView) newValue).SubTitle;
 
                     await currentPage.MainContentView.Animate(new TranslateToAnimation
                     {
@@ -58,19 +53,33 @@ namespace RestaurantApp.Pages
                         TranslateX = 700
                     });
                     currentPage.MainContentView.TranslationX = -700;
+
                     currentPage.MainContentView.Content = newValue;
+
                     await currentPage.MainContentView.Animate(new TranslateToAnimation
                     {
                         Duration = "300",
                         TranslateX = 0
                     });
+
+                    //bug with WebView is not showing in StackLayout , workaround:
+                    if (((ContentView)newValue).Content is TransparentWebView)
+                    {
+                        currentPage.MainContentView.VerticalOptions = LayoutOptions.FillAndExpand;
+                    }
+                    else
+                    {
+                        currentPage.MainContentView.VerticalOptions = LayoutOptions.Start;
+                    }
+                    //---------------------------------------------------------
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                // ignored
+                Debug.WriteLine("Change ContentView Exception "+e.Message);
             }
         }
+
 
         protected override bool OnBackButtonPressed()
         {

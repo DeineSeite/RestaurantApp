@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using RestaurantApp.Core.ViewModels;
-using Xamarin.Forms;
 
 namespace RestaurantApp.ContentViews
 {
-    public partial class AccountView: BaseContentView
+    public partial class AccountView : BaseContentView
     {
         public AccountView()
         {
@@ -18,9 +12,14 @@ namespace RestaurantApp.ContentViews
 
         private void SignUpButton_OnClicked(object sender, EventArgs e)
         {
-
             LoginView.IsVisible = false;
             SignUpView.IsVisible = true;
+        }
+
+        private void LoginButton_OnClicked(object sender, EventArgs e)
+        {
+            LoginView.IsVisible = false;
+            AfterLoginView.IsVisible = true;
         }
     }
 }

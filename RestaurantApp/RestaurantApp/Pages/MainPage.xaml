@@ -15,19 +15,7 @@
             Source="{StaticResource MainBackgroundImage}" />
         <StackLayout AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All">
             <userControls:HeaderTemplate x:Name="HeaderPage" BindingContext="{Binding Source={x:Reference BasePage}, Path=BindingContext}" />
-
-            <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                <ContentView
-                    x:Name="MainContentView"
-                    HorizontalOptions="FillAndExpand"
-                    VerticalOptions="FillAndExpand" />
-            </ScrollView>
-            <!--<userControls:MenuTemplate
-                    x:Name="Menu"
-                    AbsoluteLayout.LayoutBounds="1,.8,1,.7"
-                    AbsoluteLayout.LayoutFlags="All" />-->
+            <ContentView x:Name="MainContentView" HorizontalOptions="FillAndExpand" />
         </StackLayout>
     </AbsoluteLayout>
-
-
 </pages:BasePage>
