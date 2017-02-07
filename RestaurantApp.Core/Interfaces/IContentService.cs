@@ -9,7 +9,10 @@ namespace RestaurantApp.Core.Interfaces
 {
     public interface IContentNavigationService
     {
-        IDynamicContent CurrentPageModel { get; set; }
-       Task PushContentViewAsync(IBaseContentView contentView);
+        IDynamicContent MainPageModel { get; set; }
+        List<IBaseContentView> StackNavigation { get; set; }
+        IBaseContentView CurrentContentView { get; set; }
+        void PushContentView(IBaseContentView contentView);
+        void StepBackNavigation();
     }
 }

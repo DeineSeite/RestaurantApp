@@ -5,7 +5,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:contentViews="clr-namespace:RestaurantApp.ContentViews;assembly=RestaurantApp"
     xmlns:pages="clr-namespace:RestaurantApp.Pages;assembly=RestaurantApp"
-    xmlns:userControls="clr-namespace:RestaurantApp.UserControls;assembly=RestaurantApp">
+    xmlns:userControls="clr-namespace:RestaurantApp.UserControls;assembly=RestaurantApp"
+    x:Name="BasePage">
     <AbsoluteLayout>
         <Image
             AbsoluteLayout.LayoutBounds="1,1,1,1"
@@ -13,7 +14,8 @@
             Aspect="AspectFill"
             Source="{StaticResource MainBackgroundImage}" />
         <StackLayout AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All">
-            <userControls:HeaderTemplate x:Name="HeaderPage" />
+            <userControls:HeaderTemplate x:Name="HeaderPage" BindingContext="{Binding Source={x:Reference BasePage}, Path=BindingContext}" />
+
             <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <ContentView
                     x:Name="MainContentView"

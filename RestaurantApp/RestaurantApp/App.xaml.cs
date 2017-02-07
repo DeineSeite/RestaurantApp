@@ -18,7 +18,6 @@ namespace RestaurantApp
 
         public App()
         {
-
             InitializeComponent();
             ChangeCurrentCultureInfo(CurrentCulture.Name);
             InitializeFreshMvvm();
@@ -29,13 +28,16 @@ namespace RestaurantApp
         #endregion
 
         #region Public properties
-        public Application Instance => App.Current;
+
+        public Application Instance => Current;
         public FreshNavigationContainer BasicNavContainer { get; set; }
         public CultureInfo CurrentCulture { get; set; } = new CultureInfo("de-De");
         public MenuViewModel StartMenu { get; set; }
+
         #endregion
 
         #region Public/Private members
+
         public void ChangeCurrentCultureInfo(string langCode)
         {
             DependencyService.Get<ILocalize>().SetLocale(langCode);
@@ -55,37 +57,45 @@ namespace RestaurantApp
 
         private void InitializeStartMenu()
         {
+            //Register MainPageModel as model with dynamic ContentView
             var mainPageModel = new MainPageModel();
-            FreshIOC.Container.Register<IDynamicContent>(mainPageModel); //Register MainPageModel as model with dynamic ContentView
+            FreshIOC.Container.Register<IDynamicContent>(mainPageModel);
+
+            //Register ContentNavigationService
+            var navService = new ContentNavigationService();
+            FreshIOC.Container.Register<IContentNavigationService>(navService);
 
             //Initialize menu items
             StartMenu = new MenuViewModel();
             var infoMenu = new MenuViewModel();
-            infoMenu.MenuItemsList = new List<IBaseContentView>()
-              {
-                  new OpenHoursView(),
-                  new TableOrderView(),
-                  new GalleryView()
-              };
+            infoMenu.MenuItemsList = new List<IBaseContentView>
+            {
+                new OpenHoursView(),
+                new TableOrderView(),
+                new GalleryView()
+            };
 
-            var infoMenuView = (BaseContentView)ContentViewModelResolver.ResolveViewModel((object)null, infoMenu);
+            var infoMenuView = (BaseContentView) ContentViewModelResolver.ResolveViewModel((object) null, infoMenu);
             infoMenuView.Title = AppResources.Info;
             StartMenu.MenuItemsList = new List<IBaseContentView>
-              {
-                  new BonusPointView(),
-                 infoMenuView,
-                  new FoodCardView(),
-                  new ContactView(),
-              };
+            {
+                new BonusPointView(),
+                infoMenuView,
+                new FoodCardView(),
+                new ContactView()
+            };
 
-            //Set menu as content
-            var startMenuView = (BaseContentView)ContentViewModelResolver.ResolveViewModel((object)null, StartMenu);
-            mainPageModel.MainContentView = startMenuView;
 
             //Resolve Page and start
-            var mainContentPage = FreshPageModelResolver.ResolvePageModel((object)null,mainPageModel);
+            var mainContentPage = FreshPageModelResolver.ResolvePageModel((object) null, mainPageModel);
             BasicNavContainer = new FreshNavigationContainer(mainContentPage);
+
+
+            //Set menu as content
+            var startMenuView = (BaseContentView) ContentViewModelResolver.ResolveViewModel((object) null, StartMenu);
+            navService.PushContentView(startMenuView);
         }
+
         #endregion
 
         #region  LifeCycle

@@ -15,15 +15,12 @@ namespace RestaurantApp.Core.PageModels
             set;
         }
 
-        public bool IsBusy
-        {
-            get;
-            set;
-        }
+        
+
         #region ctor
         public MainPageModel()
         {
-            IsBusy = false;
+          
         }
         
         #endregion

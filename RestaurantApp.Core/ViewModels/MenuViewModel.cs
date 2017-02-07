@@ -50,7 +50,7 @@ namespace RestaurantApp.Core.ViewModels
         private async void PushContent(IBaseContentView view)
         {
           //  var viewContent = ContentViewModelResolver.ResolveViewModel((object) null, view);
-           await _contentNavigationService.PushContentViewAsync(view);
+            _contentNavigationService.PushContentView(view);
         }
 
         #endregion

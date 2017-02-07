@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using FreshMvvm;
 using RestaurantApp.ContentViews;
 using RestaurantApp.Core.Interfaces;
 using Xamanimation;
@@ -14,11 +14,10 @@ namespace RestaurantApp.Pages
                 BindingMode.TwoWay, null,
                 ContentChanged, null, null);
 
-
         public MainPage()
         {
             InitializeComponent();
-            StackNavigation = new List<BaseContentView>();
+
             this.SetBinding(MainContentProperty, "MainContentView");
         }
 
@@ -27,9 +26,6 @@ namespace RestaurantApp.Pages
             get { return (BaseContentView) GetValue(MainContentProperty); }
             set { SetValue(MainContentProperty, value); }
         }
-
-        //TODO: StackNavigation is not working properly
-        private List<BaseContentView> StackNavigation { get; }
 
 
         private static async void ContentChanged(BindableObject obj, View oldValue, View newValue)
@@ -56,12 +52,18 @@ namespace RestaurantApp.Pages
                         titleControl.IsVisible = false;
                     }
 
-                    if (currentPage.StackNavigation.Count < 2)
-                        currentPage.StackNavigation.Add((BaseContentView) oldValue);
-                   await currentPage.MainContentView.Animate(new TranslateToAnimation() {Duration = "300", TranslateX = 700} );
+                    await currentPage.MainContentView.Animate(new TranslateToAnimation
+                    {
+                        Duration = "300",
+                        TranslateX = 700
+                    });
                     currentPage.MainContentView.TranslationX = -700;
                     currentPage.MainContentView.Content = newValue;
-                    await currentPage.MainContentView.Animate(new TranslateToAnimation() { Duration = "300", TranslateX = 0 });
+                    await currentPage.MainContentView.Animate(new TranslateToAnimation
+                    {
+                        Duration = "300",
+                        TranslateX = 0
+                    });
                 }
             }
             catch (Exception)
@@ -72,25 +74,13 @@ namespace RestaurantApp.Pages
 
         protected override bool OnBackButtonPressed()
         {
-            if (StackNavigation.Count > 0)
-            {
-                MainContent = StackNavigation[1];
-            }
-            else
-            {
-                INativeHelper nativeHelper = null;
-                nativeHelper = DependencyService.Get<INativeHelper>();
-                if (nativeHelper != null)
-                    nativeHelper.CloseApp();
-                base.OnBackButtonPressed();
-            }
+            var contentService = FreshIOC.Container.Resolve<IContentNavigationService>();
+            contentService.StepBackNavigation();
             return true;
         }
 
         protected override void OnAppearing()
         {
-            //Menu.MenuListView.HeaderTemplate = null;
-
             base.OnAppearing();
         }
     }

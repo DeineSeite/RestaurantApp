@@ -1,4 +1,6 @@
-﻿using Xamarin.Forms;
+﻿using FreshMvvm;
+using RestaurantApp.Core.Interfaces;
+using Xamarin.Forms;
 
 namespace RestaurantApp.UserControls
 {
@@ -7,6 +9,7 @@ namespace RestaurantApp.UserControls
         public TitleTemplate()
         {
             InitializeComponent();
+          
         }
 
         public string TitleText

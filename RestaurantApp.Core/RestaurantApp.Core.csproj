@@ -69,7 +69,7 @@
     <Compile Include="PageModels\BasePageModel.cs" />
     <Compile Include="PageModels\MainPageModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\ContentService.cs" />
+    <Compile Include="Services\ContentNavigationService.cs" />
     <Compile Include="Services\ContentViewModelMapper.cs" />
     <Compile Include="Services\ContentViewModelResolver.cs" />
     <Compile Include="ViewModels\AccountViewModel.cs" />

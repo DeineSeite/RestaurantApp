@@ -13,6 +13,14 @@ namespace RestaurantApp.ContentViews
         public AccountView()
         {
             InitializeComponent();
+            SignUpView.IsVisible = false;
+        }
+
+        private void SignUpButton_OnClicked(object sender, EventArgs e)
+        {
+
+            LoginView.IsVisible = false;
+            SignUpView.IsVisible = true;
         }
     }
 }

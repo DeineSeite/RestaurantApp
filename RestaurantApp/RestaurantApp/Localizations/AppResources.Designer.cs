@@ -71,6 +71,15 @@ namespace RestaurantApp.Localizations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Birthday.
+        /// </summary>
+        public static string Birthday {
+            get {
+                return ResourceManager.GetString("Birthday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to For 10 visits the 11 food is free.
         /// </summary>
         public static string BonusPageInfo {
@@ -238,6 +247,15 @@ namespace RestaurantApp.Localizations {
         public static string Send {
             get {
                 return ResourceManager.GetString("Send", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sign Up.
+        /// </summary>
+        public static string Signup {
+            get {
+                return ResourceManager.GetString("Signup", resourceCulture);
             }
         }
         

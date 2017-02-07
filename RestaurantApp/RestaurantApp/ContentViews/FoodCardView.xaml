@@ -11,10 +11,8 @@
     <contentViews:BaseContentView.BindingContext>
         <viewModels:FoodCardViewModel />
     </contentViews:BaseContentView.BindingContext>
-    <StackLayout>
-        <userControls:TransparentWebView
-            x:Name="MenuWebView"
-            Source="http://www.luckywok.at/speisekarte/55"
-            VerticalOptions="FillAndExpand" />
-    </StackLayout>
+    <userControls:TransparentWebView
+        x:Name="MenuWebView"
+        Source="http://www.luckywok.at/speisekarte/55"
+        VerticalOptions="FillAndExpand" />
 </contentViews:BaseContentView>

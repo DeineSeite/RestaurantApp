@@ -1,4 +1,5 @@
-﻿using FreshMvvm;
+﻿using System.Diagnostics;
+using FreshMvvm;
 using PropertyChanged;
 using RestaurantApp.Core.Interfaces;
 using RestaurantApp.Core.Services;
@@ -24,7 +25,15 @@ namespace RestaurantApp.Core.PageModels
                 if (CurrentPage != null) CurrentPage.Title = _title;
             }
         }
-
+        public bool IsBusy
+        {
+            get { return _isBusy; }
+            set
+            {
+                _isBusy = value;
+            }
+        }
+        private bool _isBusy;
 
         /// <summary>
         ///     Addition Title for ContentPage, will be shown under main Title
@@ -48,6 +57,15 @@ namespace RestaurantApp.Core.PageModels
             CurrentPage.Title = _title;
             GoBackCommand = new Command(GoBack);
             GoToAccountCommand = new Command(GoToAccountPage);
+            IsBusy = false;
+            PropertyChanged += BasePageModel_PropertyChanged;
+        }
+
+        private void BasePageModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+#if DEBUG
+            Debug.WriteLine("DEBUG: Property Changed "+e.PropertyName);
+#endif
         }
 
         #endregion
@@ -64,15 +82,14 @@ namespace RestaurantApp.Core.PageModels
         private void GoToAccountPage()
         {
             var accountView = ContentViewModelResolver.ResolveViewModel<AccountViewModel>();
-            var content = FreshIOC.Container.Resolve<IDynamicContent>();
-            content.MainContentView = accountView;
+            var contentNavigation = FreshIOC.Container.Resolve<IContentNavigationService>();
+            contentNavigation.PushContentView(accountView);
         }
 
         private void GoBack()
         {
             var app = FreshIOC.Container.Resolve<IApplicationContext>();
             CoreMethods.PushPageModel<MainPageModel>();
-            // ((IBasePage) CurrentPage)?.GoBackButton();
         }
 
         #endregion

@@ -180,4 +180,10 @@
   <data name="Login" xml:space="preserve">
     <value>Log in</value>
   </data>
+  <data name="Birthday" xml:space="preserve">
+    <value>Birthday</value>
+  </data>
+  <data name="Signup" xml:space="preserve">
+    <value>Sign Up</value>
+  </data>
 </root>

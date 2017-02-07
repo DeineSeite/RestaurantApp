@@ -67,6 +67,18 @@
     <value>Senden</value>
   </data>
   <data name="Tables" xml:space="preserve">
-    <value>Tabellen</value>
+    <value>Tische</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Passwort</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Anmelden</value>
+  </data>
+  <data name="Birthday" xml:space="preserve">
+    <value>Geburtstag</value>
+  </data>
+  <data name="Signup" xml:space="preserve">
+    <value>Registrieren</value>
   </data>
 </root>

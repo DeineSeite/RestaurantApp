@@ -13,7 +13,14 @@
             <Color x:Key="SecondThemeColorAlpha80">#B3FAECC7</Color>
 
             <Style x:Key="HeaderStyleWithName" TargetType="View">
-                <Setter Property="AbsoluteLayout.LayoutBounds" Value="-10,.3,.95,.4" />
+                <Setter Property="AbsoluteLayout.LayoutBounds">
+                    <Setter.Value>
+                        <OnIdiom
+                            x:TypeArguments="Rectangle"
+                            Phone="-10,.3,.95,.3"
+                            Tablet="-10,.3,.95,.4" />
+                    </Setter.Value>
+                </Setter>
                 <Setter Property="AbsoluteLayout.LayoutFlags" Value="YProportional,SizeProportional" />
             </Style>
 
@@ -25,9 +32,9 @@
                 <OnIdiom.Phone>
                     <OnPlatform
                         x:TypeArguments="x:Double"
-                        Android="70"
-                        WinPhone="90"
-                        iOS="100" />
+                        Android="60"
+                        WinPhone="60"
+                        iOS="80" />
                 </OnIdiom.Phone>
 
             </OnIdiom>

@@ -5,6 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:contentViews="clr-namespace:RestaurantApp.ContentViews;assembly=RestaurantApp"
     xmlns:localizations="clr-namespace:RestaurantApp.Localizations;assembly=RestaurantApp"
+    xmlns:system="clr-namespace:System;assembly=System.Runtime"
     xmlns:userControls="clr-namespace:RestaurantApp.UserControls;assembly=RestaurantApp"
     xmlns:viewModels="clr-namespace:RestaurantApp.Core.ViewModels;assembly=RestaurantApp.Core"
     Title="{x:Static localizations:AppResources.Account}">
@@ -13,26 +14,7 @@
     </contentViews:BaseContentView.BindingContext>
 
     <StackLayout>
-        <ContentView x:Name="FirstLoginPage" IsVisible="{Binding IsLogin, Converter={StaticResource InverseBooleanConverter}}">
-            <!--<ContentView.Triggers>
-                <DataTrigger
-                    Binding="{Binding Source={x:Reference LoginCheckBox}, Path=Checked}"
-                    TargetType="ContentView"
-                    Value="True">
-                    <Setter Property="IsVisible" Value="False" />
-                </DataTrigger>
-            </ContentView.Triggers>
-            <StackLayout>
-                <userControls:CheckBox
-                    x:Name="LoginCheckBox"
-                    FontSize="20"
-                    DefaultText="Ja, ich möchte gratis Essen"
-                    HorizontalOptions="CenterAndExpand" />
-                <userControls:CheckBox
-                    FontSize="20"
-                    DefaultText="Nein, ich möchte ... werden"
-                    HorizontalOptions="CenterAndExpand" />
-            </StackLayout>-->
+        <ContentView x:Name="LoginView" IsVisible="{Binding IsLogin, Converter={StaticResource InverseBooleanConverter}}">
             <Grid
                 Padding="20"
                 AbsoluteLayout.LayoutBounds="1,1,1,1"
@@ -46,35 +28,92 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Entry Grid.Row="0" Placeholder="{x:Static localizations:AppResources.ContactEmail}" />
                 <Entry
                     Grid.Row="1"
                     Keyboard="Email"
                     Placeholder="{x:Static localizations:AppResources.Password}" />
-                <Button
+                <StackLayout
                     Grid.Row="2"
-                    BackgroundColor="Green"
-                    Text="{x:Static localizations:AppResources.Login}"
-                    TextColor="White" />
+                    HorizontalOptions="CenterAndExpand"
+                    Orientation="Horizontal">
+                    <Image
+                        HeightRequest="50"
+                        Source="fb.png"
+                        VerticalOptions="Center" />
+                    <Image
+                        HeightRequest="50"
+                        Source="twitter.png"
+                        VerticalOptions="Center" />
+                    <Image
+                        HeightRequest="50"
+                        Source="google_plus.png"
+                        VerticalOptions="Center" />
+                </StackLayout>
                 <Button
                     Grid.Row="3"
-                    BackgroundColor="#3b5998"
+                    Style="{StaticResource ButtonStyle}"
                     HeightRequest="50"
-                    Text="Facebook"
+                    HorizontalOptions="FillAndExpand"
+                    Text="{x:Static localizations:AppResources.Login}"
+                    TextColor="White"
+                    VerticalOptions="Center" />
+                <Button
+                    x:Name="SignUpButton"
+                    Grid.Row="4"
+                    Style="{StaticResource ButtonStyle}"
+                    Clicked="SignUpButton_OnClicked"
+                    HeightRequest="50"
+                    Text="{x:Static localizations:AppResources.Signup}"
                     TextColor="White" />
             </Grid>
         </ContentView>
-        <!--<ContentView x:Name="SignUpPage" IsVisible="False">
-            <ContentView.Triggers>
-                <DataTrigger
-                    Binding="{Binding Source={x:Reference LoginCheckBox}, Path=Checked}"
-                    TargetType="ContentView"
-                    Value="True">
-                    <Setter Property="IsVisible" Value="True" />
-                </DataTrigger>
-            </ContentView.Triggers>
-            <StackLayout />
-        </ContentView>-->
+        <ContentView x:Name="SignUpView" IsVisible="True">
+            <StackLayout>
+                <Grid
+                    Padding="20"
+                    AbsoluteLayout.LayoutBounds="1,1,1,1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    VerticalOptions="FillAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Entry Grid.Row="0" Placeholder="{x:Static localizations:AppResources.ContactName}" />
+                    <Entry
+                        Grid.Row="1"
+                        Keyboard="Email"
+                        Placeholder="{x:Static localizations:AppResources.ContactEmail}" />
+                    <Entry
+                        Grid.Row="2"
+                        Keyboard="Telephone"
+                        Placeholder="{x:Static localizations:AppResources.ContactNumber}" />
+                    <DatePicker
+                        Grid.Row="3"
+                        Date="{x:Static system:DateTime.Now}"
+                        MaximumDate="{x:Static system:DateTime.Now}"
+                        VerticalOptions="CenterAndExpand">
+                        <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
+                        <DatePicker.MinimumDate>
+                            <system:DateTime x:FactoryMethod="Parse">
+                                <x:Arguments>
+                                    <x:String>Jan 1 1900</x:String>
+                                </x:Arguments>
+                            </system:DateTime>
+                        </DatePicker.MinimumDate>
+                    </DatePicker>
+                    <Button
+                        Grid.Row="4"
+                        Style="{StaticResource ButtonStyle}"
+                        Text="{x:Static localizations:AppResources.Signup}" />
+                </Grid>
+            </StackLayout>
+        </ContentView>
     </StackLayout>
 </contentViews:BaseContentView>

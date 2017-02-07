@@ -3,8 +3,9 @@
     x:Class="RestaurantApp.UserControls.HeaderTemplate"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pageModels="clr-namespace:RestaurantApp.Core.PageModels;assembly=RestaurantApp.Core"
     xmlns:userControls="clr-namespace:RestaurantApp.UserControls;assembly=RestaurantApp"
-    xmlns:pageModels="clr-namespace:RestaurantApp.Core.PageModels;assembly=RestaurantApp.Core">
+    x:Name="HeaderContent">
     <StackLayout>
         <AbsoluteLayout>
             <userControls:RoundedBox
@@ -45,15 +46,15 @@
             </StackLayout>
         </AbsoluteLayout>
         <Image
-            Margin="5,-60,15,0"
+            Margin="5,-70,15,0"
             HorizontalOptions="CenterAndExpand"
             IsOpaque="True"
             Scale="0.7"
-            Source="Logo.png" />
-      <userControls:TitleTemplate x:Name="Title" Margin="-10,-20,-10,0" >
-        <userControls:TitleTemplate.BindingContext>
-          <pageModels:MainPageModel></pageModels:MainPageModel>
-        </userControls:TitleTemplate.BindingContext>
-       </userControls:TitleTemplate>
+            Source="Logo.png"
+            VerticalOptions="Start" />
+        <userControls:TitleTemplate
+            x:Name="Title"
+            Margin="-10,-20,-10,0"
+            BindingContext="{Binding Source={x:Reference HeaderContent}, Path=BindingContext}" />
     </StackLayout>
 </ContentView>
