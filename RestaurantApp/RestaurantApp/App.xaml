@@ -52,7 +52,7 @@
                 <Setter Property="BackgroundColor" Value="Transparent" />
             </Style>
 
-            <FileImageSource x:Key="MainBackgroundImage" File="background.png" />
+            <FileImageSource x:Key="MainBackgroundImage" File="background.jpg" />
 
             <Style x:Key="MenuItemCellStyle" TargetType="BoxView">
                 <Setter Property="Opacity" Value="0.5" />
