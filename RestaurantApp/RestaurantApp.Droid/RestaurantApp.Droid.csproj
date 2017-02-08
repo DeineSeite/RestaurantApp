@@ -228,6 +228,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dependencies\DatabaseConnection_Android.cs" />
     <Compile Include="Dependencies\NativeHelper.cs" />
     <Compile Include="Dependencies\Localize.cs" />
     <Compile Include="MainActivity.cs" />
@@ -267,6 +268,10 @@
     <ProjectReference Include="..\..\RestaurantApp.Core\RestaurantApp.Core.csproj">
       <Project>{14f93261-d648-43d9-a453-671fa9432705}</Project>
       <Name>RestaurantApp.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\RestaurantApp.Data\RestaurantApp.Data.csproj">
+      <Project>{67F9D3A8-F71E-4428-913F-C37AE82CDB24}</Project>
+      <Name>RestaurantApp.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\RestaurantApp\RestaurantApp.Forms.csproj">
       <Project>{e7345ae7-6022-4a0e-bd5e-777f8d166536}</Project>
@@ -316,6 +321,9 @@
     <AndroidResource Include="Resources\drawable\logo_circle.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidResource Include="Resources\drawable\background.png" />
+  </ItemGroup>
+  <ItemGroup>
     <AndroidResource Include="Resources\drawable\Logo.png" />
   </ItemGroup>
   <ItemGroup>
@@ -329,9 +337,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\twitter.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\background.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets" Condition="Exists('..\..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets')" />

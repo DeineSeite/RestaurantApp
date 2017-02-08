@@ -5,7 +5,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:contentViews="clr-namespace:RestaurantApp.ContentViews;assembly=RestaurantApp"
     xmlns:localizations="clr-namespace:RestaurantApp.Localizations;assembly=RestaurantApp"
-    xmlns:system="clr-namespace:System;assembly=System.Runtime"
     xmlns:userControls="clr-namespace:RestaurantApp.UserControls;assembly=RestaurantApp"
     xmlns:viewModels="clr-namespace:RestaurantApp.Core.ViewModels;assembly=RestaurantApp.Core"
     Title="{x:Static localizations:AppResources.Account}">
@@ -114,18 +113,10 @@
                         Placeholder="{x:Static localizations:AppResources.ContactNumber}" />
                     <DatePicker
                         Grid.Row="3"
-                        Date="{x:Static system:DateTime.Now}"
-                        MaximumDate="{x:Static system:DateTime.Now}"
-                        VerticalOptions="CenterAndExpand">
-                        <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
-                        <DatePicker.MinimumDate>
-                            <system:DateTime x:FactoryMethod="Parse">
-                                <x:Arguments>
-                                    <x:String>Jan 1 1900</x:String>
-                                </x:Arguments>
-                            </system:DateTime>
-                        </DatePicker.MinimumDate>
-                    </DatePicker>
+                        Date="{x:Static x:DateTime.Now}"
+                        Format="yyyy-MM-dd"
+                        MaximumDate="{x:Static x:DateTime.Now}"
+                        VerticalOptions="CenterAndExpand" />
                     <Button
                         Grid.Row="4"
                         Style="{StaticResource ButtonStyle}"

@@ -56,7 +56,7 @@ namespace RestaurantApp.Core.PageModels
         {
             CurrentPage.Title = _title;
             GoBackCommand = new Command(GoBack);
-            GoToAccountCommand = new Command(GoToAccountPage);
+          
             IsBusy = false;
             PropertyChanged += BasePageModel_PropertyChanged;
         }
@@ -73,18 +73,13 @@ namespace RestaurantApp.Core.PageModels
         #region Commands
 
         public Command GoBackCommand { get; set; }
-        public Command GoToAccountCommand { get; set; }
+      
 
         #endregion
 
         #region Methods
 
-        private void GoToAccountPage()
-        {
-            var accountView = ContentViewModelResolver.ResolveViewModel<AccountViewModel>();
-            var contentNavigation = FreshIOC.Container.Resolve<IContentNavigationService>();
-            contentNavigation.PushContentView(accountView);
-        }
+       
 
         private void GoBack()
         {

@@ -7,8 +7,11 @@ using RestaurantApp.Core.PageModels;
 using RestaurantApp.Core.Services;
 using RestaurantApp.Core.ViewModels;
 using RestaurantApp.Localizations;
+using RestaurantApp.Pages;
 using RestaurantApp.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
 
 namespace RestaurantApp
 {
@@ -61,22 +64,31 @@ namespace RestaurantApp
             var mainPageModel = new MainPageModel();
             FreshIOC.Container.Register<IDynamicContent>(mainPageModel);
 
+            //Resolve Page and start
+            var mainContentPage = new MainPage { BindingContext = mainPageModel };
+            BasicNavContainer = new FreshNavigationContainer(mainContentPage);
+
             //Register ContentNavigationService
             var navService = new ContentNavigationService();
             FreshIOC.Container.Register<IContentNavigationService>(navService);
 
             //Initialize menu items
             StartMenu = new MenuViewModel();
-            var infoMenu = new MenuViewModel();
-            infoMenu.MenuItemsList = new List<IBaseContentView>
+            var infoMenu = new MenuViewModel
             {
-                new OpenHoursView(),
-                new TableOrderView(),
-                new GalleryView()
+                MenuItemsList = new List<IBaseContentView>
+                {
+                    new OpenHoursView(),
+                    new TableOrderView(),
+                    new GalleryView()
+                }
             };
 
-            var infoMenuView = (BaseContentView) ContentViewModelResolver.ResolveViewModel((object) null, infoMenu);
-            infoMenuView.Title = AppResources.Info;
+            var infoMenuView = new MenuView
+            {
+                BindingContext = infoMenu,
+                Title = AppResources.Info
+            };
             StartMenu.MenuItemsList = new List<IBaseContentView>
             {
                 new BonusPointView(),
@@ -85,14 +97,8 @@ namespace RestaurantApp
                 new ContactView()
             };
 
-
-            //Resolve Page and start
-            var mainContentPage = FreshPageModelResolver.ResolvePageModel((object) null, mainPageModel);
-            BasicNavContainer = new FreshNavigationContainer(mainContentPage);
-
-
             //Set menu as content
-            var startMenuView = (BaseContentView) ContentViewModelResolver.ResolveViewModel((object) null, StartMenu);
+            var startMenuView = new MenuView {BindingContext = StartMenu};
             navService.PushContentView(startMenuView);
         }
 
