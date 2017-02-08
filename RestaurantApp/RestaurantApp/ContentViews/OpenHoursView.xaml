@@ -13,7 +13,13 @@
         <viewModels:OpenHoursViewModel />
     </contentViews:BaseContentView.BindingContext>
 
-    <StackLayout>
+    <StackLayout Margin="0,0,0,5">
+      <Label Text=" Mittagsbuffet" FontSize="20"></Label>
+      <Label LineBreakMode="WordWrap"  Text=" Mo. - Fr. (außer Feiertage) 11:30 - 16:30 &#10; Erwachsene: € 10,50 &#10; Kinder von 3 bis 7 Jahre: € 5,90"></Label>
+
+      <Label Text=" Abendbuffet" FontSize="20"></Label>
+      <Label LineBreakMode="WordWrap" Text=" Mo. - Fr. 16:30 - 22:00 &#10; &amp; Sa. So. &amp; Feiertage ganzen Tag &#10; Erwachsene: € 16,50 &#10; Kinder von 3 bis 7 Jahre: € 7,90"></Label>
+      
         <!--   <userControls:HtmlLabel FontSize="Medium" Text="{Binding HtmlContent}" />-->
     </StackLayout>
 </contentViews:BaseContentView>
