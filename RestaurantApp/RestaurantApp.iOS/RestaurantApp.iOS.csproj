@@ -155,6 +155,7 @@
     <Compile Include="CustomElements\GridCollectionView.cs" />
     <Compile Include="CustomElements\GridDataSource.cs" />
     <Compile Include="CustomElements\GridViewCell.cs" />
+    <Compile Include="DatabaseConnection_iOS.cs" />
     <Compile Include="Dependencies\Localize.cs" />
     <Compile Include="Dependencies\NativeHelper.cs" />
     <Compile Include="Main.cs" />
@@ -297,6 +298,10 @@
     <ProjectReference Include="..\..\RestaurantApp.Core\RestaurantApp.Core.csproj">
       <Project>{14f93261-d648-43d9-a453-671fa9432705}</Project>
       <Name>RestaurantApp.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\RestaurantApp.Data\RestaurantApp.Data.csproj">
+      <Project>{67F9D3A8-F71E-4428-913F-C37AE82CDB24}</Project>
+      <Name>RestaurantApp.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\RestaurantApp\RestaurantApp.Forms.csproj">
       <Project>{e7345ae7-6022-4a0e-bd5e-777f8d166536}</Project>

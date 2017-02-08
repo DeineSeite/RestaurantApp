@@ -1,5 +1,7 @@
 using System;
 using System.ComponentModel;
+using System.Diagnostics;
+using CoreGraphics;
 using RestaurantApp.iOS.CustomElements;
 using RestaurantApp.iOS.Renderers;
 using RestaurantApp.UserControls;
@@ -8,10 +10,11 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
 [assembly: ExportRenderer(typeof(CheckBox), typeof(CheckBoxRenderer))]
+
 namespace RestaurantApp.iOS.Renderers
 {
     /// <summary>
-    /// The check box renderer for iOS.
+    ///     The check box renderer for iOS.
     /// </summary>
     public class CheckBoxRenderer : ViewRenderer<CheckBox, CheckBoxView>
 
@@ -20,7 +23,7 @@ namespace RestaurantApp.iOS.Renderers
 
 
         /// <summary>
-        /// Handles the Element Changed event
+        ///     Handles the Element Changed event
         /// </summary>
         /// <param name="e">The e.</param>
         protected override void OnElementChanged(ElementChangedEventArgs<CheckBox> e)
@@ -77,7 +80,7 @@ namespace RestaurantApp.iOS.Renderers
 
 
         /// <summary>
-        /// Resizes the text.
+        ///     Resizes the text.
         /// </summary>
         private void ResizeText()
 
@@ -123,10 +126,10 @@ namespace RestaurantApp.iOS.Renderers
 
 
         /// <summary>
-        /// Draws the specified rect.
+        ///     Draws the specified rect.
         /// </summary>
         /// <param name="rect">The rect.</param>
-        public override void Draw(CoreGraphics.CGRect rect)
+        public override void Draw(CGRect rect)
 
         {
             base.Draw(rect);
@@ -136,28 +139,24 @@ namespace RestaurantApp.iOS.Renderers
 
 
         /// <summary>
-        /// Updates the font.
+        ///     Updates the font.
         /// </summary>
         private void UpdateFont()
 
         {
             if (!string.IsNullOrEmpty(Element.FontName))
             {
-                var font = UIFont.FromName(Element.FontName, (Element.FontSize > 0) ? (float) Element.FontSize : 12.0f);
+                var font = UIFont.FromName(Element.FontName, Element.FontSize > 0 ? (float) Element.FontSize : 12.0f);
 
                 if (font != null)
-                {
                     Control.Font = font;
-                }
             }
             else if (Element.FontSize > 0)
             {
                 var font = UIFont.FromName(Control.Font.Name, (float) Element.FontSize);
 
                 if (font != null)
-                {
                     Control.Font = font;
-                }
             }
         }
 
@@ -172,10 +171,10 @@ namespace RestaurantApp.iOS.Renderers
 
 
         /// <summary>
-        /// Handles the <see cref="E:ElementPropertyChanged" /> event.
+        ///     Handles the <see cref="E:ElementPropertyChanged" /> event.
         /// </summary>
         /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="PropertyChangedEventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="PropertyChangedEventArgs" /> instance containing the event data.</param>
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
 
         {
@@ -231,7 +230,7 @@ namespace RestaurantApp.iOS.Renderers
 
                 default:
 
-                    System.Diagnostics.Debug.WriteLine("Property change for {0} has not been implemented.",
+                    Debug.WriteLine("Property change for {0} has not been implemented.",
                         e.PropertyName);
 
                     return;
