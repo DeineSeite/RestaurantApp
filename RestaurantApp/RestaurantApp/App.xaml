@@ -12,15 +12,14 @@
             <Color x:Key="SecondThemeColor">#FAECC7</Color>
             <Color x:Key="SecondThemeColorAlpha80">#B3FAECC7</Color>
 
+            <OnIdiom
+                x:Key="HeaderSize"
+                x:TypeArguments="Rectangle"
+                Phone="-10,.3,.95,.3"
+                Tablet="-10,.3,.95,.4" />
             <Style x:Key="HeaderStyleWithName" TargetType="View">
-                <Setter Property="AbsoluteLayout.LayoutBounds">
-                    <Setter.Value>
-                        <OnIdiom
-                            x:TypeArguments="Rectangle"
-                            Phone="-10,.3,.95,.3"
-                            Tablet="-10,.3,.95,.4" />
-                    </Setter.Value>
-                </Setter>
+
+                <Setter Property="AbsoluteLayout.LayoutBounds" Value="{StaticResource HeaderSize}" />
                 <Setter Property="AbsoluteLayout.LayoutFlags" Value="YProportional,SizeProportional" />
             </Style>
 
@@ -39,16 +38,14 @@
 
             </OnIdiom>
 
+            <OnIdiom
+                x:Key="RowHeightIdom"
+                x:TypeArguments="x:Int32"
+                Phone="70"
+                Tablet="90" />
             <Style x:Key="MenuListStyle" TargetType="ListView">
                 <Setter Property="SeparatorVisibility" Value="None" />
-                <Setter Property="RowHeight">
-                    <Setter.Value>
-                        <OnIdiom
-                            x:TypeArguments="x:Int32"
-                            Phone="70"
-                            Tablet="90" />
-                    </Setter.Value>
-                </Setter>
+                <Setter Property="RowHeight" Value="{StaticResource RowHeightIdom}" />
                 <Setter Property="BackgroundColor" Value="Transparent" />
             </Style>
 
@@ -59,15 +56,13 @@
                 <Setter Property="Style" Value="{StaticResource SecondThemeColor}" />
             </Style>
 
+            <OnIdiom
+                x:Key="BonusPointItemIdom"
+                x:TypeArguments="Rectangle"
+                Phone="1,1,75,75"
+                Tablet="1,1,120,120" />
             <Style x:Key="BonusPointItemStyle" TargetType="View">
-                <Setter Property="AbsoluteLayout.LayoutBounds">
-                    <Setter.Value>
-                        <OnIdiom
-                            x:TypeArguments="Rectangle"
-                            Phone="1,1,75,75"
-                            Tablet="1,1,120,120" />
-                    </Setter.Value>
-                </Setter>
+                <Setter Property="AbsoluteLayout.LayoutBounds" Value="{StaticResource BonusPointItemIdom}" />
                 <Setter Property="AbsoluteLayout.LayoutFlags" Value="PositionProportional" />
             </Style>
             <Style x:Key="ButtonStyle" TargetType="Button">

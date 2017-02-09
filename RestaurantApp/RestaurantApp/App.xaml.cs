@@ -16,10 +16,13 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 
+
 namespace RestaurantApp
 {
     public partial class App : Application, IApplicationContext
     {
+        public static string TAG = "RestaurantApp";
+
         #region  ctor
 
         public App()
@@ -52,6 +55,8 @@ namespace RestaurantApp
 
         private void InitializeFreshMvvm()
         {
+            AppDebugger.WriteLine("Start InitializeFreshMvvm()");
+            MobileCenterLog.Debug(TAG, "Start InitializeFreshMvvm()");
             //Register containers
             FreshIOC.Container.Register<IApplicationContext>(this);
             FreshIOC.Container.Register<IContentNavigationService, ContentNavigationService>();
@@ -59,21 +64,33 @@ namespace RestaurantApp
             //Register mappers for current project: YouTrack WIKI-5
             FreshPageModelResolver.PageModelMapper = new RestaurantAppModelMapper();
             ContentViewModelResolver.ViewModelMapper = new RestaurantAppModelMapper();
+
+
+            AppDebugger.WriteLine("End InitializeFreshMvvm()");
+            MobileCenterLog.Debug(TAG, "End InitializeFreshMvvm()");
         }
 
         private void InitializeStartMenu()
         {
+            AppDebugger.WriteLine("InitializeStartMenu()");
+            MobileCenterLog.Debug(TAG, "InitializeStartMenu()");
             //Register MainPageModel as model with dynamic ContentView
             var mainPageModel = new MainPageModel();
             FreshIOC.Container.Register<IDynamicContent>(mainPageModel);
 
             //Resolve Page and start
-            var mainContentPage = new MainPage { BindingContext = mainPageModel };
+            var mainContentPage = new MainPage {BindingContext = mainPageModel};
             BasicNavContainer = new FreshNavigationContainer(mainContentPage);
+
+            AppDebugger.WriteLine("MainPage started");
+            MobileCenterLog.Debug(TAG, "MainPage started");
 
             //Register ContentNavigationService
             var navService = new ContentNavigationService();
             FreshIOC.Container.Register<IContentNavigationService>(navService);
+
+            AppDebugger.WriteLine("Registered ContentNavigationService");
+            MobileCenterLog.Debug(TAG, "Registered ContentNavigationService");
 
             //Initialize menu items
             StartMenu = new MenuViewModel();
@@ -87,6 +104,9 @@ namespace RestaurantApp
                 }
             };
 
+            AppDebugger.WriteLine("Initialized menu items");
+            MobileCenterLog.Debug(TAG, "Initialized menu items");
+
             var infoMenuView = new MenuView
             {
                 BindingContext = infoMenu,
@@ -99,10 +119,14 @@ namespace RestaurantApp
                 new FoodCardView(),
                 new ContactView()
             };
+            AppDebugger.WriteLine("Initialized infoMenuView");
+            MobileCenterLog.Debug(TAG, "Initialized infoMenuView");
 
-            //Set menu as content
+            //Push menu as content
             var startMenuView = new MenuView {BindingContext = StartMenu};
             navService.PushContentView(startMenuView);
+            AppDebugger.WriteLine("Push menu as content");
+            MobileCenterLog.Debug(TAG, "Push menu as content");
         }
 
         #endregion

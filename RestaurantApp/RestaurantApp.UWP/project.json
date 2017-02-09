@@ -2,10 +2,12 @@
   "dependencies": {
     "DLToolkit.Forms.Controls.FlowListView": "2.0.2",
     "FreshMvvm": "2.2.0",
+    "Microsoft.Azure.Mobile.Analytics": "0.6.0",
+    "Microsoft.Azure.Mobile.Crashes": "0.6.0",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
     "SQLite.Net-PCL": "3.1.1",
     "Xamanimation": "1.0.0",
-    "Xamarin.Forms": "2.3.3.175",
+    "Xamarin.Forms": "2.3.4.22-nightly",
     "ZXing.Net.Mobile.Forms": "2.1.47"
   },
   "frameworks": {

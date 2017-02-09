@@ -17,8 +17,6 @@ namespace RestaurantApp.Core.PageModels
             set;
         }
 
-        
-
         #region ctor
         public MainPageModel()
         {
@@ -26,7 +24,9 @@ namespace RestaurantApp.Core.PageModels
         }
 
         #endregion
+
         public Command GoToAccountCommand { get; set; }
+
         private void GoToAccountPage()
         {
             var accountView = ContentViewModelResolver.ResolveViewModel<AccountViewModel>();

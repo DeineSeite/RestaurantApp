@@ -6,6 +6,7 @@ using RestaurantApp.Core.Interfaces;
 using RestaurantApp.UserControls;
 using Xamanimation;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace RestaurantApp.Pages
 {
