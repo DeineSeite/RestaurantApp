@@ -54,6 +54,8 @@
     <Compile Include="Access\IDatabaseConnection.cs" />
     <Compile Include="Access\BaseDataAccess.cs" />
     <Compile Include="Access\RestaurantDataAccess.cs" />
+    <Compile Include="Models\AuthenticationRequest.cs" />
+    <Compile Include="Models\AuthenticationResponse.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\BonusPointModel.cs" />
     <Compile Include="Models\RestaurantModel.cs" />
