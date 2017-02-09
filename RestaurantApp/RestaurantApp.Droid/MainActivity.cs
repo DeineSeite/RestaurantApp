@@ -9,18 +9,26 @@ using RestaurantApp.Pages;
 using RestaurantApp.Triggers;
 using RestaurantApp.UserControls;
 using Xamarin.Forms;
+using Xamarin.Forms.Platform.Android;
 #if  GORILLA
- using UXDivers.Gorilla;   
-#endif
+using UXDivers.Gorilla;
 
+#endif
 
 
 [assembly: Application(Debuggable = true)]
 
 namespace RestaurantApp.Droid
 {
-    [Activity(Label = "RestaurantApp", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
+    [Activity(Label = "RestaurantApp",
+#if GORILLA
+        Icon = "@drawable/iconGorilla",
+#else
+      Icon = "@drawable/icon", 
+#endif
+        Theme = "@style/MainTheme", MainLauncher = true,
+        ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    public class MainActivity : FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)
         {
@@ -29,30 +37,30 @@ namespace RestaurantApp.Droid
 
             base.OnCreate(bundle);
 
-            global::Xamarin.Forms.Forms.Init(this, bundle);
+            Forms.Init(this, bundle);
             FlowListView.Init();
-          
+
 
 #if !GORILLA
             LoadApplication(new App());
 #else
-            LoadApplication(UXDivers.Gorilla.Droid.Player.CreateApplication(ApplicationContext, config: new UXDivers.Gorilla.Config("Good Gorilla")
-             .RegisterAssemblyFromType<BasePage>()
-              .RegisterAssemblyFromType<AlphaColorConverter>()
-              .RegisterAssemblyFromType<IValueConverter>()
-              .RegisterAssemblyFromType<RoundedBox>()
-            .RegisterAssemblyFromType<CircleImage>()
-             .RegisterAssemblyFromType<CircleImageRenderer>()
-              .RegisterAssemblyFromType<RoundedBoxRenderer>()
-              .RegisterAssemblyFromType<MenuItemClickTrigger>()
-              .RegisterAssemblyFromType<UserControls.GridView>()
-              .RegisterAssemblyFromType<FlowListView>()
-              .RegisterAssemblyFromType<StringCaseConverter>()
-              .RegisterAssemblyFromType<HtmlLabelRenderer>()
-                 .RegisterAssemblyFromType<InverseBooleanConverter>()
-                 .RegisterAssemblyFromType<InverseBooleanConverter>()
-              .RegisterAssemblyFromType<BaseContentView>()
-              ));
+            LoadApplication(Player.CreateApplication(ApplicationContext, new Config("Good Gorilla")
+                .RegisterAssemblyFromType<BasePage>()
+                .RegisterAssemblyFromType<AlphaColorConverter>()
+                .RegisterAssemblyFromType<IValueConverter>()
+                .RegisterAssemblyFromType<RoundedBox>()
+                .RegisterAssemblyFromType<CircleImage>()
+                .RegisterAssemblyFromType<CircleImageRenderer>()
+                .RegisterAssemblyFromType<RoundedBoxRenderer>()
+                .RegisterAssemblyFromType<MenuItemClickTrigger>()
+                .RegisterAssemblyFromType<GridView>()
+                .RegisterAssemblyFromType<FlowListView>()
+                .RegisterAssemblyFromType<StringCaseConverter>()
+                .RegisterAssemblyFromType<HtmlLabelRenderer>()
+                .RegisterAssemblyFromType<InverseBooleanConverter>()
+                .RegisterAssemblyFromType<InverseBooleanConverter>()
+                .RegisterAssemblyFromType<BaseContentView>()
+            ));
 #endif
         }
 
@@ -72,4 +80,3 @@ namespace RestaurantApp.Droid
 #endif
     }
 }
-
