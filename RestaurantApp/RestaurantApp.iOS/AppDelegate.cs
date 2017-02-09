@@ -1,5 +1,6 @@
 ﻿using DLToolkit.Forms.Controls;
 using Foundation;
+using Microsoft.Azure.Mobile;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
@@ -23,7 +24,7 @@ namespace RestaurantApp.iOS
         {
             Forms.Init();
             FlowListView.Init();
-
+            MobileCenter.Configure("8844801f-c2a9-4e09-b769-61856cfc7d1a");
 #if !GORILLA
             LoadApplication(new App());
 #else

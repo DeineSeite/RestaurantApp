@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
 using FreshMvvm;
+using Microsoft.Azure.Mobile;
+using Microsoft.Azure.Mobile.Analytics;
+using Microsoft.Azure.Mobile.Crashes;
 using RestaurantApp.ContentViews;
 using RestaurantApp.Core.Interfaces;
 using RestaurantApp.Core.PageModels;
@@ -108,6 +111,7 @@ namespace RestaurantApp
 
         protected override void OnStart()
         {
+            MobileCenter.Start(typeof(Analytics), typeof(Crashes));
             // Handle when your app starts
         }
 
