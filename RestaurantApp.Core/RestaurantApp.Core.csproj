@@ -51,6 +51,9 @@
     <SuppressPseudoWarning Condition="'$(Configuration)' == 'Debug'">true</SuppressPseudoWarning>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Behaviors\EmailValidatorBehavior.cs" />
+    <Compile Include="Behaviors\NumberValidationBehavior.cs" />
+    <Compile Include="Behaviors\PasswordValidationBehavior.cs" />
     <Compile Include="Converters\AlphaColorConverter.cs" />
     <Compile Include="Converters\InverseBooleanConverter.cs" />
     <Compile Include="Converters\ItemTappedEventArgsConverter.cs" />
@@ -88,6 +91,7 @@
     <Compile Include="ViewModels\GalleryViewModel.cs" />
     <Compile Include="ViewModels\MenuViewModel.cs" />
     <Compile Include="ViewModels\OpenHoursViewModel.cs" />
+    <Compile Include="ViewModels\SignUpViewModel.cs" />
     <Compile Include="ViewModels\TableOrderViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

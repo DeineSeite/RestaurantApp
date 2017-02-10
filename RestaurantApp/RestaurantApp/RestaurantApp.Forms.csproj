@@ -78,6 +78,9 @@
     <Compile Include="ContentViews\OpenHoursView.xaml.cs">
       <DependentUpon>OpenHoursView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ContentViews\SignUpView.xaml.cs">
+      <DependentUpon>SignUpView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ContentViews\TableOrderView.xaml.cs">
       <DependentUpon>TableOrderView.xaml</DependentUpon>
     </Compile>
@@ -317,6 +320,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ContentViews\TableOrderView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ContentViews\SignUpView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

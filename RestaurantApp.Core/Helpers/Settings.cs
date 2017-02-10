@@ -20,21 +20,16 @@ namespace RestaurantApp.Core.Helpers
 
         #region Setting Constants
 
+        public static string AuthenticationEndpoint { get; set; }
+
         private const string UserIdKey = "user_id_key";
         private static readonly int UserIdDefault = 0;
-
-        private const string ProfileIdKey = "profile_id_key";
-        private static readonly int ProfileIdDefault = 0;
 
         private const string AccessTokenKey = "access_token_key";
         private static readonly string AccessTokenDefault = string.Empty;
 
-        private const string CurrentBookingIdKey = "current_booking_id";
-        private static readonly int CurrentBookingIdDefault = 0;
-
-        private const string UwpWindowSizeKey = "uwp_window_size";
-        private static readonly string UwpWindowSizeDefault = string.Empty;
-        public const string AuthenticationEndpoint = "http://YOUR_PROFILE_SERVICE.azurewebsites.net/";
+        private const string FirstStartKey = "first_start_key";
+        private static readonly bool FirstStartDefault = true;
         #endregion
 
         public static int UserId
@@ -60,26 +55,32 @@ namespace RestaurantApp.Core.Helpers
                 AppSettings.AddOrUpdateValue(AccessTokenKey, value);
             }
         }
+        public static bool FirstStart
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault(FirstStartKey, FirstStartDefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue(FirstStartKey, value);
+            }
+        }
 
         public static void RemoveUserId()
         {
             AppSettings.Remove(UserIdKey);
         }
 
-        public static void RemoveProfileId()
-        {
-            AppSettings.Remove(ProfileIdKey);
-        }
-
         public static void RemoveAccessToken()
         {
             AppSettings.Remove(AccessTokenKey);
         }
-
-        public static void RemoveCurrentBookingId()
+        public static void RemoveFirstStart()
         {
-            AppSettings.Remove(CurrentBookingIdKey);
+            AppSettings.Remove(FirstStartKey);
         }
+
     }
 
 }

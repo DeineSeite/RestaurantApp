@@ -44,11 +44,16 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Entry Grid.Row="0" Placeholder="{x:Static localizations:AppResources.ContactEmail}" />
+                <Entry
+                    Grid.Row="0"
+                    Placeholder="{x:Static localizations:AppResources.ContactEmail}"
+                    Text="{Binding Email}" />
                 <Entry
                     Grid.Row="1"
+                    IsPassword="True"
                     Keyboard="Email"
-                    Placeholder="{x:Static localizations:AppResources.Password}" />
+                    Placeholder="{x:Static localizations:AppResources.Password}"
+                    Text="{Binding Password}" />
                 <StackLayout
                     Grid.Row="2"
                     HorizontalOptions="CenterAndExpand"
@@ -70,7 +75,7 @@
                     x:Name="LoginButton"
                     Grid.Row="3"
                     Style="{StaticResource ButtonStyle}"
-                    Clicked="LoginButton_OnClicked"
+                    Command="{Binding LoginCommand}"
                     HeightRequest="50"
                     HorizontalOptions="FillAndExpand"
                     Text="{x:Static localizations:AppResources.Login}"
@@ -80,50 +85,13 @@
                     x:Name="SignUpButton"
                     Grid.Row="4"
                     Style="{StaticResource ButtonStyle}"
-                    Clicked="SignUpButton_OnClicked"
+                    Command="{Binding SignUpCommand}"
                     HeightRequest="50"
                     Text="{x:Static localizations:AppResources.Signup}"
                     TextColor="White" />
             </Grid>
         </ContentView>
 
-        <ContentView x:Name="SignUpView" IsVisible="True">
-            <StackLayout>
-                <Grid
-                    Padding="20"
-                    AbsoluteLayout.LayoutBounds="1,1,1,1"
-                    AbsoluteLayout.LayoutFlags="All"
-                    VerticalOptions="FillAndExpand">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Entry Grid.Row="0" Placeholder="{x:Static localizations:AppResources.ContactName}" />
-                    <Entry
-                        Grid.Row="1"
-                        Keyboard="Email"
-                        Placeholder="{x:Static localizations:AppResources.ContactEmail}" />
-                    <Entry
-                        Grid.Row="2"
-                        Keyboard="Telephone"
-                        Placeholder="{x:Static localizations:AppResources.ContactNumber}" />
-                    <DatePicker
-                        Grid.Row="3"
-                        Date="{x:Static x:DateTime.Now}"
-                        Format="yyyy-MM-dd"
-                        MaximumDate="{x:Static x:DateTime.Now}"
-                        VerticalOptions="CenterAndExpand" />
-                    <Button
-                        Grid.Row="4"
-                        Style="{StaticResource ButtonStyle}"
-                        Text="{x:Static localizations:AppResources.Signup}" />
-                </Grid>
-            </StackLayout>
-        </ContentView>
 
     </StackLayout>
 </contentViews:BaseContentView>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using FreshMvvm;
 using RestaurantApp.Core.Helpers;
 using RestaurantApp.Core.Interfaces;
 using RestaurantApp.Data.Models;
@@ -10,20 +11,19 @@ namespace RestaurantApp.Core.Services
     {
         private readonly IRequestProvider _requestProvider;
 
-        public AuthenticationService(IRequestProvider requestProvider)
+        public AuthenticationService()
         {
-            _requestProvider = requestProvider;
+            _requestProvider = FreshIOC.Container.Resolve<IRequestProvider>();
         }
 
         public bool IsAuthenticated => !string.IsNullOrEmpty(Settings.AccessToken);
 
-        public async Task<bool> LoginAsync(string userName, string password)
+        public async Task<bool> LoginAsync(string userEmail, string password)
         {
             var auth = new AuthenticationRequest
             {
-                UserName = userName,
-                Credentials = password,
-                GrantType = "password"
+                UserEmail = userEmail,
+                Password = password
             };
 
             var builder = new UriBuilder(Settings.AuthenticationEndpoint);
@@ -35,16 +35,13 @@ namespace RestaurantApp.Core.Services
                 await _requestProvider.PostAsync<AuthenticationRequest, AuthenticationResponse>(uri, auth);
             Settings.UserId = authenticationInfo.UserId;
             Settings.AccessToken = authenticationInfo.AccessToken;
-
             return true;
         }
 
         public Task LogoutAsync()
         {
             Settings.RemoveUserId();
-            Settings.RemoveProfileId();
             Settings.RemoveAccessToken();
-            Settings.RemoveCurrentBookingId();
 
             return Task.FromResult(false);
         }
@@ -52,6 +49,29 @@ namespace RestaurantApp.Core.Services
         public int GetCurrentUserId()
         {
             return Settings.UserId;
+        }
+
+        public Task<UserModel> GetCurrentProfileAsync()
+        {
+            var userId = GetCurrentUserId();
+
+            var builder = new UriBuilder(Settings.AuthenticationEndpoint);
+            builder.Path = $"api/Profiles/{userId}";
+
+            var uri = builder.ToString();
+            var userModel= _requestProvider.GetAsync<UserModel>(uri);
+            return userModel;
+        }
+
+
+
+        public Task<UserModel> SignUp(UserModel profile)
+        {
+            var builder = new UriBuilder(Settings.AuthenticationEndpoint);
+            builder.Path = $"api/Profiles/";
+            var uri = builder.ToString();
+            var userModel= _requestProvider.PostAsync(uri, profile);
+            return userModel;
         }
     }
 }

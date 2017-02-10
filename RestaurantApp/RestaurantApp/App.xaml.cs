@@ -5,6 +5,7 @@ using Microsoft.Azure.Mobile;
 using Microsoft.Azure.Mobile.Analytics;
 using Microsoft.Azure.Mobile.Crashes;
 using RestaurantApp.ContentViews;
+using RestaurantApp.Core.Helpers;
 using RestaurantApp.Core.Interfaces;
 using RestaurantApp.Core.PageModels;
 using RestaurantApp.Core.Services;
@@ -13,16 +14,11 @@ using RestaurantApp.Localizations;
 using RestaurantApp.Pages;
 using RestaurantApp.Services;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-
-
 
 namespace RestaurantApp
 {
     public partial class App : Application, IApplicationContext
     {
-        public static string TAG = "RestaurantApp";
-
         #region  ctor
 
         public App()
@@ -30,9 +26,17 @@ namespace RestaurantApp
             InitializeComponent();
             ChangeCurrentCultureInfo(CurrentCulture.Name);
             InitializeFreshMvvm();
+            InitializeSettings();
             InitializeStartMenu();
             MainPage = BasicNavContainer;
         }
+
+        #endregion
+
+        #region Constants  
+
+        public const string AuthenticationEndpoint = "http://www.luckywok.at/";
+        public static string TAG = "RestaurantApp";
 
         #endregion
 
@@ -56,24 +60,33 @@ namespace RestaurantApp
         private void InitializeFreshMvvm()
         {
             AppDebugger.WriteLine("Start InitializeFreshMvvm()");
-            MobileCenterLog.Debug(TAG, "Start InitializeFreshMvvm()");
-            //Register containers
+
+            //Register interfaces
             FreshIOC.Container.Register<IApplicationContext>(this);
             FreshIOC.Container.Register<IContentNavigationService, ContentNavigationService>();
+            FreshIOC.Container.Register<IRequestProvider, RequestProvider>();
+            FreshIOC.Container.Register<IAuthenticationService, AuthenticationService>();
 
             //Register mappers for current project: YouTrack WIKI-5
             FreshPageModelResolver.PageModelMapper = new RestaurantAppModelMapper();
             ContentViewModelResolver.ViewModelMapper = new RestaurantAppModelMapper();
 
-
             AppDebugger.WriteLine("End InitializeFreshMvvm()");
-            MobileCenterLog.Debug(TAG, "End InitializeFreshMvvm()");
         }
 
+        private void InitializeSettings()
+        {
+            Settings.AuthenticationEndpoint = AuthenticationEndpoint;
+            if (Settings.FirstStart)
+            {
+                
+            }
+
+        }
         private void InitializeStartMenu()
         {
             AppDebugger.WriteLine("InitializeStartMenu()");
-            MobileCenterLog.Debug(TAG, "InitializeStartMenu()");
+
             //Register MainPageModel as model with dynamic ContentView
             var mainPageModel = new MainPageModel();
             FreshIOC.Container.Register<IDynamicContent>(mainPageModel);
@@ -83,14 +96,12 @@ namespace RestaurantApp
             BasicNavContainer = new FreshNavigationContainer(mainContentPage);
 
             AppDebugger.WriteLine("MainPage started");
-            MobileCenterLog.Debug(TAG, "MainPage started");
 
             //Register ContentNavigationService
             var navService = new ContentNavigationService();
             FreshIOC.Container.Register<IContentNavigationService>(navService);
 
             AppDebugger.WriteLine("Registered ContentNavigationService");
-            MobileCenterLog.Debug(TAG, "Registered ContentNavigationService");
 
             //Initialize menu items
             StartMenu = new MenuViewModel();
@@ -105,7 +116,6 @@ namespace RestaurantApp
             };
 
             AppDebugger.WriteLine("Initialized menu items");
-            MobileCenterLog.Debug(TAG, "Initialized menu items");
 
             var infoMenuView = new MenuView
             {
@@ -120,13 +130,11 @@ namespace RestaurantApp
                 new ContactView()
             };
             AppDebugger.WriteLine("Initialized infoMenuView");
-            MobileCenterLog.Debug(TAG, "Initialized infoMenuView");
 
             //Push menu as content
             var startMenuView = new MenuView {BindingContext = StartMenu};
             navService.PushContentView(startMenuView);
             AppDebugger.WriteLine("Push menu as content");
-            MobileCenterLog.Debug(TAG, "Push menu as content");
         }
 
         #endregion

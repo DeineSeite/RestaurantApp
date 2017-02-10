@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<contentViews:BaseContentView
+    x:Class="RestaurantApp.ContentViews.SignUpView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviors="clr-namespace:RestaurantApp.Core.Behaviors;assembly=RestaurantApp.Core"
+    xmlns:contentViews="clr-namespace:RestaurantApp.ContentViews;assembly=RestaurantApp"
+    xmlns:localizations="clr-namespace:RestaurantApp.Localizations;assembly=RestaurantApp"
+    xmlns:viewModels="clr-namespace:RestaurantApp.Core.ViewModels;assembly=RestaurantApp.Core"
+    Title="{x:Static localizations:AppResources.Signup}">
+    <contentViews:BaseContentView.BindingContext>
+        <viewModels:SignUpViewModel />
+    </contentViews:BaseContentView.BindingContext>
+    <StackLayout>
+        <Grid
+            Padding="20"
+            AbsoluteLayout.LayoutBounds="1,1,1,1"
+            AbsoluteLayout.LayoutFlags="All"
+            VerticalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Entry
+                Grid.Row="0"
+                Placeholder="{x:Static localizations:AppResources.ContactName}"
+                Text="{Binding User.Name}" />
+            <Entry
+                Grid.Row="1"
+                Keyboard="Email"
+                Placeholder="{x:Static localizations:AppResources.ContactEmail}"
+                Text="{Binding User.Email}">
+                <Entry.Behaviors>
+                    <behaviors:EmailValidatorBehavior x:Name="EmailValidator" />
+                </Entry.Behaviors>
+            </Entry>
+            <Entry
+                Grid.Row="2"
+                IsPassword="True"
+                Placeholder="{x:Static localizations:AppResources.Password}"
+                Text="{Binding User.Password}">
+                <Entry.Behaviors>
+                    <behaviors:PasswordValidationBehavior x:Name="PasswordValidator" />
+                </Entry.Behaviors>
+            </Entry>
+            <Entry
+                Grid.Row="3"
+                Keyboard="Telephone"
+                Placeholder="{x:Static localizations:AppResources.ContactNumber}"
+                Text="{Binding User.Phone}" />
+            <DatePicker
+                Grid.Row="4"
+                Date="{Binding User.BirthDay}"
+                Format="yyyy-MM-dd"
+                MaximumDate="{x:Static x:DateTime.Now}"
+                VerticalOptions="CenterAndExpand" />
+            <Button
+                Grid.Row="5"
+                Style="{StaticResource ButtonStyle}"
+                Command="{Binding SignUpCommand}"
+                Text="{x:Static localizations:AppResources.Signup}">
+                <Button.Triggers>
+                    <MultiTrigger TargetType="Button">
+                        <MultiTrigger.Conditions>
+                            <BindingCondition Binding="{Binding Source={x:Reference EmailValidator}, Path=IsValid}" Value="False" />
+                            <BindingCondition Binding="{Binding Source={x:Reference PasswordValidator}, Path=IsValid}" Value="False" />
+                        </MultiTrigger.Conditions>
+                        <MultiTrigger.Setters>
+                            <Setter Property="IsEnabled" Value="False" />
+                        </MultiTrigger.Setters>
+                    </MultiTrigger>
+                </Button.Triggers>
+            </Button>
+        </Grid>
+    </StackLayout>
+</contentViews:BaseContentView>

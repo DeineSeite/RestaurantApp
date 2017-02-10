@@ -14,5 +14,6 @@ namespace RestaurantApp.Core.Interfaces
         IBaseContentView CurrentContentView { get; set; }
         void PushContentView(IBaseContentView contentView);
         void StepBackNavigation();
+      
     }
 }

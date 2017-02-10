@@ -8,7 +8,7 @@
       <group id="RESTAURANTAPP.FORMS/LOCALIZATIONS/APPRESOURCES.RESX" datatype="resx">
         <trans-unit id="Account" translate="yes" xml:space="preserve">
           <source>Account</source>
-          <target state="translated" state-qualifier="tm-suggestion">Konto</target>
+          <target state="translated">Mein Konto</target>
         </trans-unit>
         <trans-unit id="BonusPageInfo" translate="yes" xml:space="preserve">
           <source>For 10 visits the 11 food is free</source>
