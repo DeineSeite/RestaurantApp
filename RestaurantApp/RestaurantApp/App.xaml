@@ -11,19 +11,6 @@
             <Color x:Key="MainThemeColor">#637704</Color>
             <Color x:Key="SecondThemeColor">#FAECC7</Color>
             <Color x:Key="SecondThemeColorAlpha80">#B3FAECC7</Color>
-
-            <OnIdiom
-                x:Key="HeaderSize"
-                x:TypeArguments="Rectangle"
-                Phone="-10,.3,.95,.3"
-                Tablet="-10,.3,.95,.4" />
-            <Style x:Key="HeaderStyleWithName" TargetType="View">
-
-                <Setter Property="AbsoluteLayout.LayoutBounds" Value="{StaticResource HeaderSize}" />
-                <Setter Property="AbsoluteLayout.LayoutFlags" Value="YProportional,SizeProportional" />
-            </Style>
-
-
             <OnIdiom
                 x:Key="TitleSize"
                 x:TypeArguments="x:Double"

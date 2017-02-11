@@ -13,7 +13,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Account" xml:space="preserve">
-    <value>Konto</value>
+    <value>Mein Konto</value>
   </data>
   <data name="BonusPageInfo" xml:space="preserve">
     <value>Für 10 Besuche ist das 11 Essen kostenlos</value>

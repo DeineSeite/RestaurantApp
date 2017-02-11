@@ -9,11 +9,12 @@ using RestaurantApp.Droid.Renderers;
 using RestaurantApp.Pages;
 using RestaurantApp.Triggers;
 using RestaurantApp.UserControls;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 #if  GORILLA
 using UXDivers.Gorilla;
-
+using UXDivers.Gorilla.Droid;
 #endif
 
 

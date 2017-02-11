@@ -7,14 +7,13 @@
     xmlns:userControls="clr-namespace:RestaurantApp.UserControls;assembly=RestaurantApp"
     x:Name="HeaderContent">
     <StackLayout>
-        <AbsoluteLayout>
+        <Grid Padding="-5,5,30,0">
             <userControls:RoundedBox
                 x:Name="NameBox"
-                Style="{StaticResource HeaderStyleWithName}"
                 Opacity="0.7"
                 BackgroundColor="{StaticResource MainThemeColor}"
                 CornerRadius="5" />
-            <StackLayout Style="{StaticResource HeaderStyleWithName}" Orientation="Horizontal">
+            <StackLayout Orientation="Horizontal">
                 <Button
                     Margin="15,3,0,3"
                     Command="{Binding GoBackCommand}"
@@ -36,6 +35,7 @@
                     VerticalOptions="CenterAndExpand" />
                 <Image
                     Margin="0,0,10,0"
+                    HeightRequest="30"
                     HorizontalOptions="EndAndExpand"
                     IsOpaque="True"
                     Source="menu.png">
@@ -44,17 +44,23 @@
                     </Image.GestureRecognizers>
                 </Image>
             </StackLayout>
-        </AbsoluteLayout>
+        </Grid>
         <Image
-            Margin="5,-70,15,0"
+            Margin="5,0,0,0"
             HorizontalOptions="CenterAndExpand"
             IsOpaque="True"
-            Scale="0.7"
             Source="Logo.png"
-            VerticalOptions="Start" />
+            VerticalOptions="Start">
+            <Image.HeightRequest>
+                <OnIdiom
+                    x:TypeArguments="x:Double"
+                    Phone="100"
+                    Tablet="200" />
+            </Image.HeightRequest>
+        </Image>
         <userControls:TitleTemplate
             x:Name="Title"
-            Margin="-10,-20,-10,0"
+            Margin="-10,0,-10,0"
             BindingContext="{Binding Source={x:Reference HeaderContent}, Path=BindingContext}" />
     </StackLayout>
 </ContentView>
