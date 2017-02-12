@@ -19,13 +19,22 @@ namespace QrCodeScanner
         /// </summary>
         public event EventHandler<string> OnResultReady;
         public MobileBarcodeScanningOptions Options { get; set; }
+        public  string ScanPageTitle { get; set; }
         #endregion
 
         #region ctor
         public QrCodeScannerService(Page page)
         {
             _contentPage = page;
-            
+            SetOptions();
+            InitPage();
+        }
+        #endregion
+
+        #region Private/Public members
+
+        private void SetOptions()
+        {
             //setup options
             Options = new MobileBarcodeScanningOptions
             {
@@ -39,14 +48,17 @@ namespace QrCodeScanner
                     ZXing.BarcodeFormat.QR_CODE
                 }
             };
-            _scannerPage = new ZXingScannerPage(Options);
-            NavigationPage.SetHasNavigationBar(_scannerPage,false);
         }
-        #endregion
+        private void InitPage()
+        {
+            _scannerPage = new ZXingScannerPage(Options);
+            NavigationPage.SetHasNavigationBar(_scannerPage, false);
+        }
 
-        #region Private/Public members
         public async void StartScan()
         {
+            _scannerPage.Title = ScanPageTitle; 
+
             // Navigate to our scanner page
             await _contentPage.Navigation.PushAsync(new NavigationPage(_scannerPage));
             _scannerPage.OnScanResult += ScanPage_OnScanResult;
@@ -58,11 +70,13 @@ namespace QrCodeScanner
             Device.BeginInvokeOnMainThread(async () =>
             {
                 await _contentPage.Navigation.PopAsync();
+
+                //fire result Event
+                if (OnResultReady != null)
+                    OnResultReady(this, result.Text);
             });
 
-            //fire result Event
-            if (OnResultReady != null)
-                OnResultReady(this, result.Text);
+          
            
         }
         #endregion

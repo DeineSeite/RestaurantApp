@@ -14,7 +14,7 @@ namespace RestaurantApp.ContentViews
         public BonusPointView()
         {
             InitializeComponent();
-            FlowList.FlowColumnTemplate=new BonusPointDataTemplateSelector();
+           // FlowList.FlowColumnTemplate=new BonusPointDataTemplateSelector();
             
         }
     }

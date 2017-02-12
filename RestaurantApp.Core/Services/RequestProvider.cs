@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System.Collections.Generic;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -7,12 +8,14 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 using RestaurantApp.Core.Interfaces;
+using RestaurantApp.Data.Models;
 
 namespace RestaurantApp.Core.Services
 {
     public class RequestProvider : IRequestProvider
     {
         private readonly JsonSerializerSettings _serializerSettings;
+        private readonly AppInfo _appInfo;
 
 
         public RequestProvider()
@@ -23,11 +26,16 @@ namespace RestaurantApp.Core.Services
             {
                 ContractResolver = new CamelCasePropertyNamesContractResolver(),
                 DateTimeZoneHandling = DateTimeZoneHandling.Utc,
-                NullValueHandling = NullValueHandling.Ignore
+                NullValueHandling = NullValueHandling.Ignore,
+               DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
+
+                
             };
 
 
             _serializerSettings.Converters.Add(new StringEnumConverter());
+       
+          
         }
 
 
@@ -55,8 +63,8 @@ namespace RestaurantApp.Core.Services
 
 
         public async Task<TResult> PostAsync<TRequest, TResult>(string uri, TRequest data)
-
         {
+         
             var httpClient = CreateHttpClient();
             var serialized = await Task.Run(() => JsonConvert.SerializeObject(data, _serializerSettings));
             var response = await httpClient.PostAsync(uri,

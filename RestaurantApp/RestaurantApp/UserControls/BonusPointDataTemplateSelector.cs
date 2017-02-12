@@ -6,11 +6,11 @@ namespace RestaurantApp.UserControls
     public class BonusPointDataTemplateSelector : DataTemplateSelector
     {
         private DataTemplate _bonusPointItemTemplate;
-        private bool _isLastItemReplaced;
+  
 
         public BonusPointDataTemplateSelector()
         {
-            _isLastItemReplaced = false;
+        
         }
 
         protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
@@ -20,10 +20,9 @@ namespace RestaurantApp.UserControls
             if (bonusPointModel == null)
                 return null;
 
-            if (!bonusPointModel.IsActivated && !_isLastItemReplaced)
+            if (!bonusPointModel.IsActivated && bonusPointModel.IsLastInList)
             {
                 template.IsScannItemActived = true;
-                _isLastItemReplaced = true;
             }
 
 

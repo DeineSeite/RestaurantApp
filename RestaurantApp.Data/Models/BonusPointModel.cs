@@ -9,5 +9,6 @@ namespace RestaurantApp.Data.Models
         public DateTime ActivationDate { get; set; }
         public DateTime ExpireDate { get; set; }
         public bool IsActivated { get; set; }
+        public bool IsLastInList { get; set; }
     }
 }

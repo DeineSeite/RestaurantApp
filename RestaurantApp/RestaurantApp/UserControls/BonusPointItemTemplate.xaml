@@ -6,9 +6,9 @@
     xmlns:userControls="clr-namespace:RestaurantApp.UserControls;assembly=RestaurantApp">
     <AbsoluteLayout Margin="0,5,0,5">
         <userControls:RoundedBox
-            BackgroundColor="{StaticResource SecondThemeColor}"
+            Style="{StaticResource BonusPointItemStyle}"
             Opacity="0.8"
-            Style="{StaticResource BonusPointItemStyle}">
+            BackgroundColor="{StaticResource SecondThemeColor}">
             <userControls:RoundedBox.CornerRadius>
                 <OnPlatform
                     x:TypeArguments="x:Double"
@@ -19,14 +19,14 @@
         <Image
             x:Name="ActiveImage"
             Margin="10"
+            Style="{StaticResource BonusPointItemStyle}"
             IsVisible="{Binding IsActivated}"
-            Source="bonusPointUnit.png"
-            Style="{StaticResource BonusPointItemStyle}" />
+            Source="bonusPointUnit.png" />
         <Image
             x:Name="ScannImage"
             Margin="10"
-            IsVisible="{Binding Path=IsActivated, Converter={StaticResource InverseBooleanConverter}}"
-            Source="plus.png"
-            Style="{StaticResource BonusPointItemStyle}" />
+            Style="{StaticResource BonusPointItemStyle}"
+            IsVisible="{Binding Path=IsLastInList}"
+            Source="plus.png" />
     </AbsoluteLayout>
 </ContentView>

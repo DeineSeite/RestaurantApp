@@ -12,7 +12,7 @@ namespace RestaurantApp.Core.ViewModels
         #region ctor
         public SignUpViewModel()
         {
-            User = new UserModel { BirthDay = DateTime.Now };
+            User = new UserModel { BirthDay = DateTime.Now,Gender = GenderType.Man};
             SignUpCommand = new Command(SignUp);
         }
         #endregion

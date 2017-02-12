@@ -68,7 +68,7 @@ namespace RestaurantApp.Core.Services
         public Task<UserModel> SignUp(UserModel profile)
         {
             var builder = new UriBuilder(Settings.AuthenticationEndpoint);
-            builder.Path = $"api/Profiles/";
+            builder.Path = $"api/Profile/SignUp/";
             var uri = builder.ToString();
             var userModel= _requestProvider.PostAsync(uri, profile);
             return userModel;
