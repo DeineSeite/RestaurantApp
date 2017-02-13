@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using FreshMvvm;
 using RestaurantApp.Core.Interfaces;
 
-namespace RestaurantApp.Services
+namespace RestaurantApp
 {
     public class RestaurantAppModelMapper : IFreshPageModelMapper, IContentViewModelMapper
     {

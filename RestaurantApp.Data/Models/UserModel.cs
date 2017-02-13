@@ -1,4 +1,5 @@
 ﻿using System;
+using Newtonsoft.Json;
 using PropertyChanged;
 
 namespace RestaurantApp.Data.Models
@@ -11,11 +12,40 @@ namespace RestaurantApp.Data.Models
     [ImplementPropertyChanged]
     public class UserModel : BaseModel
     {
-        public string Name { get; set; }
+        [JsonProperty(PropertyName = "nname")]
+        public string FirstName { get; set; }
+
+        [JsonProperty(PropertyName = "vname")]
+        public string LastName { get; set; }
+
+        [JsonProperty(PropertyName = "uname")]
+        public string Login { get; set; }
+
+        [JsonProperty(PropertyName = "email")]
         public string Email { get; set; }
-        public string Password { get; set; }
-        public string Mobil { get; set; }
-        public GenderType Gender { get; set; }
+
+        [JsonProperty(PropertyName = "birthday")]
         public DateTime BirthDay { get; set; }
+
+        [JsonProperty(PropertyName = "pwd")]
+        public string Password { get; set; }
+
+        [JsonProperty(PropertyName = "pwd2")]
+        public string Password2 { get; set; }
+
+        [JsonProperty(PropertyName = "mobil")]
+        public string Phone { get; set; }
+
+        [JsonProperty(PropertyName = "gender")]
+        public GenderType Gender { get; set; }
+
+        [JsonProperty(PropertyName = "facebookid")]
+        public string FacebookId { get; set; }
+
+        [JsonProperty(PropertyName = "twitterid")]
+        public string TwitterId { get; set; }
+
+        [JsonProperty(PropertyName = "googleplusId")]
+        public string GoogleplusId { get; set; }
     }
 }

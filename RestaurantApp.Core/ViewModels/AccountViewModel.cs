@@ -33,8 +33,7 @@ namespace RestaurantApp.Core.ViewModels
 
         private void SignUp()
         {
-            var signUpView = ContentViewModelResolver.ResolveViewModel<SignUpViewModel>();
-            NavigationContentService.PushContentView(signUpView);
+            NavigationContentService.PushViewModel<SignUpViewModel>();
         }
 
         private void Login()

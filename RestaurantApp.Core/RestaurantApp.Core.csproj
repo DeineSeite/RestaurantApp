@@ -60,6 +60,7 @@
     <Compile Include="Converters\StringCaseConverter.cs" />
     <Compile Include="Helpers\EventArgs.cs" />
     <Compile Include="Helpers\Settings.cs" />
+    <Compile Include="Interfaces\BonusPointService.cs" />
     <Compile Include="Interfaces\IApplicationContext.cs" />
     <Compile Include="Interfaces\IAuthenticationService.cs" />
     <Compile Include="Interfaces\IBaseContentView.cs" />
@@ -68,8 +69,8 @@
     <Compile Include="Interfaces\IContentViewModelMapper.cs" />
     <Compile Include="Interfaces\IDebugger.cs" />
     <Compile Include="Interfaces\IDynamicContent.cs" />
-    <Compile Include="Interfaces\IListViewPage.cs" />
     <Compile Include="Interfaces\ILocalize.cs" />
+    <Compile Include="Interfaces\IMainPageModel.cs" />
     <Compile Include="Interfaces\INativeHelper.cs" />
     <Compile Include="Interfaces\IProfileService.cs" />
     <Compile Include="Interfaces\IRequestProvider.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="PageModels\BasePageModel.cs" />
     <Compile Include="PageModels\MainPageModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AppDebugger.cs" />
     <Compile Include="Services\AuthenticationService.cs" />
     <Compile Include="Services\BonusPointService.cs" />
     <Compile Include="Services\ContentNavigationService.cs" />
@@ -84,6 +86,7 @@
     <Compile Include="Services\ContentViewModelResolver.cs" />
     <Compile Include="Services\RequestProvider.cs" />
     <Compile Include="Services\ServiceAuthenticationException.cs" />
+    <Compile Include="Services\UserInteractionService.cs" />
     <Compile Include="ViewModels\AccountViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\BonusPointViewModel.cs" />

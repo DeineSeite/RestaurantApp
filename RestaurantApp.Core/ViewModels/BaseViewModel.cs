@@ -8,13 +8,12 @@ namespace RestaurantApp.Core.ViewModels
 {
     public abstract class BaseViewModel : INotifyPropertyChanged
     {
-        public BaseViewModel()
-        {
-            NavigationContentService = FreshIOC.Container.Resolve<IContentNavigationService>();
-        }
-
         public IBaseContentView CurrentContentView { get; set; }
-        public IContentNavigationService NavigationContentService { get; set; }
+
+        protected IContentNavigationService NavigationContentService
+            => FreshIOC.Container.Resolve<IContentNavigationService>();
+
+        protected IMainPageModel ParentPageModel => FreshIOC.Container.Resolve<IMainPageModel>();
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void Init(object data)

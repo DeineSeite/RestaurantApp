@@ -12,19 +12,6 @@ namespace RestaurantApp.Core.PageModels
     public class BasePageModel : FreshBasePageModel
     {
         #region Public properties
-
-        /// <summary>
-        ///     Set title for ContentPage
-        /// </summary>
-        public string Title
-        {
-            get { return _title; }
-            set
-            {
-                _title = value;
-                if (CurrentPage != null) CurrentPage.Title = _title;
-            }
-        }
         public bool IsBusy
         {
             get { return _isBusy; }
@@ -34,20 +21,7 @@ namespace RestaurantApp.Core.PageModels
             }
         }
         private bool _isBusy;
-
-        /// <summary>
-        ///     Addition Title for ContentPage, will be shown under main Title
-        /// </summary>
-        public string SubTitle
-        {
-            get { return _subTitle; }
-            set
-            {
-                _subTitle = value;
-                if (CurrentPage != null) ((IBasePage) CurrentPage).SubTitle = _subTitle;
-            }
-        }
-
+       
         #endregion
 
         #region ctor

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RestaurantApp.Behaviors;
 using RestaurantApp.Core.ViewModels;
 using RestaurantApp.UserControls;
 using Xamarin.Forms;
@@ -14,7 +15,7 @@ namespace RestaurantApp.ContentViews
         public BonusPointView()
         {
             InitializeComponent();
-           // FlowList.FlowColumnTemplate=new BonusPointDataTemplateSelector();
+        //    FlowList.FlowColumnTemplate=new BonusPointTemplateSelector();
             
         }
     }

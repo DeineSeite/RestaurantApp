@@ -58,7 +58,7 @@ namespace QrCodeScanner
         public async void StartScan()
         {
             _scannerPage.Title = ScanPageTitle; 
-
+            
             // Navigate to our scanner page
             await _contentPage.Navigation.PushAsync(new NavigationPage(_scannerPage));
             _scannerPage.OnScanResult += ScanPage_OnScanResult;

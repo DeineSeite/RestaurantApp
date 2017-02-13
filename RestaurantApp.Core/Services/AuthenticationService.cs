@@ -56,7 +56,7 @@ namespace RestaurantApp.Core.Services
             var userId = GetCurrentUserId();
 
             var builder = new UriBuilder(Settings.AuthenticationEndpoint);
-            builder.Path = $"api/Profiles/{userId}";
+            builder.Path = $"api/Profile/234s";
 
             var uri = builder.ToString();
             var userModel= _requestProvider.GetAsync<UserModel>(uri);

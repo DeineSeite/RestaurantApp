@@ -43,6 +43,7 @@ namespace RestaurantApp.Core.Helpers
                 AppSettings.AddOrUpdateValue(UserIdKey, value);
             }
         }
+       
 
         public static string AccessToken
         {

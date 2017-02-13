@@ -19,10 +19,10 @@ namespace RestaurantApp.Core.Services
 
         public static IBaseContentView ResolveViewModel<T>(object initData) where T : BaseViewModel
         {
-            var pageModel = FreshIOC.Container.Resolve<T>();
+            var viewModel = FreshIOC.Container.Resolve<T>();
 
 
-            return ResolveViewModel(initData, pageModel);
+            return ResolveViewModel(initData, viewModel);
         }
 
 
@@ -36,9 +36,7 @@ namespace RestaurantApp.Core.Services
 
         public static IBaseContentView ResolveViewModel(Type type, object data)
         {
-            var viewModel = FreshIOC.Container.Resolve(type) as BaseViewModel;
-
-            return ResolveViewModel(type, data, viewModel);
+            return ResolveViewModel(type, data, null);
         }
 
 

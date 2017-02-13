@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using RestaurantApp.Core.Interfaces;
 using Xamarin.Forms;
 
-namespace RestaurantApp.Services
+namespace RestaurantApp.Core.Services
 {
     public class AppDebugger
     {
@@ -16,5 +16,4 @@ namespace RestaurantApp.Services
             debugger.WriteLine(message);
         }
     }
-
 }

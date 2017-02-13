@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using RestaurantApp.Core.ViewModels;
 
 namespace RestaurantApp.Core.Interfaces
@@ -14,6 +10,7 @@ namespace RestaurantApp.Core.Interfaces
         IBaseContentView CurrentContentView { get; set; }
         void PushContentView(IBaseContentView contentView);
         void StepBackNavigation();
-      
+        void PushViewModel(BaseViewModel model);
+        void PushViewModel<T>() where T : BaseViewModel;
     }
 }

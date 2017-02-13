@@ -9,7 +9,7 @@ using Xamarin.Forms;
 namespace RestaurantApp.Core.PageModels
 {
     [ImplementPropertyChanged]
-    public class MainPageModel : BasePageModel,IDynamicContent
+    public class MainPageModel : BasePageModel,IMainPageModel
     {
         public IBaseContentView MainContentView
         {
@@ -29,6 +29,7 @@ namespace RestaurantApp.Core.PageModels
 
         private void GoToAccountPage()
         {
+           
             var accountView = ContentViewModelResolver.ResolveViewModel<AccountViewModel>();
             var contentNavigation = FreshIOC.Container.Resolve<IContentNavigationService>();
             contentNavigation.PushContentView(accountView);

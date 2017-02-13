@@ -8,6 +8,7 @@ namespace RestaurantApp.Data.Access
         public override void CreateTables()
         {
             CreateTable<RestaurantModel>();
+            CreateTable<UserModel>();
             CreateTable<BonusPointModel>();
         }
 

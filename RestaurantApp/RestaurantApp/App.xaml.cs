@@ -10,10 +10,12 @@ using RestaurantApp.Core.Interfaces;
 using RestaurantApp.Core.PageModels;
 using RestaurantApp.Core.Services;
 using RestaurantApp.Core.ViewModels;
+using RestaurantApp.Data.Access;
 using RestaurantApp.Localizations;
-using RestaurantApp.Pages;
-using RestaurantApp.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 
 namespace RestaurantApp
 {
@@ -26,6 +28,7 @@ namespace RestaurantApp
             InitializeComponent();
             ChangeCurrentCultureInfo(CurrentCulture.Name);
             InitializeFreshMvvm();
+            RegisterInstances();
             InitializeSettings();
             InitializeStartMenu();
             MainPage = BasicNavContainer;
@@ -57,21 +60,22 @@ namespace RestaurantApp
             AppResources.Culture = DependencyService.Get<ILocalize>().GetCurrentCultureInfo();
         }
 
-        private void InitializeFreshMvvm()
+        private void RegisterInstances()
         {
-            AppDebugger.WriteLine("Start InitializeFreshMvvm()");
-
-            //Register interfaces
             FreshIOC.Container.Register<IApplicationContext>(this);
             FreshIOC.Container.Register<IContentNavigationService, ContentNavigationService>();
             FreshIOC.Container.Register<IRequestProvider, RequestProvider>();
             FreshIOC.Container.Register<IAuthenticationService, AuthenticationService>();
+            FreshIOC.Container.Register<IRestaurantDataAccess, RestaurantDataAccess>();
+        }
+
+        private void InitializeFreshMvvm()
+        {
+            AppDebugger.WriteLine("Start InitializeFreshMvvm()");
 
             //Register mappers for current project: YouTrack WIKI-5
             FreshPageModelResolver.PageModelMapper = new RestaurantAppModelMapper();
             ContentViewModelResolver.ViewModelMapper = new RestaurantAppModelMapper();
-
-            AppDebugger.WriteLine("End InitializeFreshMvvm()");
         }
 
         private void InitializeSettings()
@@ -79,10 +83,12 @@ namespace RestaurantApp
             Settings.AuthenticationEndpoint = AuthenticationEndpoint;
             if (Settings.FirstStart)
             {
-                
+                var dataBase = FreshIOC.Container.Resolve<IRestaurantDataAccess>();
+                dataBase.CreateTables();
+                Settings.FirstStart = false;
             }
-
         }
+
         private void InitializeStartMenu()
         {
             AppDebugger.WriteLine("InitializeStartMenu()");
@@ -90,9 +96,11 @@ namespace RestaurantApp
             //Register MainPageModel as model with dynamic ContentView
             var mainPageModel = new MainPageModel();
             FreshIOC.Container.Register<IDynamicContent>(mainPageModel);
+            FreshIOC.Container.Register<IMainPageModel>(mainPageModel);
+
 
             //Resolve Page and start
-            var mainContentPage = new MainPage {BindingContext = mainPageModel};
+            var mainContentPage = FreshPageModelResolver.ResolvePageModel((object) null, mainPageModel);
             BasicNavContainer = new FreshNavigationContainer(mainContentPage);
 
             AppDebugger.WriteLine("MainPage started");
@@ -134,7 +142,7 @@ namespace RestaurantApp
             //Push menu as content
             var startMenuView = new MenuView {BindingContext = StartMenu};
             navService.PushContentView(startMenuView);
-            AppDebugger.WriteLine("Push menu as content");
+            AppDebugger.WriteLine("Push menu as main content");
         }
 
         #endregion
