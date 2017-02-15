@@ -15,5 +15,6 @@ namespace RestaurantApp.Core.Interfaces
         void ChangeCurrentCultureInfo(string langCode);
         CultureInfo CurrentCulture { get; set; }
         Application Instance { get; }
+        
     }
 }

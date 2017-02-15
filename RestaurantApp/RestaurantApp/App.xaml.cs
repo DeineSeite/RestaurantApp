@@ -32,6 +32,7 @@ namespace RestaurantApp
             InitializeSettings();
             InitializeStartMenu();
             MainPage = BasicNavContainer;
+         
         }
 
         #endregion
@@ -77,6 +78,8 @@ namespace RestaurantApp
             FreshPageModelResolver.PageModelMapper = new RestaurantAppModelMapper();
             ContentViewModelResolver.ViewModelMapper = new RestaurantAppModelMapper();
         }
+
+        
 
         private void InitializeSettings()
         {

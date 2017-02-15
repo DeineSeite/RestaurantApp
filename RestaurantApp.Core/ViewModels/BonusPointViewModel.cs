@@ -18,23 +18,26 @@ namespace RestaurantApp.Core.ViewModels
     public class BonusPointViewModel : BaseViewModel
     {
         private BonusPointModel _currenBonusPointModel;
+        private QrCodeScannerService _qrCodeService;
+
+        #region ctor
 
         public BonusPointViewModel()
         {
             StartScanCommand = new Command(ScanQrCode);
             ItemTappedCommand = new Command<BonusPointModel>(ItemTapped);
             BonusPointList = new BonusPointCollection();
-            
-            
+            BonusPointList.FillFromDatabase(BonusPointType.Dinner);
+            InitScanPage();
         }
+
+        #endregion
 
         #region Public properties
 
         public BonusPointCollection BonusPointList { get; set; }
 
         #endregion
-
-       
 
         private void ItemTapped(BonusPointModel bonusPoint)
         {
@@ -45,7 +48,7 @@ namespace RestaurantApp.Core.ViewModels
             }
             else
             {
-               ShowPopupInfo(bonusPoint);
+                ShowPopupInfo(bonusPoint);
             }
         }
 
@@ -54,22 +57,26 @@ namespace RestaurantApp.Core.ViewModels
             UserInteractionService.DisplayAlert(null, bonusPoint.Description);
         }
 
-        private void ScanQrCode()
+        private void InitScanPage()
         {
             var mainPage = FreshIOC.Container.Resolve<IApplicationContext>().BasicNavContainer.CurrentPage;
-            var qrService = new QrCodeScannerService(mainPage);
-            qrService.ScanPageTitle = "QR code scanner";
-            qrService.StartScan();
-            qrService.OnResultReady += QrService_OnResultReady;
+            _qrCodeService = new QrCodeScannerService(mainPage) {ScanPageTitle = "QR code scanner"};
+            _qrCodeService.OnResultReady += QrService_OnResultReady;
+        }
+
+        private void ScanQrCode()
+        {
+            _qrCodeService.StartScan();
         }
 
         private void QrService_OnResultReady(object sender, string result)
         {
             var index = BonusPointList.IndexOf(_currenBonusPointModel);
             _currenBonusPointModel.ActivationDate = DateTime.Now;
-            _currenBonusPointModel.Description = result;
+            _currenBonusPointModel.Description = $"Activation Date:{DateTime.Now:yy-mm-dd} \n {result}";
             _currenBonusPointModel.IsActivated = true;
             _currenBonusPointModel.IsLastInList = false;
+            BonusPointList.SyncItemWithServer(_currenBonusPointModel);
 
             if (BonusPointList.ElementAt(index + 1) != null)
                 BonusPointList[index + 1].IsLastInList = true;
@@ -79,15 +86,16 @@ namespace RestaurantApp.Core.ViewModels
 
         public Command StartScanCommand { get; set; }
         public Command<BonusPointModel> ItemTappedCommand { get; set; }
+       
 
         #endregion
     }
 
     public class BonusPointCollection : ObservableCollection<BonusPointModel>
-    {
+    {private readonly IRestaurantDataAccess _dataAccess;
+     
         private int BonusPointCount = 10;
-        private IRestaurantDataAccess _dataAccess;
-        private int _position = 0;
+
         public BonusPointCollection()
         {
             _dataAccess = FreshIOC.Container.Resolve<IRestaurantDataAccess>();
@@ -96,31 +104,27 @@ namespace RestaurantApp.Core.ViewModels
 
         private void InitEmptyPlaces()
         {
-            for (int i = 0; i < 10; i++)
-            {
-                base.Add(new BonusPointModel());
-            }
+            for (var i = 0; i < BonusPointCount; i++)
+                Add(new BonusPointModel());
             Items[0].IsLastInList = true;
         }
 
-       
-        new void Add(BonusPointModel bonusPoint)
+        public void SyncItemWithServer(BonusPointModel bonusPoint)
         {
             _dataAccess.AddNewBonusPoint(bonusPoint);
-            Items[_position] = bonusPoint;
-            _position++;
         }
 
-        //TODO
-        new void Remove(BonusPointModel bonusPoint)
+        public void FillFromDatabase(BonusPointType type)
         {
-            throw  new NotImplementedException("Not implenet yet");
-        }
+            var bonusPoints =
+                _dataAccess.GetAllBonusPoints(type).OrderByDescending(x => x.Order).Take(Items.Count).Reverse().ToList();
 
-        //TODO
-        public void SyncWithServer()
-        {
-            throw  new NotImplementedException("Not implenet yet");
+            for (var i = 0; i < bonusPoints.Count; i++)
+                Items[i] = bonusPoints[i];
+
+            //Set last item as ScanButton
+            if (bonusPoints.Count < Items.Count)
+                Items[bonusPoints.Count].IsLastInList=true;
         }
 
         protected override void OnCollectionChanged(NotifyCollectionChangedEventArgs e)

@@ -28,7 +28,6 @@ namespace RestaurantApp.Core.PageModels
 
         public override void Init(object initData)
         {
-            CurrentPage.Title = _title;
             GoBackCommand = new Command(GoBack);
           
             IsBusy = false;
@@ -57,8 +56,7 @@ namespace RestaurantApp.Core.PageModels
 
         private void GoBack()
         {
-            var app = FreshIOC.Container.Resolve<IApplicationContext>();
-            CoreMethods.PushPageModel<MainPageModel>();
+        
         }
 
         #endregion

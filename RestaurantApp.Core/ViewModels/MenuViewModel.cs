@@ -44,12 +44,11 @@ namespace RestaurantApp.Core.ViewModels
         /// <param name="parameter"></param>
         public void SetParameter(object parameter)
         {
-            new NotImplementedException();
+          throw new NotImplementedException();
         }
 
-        private async void PushContent(IBaseContentView view)
+        private void PushContent(IBaseContentView view)
         {
-          //  var viewContent = ContentViewModelResolver.ResolveViewModel((object) null, view);
             _contentNavigationService.PushContentView(view);
         }
 

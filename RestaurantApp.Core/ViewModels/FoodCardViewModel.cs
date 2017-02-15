@@ -9,5 +9,9 @@ namespace RestaurantApp.Core.ViewModels
 {
    public class FoodCardViewModel:BaseViewModel
     {
+        public override void Init(object data)
+        {
+            
+        }
     }
 }

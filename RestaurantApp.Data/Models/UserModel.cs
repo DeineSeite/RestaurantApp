@@ -1,5 +1,6 @@
 ﻿using System;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using PropertyChanged;
 
 namespace RestaurantApp.Data.Models
@@ -30,13 +31,11 @@ namespace RestaurantApp.Data.Models
         [JsonProperty(PropertyName = "pwd")]
         public string Password { get; set; }
 
-        [JsonProperty(PropertyName = "pwd2")]
-        public string Password2 { get; set; }
-
         [JsonProperty(PropertyName = "mobil")]
         public string Phone { get; set; }
 
         [JsonProperty(PropertyName = "gender")]
+        [JsonConverter(typeof(StringEnumConverter))]
         public GenderType Gender { get; set; }
 
         [JsonProperty(PropertyName = "facebookid")]

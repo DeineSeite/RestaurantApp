@@ -62,16 +62,12 @@ namespace RestaurantApp.Core.Services
 
         public static IBaseContentView BindingPageModel(object data, IBaseContentView targetPage, BaseViewModel viewModel)
         {
-            // viewModel.WireEvents(targetPage);
-
-            viewModel.CurrentContentView = targetPage;
-
-            //  viewModel.CoreMethods = new PageModelCoreMethods(targetPage, pageModel);
-
-            viewModel.Init(data);
-
-            targetPage.BindingContext = viewModel;
-
+            if (viewModel != null)
+            {
+                viewModel.CurrentContentView = targetPage;
+                viewModel.Init(data);
+                targetPage.BindingContext = viewModel;
+            }
             return targetPage;
         }
     }

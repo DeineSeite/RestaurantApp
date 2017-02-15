@@ -1,20 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using RestaurantApp.Data.Models;
 using Xamarin.Forms;
 
 namespace RestaurantApp.Core.ViewModels
 {
- public   class ContactViewModel:BaseViewModel
+    public class ContactViewModel : BaseViewModel
     {
-        public Command NavigateToMap { get; set; }
-        public string HtmlContent { get; set; }
-        public string MapUrl { get; set; }
-        public RestaurantModel Restaurant { get; set; }
+       
 
         public ContactViewModel()
         {
@@ -40,6 +33,12 @@ namespace RestaurantApp.Core.ViewModels
             //    "https://maps.googleapis.com/maps/api/staticmap?center=Wagramer+Str.+189B,+1210+Wien&zoom=14&scale=2&size=400x450&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:%7CWagramer+Str.+189B,+1210+Wien";
             // NavigateToMap=new Command(NavigateTo);
         }
+
+        public Command NavigateToMap { get; set; }
+        public string HtmlContent { get; set; }
+        public string MapUrl { get; set; }
+        public RestaurantModel Restaurant { get; set; }
+
         private void NavigateTo()
         {
             var address = "Wagramer Str. 189B, 1210 Wien";
@@ -48,16 +47,16 @@ namespace RestaurantApp.Core.ViewModels
             {
                 case TargetPlatform.iOS:
                     Device.OpenUri(
-                      new Uri(string.Format("http://maps.apple.com/?q={0}", WebUtility.UrlEncode(address))));
+                        new Uri(string.Format("http://maps.apple.com/?q={0}", WebUtility.UrlEncode(address))));
                     break;
                 case TargetPlatform.Android:
                     Device.OpenUri(
-                      new Uri(string.Format("geo:0,0?q={0}", WebUtility.UrlEncode(address))));
+                        new Uri(string.Format("geo:0,0?q={0}", WebUtility.UrlEncode(address))));
                     break;
                 case TargetPlatform.Windows:
                 case TargetPlatform.WinPhone:
                     Device.OpenUri(
-                      new Uri(string.Format("bingmaps:?where={0}", Uri.EscapeDataString(address))));
+                        new Uri(string.Format("bingmaps:?where={0}", Uri.EscapeDataString(address))));
                     break;
             }
         }

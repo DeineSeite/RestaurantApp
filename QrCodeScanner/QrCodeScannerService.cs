@@ -40,9 +40,6 @@ namespace QrCodeScanner
             {
                 AutoRotate = false,
                 UseFrontCameraIfAvailable = false,
-                UseNativeScanning = true,
-
-                TryHarder = true,
                 PossibleFormats = new List<ZXing.BarcodeFormat>
                 {
                     ZXing.BarcodeFormat.QR_CODE
@@ -52,6 +49,9 @@ namespace QrCodeScanner
         private void InitPage()
         {
             _scannerPage = new ZXingScannerPage(Options);
+         
+            _scannerPage.OnScanResult += ScanPage_OnScanResult;
+            NavigationPage.SetHasBackButton(_scannerPage, true);
             NavigationPage.SetHasNavigationBar(_scannerPage, false);
         }
 
@@ -60,8 +60,7 @@ namespace QrCodeScanner
             _scannerPage.Title = ScanPageTitle; 
             
             // Navigate to our scanner page
-            await _contentPage.Navigation.PushAsync(new NavigationPage(_scannerPage));
-            _scannerPage.OnScanResult += ScanPage_OnScanResult;
+            await _contentPage.Navigation.PushAsync(_scannerPage);
         }
 
         private void ScanPage_OnScanResult(ZXing.Result result)
@@ -69,7 +68,7 @@ namespace QrCodeScanner
             _scannerPage.IsScanning = false;
             Device.BeginInvokeOnMainThread(async () =>
             {
-                await _contentPage.Navigation.PopAsync();
+                await _scannerPage.Navigation.PopAsync();
 
                 //fire result Event
                 if (OnResultReady != null)

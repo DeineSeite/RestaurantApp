@@ -1,4 +1,5 @@
-﻿using FreshMvvm;
+﻿using System;
+using FreshMvvm;
 using PropertyChanged;
 using RestaurantApp.Core.Interfaces;
 using RestaurantApp.Core.Services;
@@ -29,10 +30,11 @@ namespace RestaurantApp.Core.PageModels
 
         private void GoToAccountPage()
         {
-           
-            var accountView = ContentViewModelResolver.ResolveViewModel<AccountViewModel>();
             var contentNavigation = FreshIOC.Container.Resolve<IContentNavigationService>();
-            contentNavigation.PushContentView(accountView);
+            contentNavigation.PushViewModel<AccountViewModel>();
         }
+        
+
+      
     }
 }

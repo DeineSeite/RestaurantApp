@@ -1,4 +1,5 @@
-﻿using RestaurantApp.Data.Models;
+﻿using System.Collections.Generic;
+using RestaurantApp.Data.Models;
 
 namespace RestaurantApp.Data.Access
 {
@@ -10,5 +11,6 @@ namespace RestaurantApp.Data.Access
         int UpdateBonusPoint(BonusPointModel bonusPoint);
         int SetNewUser(UserModel user);
         UserModel GetCurrentUser();
+        IEnumerable<BonusPointModel> GetAllBonusPoints(BonusPointType type);
     }
 }

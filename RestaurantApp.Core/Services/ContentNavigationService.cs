@@ -2,7 +2,6 @@
 using FreshMvvm;
 using RestaurantApp.Core.Interfaces;
 using RestaurantApp.Core.ViewModels;
-using Xamarin.Forms;
 
 namespace RestaurantApp.Core.Services
 {
@@ -36,7 +35,7 @@ namespace RestaurantApp.Core.Services
 
         public void PushViewModel(BaseViewModel model)
         {
-            var contentView = ContentViewModelResolver.ResolveViewModel((object)null, model);
+            var contentView = ContentViewModelResolver.ResolveViewModel((object) null, model);
             PushContentView(contentView);
         }
 
@@ -46,7 +45,7 @@ namespace RestaurantApp.Core.Services
             PushContentView(contentView);
         }
 
-        public void StepBackNavigation()
+        public bool StepBackNavigation()
         {
             _isStepBack = true;
             if (StackNavigation.Count > 0 && _currentPosition > 0)
@@ -61,23 +60,14 @@ namespace RestaurantApp.Core.Services
                 {
                     PushContentView(StackNavigation[_currentPosition]);
                 }
+                return true;
             }
-            else
-            {
-                CloseApp(); //Close app if stack is empty
-            }
-        }
-
-        private void CloseApp()
-        {
-            INativeHelper nativeHelper = null;
-            nativeHelper = DependencyService.Get<INativeHelper>();
-            nativeHelper?.CloseApp();
+            return false; //Go App to sleep if stack is empty
         }
 
         #region Public properties
 
-        public IDynamicContent MainPageModel { get; set; }
+        public IMainPageModel MainPageModel { get; set; }
         public List<IBaseContentView> StackNavigation { get; set; }
         public IBaseContentView CurrentContentView { get; set; }
 

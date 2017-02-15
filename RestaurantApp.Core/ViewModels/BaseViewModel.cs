@@ -16,8 +16,9 @@ namespace RestaurantApp.Core.ViewModels
         protected IMainPageModel ParentPageModel => FreshIOC.Container.Resolve<IMainPageModel>();
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public void Init(object data)
+        public virtual void Init(object data)
         {
+            
         }
 
         [NotifyPropertyChangedInvocator]

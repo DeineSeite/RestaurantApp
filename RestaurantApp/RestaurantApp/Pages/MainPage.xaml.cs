@@ -6,7 +6,6 @@ using RestaurantApp.Core.Interfaces;
 using RestaurantApp.UserControls;
 using Xamanimation;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace RestaurantApp.Pages
 {
@@ -22,6 +21,7 @@ namespace RestaurantApp.Pages
             InitializeComponent();
 
             this.SetBinding(MainContentProperty, "MainContentView");
+            IsBusy = true;
         }
 
         public BaseContentView MainContent
@@ -64,20 +64,16 @@ namespace RestaurantApp.Pages
                     });
 
                     //bug with WebView is not showing in StackLayout , workaround:
-                    if (((ContentView)newValue).Content is TransparentWebView)
-                    {
+                    if (((ContentView) newValue).Content is TransparentWebView)
                         currentPage.MainContentView.VerticalOptions = LayoutOptions.FillAndExpand;
-                    }
                     else
-                    {
                         currentPage.MainContentView.VerticalOptions = LayoutOptions.Start;
-                    }
                     //---------------------------------------------------------
                 }
             }
             catch (Exception e)
             {
-                Debug.WriteLine("Change ContentView Exception "+e.Message);
+                Debug.WriteLine("Change ContentView Exception " + e.Message);
             }
         }
 
@@ -85,13 +81,11 @@ namespace RestaurantApp.Pages
         protected override bool OnBackButtonPressed()
         {
             var contentService = FreshIOC.Container.Resolve<IContentNavigationService>();
-            contentService.StepBackNavigation();
-            return true;
-        }
+            if (contentService.StepBackNavigation())
+                return true;
 
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
+            base.OnBackButtonPressed();
+            return false;
         }
     }
 }

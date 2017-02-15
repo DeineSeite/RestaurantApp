@@ -1,5 +1,6 @@
 ﻿using System;
 using Newtonsoft.Json;
+using SQLite.Net.Attributes;
 
 namespace RestaurantApp.Data.Models
 {
@@ -22,7 +23,7 @@ namespace RestaurantApp.Data.Models
         public bool IsActivated { get; set; }
         public int Order { get; set; }
 
-        [JsonIgnore]
+        [JsonIgnore,Ignore]
         public bool IsLastInList { get; set; }
     }
 }

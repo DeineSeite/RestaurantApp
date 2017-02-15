@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using RestaurantApp.Data.Models;
 
 namespace RestaurantApp.Data.Access
@@ -33,6 +34,10 @@ namespace RestaurantApp.Data.Access
             return restaurant.Id;
         }
 
+        public IEnumerable<BonusPointModel> GetAllBonusPoints(BonusPointType type)
+        {
+          return  GetTable<BonusPointModel>().Where(x => x.Type == type);
+        }
         public int AddNewBonusPoint(BonusPointModel bonusPoint)
         {
             AddNewRow(bonusPoint);
