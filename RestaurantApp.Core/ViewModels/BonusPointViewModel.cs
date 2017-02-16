@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
@@ -19,6 +20,7 @@ namespace RestaurantApp.Core.ViewModels
     {
         private BonusPointModel _currenBonusPointModel;
         private QrCodeScannerService _qrCodeService;
+        
 
         #region ctor
 
@@ -92,13 +94,19 @@ namespace RestaurantApp.Core.ViewModels
     }
 
     public class BonusPointCollection : ObservableCollection<BonusPointModel>
-    {private readonly IRestaurantDataAccess _dataAccess;
-     
+    {
+        private readonly IRestaurantDataAccess _dataAccess;
+        private BonusPointService _bonusPointService;
         private int BonusPointCount = 10;
 
+        public BonusPointCollection(IEnumerable<BonusPointModel> collection):base(collection)
+        {
+            
+        }
         public BonusPointCollection()
         {
             _dataAccess = FreshIOC.Container.Resolve<IRestaurantDataAccess>();
+            _bonusPointService = new BonusPointService();
             InitEmptyPlaces();
         }
 
@@ -112,12 +120,13 @@ namespace RestaurantApp.Core.ViewModels
         public void SyncItemWithServer(BonusPointModel bonusPoint)
         {
             _dataAccess.AddNewBonusPoint(bonusPoint);
+            _bonusPointService.SyncBonusPointCollection(Items.Where(x=>x.IsActivated).ToList());
         }
 
         public void FillFromDatabase(BonusPointType type)
         {
             var bonusPoints =
-                _dataAccess.GetAllBonusPoints(type).OrderByDescending(x => x.Order).Take(Items.Count).Reverse().ToList();
+                _dataAccess.GetAllBonusPoints(type).OrderByDescending(x => x).Take(Items.Count).Reverse().ToList();
 
             for (var i = 0; i < bonusPoints.Count; i++)
                 Items[i] = bonusPoints[i];

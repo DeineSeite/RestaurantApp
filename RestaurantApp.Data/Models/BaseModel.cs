@@ -1,10 +1,13 @@
-﻿using PropertyChanged;
+﻿using Newtonsoft.Json;
+using PropertyChanged;
+using SQLite.Net.Attributes;
 
 namespace RestaurantApp.Data.Models
 {
     [ImplementPropertyChanged]
-    public abstract class BaseModel
+    public class BaseModel
     {
+        [PrimaryKey]
         public int Id { get; set; }
     }
 }

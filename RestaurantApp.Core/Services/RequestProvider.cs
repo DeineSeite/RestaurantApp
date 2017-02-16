@@ -24,16 +24,14 @@ namespace RestaurantApp.Core.Services
             _serializerSettings = new JsonSerializerSettings
 
             {
-                ContractResolver = new CamelCasePropertyNamesContractResolver(),
-                DateTimeZoneHandling = DateTimeZoneHandling.Utc
+              //  ContractResolver = new CamelCasePropertyNamesContractResolver(),
+                DateTimeZoneHandling = DateTimeZoneHandling.Utc,
+               
+                
+                
 
                 
             };
-
-
-            _serializerSettings.Converters.Add(new StringEnumConverter());
-       
-          
         }
 
 
