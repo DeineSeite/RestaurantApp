@@ -26,25 +26,23 @@
           <source>Email*</source>
           <target state="translated" state-qualifier="mt-suggestion">E-Mail Adresse *</target>
         </trans-unit>
-        <trans-unit id="ContactName" translate="yes" xml:space="preserve">
-          <source>First and last name*</source>
-          <target state="translated" state-qualifier="mt-suggestion">Vor und Familienname *</target>
-        </trans-unit>
         <trans-unit id="ContactNumber" translate="yes" xml:space="preserve">
           <source>Phone number*</source>
           <target state="translated" state-qualifier="mt-suggestion">Telefonnummer *</target>
         </trans-unit>
         <trans-unit id="ContactPersonCount" translate="yes" xml:space="preserve">
-          <source>Nr of people*</source>
-          <target state="translated" state-qualifier="mt-suggestion">Personen Anzahl *</target>
+          <source>Person count*</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Personen Anzahl *</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Contacts" translate="yes" xml:space="preserve">
           <source>Contacts</source>
           <target state="translated" state-qualifier="tm-suggestion">Kontakt</target>
         </trans-unit>
         <trans-unit id="ContactSmoker" translate="yes" xml:space="preserve">
-          <source>Smoker*</source>
-          <target state="translated" state-qualifier="mt-suggestion">Raucherbereich *</target>
+          <source>Smoker YES/NO*</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Raucherbereich *</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="ContactTime" translate="yes" xml:space="preserve">
           <source>Time*</source>
@@ -97,6 +95,14 @@
         <trans-unit id="Signup" translate="yes" xml:space="preserve">
           <source>Sign Up</source>
           <target state="translated" state-qualifier="tm-suggestion">Registrieren</target>
+        </trans-unit>
+        <trans-unit id="ContactFirstName" translate="yes" xml:space="preserve">
+          <source>First name*</source>
+          <target state="new">First name*</target>
+        </trans-unit>
+        <trans-unit id="ContactLastName" translate="yes" xml:space="preserve">
+          <source>Last name*</source>
+          <target state="new">Last name*</target>
         </trans-unit>
       </group>
     </body>

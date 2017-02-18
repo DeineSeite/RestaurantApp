@@ -25,10 +25,7 @@
     <value>Datum *</value>
   </data>
   <data name="ContactEmail" xml:space="preserve">
-    <value>EMail Adresse *</value>
-  </data>
-  <data name="ContactName" xml:space="preserve">
-    <value>Vor und Familienname *</value>
+    <value>E-Mail Adresse *</value>
   </data>
   <data name="ContactNumber" xml:space="preserve">
     <value>Telefonnummer *</value>
@@ -37,7 +34,7 @@
     <value>Personen Anzahl *</value>
   </data>
   <data name="Contacts" xml:space="preserve">
-    <value>Kontakte</value>
+    <value>Kontakt</value>
   </data>
   <data name="ContactSmoker" xml:space="preserve">
     <value>Raucherbereich *</value>

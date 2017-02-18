@@ -1,5 +1,6 @@
 ﻿using System;
 using FreshMvvm;
+using RestaurantApp.Core.Helpers;
 using RestaurantApp.Core.Interfaces;
 using RestaurantApp.Data.Models;
 using Xamarin.Forms;
@@ -8,7 +9,10 @@ namespace RestaurantApp.Core.ViewModels
 {
     public class SignUpViewModel : BaseViewModel
     {
+        private string _fullName;
+
         #region  Public properties
+
 
         public UserModel User { get; set; }
 
@@ -22,10 +26,11 @@ namespace RestaurantApp.Core.ViewModels
 
         #region Public/Private members
 
-        private void SignUp()
+        private async void SignUp()
         {
             var autService = FreshIOC.Container.Resolve<IAuthenticationService>();
-            autService.SignUp(User);
+            User=await autService.SignUp(User);
+            Settings.UserId = User.Id;
         }
 
         #endregion

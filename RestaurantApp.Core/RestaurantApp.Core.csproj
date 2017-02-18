@@ -65,6 +65,7 @@
     <Compile Include="Interfaces\IAuthenticationService.cs" />
     <Compile Include="Interfaces\IBaseContentView.cs" />
     <Compile Include="Interfaces\IBasePage.cs" />
+    <Compile Include="Interfaces\IBaseService.cs" />
     <Compile Include="Interfaces\IContentService.cs" />
     <Compile Include="Interfaces\IContentViewModelMapper.cs" />
     <Compile Include="Interfaces\IDebugger.cs" />
@@ -80,12 +81,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AppDebugger.cs" />
     <Compile Include="Services\AuthenticationService.cs" />
+    <Compile Include="Services\BaseService.cs" />
     <Compile Include="Services\BonusPointService.cs" />
     <Compile Include="Services\ContentNavigationService.cs" />
     <Compile Include="Services\ContentViewModelMapper.cs" />
     <Compile Include="Services\ContentViewModelResolver.cs" />
     <Compile Include="Services\RequestProvider.cs" />
     <Compile Include="Services\ServiceAuthenticationException.cs" />
+    <Compile Include="Services\TableOrderService.cs" />
     <Compile Include="Services\UserInteractionService.cs" />
     <Compile Include="ViewModels\AccountViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />

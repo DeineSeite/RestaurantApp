@@ -24,13 +24,18 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Entry
                 Grid.Row="0"
-                Placeholder="{x:Static localizations:AppResources.ContactName}"
-                Text="{Binding User.Name}" />
+                Placeholder="{x:Static localizations:AppResources.ContactFirstName}"
+                Text="{Binding User.FirstName}" />
             <Entry
                 Grid.Row="1"
+                Placeholder="{x:Static localizations:AppResources.ContactLastName}"
+                Text="{Binding User.LastName}" />
+            <Entry
+                Grid.Row="2"
                 Keyboard="Email"
                 Placeholder="{x:Static localizations:AppResources.ContactEmail}"
                 Text="{Binding User.Email}">
@@ -39,7 +44,7 @@
                 </Entry.Behaviors>
             </Entry>
             <Entry
-                Grid.Row="2"
+                Grid.Row="3"
                 IsPassword="True"
                 Placeholder="{x:Static localizations:AppResources.Password}"
                 Text="{Binding User.Password}">
@@ -48,18 +53,18 @@
                 </Entry.Behaviors>
             </Entry>
             <Entry
-                Grid.Row="3"
+                Grid.Row="4"
                 Keyboard="Telephone"
                 Placeholder="{x:Static localizations:AppResources.ContactNumber}"
                 Text="{Binding User.Phone}" />
             <DatePicker
-                Grid.Row="4"
+                Grid.Row="5"
                 Date="{Binding User.BirthDay}"
                 Format="yyyy-MM-dd"
                 MaximumDate="{x:Static x:DateTime.Now}"
                 VerticalOptions="CenterAndExpand" />
             <Button
-                Grid.Row="5"
+                Grid.Row="6"
                 Style="{StaticResource ButtonStyle}"
                 Command="{Binding SignUpCommand}"
                 Text="{x:Static localizations:AppResources.Signup}">

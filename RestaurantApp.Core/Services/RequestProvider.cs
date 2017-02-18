@@ -2,10 +2,8 @@
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 using RestaurantApp.Core.Interfaces;
 using RestaurantApp.Data.Models;
@@ -14,23 +12,17 @@ namespace RestaurantApp.Core.Services
 {
     public class RequestProvider : IRequestProvider
     {
-        private readonly JsonSerializerSettings _serializerSettings;
         private readonly AppInfo _appInfo;
+        private readonly JsonSerializerSettings _serializerSettings;
 
 
         public RequestProvider()
-
         {
             _serializerSettings = new JsonSerializerSettings
 
             {
-              //  ContractResolver = new CamelCasePropertyNamesContractResolver(),
-                DateTimeZoneHandling = DateTimeZoneHandling.Utc,
-               
-                
-                
-
-                
+                ContractResolver = new CamelCasePropertyNamesContractResolver(),
+                DateTimeZoneHandling = DateTimeZoneHandling.Utc
             };
         }
 
@@ -59,18 +51,16 @@ namespace RestaurantApp.Core.Services
 
         public async Task<TResult> PostAsync<TRequest, TResult>(string uri, TRequest data)
         {
-         
             var httpClient = CreateHttpClient();
             var serialized = await Task.Run(() => JsonConvert.SerializeObject(data, _serializerSettings));
-            var response = await httpClient.PostAsync(uri, new StringContent(serialized, Encoding.UTF8, "application/json"));
+            var response = await httpClient.PostAsync(uri,
+                new StringContent(serialized, Encoding.UTF8, "application/json"));
             await HandleResponse(response);
             var responseData = await response.Content.ReadAsStringAsync();
             return await Task.Run(() => JsonConvert.DeserializeObject<TResult>(responseData, _serializerSettings));
         }
 
-
         public Task<TResult> PutAsync<TResult>(string uri, TResult data)
-
         {
             return PutAsync<TResult, TResult>(uri, data);
         }
@@ -79,16 +69,12 @@ namespace RestaurantApp.Core.Services
         public async Task<TResult> PutAsync<TRequest, TResult>(string uri, TRequest data)
         {
             var httpClient = CreateHttpClient();
-         
+
             var serialized = await Task.Run(() => JsonConvert.SerializeObject(data, _serializerSettings));
             var response = await httpClient.PutAsync(uri,
                 new StringContent(serialized, Encoding.UTF8, "application/json"));
-        
-            
             await HandleResponse(response);
-
             var responseData = await response.Content.ReadAsStringAsync();
-
             return await Task.Run(() => JsonConvert.DeserializeObject<TResult>(responseData, _serializerSettings));
         }
 
@@ -99,7 +85,7 @@ namespace RestaurantApp.Core.Services
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             return httpClient;
         }
-       
+
 
         private async Task HandleResponse(HttpResponseMessage response)
         {
@@ -115,9 +101,6 @@ namespace RestaurantApp.Core.Services
 
                 throw new HttpRequestException(content);
             }
-            
         }
     }
-
-   
 }

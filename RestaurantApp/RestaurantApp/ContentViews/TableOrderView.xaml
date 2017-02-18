@@ -34,39 +34,52 @@
                         Grid.Row="0"
                         Grid.ColumnSpan="2"
                         Margin="0,0,80,0"
-                        Placeholder="{x:Static localizations:AppResources.ContactName}" />
+                        Placeholder="{x:Static localizations:AppResources.ContactFirstName}"
+                        Text="{Binding Order.FullName}" />
                     <Entry
                         Grid.Row="1"
                         Grid.ColumnSpan="2"
                         Margin="0,0,80,0"
                         Keyboard="Email"
-                        Placeholder="{x:Static localizations:AppResources.ContactEmail}" />
+                        Placeholder="{x:Static localizations:AppResources.ContactEmail}"
+                        Text="{Binding Order.Email}" />
                     <Entry
                         Grid.Row="2"
                         Grid.ColumnSpan="2"
                         Margin="0,0,80,0"
                         Keyboard="Telephone"
-                        Placeholder="{x:Static localizations:AppResources.ContactNumber}" />
-                    <Entry 
-                      Grid.Row="3" 
-                      Placeholder="{x:Static localizations:AppResources.ContactDate}" />
-                    <Entry
+                        Placeholder="{x:Static localizations:AppResources.ContactNumber}"
+                        Text="{Binding Order.PhoneNumber}" />
+                    <DatePicker
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Date="{Binding Order.ReservationDate}"
+                        Format="yyyy-MM-dd"
+                        MinimumDate="{x:Static x:DateTime.Now}" />
+                    <TimePicker
                         Grid.Row="3"
                         Grid.Column="1"
-                        Placeholder="{x:Static localizations:AppResources.ContactTime}" />
-                    <Entry
-                        Grid.Row="4"
-                        Grid.Column="0"
-                        Keyboard="Numeric"
-                        Placeholder="{x:Static localizations:AppResources.ContactPersonCount}" />
+                        Format="HH:mm"
+                        Time="{Binding Time}" />
                     <Entry
                         Grid.Row="4"
                         Grid.Column="1"
-                        Placeholder="{x:Static localizations:AppResources.ContactSmoker}" />
+                        Keyboard="Numeric"
+                        Placeholder="{x:Static localizations:AppResources.ContactPersonCount}"
+                        Text="{Binding Order.PersonCount}" />
+                    <StackLayout
+                        Grid.Row="4"
+                        Grid.Column="0"
+                        Orientation="Horizontal"
+                        Spacing="10">
+                        <Label FontSize="Medium" Text="{x:Static localizations:AppResources.ContactSmoker}" />
+                        <Switch HorizontalOptions="StartAndExpand" IsToggled="{Binding Order.Smoker}" />
+                    </StackLayout>
                     <Button
                         Grid.Row="5"
                         Grid.Column="1"
                         BackgroundColor="Green"
+                        Command="{Binding MakeOrderCommand}"
                         Text="{x:Static localizations:AppResources.Send}" />
                 </Grid>
             </AbsoluteLayout>

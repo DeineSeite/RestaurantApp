@@ -61,6 +61,7 @@
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\BonusPointModel.cs" />
     <Compile Include="Models\RestaurantModel.cs" />
+    <Compile Include="Models\TableOrderModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="RestaurantApp.Data.cs" />

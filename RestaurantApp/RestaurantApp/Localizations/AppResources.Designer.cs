@@ -116,11 +116,20 @@ namespace RestaurantApp.Localizations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to First and last name*.
+        ///   Looks up a localized string similar to First name*.
         /// </summary>
-        public static string ContactName {
+        public static string ContactFirstName {
             get {
-                return ResourceManager.GetString("ContactName", resourceCulture);
+                return ResourceManager.GetString("ContactFirstName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last name*.
+        /// </summary>
+        public static string ContactLastName {
+            get {
+                return ResourceManager.GetString("ContactLastName", resourceCulture);
             }
         }
         

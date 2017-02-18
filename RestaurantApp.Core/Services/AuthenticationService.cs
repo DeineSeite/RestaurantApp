@@ -7,14 +7,8 @@ using RestaurantApp.Data.Models;
 
 namespace RestaurantApp.Core.Services
 {
-    public class AuthenticationService : IAuthenticationService
+    public class AuthenticationService :BaseService,IAuthenticationService
     {
-        private readonly IRequestProvider _requestProvider;
-
-        public AuthenticationService()
-        {
-            _requestProvider = FreshIOC.Container.Resolve<IRequestProvider>();
-        }
 
         public bool IsAuthenticated => !string.IsNullOrEmpty(Settings.AccessToken);
 
@@ -32,7 +26,7 @@ namespace RestaurantApp.Core.Services
             var uri = builder.ToString();
 
             var authenticationInfo =
-                await _requestProvider.PostAsync<AuthenticationRequest, AuthenticationResponse>(uri, auth);
+                await RequestProvider.PostAsync<AuthenticationRequest, AuthenticationResponse>(uri, auth);
             Settings.UserId = authenticationInfo.UserId;
             Settings.AccessToken = authenticationInfo.AccessToken;
             return true;
@@ -59,7 +53,7 @@ namespace RestaurantApp.Core.Services
             builder.Path = $"api/Profile/234s";
 
             var uri = builder.ToString();
-            var userModel= _requestProvider.GetAsync<UserModel>(uri);
+            var userModel= RequestProvider.GetAsync<UserModel>(uri);
             return userModel;
         }
 
@@ -70,8 +64,10 @@ namespace RestaurantApp.Core.Services
             var builder = new UriBuilder(Settings.AuthenticationEndpoint);
             builder.Path = $"api/Profile/SignUp/";
             var uri = builder.ToString();
-            var userModel= _requestProvider.PostAsync(uri, profile);
+            var userModel= RequestProvider.PostAsync(uri, profile);
             return userModel;
         }
+
+      
     }
 }

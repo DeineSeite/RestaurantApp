@@ -7,7 +7,7 @@ namespace RestaurantApp.Data.Models
     [ImplementPropertyChanged]
     public class BaseModel
     {
-        [PrimaryKey]
+        [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
     }
 }

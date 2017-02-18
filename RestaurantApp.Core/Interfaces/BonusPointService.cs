@@ -3,7 +3,7 @@ using RestaurantApp.Data.Models;
 
 namespace RestaurantApp.Core.Interfaces
 {
-    public interface IBonusPointService
+    public interface IBonusPointService:IBaseService
     {
         BonusPointCollection GetAllBonusPoints();
         bool ActivateBonus(BonusPointModel bonusPointModel);

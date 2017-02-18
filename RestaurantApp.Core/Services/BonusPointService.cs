@@ -11,18 +11,12 @@ using RestaurantApp.Data.Models;
 
 namespace RestaurantApp.Core.Services
 {
-  public  class BonusPointService:IBonusPointService
+    public class BonusPointService :BaseService,IBonusPointService
     {
-        private readonly IRequestProvider _requestProvider;
-
-        public BonusPointService()
-        {
-            _requestProvider = FreshIOC.Container.Resolve<IRequestProvider>();
-
-        }
+        
         public BonusPointCollection GetAllBonusPoints()
         {
-            return  new BonusPointCollection();
+            return new BonusPointCollection();
         }
 
         public bool ActivateBonus(BonusPointModel bonusPointModel)
@@ -32,7 +26,7 @@ namespace RestaurantApp.Core.Services
 
         public BonusPointModel GetBonusPoint(int id)
         {
-            return  new BonusPointModel() {Id = id};
+            return new BonusPointModel() { Id = id };
         }
 
         public Task<List<BonusPointModel>> SyncBonusPointCollection(List<BonusPointModel> bonusPointCollection)
@@ -40,7 +34,7 @@ namespace RestaurantApp.Core.Services
             var builder = new UriBuilder(Settings.AuthenticationEndpoint);
             builder.Path = $"api/BonusPoint/Sync/";
             var uri = builder.ToString();
-            var newBonusPointCollection = _requestProvider.PostAsync(uri, bonusPointCollection);
+            var newBonusPointCollection = RequestProvider.PostAsync(uri, bonusPointCollection);
             return newBonusPointCollection;
         }
     }

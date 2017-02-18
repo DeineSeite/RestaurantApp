@@ -7,8 +7,8 @@ namespace RestaurantApp.Data.Models
 {
     public enum BonusPointType
     {
-        Dinner,
-        Lunch
+        Dinner=0,
+        Lunch=1
     }
 
     public class BonusPointModel : BaseModel
@@ -21,7 +21,7 @@ namespace RestaurantApp.Data.Models
         public string Description { get; set; }
         public DateTime ActivationDate { get; set; }
 
-        [JsonIgnore, Ignore]
+        [JsonIgnore]
         public bool IsActivated { get; set; }
 
         [JsonIgnore,Ignore]

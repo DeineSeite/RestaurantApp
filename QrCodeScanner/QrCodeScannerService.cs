@@ -40,6 +40,8 @@ namespace QrCodeScanner
             {
                 AutoRotate = false,
                 UseFrontCameraIfAvailable = false,
+                TryHarder = true,
+                UseNativeScanning = true,
                 PossibleFormats = new List<ZXing.BarcodeFormat>
                 {
                     ZXing.BarcodeFormat.QR_CODE

@@ -132,8 +132,8 @@
   <data name="ContactEmail" xml:space="preserve">
     <value>Email*</value>
   </data>
-  <data name="ContactName" xml:space="preserve">
-    <value>First and last name*</value>
+  <data name="ContactFirstName" xml:space="preserve">
+    <value>First name*</value>
   </data>
   <data name="ContactNumber" xml:space="preserve">
     <value>Phone number*</value>
@@ -185,5 +185,8 @@
   </data>
   <data name="Signup" xml:space="preserve">
     <value>Sign Up</value>
+  </data>
+  <data name="ContactLastName" xml:space="preserve">
+    <value>Last name*</value>
   </data>
 </root>

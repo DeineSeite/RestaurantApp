@@ -145,7 +145,7 @@ namespace RestaurantApp.Data.Access
                 _database.CreateTable<T>();
             }
         }
-      
+
 
     }
 }

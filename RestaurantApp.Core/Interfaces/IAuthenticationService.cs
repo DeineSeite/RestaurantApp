@@ -7,11 +7,10 @@ using RestaurantApp.Data.Models;
 
 namespace RestaurantApp.Core.Interfaces
 {
-    public interface IAuthenticationService
+    public interface IAuthenticationService:IBaseService
     {
         bool IsAuthenticated { get; }
         Task<bool> LoginAsync(string userName, string password);
-
         Task LogoutAsync();
         Task<UserModel> SignUp(UserModel profile);
         int GetCurrentUserId();

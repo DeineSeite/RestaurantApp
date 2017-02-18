@@ -13,6 +13,7 @@ using RestaurantApp.Data.Access;
 using RestaurantApp.Data.Models;
 using Xamarin.Forms;
 
+
 namespace RestaurantApp.Core.ViewModels
 {
     [ImplementPropertyChanged]
@@ -75,7 +76,8 @@ namespace RestaurantApp.Core.ViewModels
         {
             var index = BonusPointList.IndexOf(_currenBonusPointModel);
             _currenBonusPointModel.ActivationDate = DateTime.Now;
-            _currenBonusPointModel.Description = $"Activation Date:{DateTime.Now:yy-mm-dd} \n {result}";
+            _currenBonusPointModel.Description = result;
+            _currenBonusPointModel.Hash = "6499b220cd5391f0edf3bd40f46fbaaf28bd859bb13566c8e474aaebed9f370b";
             _currenBonusPointModel.IsActivated = true;
             _currenBonusPointModel.IsLastInList = false;
             BonusPointList.SyncItemWithServer(_currenBonusPointModel);
