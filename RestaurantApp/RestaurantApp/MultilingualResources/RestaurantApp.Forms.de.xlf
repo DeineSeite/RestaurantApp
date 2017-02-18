@@ -24,31 +24,31 @@
         </trans-unit>
         <trans-unit id="ContactEmail" translate="yes" xml:space="preserve">
           <source>Email*</source>
-          <target state="translated" state-qualifier="mt-suggestion">E-Mail *</target>
+          <target state="translated" state-qualifier="mt-suggestion">E-Mail Adresse *</target>
         </trans-unit>
         <trans-unit id="ContactName" translate="yes" xml:space="preserve">
           <source>First and last name*</source>
-          <target state="translated" state-qualifier="mt-suggestion">Erste und letzte Namen *</target>
+          <target state="translated" state-qualifier="mt-suggestion">Vor und Familienname *</target>
         </trans-unit>
         <trans-unit id="ContactNumber" translate="yes" xml:space="preserve">
           <source>Phone number*</source>
-          <target state="translated" state-qualifier="mt-suggestion">Telefon Nummer *</target>
+          <target state="translated" state-qualifier="mt-suggestion">Telefonnummer *</target>
         </trans-unit>
         <trans-unit id="ContactPersonCount" translate="yes" xml:space="preserve">
-          <source>Person count*</source>
-          <target state="translated" state-qualifier="mt-suggestion">Person Graf *</target>
+          <source>Nr of people*</source>
+          <target state="translated" state-qualifier="mt-suggestion">Personen Anzahl *</target>
         </trans-unit>
         <trans-unit id="Contacts" translate="yes" xml:space="preserve">
           <source>Contacts</source>
-          <target state="translated" state-qualifier="tm-suggestion">Kontakte</target>
+          <target state="translated" state-qualifier="tm-suggestion">Kontakt</target>
         </trans-unit>
         <trans-unit id="ContactSmoker" translate="yes" xml:space="preserve">
-          <source>Smoker YES/NO*</source>
-          <target state="translated" state-qualifier="mt-suggestion">Raucher Ja / Nein *</target>
+          <source>Smoker*</source>
+          <target state="translated" state-qualifier="mt-suggestion">Raucherbereich *</target>
         </trans-unit>
         <trans-unit id="ContactTime" translate="yes" xml:space="preserve">
           <source>Time*</source>
-          <target state="translated" state-qualifier="mt-suggestion">Zeit *</target>
+          <target state="translated" state-qualifier="mt-suggestion">Uhrzeit *</target>
         </trans-unit>
         <trans-unit id="FoodCard" translate="yes" xml:space="preserve">
           <source>Menu</source>

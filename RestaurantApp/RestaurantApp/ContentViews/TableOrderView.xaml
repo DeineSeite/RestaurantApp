@@ -47,11 +47,13 @@
                         Margin="0,0,80,0"
                         Keyboard="Telephone"
                         Placeholder="{x:Static localizations:AppResources.ContactNumber}" />
-                    <Entry Grid.Row="3" Placeholder="{x:Static localizations:AppResources.ContactDate}" />
+                    <Entry 
+                      Grid.Row="3" 
+                      Placeholder="{x:Static localizations:AppResources.ContactDate}" />
                     <Entry
                         Grid.Row="3"
                         Grid.Column="1"
-                        Placeholder="{x:Static localizations:AppResources.ContactDate}" />
+                        Placeholder="{x:Static localizations:AppResources.ContactTime}" />
                     <Entry
                         Grid.Row="4"
                         Grid.Column="0"
