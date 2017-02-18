@@ -1,15 +1,15 @@
 ﻿using System;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using PropertyChanged;
 
 namespace RestaurantApp.Data.Models
 {
     public enum GenderType
     {
-        Man=1,
-        Woman=2
+        Man = 1,
+        Woman = 2
     }
+
     [ImplementPropertyChanged]
     public class UserModel : BaseModel
     {
@@ -19,8 +19,17 @@ namespace RestaurantApp.Data.Models
         [JsonProperty(PropertyName = "vname")]
         public string LastName { get; set; }
 
-        [JsonProperty(PropertyName = "uname")]
-        public string Login { get; set; }
+        [JsonProperty(PropertyName = "username")]
+        public string Login
+        {
+            get
+            {
+                var login = FirstName + LastName;
+                if (login.Length > 5)
+                    return login.Substring(0, 5);
+                return login;
+            }
+        }
 
         [JsonProperty(PropertyName = "email")]
         public string Email { get; set; }
@@ -28,23 +37,25 @@ namespace RestaurantApp.Data.Models
         [JsonProperty(PropertyName = "birthday")]
         public DateTime BirthDay { get; set; }
 
-        [JsonProperty(PropertyName = "pwd")]
+        [JsonProperty(PropertyName = "passwort")]
         public string Password { get; set; }
+
+        [JsonProperty(PropertyName = "passwort2")]
+        public string Password2 => Password;
 
         [JsonProperty(PropertyName = "mobil")]
         public string Phone { get; set; }
 
-        [JsonProperty(PropertyName = "gender")]
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonProperty(PropertyName = "geschlecht")]
         public GenderType Gender { get; set; }
 
         [JsonProperty(PropertyName = "facebookid")]
-        public string FacebookId { get; set; }
+        public int FacebookId { get; set; }
 
         [JsonProperty(PropertyName = "twitterid")]
-        public string TwitterId { get; set; }
+        public int TwitterId { get; set; }
 
         [JsonProperty(PropertyName = "googleplusId")]
-        public string GoogleplusId { get; set; }
+        public int GoogleplusId { get; set; }
     }
 }

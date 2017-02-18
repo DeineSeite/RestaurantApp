@@ -95,11 +95,10 @@ namespace RestaurantApp.Core.Services
 
 
                 if (response.StatusCode == HttpStatusCode.Forbidden ||
-                    response.StatusCode == HttpStatusCode.Unauthorized)
+                   response.StatusCode == HttpStatusCode.Unauthorized)
+                  throw new ServiceAuthenticationException(content);
 
-                    throw new ServiceAuthenticationException(content);
-
-                throw new HttpRequestException(content);
+              throw new HttpRequestException(content);
             }
         }
     }
