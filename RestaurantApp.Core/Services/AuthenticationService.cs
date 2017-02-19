@@ -25,10 +25,10 @@ namespace RestaurantApp.Core.Services
             var uri = builder.ToString();
 
             var authenticationInfo =
-                await RequestProvider.PostAsync<AuthenticationRequest, AuthenticationResponse>(uri, auth);
-            Settings.UserId = authenticationInfo.UserId;
+                await RequestProvider.PostAsync<AuthenticationRequest, UserModel>(uri, auth);
+            Settings.UserId = authenticationInfo.Id;
             Settings.UserName = authenticationInfo.FirstName+" "+authenticationInfo.LastName;
-            Settings.AccessToken = authenticationInfo.AccessToken;
+            Settings.AccessToken = authenticationInfo.AccessToken.ToString();
             return true;
         }
 

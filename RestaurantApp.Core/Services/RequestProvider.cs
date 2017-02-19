@@ -83,7 +83,7 @@ namespace RestaurantApp.Core.Services
         {
             var httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            httpClient.DefaultRequestHeaders.Authorization=new AuthenticationHeaderValue("Authorization",AccessToken);
+            httpClient.DefaultRequestHeaders.Authorization=new AuthenticationHeaderValue("Autorization",AccessToken);
             return httpClient;
         }
 
