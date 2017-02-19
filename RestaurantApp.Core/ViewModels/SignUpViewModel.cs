@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Net.Http;
 using FreshMvvm;
 using RestaurantApp.Core.Helpers;
 using RestaurantApp.Core.Interfaces;
+using RestaurantApp.Core.Services;
 using RestaurantApp.Data.Models;
 using Xamarin.Forms;
 
@@ -28,9 +30,24 @@ namespace RestaurantApp.Core.ViewModels
 
         private async void SignUp()
         {
-            var autService = FreshIOC.Container.Resolve<IAuthenticationService>();
-            User=await autService.SignUp(User);
-            Settings.UserId = User.Id;
+            try
+            {
+                var autService = FreshIOC.Container.Resolve<IAuthenticationService>();
+                var newUser = await autService.SignUp(User);
+                Settings.UserId = newUser.Id;
+                Settings.UserName = newUser.FirstName + " " + newUser.LastName;
+                NavigationContentService.PushViewModel<AccountViewModel>();
+                NavigationContentService.CleanStackNavigation();
+            }
+            catch (HttpRequestException e)
+            {
+                DisplayService.DisplayAlert("Signup error ", e.Message);
+            }
+            catch (Exception e)
+            {
+                DisplayService.DisplayAlert("Fatal error ", e.Message);
+            }
+
         }
 
         #endregion
@@ -39,7 +56,7 @@ namespace RestaurantApp.Core.ViewModels
 
         public SignUpViewModel()
         {
-            User = new UserModel { BirthDay = DateTime.Now, Gender = GenderType.Man};
+            User = new UserModel { BirthDay = DateTime.Now, Gender = GenderType.Man };
             SignUpCommand = new Command(SignUp);
         }
 

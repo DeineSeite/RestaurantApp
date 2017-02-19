@@ -1,16 +1,9 @@
-﻿using Android.App;
+﻿using System.Reflection;
+using Android.App;
 using Android.Content.PM;
 using Android.OS;
 using DLToolkit.Forms.Controls;
 using Microsoft.Azure.Mobile;
-using RestaurantApp.ContentViews;
-using RestaurantApp.Core.Converters;
-using RestaurantApp.Core.Services;
-using RestaurantApp.Droid.Renderers;
-using RestaurantApp.Pages;
-using RestaurantApp.Triggers;
-using RestaurantApp.UserControls;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 #if  GORILLA
@@ -43,8 +36,6 @@ namespace RestaurantApp.Droid
             Forms.Init(this, bundle);
             FlowListView.Init();
             MobileCenter.Configure("8844801f-c2a9-4e09-b769-61856cfc7d1a");
-            var s=new RequestProvider();
-
 #if !GORILLA
             LoadApplication(new App());
 #else

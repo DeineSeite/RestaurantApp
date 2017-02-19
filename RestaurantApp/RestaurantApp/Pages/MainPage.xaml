@@ -18,7 +18,6 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-
             <userControls:HeaderTemplate
                 x:Name="HeaderPage"
                 Grid.Row="0"

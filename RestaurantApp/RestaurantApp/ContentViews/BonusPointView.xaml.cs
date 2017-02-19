@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using RestaurantApp.Behaviors;
 using RestaurantApp.Core.ViewModels;
+using RestaurantApp.Data.Models;
 using RestaurantApp.UserControls;
 using Xamarin.Forms;
 
@@ -15,8 +16,13 @@ namespace RestaurantApp.ContentViews
         public BonusPointView()
         {
             InitializeComponent();
-        //    FlowList.FlowColumnTemplate=new BonusPointTemplateSelector();
-            
+        }
+
+        public BonusPointView(BonusPointType type)
+        {
+            InitializeComponent();
+            var viewModel =new BonusPointViewModel(type);
+            BindingContext = viewModel;
         }
     }
 }

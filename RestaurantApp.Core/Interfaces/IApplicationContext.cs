@@ -11,10 +11,10 @@ namespace RestaurantApp.Core.Interfaces
 {
     public interface IApplicationContext
     {
-        FreshNavigationContainer BasicNavContainer { get; set; }
+       
         void ChangeCurrentCultureInfo(string langCode);
         CultureInfo CurrentCulture { get; set; }
-        Application Instance { get; }
+       
         
     }
 }

@@ -60,6 +60,7 @@
     <Compile Include="Models\AuthenticationResponse.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\BonusPointModel.cs" />
+    <Compile Include="Models\RestaurantBaseModel.cs" />
     <Compile Include="Models\RestaurantModel.cs" />
     <Compile Include="Models\TableOrderModel.cs" />
     <Compile Include="Models\UserModel.cs" />

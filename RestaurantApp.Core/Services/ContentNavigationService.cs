@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using FreshMvvm;
 using RestaurantApp.Core.Interfaces;
 using RestaurantApp.Core.ViewModels;
@@ -63,6 +64,18 @@ namespace RestaurantApp.Core.Services
                 return true;
             }
             return false; //Go App to sleep if stack is empty
+        }
+
+        public void CleanStackNavigation()
+        {
+            try
+            {
+                StackNavigation.RemoveAt(1);
+            }
+            catch (Exception e)
+            {
+                AppDebugger.WriteLine("Cannot clean StackNavigation "+e.Message);
+            }
         }
 
         #region Public properties

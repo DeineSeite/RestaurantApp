@@ -32,8 +32,7 @@
         </trans-unit>
         <trans-unit id="ContactPersonCount" translate="yes" xml:space="preserve">
           <source>Person count*</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Personen Anzahl *</target>
-          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
+          <target state="translated" state-qualifier="mt-suggestion">Personen Anzahl *</target>
         </trans-unit>
         <trans-unit id="Contacts" translate="yes" xml:space="preserve">
           <source>Contacts</source>
@@ -41,8 +40,7 @@
         </trans-unit>
         <trans-unit id="ContactSmoker" translate="yes" xml:space="preserve">
           <source>Smoker YES/NO*</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Raucherbereich *</target>
-          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
+          <target state="translated">Raucher JA/NEIN *</target>
         </trans-unit>
         <trans-unit id="ContactTime" translate="yes" xml:space="preserve">
           <source>Time*</source>
@@ -98,11 +96,23 @@
         </trans-unit>
         <trans-unit id="ContactFirstName" translate="yes" xml:space="preserve">
           <source>First name*</source>
-          <target state="new">First name*</target>
+          <target state="translated" state-qualifier="mt-suggestion">Vorname *</target>
         </trans-unit>
         <trans-unit id="ContactLastName" translate="yes" xml:space="preserve">
           <source>Last name*</source>
-          <target state="new">Last name*</target>
+          <target state="translated">Nachname *</target>
+        </trans-unit>
+        <trans-unit id="Logout" translate="yes" xml:space="preserve">
+          <source>Logout</source>
+          <target state="translated" state-qualifier="tm-suggestion">Abmelden</target>
+        </trans-unit>
+        <trans-unit id="Dinner" translate="yes" xml:space="preserve">
+          <source>Dinner</source>
+          <target state="translated" state-qualifier="tm-suggestion">Abendessen</target>
+        </trans-unit>
+        <trans-unit id="Lunch" translate="yes" xml:space="preserve">
+          <source>Lunch</source>
+          <target state="translated">Mittagessen</target>
         </trans-unit>
       </group>
     </body>

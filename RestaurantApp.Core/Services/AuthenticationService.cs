@@ -9,7 +9,6 @@ namespace RestaurantApp.Core.Services
 {
     public class AuthenticationService :BaseService,IAuthenticationService
     {
-
         public bool IsAuthenticated => !string.IsNullOrEmpty(Settings.AccessToken);
 
         public async Task<bool> LoginAsync(string userEmail, string password)
@@ -21,13 +20,14 @@ namespace RestaurantApp.Core.Services
             };
 
             var builder = new UriBuilder(Settings.AuthenticationEndpoint);
-            builder.Path = "api/login";
+            builder.Path = "api/Profile/Login/";
 
             var uri = builder.ToString();
 
             var authenticationInfo =
                 await RequestProvider.PostAsync<AuthenticationRequest, AuthenticationResponse>(uri, auth);
             Settings.UserId = authenticationInfo.UserId;
+            Settings.UserName = authenticationInfo.FirstName+" "+authenticationInfo.LastName;
             Settings.AccessToken = authenticationInfo.AccessToken;
             return true;
         }
@@ -35,7 +35,9 @@ namespace RestaurantApp.Core.Services
         public Task LogoutAsync()
         {
             Settings.RemoveUserId();
+            Settings.RemoveUserName();
             Settings.RemoveAccessToken();
+            Settings.RemoveIsLogin();
 
             return Task.FromResult(false);
         }
@@ -50,7 +52,7 @@ namespace RestaurantApp.Core.Services
             var userId = GetCurrentUserId();
 
             var builder = new UriBuilder(Settings.AuthenticationEndpoint);
-            builder.Path = $"api/Profile/234s";
+            builder.Path = $"api/Profile/GetProfile/{userId}/";
 
             var uri = builder.ToString();
             var userModel= RequestProvider.GetAsync<UserModel>(uri);

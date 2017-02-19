@@ -11,11 +11,9 @@ namespace RestaurantApp.Data.Models
         Lunch=1
     }
 
-    public class BonusPointModel : BaseModel
+    public class BonusPointModel : RestaurantBaseModel
     {
         public int PointId { get; set; }
-        public int UserId { get; set; }
-        public int RestaurantId { get; set; }
         public string Hash { get; set; }        
         public  BonusPointType Type { get; set; }
         public string Description { get; set; }

@@ -25,11 +25,20 @@ namespace RestaurantApp.Core.Helpers
         private const string UserIdKey = "user_id_key";
         private static readonly int UserIdDefault = 0;
 
+        private const string UserNameKey = "user_name_key";
+        private static readonly string UserNameDefault = string.Empty;
+
+        private const string RestaurantIdKey = "restaurant_id_key";
+        private static readonly int RestaurantIdDefault = 0;
+
         private const string AccessTokenKey = "access_token_key";
         private static readonly string AccessTokenDefault = string.Empty;
 
         private const string FirstStartKey = "first_start_key";
         private static readonly bool FirstStartDefault = true;
+
+        private const string IsLoginKey = "is_login_key";
+        private static readonly bool IsLoginDefault = false;
         #endregion
 
         public static int UserId
@@ -43,7 +52,30 @@ namespace RestaurantApp.Core.Helpers
                 AppSettings.AddOrUpdateValue(UserIdKey, value);
             }
         }
-       
+
+        public static string UserName
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault(UserNameKey, UserNameDefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue(UserNameKey, value);
+            }
+        }
+
+        public static int RestaurantId
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault(RestaurantIdKey, RestaurantIdDefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue(RestaurantIdKey, value);
+            }
+        }
 
         public static string AccessToken
         {
@@ -68,11 +100,30 @@ namespace RestaurantApp.Core.Helpers
             }
         }
 
+        public static bool IsLogin
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault(IsLoginKey, IsLoginDefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue(IsLoginKey, value);
+            }
+        }
+
         public static void RemoveUserId()
         {
             AppSettings.Remove(UserIdKey);
         }
-
+        public static void RemoveUserName()
+        {
+            AppSettings.Remove(UserNameKey);
+        }
+        public static void RemoveIsLogin()
+        {
+            AppSettings.Remove(IsLoginKey);
+        }
         public static void RemoveAccessToken()
         {
             AppSettings.Remove(AccessTokenKey);

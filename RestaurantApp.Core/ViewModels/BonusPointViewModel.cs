@@ -4,7 +4,11 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
 using FreshMvvm;
+using Java.Lang;
+using Java.Util.Concurrent;
 using PropertyChanged;
 using QrCodeScanner;
 using RestaurantApp.Core.Interfaces;
@@ -12,7 +16,9 @@ using RestaurantApp.Core.Services;
 using RestaurantApp.Data.Access;
 using RestaurantApp.Data.Models;
 using Xamarin.Forms;
-
+using Exception = System.Exception;
+using System.Threading;
+using Windows.System.Threading;
 
 namespace RestaurantApp.Core.ViewModels
 {
@@ -21,16 +27,17 @@ namespace RestaurantApp.Core.ViewModels
     {
         private BonusPointModel _currenBonusPointModel;
         private QrCodeScannerService _qrCodeService;
-        
 
         #region ctor
 
-        public BonusPointViewModel()
+        public BonusPointViewModel(BonusPointType type)
         {
             StartScanCommand = new Command(ScanQrCode);
             ItemTappedCommand = new Command<BonusPointModel>(ItemTapped);
-            BonusPointList = new BonusPointCollection();
-            BonusPointList.FillFromDatabase(BonusPointType.Dinner);
+
+            BonusPointsList = new BonusPointCollection();
+            BonusPointsList.FillFromDatabase(type);
+
             InitScanPage();
         }
 
@@ -38,7 +45,7 @@ namespace RestaurantApp.Core.ViewModels
 
         #region Public properties
 
-        public BonusPointCollection BonusPointList { get; set; }
+        public BonusPointCollection BonusPointsList { get; set; }
 
         #endregion
 
@@ -51,20 +58,22 @@ namespace RestaurantApp.Core.ViewModels
             }
             else
             {
-                ShowPopupInfo(bonusPoint);
+                ShowPopupInfo(null, bonusPoint);
             }
         }
 
-        private void ShowPopupInfo(BonusPointModel bonusPoint)
+        private void ShowPopupInfo(string title, BonusPointModel bonusPoint)
         {
-            UserInteractionService.DisplayAlert(null, bonusPoint.Description);
+            DisplayService.DisplayAlert(title, bonusPoint.Description);
         }
 
-        private void InitScanPage()
+        private async void InitScanPage()
         {
-            var mainPage = FreshIOC.Container.Resolve<IApplicationContext>().BasicNavContainer.CurrentPage;
-            _qrCodeService = new QrCodeScannerService(mainPage) {ScanPageTitle = "QR code scanner"};
+            await Task.Run(() => { 
+            var mainPage = FreshIOC.Container.Resolve<IMainPageModel>().CurrentPage;
+            _qrCodeService = new QrCodeScannerService(mainPage) { ScanPageTitle = "QR code scanner" };
             _qrCodeService.OnResultReady += QrService_OnResultReady;
+            });
         }
 
         private void ScanQrCode()
@@ -74,37 +83,36 @@ namespace RestaurantApp.Core.ViewModels
 
         private void QrService_OnResultReady(object sender, string result)
         {
-            var index = BonusPointList.IndexOf(_currenBonusPointModel);
+            var index = BonusPointsList.IndexOf(_currenBonusPointModel);
             _currenBonusPointModel.ActivationDate = DateTime.Now;
             _currenBonusPointModel.Description = result;
             _currenBonusPointModel.Hash = "6499b220cd5391f0edf3bd40f46fbaaf28bd859bb13566c8e474aaebed9f370b";
             _currenBonusPointModel.IsActivated = true;
             _currenBonusPointModel.IsLastInList = false;
-            BonusPointList.SyncItemWithServer(_currenBonusPointModel);
+            BonusPointsList.SyncItemWithServer(_currenBonusPointModel);
 
-            if (BonusPointList.ElementAt(index + 1) != null)
-                BonusPointList[index + 1].IsLastInList = true;
+            //Move the Plus button into next cell
+            if (BonusPointsList.ElementAt(index + 1) != null)
+                BonusPointsList[index + 1].IsLastInList = true;
+
+            //Alert user
+            ShowPopupInfo("Scanned", _currenBonusPointModel);
         }
 
         #region Commands
 
         public Command StartScanCommand { get; set; }
         public Command<BonusPointModel> ItemTappedCommand { get; set; }
-       
 
         #endregion
     }
 
     public class BonusPointCollection : ObservableCollection<BonusPointModel>
     {
+        private readonly BonusPointService _bonusPointService;
         private readonly IRestaurantDataAccess _dataAccess;
-        private BonusPointService _bonusPointService;
-        private int BonusPointCount = 10;
+        private readonly int BonusPointCount = 10;
 
-        public BonusPointCollection(IEnumerable<BonusPointModel> collection):base(collection)
-        {
-            
-        }
         public BonusPointCollection()
         {
             _dataAccess = FreshIOC.Container.Resolve<IRestaurantDataAccess>();
@@ -121,8 +129,20 @@ namespace RestaurantApp.Core.ViewModels
 
         public void SyncItemWithServer(BonusPointModel bonusPoint)
         {
-            _dataAccess.AddNewBonusPoint(bonusPoint);
-            _bonusPointService.SyncBonusPointCollection(Items.Where(x=>x.IsActivated).ToList());
+            try
+            {
+                _dataAccess.AddNewBonusPoint(bonusPoint);
+                _bonusPointService.SyncBonusPointCollection(Items.Where(x => x.IsActivated).ToList());
+            }
+            catch (HttpRequestException e)
+            {
+                DisplayService.DisplayAlert("Sync error: ", e.Message);
+            }
+            catch (Exception e)
+            {
+                DisplayService.DisplayAlert("Error: ", e.Message);
+            }
+
         }
 
         public void FillFromDatabase(BonusPointType type)
@@ -135,7 +155,7 @@ namespace RestaurantApp.Core.ViewModels
 
             //Set last item as ScanButton
             if (bonusPoints.Count < Items.Count)
-                Items[bonusPoints.Count].IsLastInList=true;
+                Items[bonusPoints.Count].IsLastInList = true;
         }
 
         protected override void OnCollectionChanged(NotifyCollectionChangedEventArgs e)

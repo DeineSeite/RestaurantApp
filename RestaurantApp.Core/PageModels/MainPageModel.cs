@@ -1,6 +1,7 @@
 ﻿using System;
 using FreshMvvm;
 using PropertyChanged;
+using RestaurantApp.Core.Helpers;
 using RestaurantApp.Core.Interfaces;
 using RestaurantApp.Core.Services;
 using RestaurantApp.Core.ViewModels;
@@ -12,6 +13,8 @@ namespace RestaurantApp.Core.PageModels
     [ImplementPropertyChanged]
     public class MainPageModel : BasePageModel,IMainPageModel
     {
+        public string UserName => Settings.UserName;
+
         public IBaseContentView MainContentView
         {
             get;

@@ -3,7 +3,7 @@ using RestaurantApp.Core.Interfaces;
 
 namespace RestaurantApp.Core.Services
 {
-    public static class UserInteractionService 
+    public static class DisplayService 
     {
         public static void DisplayAlert(string title, string content)
         {

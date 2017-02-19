@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
+using System.Threading.Tasks;
 using FreshMvvm;
 using Microsoft.Azure.Mobile;
 using Microsoft.Azure.Mobile.Analytics;
@@ -11,6 +12,7 @@ using RestaurantApp.Core.PageModels;
 using RestaurantApp.Core.Services;
 using RestaurantApp.Core.ViewModels;
 using RestaurantApp.Data.Access;
+using RestaurantApp.Data.Models;
 using RestaurantApp.Localizations;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -35,6 +37,7 @@ namespace RestaurantApp
          
         }
 
+
         #endregion
 
         #region Constants  
@@ -45,11 +48,9 @@ namespace RestaurantApp
         #endregion
 
         #region Public properties
-
-        public Application Instance => Current;
+       
         public FreshNavigationContainer BasicNavContainer { get; set; }
         public CultureInfo CurrentCulture { get; set; } = new CultureInfo("de-De");
-        public MenuViewModel StartMenu { get; set; }
 
         #endregion
 
@@ -115,7 +116,7 @@ namespace RestaurantApp
             AppDebugger.WriteLine("Registered ContentNavigationService");
 
             //Initialize menu items
-            StartMenu = new MenuViewModel();
+            var  startMenu = new MenuViewModel();
             var infoMenu = new MenuViewModel
             {
                 MenuItemsList = new List<IBaseContentView>
@@ -126,16 +127,29 @@ namespace RestaurantApp
                 }
             };
 
-            AppDebugger.WriteLine("Initialized menu items");
+            var bonusPointsMenu = new MenuViewModel()
+            {
+                MenuItemsList = new List<IBaseContentView>()
+                {
+                    new BonusPointView(BonusPointType.Dinner) {Title = AppResources.Dinner},
+                    new BonusPointView(BonusPointType.Lunch) {Title = AppResources.Lunch}
+                }
+            };
+            var bonusPointsView = new MenuView
+            {
+                BindingContext = bonusPointsMenu,
+                Title = AppResources.BonusPoints
+            };
 
             var infoMenuView = new MenuView
             {
                 BindingContext = infoMenu,
                 Title = AppResources.Info
             };
-            StartMenu.MenuItemsList = new List<IBaseContentView>
+            
+            startMenu.MenuItemsList = new List<IBaseContentView>
             {
-                new BonusPointView(),
+               bonusPointsView,
                 infoMenuView,
                 new FoodCardView(),
                 new ContactView()
@@ -143,7 +157,7 @@ namespace RestaurantApp
             AppDebugger.WriteLine("Initialized infoMenuView");
 
             //Push menu as content
-            var startMenuView = new MenuView {BindingContext = StartMenu};
+            var startMenuView = new MenuView {BindingContext = startMenu};
             navService.PushContentView(startMenuView);
             AppDebugger.WriteLine("Push menu as main content");
         }

@@ -5,16 +5,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:contentViews="clr-namespace:RestaurantApp.ContentViews;assembly=RestaurantApp"
     xmlns:controls="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+    xmlns:forms="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
     xmlns:localizations="clr-namespace:RestaurantApp.Localizations;assembly=RestaurantApp"
     xmlns:userControls="clr-namespace:RestaurantApp.UserControls;assembly=RestaurantApp"
     xmlns:viewModels="clr-namespace:RestaurantApp.Core.ViewModels;assembly=RestaurantApp.Core"
     Title="{x:Static localizations:AppResources.BonusPoints}"
     BackgroundColor="Transparent">
-
-    <contentViews:BaseContentView.BindingContext>
-        <viewModels:BonusPointViewModel />
-    </contentViews:BaseContentView.BindingContext>
-
 
     <StackLayout>
         <controls:FlowListView
@@ -22,7 +18,7 @@
             BackgroundColor="Transparent"
             FlowColumnCount="4"
             FlowItemTappedCommand="{Binding ItemTappedCommand}"
-            FlowItemsSource="{Binding BonusPointList}"
+            FlowItemsSource="{Binding BonusPointsList}"
             HasUnevenRows="True"
             HorizontalOptions="Center"
             SeparatorVisibility="None">

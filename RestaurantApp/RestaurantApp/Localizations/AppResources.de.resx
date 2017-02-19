@@ -37,7 +37,7 @@
     <value>Kontakt</value>
   </data>
   <data name="ContactSmoker" xml:space="preserve">
-    <value>Raucherbereich *</value>
+    <value>Raucher JA/NEIN *</value>
   </data>
   <data name="ContactTime" xml:space="preserve">
     <value>Uhrzeit *</value>
@@ -77,5 +77,20 @@
   </data>
   <data name="Signup" xml:space="preserve">
     <value>Registrieren</value>
+  </data>
+  <data name="ContactFirstName" xml:space="preserve">
+    <value>Vorname *</value>
+  </data>
+  <data name="ContactLastName" xml:space="preserve">
+    <value>Nachname *</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Abmelden</value>
+  </data>
+  <data name="Dinner" xml:space="preserve">
+    <value>Abendessen</value>
+  </data>
+  <data name="Lunch" xml:space="preserve">
+    <value>Mittagessen</value>
   </data>
 </root>

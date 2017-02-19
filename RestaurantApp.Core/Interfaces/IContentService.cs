@@ -12,5 +12,6 @@ namespace RestaurantApp.Core.Interfaces
         bool StepBackNavigation();
         void PushViewModel(BaseViewModel model);
         void PushViewModel<T>() where T : BaseViewModel;
+        void CleanStackNavigation();
     }
 }

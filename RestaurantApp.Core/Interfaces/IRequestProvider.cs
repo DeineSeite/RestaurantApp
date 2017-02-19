@@ -14,5 +14,7 @@ namespace RestaurantApp.Core.Interfaces
         Task<TResult> PutAsync<TResult>(string uri, TResult data);
 
         Task<TResult> PutAsync<TRequest, TResult>(string uri, TRequest data);
+
+        string AccessToken { get; set; }
     }
 }

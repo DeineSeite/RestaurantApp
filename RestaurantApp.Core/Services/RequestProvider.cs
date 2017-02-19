@@ -14,7 +14,7 @@ namespace RestaurantApp.Core.Services
     {
         private readonly AppInfo _appInfo;
         private readonly JsonSerializerSettings _serializerSettings;
-
+        public  string AccessToken { get; set; }
 
         public RequestProvider()
         {
@@ -83,6 +83,7 @@ namespace RestaurantApp.Core.Services
         {
             var httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            httpClient.DefaultRequestHeaders.Authorization=new AuthenticationHeaderValue("Authorization",AccessToken);
             return httpClient;
         }
 

@@ -31,6 +31,8 @@ namespace RestaurantApp.Core.Services
 
         public Task<List<BonusPointModel>> SyncBonusPointCollection(List<BonusPointModel> bonusPointCollection)
         {
+            AddAppInfo(bonusPointCollection);
+
             var builder = new UriBuilder(Settings.AuthenticationEndpoint);
             builder.Path = $"api/BonusPoint/Sync/";
             var uri = builder.ToString();

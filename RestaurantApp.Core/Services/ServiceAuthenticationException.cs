@@ -11,7 +11,7 @@ namespace RestaurantApp.Core.Services
         }
 
 
-        public ServiceAuthenticationException(string content)
+        public ServiceAuthenticationException(string content):base(content)
 
         {
             Content = content;
