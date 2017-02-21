@@ -14,13 +14,16 @@ using RestaurantApp.Core.ViewModels;
 using RestaurantApp.Data.Access;
 using RestaurantApp.Data.Models;
 using RestaurantApp.Localizations;
+using RestaurantApp.Pages;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 
 namespace RestaurantApp
 {
+    [Preserve]
     public partial class App : Application, IApplicationContext
     {
         #region  ctor
@@ -64,6 +67,8 @@ namespace RestaurantApp
 
         private void RegisterInstances()
         {
+            AppDebugger.WriteLine("Start RegisterInstances()");
+
             FreshIOC.Container.Register<IApplicationContext>(this);
             FreshIOC.Container.Register<IContentNavigationService, ContentNavigationService>();
             FreshIOC.Container.Register<IRequestProvider, RequestProvider>();
@@ -104,7 +109,10 @@ namespace RestaurantApp
 
 
             //Resolve Page and start
-            var mainContentPage = FreshPageModelResolver.ResolvePageModel((object) null, mainPageModel);
+            var mainContentPage = new MainPage();
+            mainPageModel.CurrentPage = mainContentPage;
+            mainContentPage.BindingContext = mainPageModel;
+
             BasicNavContainer = new FreshNavigationContainer(mainContentPage);
 
             AppDebugger.WriteLine("MainPage started");

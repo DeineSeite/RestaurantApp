@@ -9,7 +9,6 @@
     "Xam.Plugins.Settings": "2.6.0.12-beta",
     "Xamanimation": "1.0.0",
     "Xamarin.Forms": "2.3.4.22-nightly",
-    "Xamarin.Forms.CarouselView": "2.3.0-pre2",
     "ZXing.Net.Mobile.Forms": "2.1.47"
   },
   "frameworks": {

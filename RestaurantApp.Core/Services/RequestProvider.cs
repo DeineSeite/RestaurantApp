@@ -7,9 +7,11 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using RestaurantApp.Core.Interfaces;
 using RestaurantApp.Data.Models;
+using Xamarin.Forms.Internals;
 
 namespace RestaurantApp.Core.Services
 {
+    [Preserve]
     public class RequestProvider : IRequestProvider
     {
         private readonly AppInfo _appInfo;

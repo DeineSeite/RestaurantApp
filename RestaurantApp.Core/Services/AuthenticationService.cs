@@ -28,7 +28,7 @@ namespace RestaurantApp.Core.Services
                 await RequestProvider.PostAsync<AuthenticationRequest, UserModel>(uri, auth);
             Settings.UserId = authenticationInfo.Id;
             Settings.UserName = authenticationInfo.FirstName+" "+authenticationInfo.LastName;
-            Settings.AccessToken = authenticationInfo.AccessToken.ToString();
+            Settings.AccessToken = authenticationInfo.AccessToken;
             return true;
         }
 
