@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using PropertyChanged;
 using RestaurantApp.Core.Helpers;
+using RestaurantApp.Core.Interfaces;
 using RestaurantApp.Core.Services;
 using RestaurantApp.Data.Models;
 using Xamarin.Forms;
@@ -37,7 +38,7 @@ namespace RestaurantApp.Core.ViewModels
 
         private void MakerOrder()
         {
-            var orderService = new TableOrderService();
+            var orderService = FreshMvvm.FreshIOC.Container.Resolve<ITableOrderService>();
             Order.UserId = 1;
             orderService.MakeOrder(Order);
         }

@@ -34,6 +34,7 @@ namespace RestaurantApp.Core.ViewModels
         {
             StartScanCommand = new Command(ScanQrCode);
             ItemTappedCommand = new Command<BonusPointModel>(ItemTapped);
+            FakeBonusCommand = new Command(FakeBonusPoint);
 
             BonusPointsList = new BonusPointCollection();
             BonusPointsList.FillFromDatabase(type);
@@ -99,24 +100,29 @@ namespace RestaurantApp.Core.ViewModels
             ShowPopupInfo("Scanned", _currenBonusPointModel);
         }
 
+        private void FakeBonusPoint()
+        {
+            BonusPointsList.SyncItemWithServer(new BonusPointModel() {ActivationDate = DateTime.Now, Hash = "6499b220cd5391f0edf3bd40f46fbaaf28bd859bb13566c8e474aaebed9f370b" });
+        }
         #region Commands
 
         public Command StartScanCommand { get; set; }
         public Command<BonusPointModel> ItemTappedCommand { get; set; }
+        public Command FakeBonusCommand { get; set; }
 
         #endregion
     }
 
     public class BonusPointCollection : ObservableCollection<BonusPointModel>
     {
-        private readonly BonusPointService _bonusPointService;
+        private readonly IBonusPointService _bonusPointService;
         private readonly IRestaurantDataAccess _dataAccess;
         private readonly int BonusPointCount = 10;
 
         public BonusPointCollection()
         {
             _dataAccess = FreshIOC.Container.Resolve<IRestaurantDataAccess>();
-            _bonusPointService = new BonusPointService();
+            _bonusPointService = FreshIOC.Container.Resolve<IBonusPointService>(); ;
             InitEmptyPlaces();
         }
 
@@ -148,7 +154,7 @@ namespace RestaurantApp.Core.ViewModels
         public void FillFromDatabase(BonusPointType type)
         {
             var bonusPoints =
-                _dataAccess.GetAllBonusPoints(type).OrderByDescending(x => x).Take(Items.Count).Reverse().ToList();
+                _dataAccess.GetAllBonusPoints(type).OrderByDescending(x => x.ActivationDate).Take(Items.Count).Reverse().ToList();
 
             for (var i = 0; i < bonusPoints.Count; i++)
                 Items[i] = bonusPoints[i];
@@ -157,7 +163,7 @@ namespace RestaurantApp.Core.ViewModels
             if (bonusPoints.Count < Items.Count)
                 Items[bonusPoints.Count].IsLastInList = true;
         }
-
+      
         protected override void OnCollectionChanged(NotifyCollectionChangedEventArgs e)
         {
             base.OnCollectionChanged(e);

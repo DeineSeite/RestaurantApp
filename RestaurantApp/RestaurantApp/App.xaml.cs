@@ -74,6 +74,8 @@ namespace RestaurantApp
             FreshIOC.Container.Register<IRequestProvider, RequestProvider>();
             FreshIOC.Container.Register<IAuthenticationService, AuthenticationService>();
             FreshIOC.Container.Register<IRestaurantDataAccess, RestaurantDataAccess>();
+            FreshIOC.Container.Register<IBonusPointService, BonusPointService>();
+            FreshIOC.Container.Register<ITableOrderService, TableOrderService>();
         }
 
         private void InitializeFreshMvvm()
@@ -84,8 +86,6 @@ namespace RestaurantApp
             FreshPageModelResolver.PageModelMapper = new RestaurantAppModelMapper();
             ContentViewModelResolver.ViewModelMapper = new RestaurantAppModelMapper();
         }
-
-        
 
         private void InitializeSettings()
         {

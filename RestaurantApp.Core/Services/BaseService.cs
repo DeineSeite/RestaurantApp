@@ -8,14 +8,6 @@ namespace RestaurantApp.Core.Services
 {
   public abstract class BaseService:IBaseService
     {
-        public IRequestProvider RequestProvider { get; }
-
-        public BaseService()
-        {
-            RequestProvider = FreshIOC.Container.Resolve<IRequestProvider>();
-            RequestProvider.AccessToken = Settings.AccessToken;
-        }
-
         public static void AddAppInfo(RestaurantBaseModel model)
         {
             model.RestaurantId = Settings.RestaurantId;

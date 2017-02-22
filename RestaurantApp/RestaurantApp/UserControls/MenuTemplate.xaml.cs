@@ -10,12 +10,10 @@ namespace RestaurantApp.UserControls
 {
     public partial class MenuTemplate : ContentView
     {
-        public ListView MenuListView { get { return MenuList; } set { MenuList = value; } }
         public MenuTemplate()
         {
             InitializeComponent();
         }
-
 
         
     }

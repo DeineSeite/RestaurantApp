@@ -1,3 +1,5 @@
+using System.ComponentModel;
+using Java.Beans;
 using Plugin.Settings;
 using Plugin.Settings.Abstractions;
 
@@ -39,6 +41,8 @@ namespace RestaurantApp.Core.Helpers
 
         private const string IsLoginKey = "is_login_key";
         private static readonly bool IsLoginDefault = false;
+
+        
         #endregion
 
         public static int UserId

@@ -22,8 +22,11 @@
                 x:Name="HeaderPage"
                 Grid.Row="0"
                 BindingContext="{Binding Source={x:Reference BasePage}, Path=BindingContext}" />
-            <ScrollView Grid.Row="1">
-                <ContentView x:Name="MainContentView" HorizontalOptions="FillAndExpand" />
+            <ScrollView Grid.Row="1" VerticalOptions="FillAndExpand">
+                <ContentView
+                    x:Name="MainContentView"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand" />
             </ScrollView>
         </Grid>
     </AbsoluteLayout>

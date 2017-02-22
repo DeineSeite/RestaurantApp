@@ -115,21 +115,8 @@
             </StackLayout>
         </ContentView>
 
-        <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand">
-            <AbsoluteLayout
-                AbsoluteLayout.LayoutBounds="0, 0,1.0, 1.0"
-                AbsoluteLayout.LayoutFlags="All"
-                IsVisible="True">
-                <ActivityIndicator
-                    AbsoluteLayout.LayoutBounds="0.5, 0.5, 0.2, AutoSize"
-                    AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional"
-                    IsRunning="False"
-                    IsVisible="False" />
-                <Image
-                    AbsoluteLayout.LayoutBounds="0,0, 1,1"
-                    AbsoluteLayout.LayoutFlags="All"
-                    Source="{Binding MapUrl}" />
-            </AbsoluteLayout>
-        </AbsoluteLayout>
+        <Image Source="{Binding MapUrl}" VerticalOptions="FillAndExpand" />
+
+
     </StackLayout>
 </contentViews:BaseContentView>

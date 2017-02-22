@@ -52,15 +52,15 @@ namespace RestaurantApp.Core.ViewModels
             {
                 var autService = FreshIOC.Container.Resolve<IAuthenticationService>();
                 IsLogin = await autService.LoginAsync(Email, Password);
+               
             }
             catch (HttpRequestException e)
             {
                 AppDebugger.WriteLine("Login "+e.Message);
                 DisplayService.DisplayAlert("Login failed:",e.Message);
             }
-        
-           
         }
+
         private void Logout()
         {
             var autService = FreshIOC.Container.Resolve<IAuthenticationService>();

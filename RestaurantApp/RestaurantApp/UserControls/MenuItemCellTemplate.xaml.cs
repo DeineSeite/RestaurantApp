@@ -10,10 +10,15 @@ namespace RestaurantApp.UserControls
 {
     public partial class MenuItemCellTemplate : ContentView
     {
+        public BoxView BackgroundBox
+        {
+            get { return BackgroundBoxView; }
+            set { BackgroundBoxView = value; }
+        }
+
         public MenuItemCellTemplate()
         {
             InitializeComponent();
         }
-      
     }
 }

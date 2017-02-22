@@ -1,5 +1,7 @@
 ﻿using System;
+using System.IO;
 using System.Net;
+using System.Reflection;
 using RestaurantApp.Data.Models;
 using Xamarin.Forms;
 
@@ -7,7 +9,9 @@ namespace RestaurantApp.Core.ViewModels
 {
     public class ContactViewModel : BaseViewModel
     {
-       
+       public double WidthMap { get; set; }
+       public double HeightMap { get; set; }
+     
 
         public ContactViewModel()
         {
@@ -19,16 +23,16 @@ namespace RestaurantApp.Core.ViewModels
             Restaurant.City = "Wien";
             Restaurant.Company = "Grill Asia";
             MapUrl =
-                @"https://maps.googleapis.com/maps/api/staticmap?center=Wagramer+Strasse+189b,+1210+Wien&zoom=13&scale=false&size=600x300&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:1%7CWagramer+Strasse+189b,+1210+Wien";
-            // string fileName = "RestaurantApp.Core.contactInfo.html";
-            // var assembly = typeof(ContactPageModel).GetTypeInfo().Assembly;
-            // Stream stream = assembly.GetManifestResourceStream(fileName);
-            // string text = "";
-            // using (var reader = new System.IO.StreamReader(stream))
-            // {
-            //     text = reader.ReadToEnd();
-            // }
-            // HtmlContent = text;
+                @"https://maps.googleapis.com/maps/api/staticmap?center=Wagramer+Strasse+189b,+1210+Wien&zoom=13&scale=false&size=700x400&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:1%7CWagramer+Strasse+189b,+1210+Wien";
+            string fileName = "RestaurantApp.Core.contactInfo.html";
+            var assembly = typeof(ContactViewModel).GetTypeInfo().Assembly;
+            Stream stream = assembly.GetManifestResourceStream(fileName);
+            string text = "";
+            using (var reader = new System.IO.StreamReader(stream))
+            {
+                text = reader.ReadToEnd();
+            }
+            HtmlContent = text;
             //MapUrl =
             //    "https://maps.googleapis.com/maps/api/staticmap?center=Wagramer+Str.+189B,+1210+Wien&zoom=14&scale=2&size=400x450&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:%7CWagramer+Str.+189B,+1210+Wien";
             // NavigateToMap=new Command(NavigateTo);

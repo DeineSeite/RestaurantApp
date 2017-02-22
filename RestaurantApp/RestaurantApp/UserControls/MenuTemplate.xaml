@@ -4,30 +4,28 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:behaviors="clr-namespace:RestaurantApp.Behaviors;assembly=RestaurantApp"
-    xmlns:userControls="clr-namespace:RestaurantApp.UserControls;assembly=RestaurantApp"
-    xmlns:converters1="clr-namespace:RestaurantApp.Core.Converters;assembly=RestaurantApp.Core">
+    xmlns:controls="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+    xmlns:converters1="clr-namespace:RestaurantApp.Core.Converters;assembly=RestaurantApp.Core"
+    xmlns:userControls="clr-namespace:RestaurantApp.UserControls;assembly=RestaurantApp">
     <ContentView.Resources>
         <ResourceDictionary>
             <converters1:ItemTappedEventArgsConverter x:Key="ItemTappedConverter" />
         </ResourceDictionary>
     </ContentView.Resources>
-    <ListView
+    <controls:FlowListView
         x:Name="MenuList"
         Margin="-10,0,-10,0"
-        ItemsSource="{Binding MenuItemsList}"
-        Style="{StaticResource MenuListStyle}">
-        <ListView.Behaviors>
-            <behaviors:EventToCommandBehavior
-                Command="{Binding PushContentCommand}"
-                EventArgsConverter="{StaticResource ItemTappedConverter}"
-                EventName="ItemTapped" />
-        </ListView.Behaviors>
-        <ListView.ItemTemplate>
+        Style="{StaticResource MenuListStyle}"
+        FlowColumnCount="1"
+        FlowItemTappedCommand="{Binding PushContentCommand}"
+        FlowItemsSource="{Binding MenuItemsList}"
+        FlowTappedBackgroundColor="{StaticResource MainThemeColor}"
+        FlowTappedBackgroundDelay="100"
+        VerticalOptions="FillAndExpand">
+        <controls:FlowListView.FlowColumnTemplate>
             <DataTemplate>
-                <ViewCell>
-                    <userControls:MenuItemCellTemplate />
-                </ViewCell>
+                <userControls:MenuItemCellTemplate />
             </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
+        </controls:FlowListView.FlowColumnTemplate>
+    </controls:FlowListView>
 </ContentView>

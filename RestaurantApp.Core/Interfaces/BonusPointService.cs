@@ -1,4 +1,6 @@
-﻿using RestaurantApp.Core.ViewModels;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using RestaurantApp.Core.ViewModels;
 using RestaurantApp.Data.Models;
 
 namespace RestaurantApp.Core.Interfaces
@@ -8,5 +10,6 @@ namespace RestaurantApp.Core.Interfaces
         BonusPointCollection GetAllBonusPoints();
         bool ActivateBonus(BonusPointModel bonusPointModel);
         BonusPointModel GetBonusPoint(int id);
+        Task<List<BonusPointModel>> SyncBonusPointCollection(List<BonusPointModel> bonusPointCollection);
     }
 }

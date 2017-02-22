@@ -75,6 +75,7 @@
     <Compile Include="Interfaces\INativeHelper.cs" />
     <Compile Include="Interfaces\IProfileService.cs" />
     <Compile Include="Interfaces\IRequestProvider.cs" />
+    <Compile Include="Interfaces\ITableOrderService.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="PageModels\BasePageModel.cs" />
     <Compile Include="PageModels\MainPageModel.cs" />

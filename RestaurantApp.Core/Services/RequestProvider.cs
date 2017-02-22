@@ -3,15 +3,15 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using RestaurantApp.Core.Interfaces;
 using RestaurantApp.Data.Models;
-using Xamarin.Forms.Internals;
+
 
 namespace RestaurantApp.Core.Services
 {
-    [Preserve]
     public class RequestProvider : IRequestProvider
     {
         private readonly AppInfo _appInfo;
@@ -85,7 +85,7 @@ namespace RestaurantApp.Core.Services
         {
             var httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            httpClient.DefaultRequestHeaders.Authorization=new AuthenticationHeaderValue("Autorization",AccessToken);
+            httpClient.DefaultRequestHeaders.Authorization=new AuthenticationHeaderValue("Authorization",AccessToken);
             return httpClient;
         }
 
@@ -95,7 +95,7 @@ namespace RestaurantApp.Core.Services
             if (!response.IsSuccessStatusCode)
             {
                 var content = await response.Content.ReadAsStringAsync();
-
+               
 
                 if (response.StatusCode == HttpStatusCode.Forbidden ||
                    response.StatusCode == HttpStatusCode.Unauthorized)
@@ -105,4 +105,6 @@ namespace RestaurantApp.Core.Services
             }
         }
     }
+   
 }
+

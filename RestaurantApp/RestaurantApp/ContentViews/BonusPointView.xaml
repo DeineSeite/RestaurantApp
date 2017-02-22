@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <contentViews:BaseContentView
     x:Class="RestaurantApp.ContentViews.BonusPointView"
     xmlns="http://xamarin.com/schemas/2014/forms"
@@ -26,5 +26,10 @@
                 </DataTemplate>
             </controls:FlowListView.FlowColumnTemplate>
         </controls:FlowListView>
+
+        <Button Command="{Binding FakeBonusCommand}" Text="Send Fake bonus" />
+
+
+
     </StackLayout>
 </contentViews:BaseContentView>

@@ -5,10 +5,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     <AbsoluteLayout>
         <BoxView
+            x:Name="BackgroundBoxView"
+            Opacity="0.7"
             AbsoluteLayout.LayoutBounds="1,1,1,1"
             AbsoluteLayout.LayoutFlags="All"
-            BackgroundColor="{StaticResource SecondThemeColor}"
-            Opacity="0.7">
+            BackgroundColor="{StaticResource SecondThemeColor}">
             <BoxView.Margin>
                 <OnIdiom
                     x:TypeArguments="Thickness"

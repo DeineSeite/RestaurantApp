@@ -23,6 +23,7 @@ namespace RestaurantApp.ContentViews
             InitializeComponent();
             var viewModel =new BonusPointViewModel(type);
             BindingContext = viewModel;
+           
         }
     }
 }
