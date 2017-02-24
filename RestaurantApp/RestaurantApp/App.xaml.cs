@@ -16,7 +16,6 @@ using RestaurantApp.Data.Models;
 using RestaurantApp.Localizations;
 using RestaurantApp.Pages;
 using Xamarin.Forms;
-using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]

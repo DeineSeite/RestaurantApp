@@ -1,5 +1,3 @@
-using System.ComponentModel;
-using Java.Beans;
 using Plugin.Settings;
 using Plugin.Settings.Abstractions;
 
