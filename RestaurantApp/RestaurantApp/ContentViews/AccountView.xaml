@@ -14,7 +14,7 @@
 
     <StackLayout>
 
-        <ContentView x:Name="AfterLoginView" IsVisible="{Binding IsLogin}">
+        <ContentView x:Name="AfterLoginView" IsVisible="{Binding IsAuthenticated}">
             <StackLayout>
                 <userControls:CheckBox
                     x:Name="LoginCheckBox"
@@ -34,7 +34,7 @@
             </StackLayout>
         </ContentView>
 
-        <ContentView x:Name="LoginView" IsVisible="{Binding IsLogin, Converter={StaticResource InverseBooleanConverter}}">
+        <ContentView x:Name="LoginView" IsVisible="{Binding IsAuthenticated, Converter={StaticResource InverseBooleanConverter}}">
             <Grid
                 Padding="20"
                 AbsoluteLayout.LayoutBounds="1,1,1,1"

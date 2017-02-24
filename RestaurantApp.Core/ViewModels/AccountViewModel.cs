@@ -9,11 +9,6 @@ namespace RestaurantApp.Core.ViewModels
 {
     public class AccountViewModel : BaseViewModel
     {
-        public bool IsLogin
-        {
-            get { return Settings.IsLogin; }
-            set { Settings.IsLogin = value; }
-        }
             
         #region ctor
         public AccountViewModel()
@@ -51,8 +46,7 @@ namespace RestaurantApp.Core.ViewModels
             try
             {
                 var autService = FreshIOC.Container.Resolve<IAuthenticationService>();
-                IsLogin = await autService.LoginAsync(Email, Password);
-               
+                await autService.LoginAsync(Email, Password);
             }
             catch (HttpRequestException e)
             {

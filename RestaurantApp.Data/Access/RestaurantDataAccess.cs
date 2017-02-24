@@ -1,11 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using RestaurantApp.Data.Models;
-using Xamarin.Forms.Internals;
 
 namespace RestaurantApp.Data.Access
 {
-    [Preserve]
     public class RestaurantDataAccess : BaseDataAccess, IRestaurantDataAccess
     {
         public override void CreateTables()

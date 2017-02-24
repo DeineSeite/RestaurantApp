@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading.Tasks;
-using FreshMvvm;
 using RestaurantApp.Core.Helpers;
 using RestaurantApp.Core.Interfaces;
 using RestaurantApp.Data.Models;
@@ -11,12 +10,12 @@ namespace RestaurantApp.Core.Services
     {
         private readonly IRequestProvider _requestProvider;
 
-        public bool IsAuthenticated => !string.IsNullOrEmpty(Settings.AccessToken);
+        public bool IsAuthenticated => !string.IsNullOrEmpty(AccessToken);
 
         public AuthenticationService(IRequestProvider requestProvider)
         {
             _requestProvider = requestProvider;
-            _requestProvider.AccessToken = Settings.AccessToken;
+            _requestProvider.AccessToken = AccessToken;
         }
         public async Task<bool> LoginAsync(string userEmail, string password)
         {
@@ -26,7 +25,7 @@ namespace RestaurantApp.Core.Services
                 Password = password
             };
 
-            var builder = new UriBuilder(Settings.AuthenticationEndpoint);
+            var builder = new UriBuilder(AuthenticationEndpoint);
             builder.Path = "api/Profile/Login/";
 
             var uri = builder.ToString();
@@ -58,7 +57,7 @@ namespace RestaurantApp.Core.Services
         {
             var userId = GetCurrentUserId();
 
-            var builder = new UriBuilder(Settings.AuthenticationEndpoint);
+            var builder = new UriBuilder(AuthenticationEndpoint);
             builder.Path = $"api/Profile/GetProfile/{userId}/";
 
             var uri = builder.ToString();
@@ -70,7 +69,7 @@ namespace RestaurantApp.Core.Services
 
         public Task<UserModel> SignUp(UserModel profile)
         {
-            var builder = new UriBuilder(Settings.AuthenticationEndpoint);
+            var builder = new UriBuilder(AuthenticationEndpoint);
             builder.Path = $"api/Profile/SignUp/";
             var uri = builder.ToString();
             var userModel= _requestProvider.PostAsync(uri, profile);

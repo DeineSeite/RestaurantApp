@@ -102,7 +102,8 @@ namespace RestaurantApp.Core.ViewModels
 
         private void FakeBonusPoint()
         {
-            BonusPointsList.SyncItemWithServer(new BonusPointModel() {ActivationDate = DateTime.Now, Hash = "6499b220cd5391f0edf3bd40f46fbaaf28bd859bb13566c8e474aaebed9f370b" });
+            _currenBonusPointModel = BonusPointsList.FirstOrDefault(x => x.IsLastInList);
+            QrService_OnResultReady(null,"Fake Bonus");
         }
         #region Commands
 
@@ -115,14 +116,12 @@ namespace RestaurantApp.Core.ViewModels
 
     public class BonusPointCollection : ObservableCollection<BonusPointModel>
     {
-        private readonly IBonusPointService _bonusPointService;
-        private readonly IRestaurantDataAccess _dataAccess;
+        private IBonusPointService _bonusPointService=> FreshIOC.Container.Resolve<IBonusPointService>();
+        private IRestaurantDataAccess _dataAccess => FreshIOC.Container.Resolve<IRestaurantDataAccess>();
         private readonly int BonusPointCount = 10;
 
         public BonusPointCollection()
         {
-            _dataAccess = FreshIOC.Container.Resolve<IRestaurantDataAccess>();
-            _bonusPointService = FreshIOC.Container.Resolve<IBonusPointService>(); ;
             InitEmptyPlaces();
         }
 

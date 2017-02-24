@@ -18,7 +18,7 @@ namespace RestaurantApp.Core.Services
         public BonusPointService(IRequestProvider requestProvider)
         {
             _requestProvider = requestProvider;
-            _requestProvider.AccessToken = Settings.AccessToken;
+            _requestProvider.AccessToken = AccessToken;
         }
         public BonusPointCollection GetAllBonusPoints()
         {
@@ -39,7 +39,7 @@ namespace RestaurantApp.Core.Services
         {
             AddAppInfo(bonusPointCollection);
 
-            var builder = new UriBuilder(Settings.AuthenticationEndpoint);
+            var builder = new UriBuilder(AuthenticationEndpoint);
             builder.Path = $"api/BonusPoint/Sync/";
             var uri = builder.ToString();
             var newBonusPointCollection = _requestProvider.PostAsync(uri, bonusPointCollection);

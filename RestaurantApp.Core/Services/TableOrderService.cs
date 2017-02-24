@@ -19,7 +19,7 @@ namespace RestaurantApp.Core.Services
         }
         public Task<TableOrderModel> MakeOrder(TableOrderModel order)
         {
-            var builder = new UriBuilder(Settings.AuthenticationEndpoint);
+            var builder = new UriBuilder(AuthenticationEndpoint);
             builder.Path = $"api/Restaurant/Reservation/";
             var uri = builder.ToString();
             var orderModel = _requestProvider.PostAsync(uri, order);

@@ -23,7 +23,6 @@ using Xamarin.Forms.Xaml;
 
 namespace RestaurantApp
 {
-    [Preserve]
     public partial class App : Application, IApplicationContext
     {
         #region  ctor
@@ -31,13 +30,26 @@ namespace RestaurantApp
         public App()
         {
             InitializeComponent();
+
+            var watch = System.Diagnostics.Stopwatch.StartNew();
             ChangeCurrentCultureInfo(CurrentCulture.Name);
+
             InitializeFreshMvvm();
+            AppDebugger.WriteLine("InitializeFreshMvvm time: " + watch.ElapsedMilliseconds);
+
             RegisterInstances();
+            AppDebugger.WriteLine("RegisterInstances time: " + watch.ElapsedMilliseconds);
+
             InitializeSettings();
+            AppDebugger.WriteLine("InitializeSettings time: " + watch.ElapsedMilliseconds);
+
             InitializeStartMenu();
+            AppDebugger.WriteLine("InitializeStartMenu time: " + watch.ElapsedMilliseconds);
+
             MainPage = BasicNavContainer;
-         
+
+            watch.Stop();
+            AppDebugger.WriteLine("Start time: " + watch.ElapsedMilliseconds);
         }
 
 
@@ -67,8 +79,6 @@ namespace RestaurantApp
 
         private void RegisterInstances()
         {
-            AppDebugger.WriteLine("Start RegisterInstances()");
-
             FreshIOC.Container.Register<IApplicationContext>(this);
             FreshIOC.Container.Register<IContentNavigationService, ContentNavigationService>();
             FreshIOC.Container.Register<IRequestProvider, RequestProvider>();
@@ -80,8 +90,6 @@ namespace RestaurantApp
 
         private void InitializeFreshMvvm()
         {
-            AppDebugger.WriteLine("Start InitializeFreshMvvm()");
-
             //Register mappers for current project: YouTrack WIKI-5
             FreshPageModelResolver.PageModelMapper = new RestaurantAppModelMapper();
             ContentViewModelResolver.ViewModelMapper = new RestaurantAppModelMapper();
@@ -98,10 +106,8 @@ namespace RestaurantApp
             }
         }
 
-        private void InitializeStartMenu()
+        private async void InitializeStartMenu()
         {
-            AppDebugger.WriteLine("InitializeStartMenu()");
-
             //Register MainPageModel as model with dynamic ContentView
             var mainPageModel = new MainPageModel();
             FreshIOC.Container.Register<IDynamicContent>(mainPageModel);
@@ -114,14 +120,11 @@ namespace RestaurantApp
             mainContentPage.BindingContext = mainPageModel;
 
             BasicNavContainer = new FreshNavigationContainer(mainContentPage);
-
-            AppDebugger.WriteLine("MainPage started");
-
+            await Task.Run(() => { 
+            
             //Register ContentNavigationService
             var navService = new ContentNavigationService();
             FreshIOC.Container.Register<IContentNavigationService>(navService);
-
-            AppDebugger.WriteLine("Registered ContentNavigationService");
 
             //Initialize menu items
             var  startMenu = new MenuViewModel();
@@ -162,12 +165,11 @@ namespace RestaurantApp
                 new FoodCardView(),
                 new ContactView()
             };
-            AppDebugger.WriteLine("Initialized infoMenuView");
-
+            
             //Push menu as content
             var startMenuView = new MenuView {BindingContext = startMenu};
             navService.PushContentView(startMenuView);
-            AppDebugger.WriteLine("Push menu as main content");
+            });
         }
 
         #endregion

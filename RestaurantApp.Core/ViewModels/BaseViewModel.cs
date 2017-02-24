@@ -2,6 +2,7 @@
 using System.Runtime.CompilerServices;
 using FreshMvvm;
 using RestaurantApp.Core.Annotations;
+using RestaurantApp.Core.Helpers;
 using RestaurantApp.Core.Interfaces;
 
 namespace RestaurantApp.Core.ViewModels
@@ -9,6 +10,7 @@ namespace RestaurantApp.Core.ViewModels
     public abstract class BaseViewModel : INotifyPropertyChanged
     {
         public IBaseContentView CurrentContentView { get; set; }
+        public bool IsAuthenticated => !string.IsNullOrEmpty(Settings.AccessToken);
 
         protected IContentNavigationService NavigationContentService
             => FreshIOC.Container.Resolve<IContentNavigationService>();

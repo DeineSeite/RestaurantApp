@@ -1,19 +1,26 @@
 ﻿using System.Collections.Generic;
-using FreshMvvm;
 using RestaurantApp.Core.Helpers;
 using RestaurantApp.Core.Interfaces;
 using RestaurantApp.Data.Models;
 
 namespace RestaurantApp.Core.Services
 {
-  public abstract class BaseService:IBaseService
+    public abstract class BaseService : IBaseService
     {
-        public static void AddAppInfo(RestaurantBaseModel model)
+        protected string AccessToken
+        {
+            get { return Settings.AccessToken; }
+            set { Settings.AccessToken = value; }
+        }
+        protected string AuthenticationEndpoint => Settings.AuthenticationEndpoint;
+
+        public void AddAppInfo(RestaurantBaseModel model)
         {
             model.RestaurantId = Settings.RestaurantId;
             model.UserId = Settings.UserId;
         }
-        public static void AddAppInfo(IEnumerable<RestaurantBaseModel> listModels)
+
+        public void AddAppInfo(IEnumerable<RestaurantBaseModel> listModels)
         {
             foreach (var model in listModels)
             {
