@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
@@ -7,8 +6,6 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using FreshMvvm;
-using Java.Lang;
-using Java.Util.Concurrent;
 using PropertyChanged;
 using QrCodeScanner;
 using RestaurantApp.Core.Interfaces;
@@ -16,9 +13,6 @@ using RestaurantApp.Core.Services;
 using RestaurantApp.Data.Access;
 using RestaurantApp.Data.Models;
 using Xamarin.Forms;
-using Exception = System.Exception;
-using System.Threading;
-using Windows.System.Threading;
 
 namespace RestaurantApp.Core.ViewModels
 {
@@ -70,10 +64,11 @@ namespace RestaurantApp.Core.ViewModels
 
         private async void InitScanPage()
         {
-            await Task.Run(() => { 
-            var mainPage = FreshIOC.Container.Resolve<IMainPageModel>().CurrentPage;
-            _qrCodeService = new QrCodeScannerService(mainPage) { ScanPageTitle = "QR code scanner" };
-            _qrCodeService.OnResultReady += QrService_OnResultReady;
+            await Task.Run(() =>
+            {
+                var mainPage = FreshIOC.Container.Resolve<IMainPageModel>().CurrentPage;
+                _qrCodeService = new QrCodeScannerService(mainPage) {ScanPageTitle = "QR code scanner"};
+                _qrCodeService.OnResultReady += QrService_OnResultReady;
             });
         }
 
@@ -103,8 +98,9 @@ namespace RestaurantApp.Core.ViewModels
         private void FakeBonusPoint()
         {
             _currenBonusPointModel = BonusPointsList.FirstOrDefault(x => x.IsLastInList);
-            QrService_OnResultReady(null,"Fake Bonus");
+            QrService_OnResultReady(null, "Fake Bonus");
         }
+
         #region Commands
 
         public Command StartScanCommand { get; set; }
@@ -116,14 +112,15 @@ namespace RestaurantApp.Core.ViewModels
 
     public class BonusPointCollection : ObservableCollection<BonusPointModel>
     {
-        private IBonusPointService _bonusPointService=> FreshIOC.Container.Resolve<IBonusPointService>();
-        private IRestaurantDataAccess _dataAccess => FreshIOC.Container.Resolve<IRestaurantDataAccess>();
         private readonly int BonusPointCount = 10;
 
         public BonusPointCollection()
         {
             InitEmptyPlaces();
         }
+
+        private IBonusPointService _bonusPointService => FreshIOC.Container.Resolve<IBonusPointService>();
+        private IRestaurantDataAccess _dataAccess => FreshIOC.Container.Resolve<IRestaurantDataAccess>();
 
         private void InitEmptyPlaces()
         {
@@ -147,13 +144,16 @@ namespace RestaurantApp.Core.ViewModels
             {
                 DisplayService.DisplayAlert("Error: ", e.Message);
             }
-
         }
 
         public void FillFromDatabase(BonusPointType type)
         {
             var bonusPoints =
-                _dataAccess.GetAllBonusPoints(type).OrderByDescending(x => x.ActivationDate).Take(Items.Count).Reverse().ToList();
+                _dataAccess.GetAllBonusPoints(type)
+                    .OrderByDescending(x => x.ActivationDate)
+                    .Take(Items.Count)
+                    .Reverse()
+                    .ToList();
 
             for (var i = 0; i < bonusPoints.Count; i++)
                 Items[i] = bonusPoints[i];
@@ -162,7 +162,7 @@ namespace RestaurantApp.Core.ViewModels
             if (bonusPoints.Count < Items.Count)
                 Items[bonusPoints.Count].IsLastInList = true;
         }
-      
+
         protected override void OnCollectionChanged(NotifyCollectionChangedEventArgs e)
         {
             base.OnCollectionChanged(e);
