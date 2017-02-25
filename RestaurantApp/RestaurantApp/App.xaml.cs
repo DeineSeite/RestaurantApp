@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
 using System.Threading.Tasks;
+using Com.OneSignal;
+using Com.OneSignal.Abstractions;
 using FreshMvvm;
 using Microsoft.Azure.Mobile;
 using Microsoft.Azure.Mobile.Analytics;
@@ -46,6 +48,10 @@ namespace RestaurantApp
             AppDebugger.WriteLine("InitializeStartMenu time: " + watch.ElapsedMilliseconds);
 
             MainPage = BasicNavContainer;
+
+            OneSignal.Current.StartInit("fa5121e9-fe91-4836-89c6-e53e006346dd")
+                  .EndInit();
+        
 
             watch.Stop();
             AppDebugger.WriteLine("Start time: " + watch.ElapsedMilliseconds);

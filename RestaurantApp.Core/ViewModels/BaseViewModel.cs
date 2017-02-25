@@ -10,7 +10,7 @@ namespace RestaurantApp.Core.ViewModels
     public abstract class BaseViewModel : INotifyPropertyChanged
     {
         public IBaseContentView CurrentContentView { get; set; }
-        public bool IsAuthenticated => !string.IsNullOrEmpty(Settings.AccessToken);
+        public bool IsAuthenticated => false;
 
         protected IContentNavigationService NavigationContentService
             => FreshIOC.Container.Resolve<IContentNavigationService>();

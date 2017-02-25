@@ -17,11 +17,11 @@ namespace RestaurantApp.Core.ViewModels
         {
             Restaurant = new RestaurantModel();
             Restaurant.Phone = "01/256 89 80";
-            Restaurant.Email = "lokal@luckywok.at";
-            Restaurant.Street = "Wagramer Strasse 189b";
+            Restaurant.Email = "lokal@gastroapp.at";
+            Restaurant.Street = "Wagramer Strasse";
             Restaurant.PostalCode = "1210";
             Restaurant.City = "Wien";
-            Restaurant.Company = "Grill Asia";
+            Restaurant.Company = "Gastro App";
             MapUrl =
                 @"https://maps.googleapis.com/maps/api/staticmap?center=Wagramer+Strasse+189b,+1210+Wien&zoom=13&scale=false&size=700x400&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:1%7CWagramer+Strasse+189b,+1210+Wien";
             string fileName = "RestaurantApp.Core.contactInfo.html";

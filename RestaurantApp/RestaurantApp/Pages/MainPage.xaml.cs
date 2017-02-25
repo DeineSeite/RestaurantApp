@@ -66,8 +66,8 @@ namespace RestaurantApp.Pages
                     //bug with WebView is not showing in StackLayout , workaround:
                     if (((ContentView) newValue).Content is TransparentWebView)
                         currentPage.MainContentView.VerticalOptions = LayoutOptions.FillAndExpand;
-                   // else
-                     //   currentPage.MainContentView.VerticalOptions = LayoutOptions.Start;
+                    else
+                       currentPage.MainContentView.VerticalOptions = LayoutOptions.Start;
                     //---------------------------------------------------------
                 }
             }

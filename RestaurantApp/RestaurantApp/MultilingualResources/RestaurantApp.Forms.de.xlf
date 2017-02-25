@@ -12,7 +12,7 @@
         </trans-unit>
         <trans-unit id="BonusPageInfo" translate="yes" xml:space="preserve">
           <source>For 10 visits the 11 food is free</source>
-          <target state="translated" state-qualifier="mt-suggestion">Für 10 Besuche ist das 11 Essen kostenlos</target>
+          <target state="translated">Bei 10 Besuchen ist das 11 Essen gratis</target>
         </trans-unit>
         <trans-unit id="BonusPoints" translate="yes" xml:space="preserve">
           <source>Bonus points</source>

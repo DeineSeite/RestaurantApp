@@ -25,6 +25,16 @@
                     <userControls:BonusPointItemTemplate />
                 </DataTemplate>
             </controls:FlowListView.FlowColumnTemplate>
+            <controls:FlowListView.Footer>
+                <StackLayout HorizontalOptions="FillAndExpand">
+                    <Label
+                        Margin="0,15,0,0"
+                        FontSize="Large"
+                        HorizontalOptions="CenterAndExpand"
+                        Text="{x:Static localizations:AppResources.BonusPageInfo}"
+                        TextColor="White" />
+                </StackLayout>
+            </controls:FlowListView.Footer>
         </controls:FlowListView>
 
         <Button Command="{Binding FakeBonusCommand}" Text="Send Fake bonus" />
