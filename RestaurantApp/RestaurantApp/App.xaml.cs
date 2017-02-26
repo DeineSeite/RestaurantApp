@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Threading.Tasks;
 using Com.OneSignal;
-using Com.OneSignal.Abstractions;
 using FreshMvvm;
 using Microsoft.Azure.Mobile;
 using Microsoft.Azure.Mobile.Analytics;
@@ -30,9 +30,10 @@ namespace RestaurantApp
 
         public App()
         {
+            var watch = Stopwatch.StartNew();
             InitializeComponent();
+            AppDebugger.WriteLine("InitializeComponent time: " + watch.ElapsedMilliseconds);
 
-            var watch = System.Diagnostics.Stopwatch.StartNew();
             ChangeCurrentCultureInfo(CurrentCulture.Name);
 
             InitializeFreshMvvm();
@@ -47,16 +48,24 @@ namespace RestaurantApp
             InitializeStartMenu();
             AppDebugger.WriteLine("InitializeStartMenu time: " + watch.ElapsedMilliseconds);
 
+            //Set Start page
             MainPage = BasicNavContainer;
 
-            OneSignal.Current.StartInit("fa5121e9-fe91-4836-89c6-e53e006346dd")
-                  .EndInit();
+            watch.Stop();
+            MobileCenter.LogLevel = LogLevel.Debug;
+
+            AppDebugger.WriteLine("Start time: " + watch.ElapsedMilliseconds);
+            Analytics.TrackEvent("Start time: " + watch.ElapsedMilliseconds);
+            MobileCenterLog.Debug("Test", "Start time: "+ watch.ElapsedMilliseconds);
+
         
 
-            watch.Stop();
-            AppDebugger.WriteLine("Start time: " + watch.ElapsedMilliseconds);
+            Task.Run(() =>
+            {
+                InitializePushNotificationService();
+                AppDebugger.WriteLine("InitializePushNotificationService time: " + watch.ElapsedMilliseconds);
+            });
         }
-
 
         #endregion
 
@@ -68,7 +77,7 @@ namespace RestaurantApp
         #endregion
 
         #region Public properties
-       
+
         public FreshNavigationContainer BasicNavContainer { get; set; }
         public CultureInfo CurrentCulture { get; set; } = new CultureInfo("de-De");
 
@@ -125,56 +134,62 @@ namespace RestaurantApp
             mainContentPage.BindingContext = mainPageModel;
 
             BasicNavContainer = new FreshNavigationContainer(mainContentPage);
-            await Task.Run(() => { 
-            
-            //Register ContentNavigationService
-            var navService = new ContentNavigationService();
-            FreshIOC.Container.Register<IContentNavigationService>(navService);
-
-            //Initialize menu items
-            var  startMenu = new MenuViewModel();
-            var infoMenu = new MenuViewModel
+            await Task.Run(() =>
             {
-                MenuItemsList = new List<IBaseContentView>
+                //Register ContentNavigationService
+                var navService = new ContentNavigationService();
+                FreshIOC.Container.Register<IContentNavigationService>(navService);
+
+                //Initialize menu items
+                var startMenu = new MenuViewModel();
+                var infoMenu = new MenuViewModel
                 {
-                    new OpenHoursView(),
-                    new TableOrderView(),
-                    new GalleryView()
-                }
-            };
+                    MenuItemsList = new List<IBaseContentView>
+                    {
+                        new OpenHoursView(),
+                        new TableOrderView(),
+                        new GalleryView()
+                    }
+                };
 
-            var bonusPointsMenu = new MenuViewModel()
-            {
-                MenuItemsList = new List<IBaseContentView>()
+                var bonusPointsMenu = new MenuViewModel
                 {
-                    new BonusPointView(BonusPointType.Dinner) {Title = AppResources.Dinner},
-                    new BonusPointView(BonusPointType.Lunch) {Title = AppResources.Lunch}
-                }
-            };
-            var bonusPointsView = new MenuView
-            {
-                BindingContext = bonusPointsMenu,
-                Title = AppResources.BonusPoints
-            };
+                    MenuItemsList = new List<IBaseContentView>
+                    {
+                        new BonusPointView(BonusPointType.Dinner) {Title = AppResources.Dinner},
+                        new BonusPointView(BonusPointType.Lunch) {Title = AppResources.Lunch}
+                    }
+                };
+                var bonusPointsView = new MenuView
+                {
+                    BindingContext = bonusPointsMenu,
+                    Title = AppResources.BonusPoints
+                };
 
-            var infoMenuView = new MenuView
-            {
-                BindingContext = infoMenu,
-                Title = AppResources.Info
-            };
-            
-            startMenu.MenuItemsList = new List<IBaseContentView>
-            {
-               bonusPointsView,
-                infoMenuView,
-                new FoodCardView(),
-                new ContactView()
-            };
-            
-            //Push menu as content
-            var startMenuView = new MenuView {BindingContext = startMenu};
-            navService.PushContentView(startMenuView);
+                var infoMenuView = new MenuView
+                {
+                    BindingContext = infoMenu,
+                    Title = AppResources.Info
+                };
+
+                startMenu.MenuItemsList = new List<IBaseContentView>
+                {
+                    bonusPointsView,
+                    infoMenuView,
+                    new FoodCardView(),
+                    new ContactView()
+                };
+
+                //Push menu as content
+                var startMenuView = new MenuView {BindingContext = startMenu};
+                navService.PushContentView(startMenuView);
             });
+        }
+
+        private void InitializePushNotificationService()
+        {
+            OneSignal.Current.StartInit("fa5121e9-fe91-4836-89c6-e53e006346dd")
+                .EndInit();
         }
 
         #endregion

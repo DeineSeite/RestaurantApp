@@ -30,7 +30,7 @@
                     Margin="20,0,0,0"
                     FontSize="Medium"
                     HorizontalOptions="StartAndExpand"
-                    Text="John Doe"
+                    Text="{Binding UserName}"
                     TextColor="White"
                     VerticalOptions="CenterAndExpand" />
                 <Image

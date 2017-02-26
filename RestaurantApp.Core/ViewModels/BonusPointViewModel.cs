@@ -82,7 +82,7 @@ namespace RestaurantApp.Core.ViewModels
             var index = BonusPointsList.IndexOf(_currenBonusPointModel);
             _currenBonusPointModel.ActivationDate = DateTime.Now;
             _currenBonusPointModel.Description = result;
-            _currenBonusPointModel.Hash = "6499b220cd5391f0edf3bd40f46fbaaf28bd859bb13566c8e474aaebed9f370b";
+            _currenBonusPointModel.Hash = _currenBonusPointModel.GetHashCode().ToString();
             _currenBonusPointModel.IsActivated = true;
             _currenBonusPointModel.IsLastInList = false;
             BonusPointsList.SyncItemWithServer(_currenBonusPointModel);

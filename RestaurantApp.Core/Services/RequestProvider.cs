@@ -8,14 +8,12 @@ using Newtonsoft.Json.Serialization;
 using RestaurantApp.Core.Interfaces;
 using RestaurantApp.Data.Models;
 
-
 namespace RestaurantApp.Core.Services
 {
     public class RequestProvider : IRequestProvider
     {
         private readonly AppInfo _appInfo;
         private readonly JsonSerializerSettings _serializerSettings;
-        public  string AccessToken { get; set; }
 
         public RequestProvider()
         {
@@ -26,6 +24,8 @@ namespace RestaurantApp.Core.Services
                 DateTimeZoneHandling = DateTimeZoneHandling.Utc
             };
         }
+
+        public string AccessToken { get; set; }
 
 
         public async Task<TResult> GetAsync<TResult>(string uri)
@@ -53,7 +53,7 @@ namespace RestaurantApp.Core.Services
         public async Task<TResult> PostAsync<TRequest, TResult>(string uri, TRequest data)
         {
             var httpClient = CreateHttpClient();
-            var serialized = await Task.Run(() => JsonConvert.SerializeObject(data, _serializerSettings));
+            var serialized = JsonConvert.SerializeObject(data, _serializerSettings);
             var response = await httpClient.PostAsync(uri,
                 new StringContent(serialized, Encoding.UTF8, "application/json"));
             await HandleResponse(response);
@@ -84,9 +84,11 @@ namespace RestaurantApp.Core.Services
         {
             var httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            httpClient.DefaultRequestHeaders.Authorization=new AuthenticationHeaderValue("Authorization",AccessToken);
+            if (!string.IsNullOrEmpty(AccessToken))
+            {
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(AccessToken);
+            }
             return httpClient;
-           
         }
 
 
@@ -95,16 +97,14 @@ namespace RestaurantApp.Core.Services
             if (!response.IsSuccessStatusCode)
             {
                 var content = await response.Content.ReadAsStringAsync();
-               
+
 
                 if (response.StatusCode == HttpStatusCode.Forbidden ||
-                   response.StatusCode == HttpStatusCode.Unauthorized)
-                  throw new ServiceAuthenticationException(content);
+                    response.StatusCode == HttpStatusCode.Unauthorized)
+                    throw new ServiceAuthenticationException(content);
 
-              throw new HttpRequestException(content);
+                throw new HttpRequestException(content);
             }
         }
     }
-   
 }
-

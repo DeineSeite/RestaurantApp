@@ -15,10 +15,12 @@ namespace RestaurantApp.Data.Models
         public DateTime ReservationDate { get; set; }
         public int PersonCount { get; set; }
         public bool Smoker { get; set; }
-        public int Hash => GetHashCode();
+      //  public int Hash => GetHashCode();
+        private Guid Hash => Guid.NewGuid();
 
         public TableOrderModel()
         {
+           
             Smoker = false;
             ReservationDate=DateTime.Now;
         }

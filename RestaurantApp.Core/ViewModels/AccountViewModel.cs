@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+﻿using System;
+using System.Net.Http;
 using FreshMvvm;
 using RestaurantApp.Core.Helpers;
 using RestaurantApp.Core.Interfaces;
@@ -47,12 +48,15 @@ namespace RestaurantApp.Core.ViewModels
             {
                 var autService = FreshIOC.Container.Resolve<IAuthenticationService>();
                 await autService.LoginAsync(Email, Password);
+                NavigationContentService.PushViewModel<AccountViewModel>();
+                NavigationContentService.CleanStackNavigation();
             }
-            catch (HttpRequestException e)
+            catch (Exception e)
             {
                 AppDebugger.WriteLine("Login "+e.Message);
                 DisplayService.DisplayAlert("Login failed:",e.Message);
             }
+
         }
 
         private void Logout()

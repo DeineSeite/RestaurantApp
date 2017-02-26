@@ -16,7 +16,7 @@ namespace RestaurantApp.Core.Services
 
         public void AddAppInfo(RestaurantBaseModel model)
         {
-            model.RestaurantId = Settings.RestaurantId;
+            model.RestaurantId = 1;
             model.UserId = Settings.UserId;
         }
 
