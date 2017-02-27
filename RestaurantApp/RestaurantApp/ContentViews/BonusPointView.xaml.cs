@@ -20,6 +20,9 @@ namespace RestaurantApp.ContentViews
 
         public BonusPointView(BonusPointType type)
         {
+#if  DEBUG
+            FakeButton.IsVisible = false;  
+#endif
             InitializeComponent();
             var viewModel =new BonusPointViewModel(type);
             BindingContext = viewModel;

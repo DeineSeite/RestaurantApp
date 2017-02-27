@@ -28,6 +28,7 @@
             <controls:FlowListView.Footer>
                 <StackLayout HorizontalOptions="FillAndExpand">
                     <Label
+                        x:Name="FakeButton"
                         Margin="0,15,0,0"
                         FontSize="Large"
                         HorizontalOptions="CenterAndExpand"
