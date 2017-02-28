@@ -9,9 +9,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Android.Runtime.ResourceDesignerAttribute("SocialService.Droid.Resource", IsApplication=false)]
+[assembly: global::Android.Runtime.ResourceDesignerAttribute("SocialService.Resource", IsApplication=false)]
 
-namespace SocialService.Droid
+namespace SocialService
 {
 	
 	
