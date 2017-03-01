@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using SocialService.Abstractions;
+using SocialService.Abstractions.Interfaces;
 
 
 namespace SocialService

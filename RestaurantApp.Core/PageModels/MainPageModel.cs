@@ -6,7 +6,7 @@ using RestaurantApp.Core.Interfaces;
 using RestaurantApp.Core.Services;
 using RestaurantApp.Core.ViewModels;
 using Xamarin.Forms;
-
+using SocialService.Abstractions;
 
 namespace RestaurantApp.Core.PageModels
 {
@@ -24,6 +24,7 @@ namespace RestaurantApp.Core.PageModels
         #region ctor
         public MainPageModel()
         {
+           
             GoToAccountCommand = new Command(GoToAccountPage);
         }
 
