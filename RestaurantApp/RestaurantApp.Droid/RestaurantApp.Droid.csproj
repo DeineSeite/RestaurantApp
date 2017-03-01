@@ -67,7 +67,7 @@
     <DebugSymbols>False</DebugSymbols>
     <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
     <Debugger>.Net (Xamarin)</Debugger>
-    <AndroidLinkSkip>RestaurantApp.Data;RestaurantApp.Core;RestaurantApp;</AndroidLinkSkip>
+    <AndroidLinkSkip>RestaurantApp.Data;RestaurantApp.Core;RestaurantApp;Com.OneSignal;Com.OneSignal.Abstractions;com.amazon.device;com.google.android.gms;android.app.OnActivityPausedListener;</AndroidLinkSkip>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Gorilla|AnyCPU'">
     <DebugSymbols>True</DebugSymbols>
