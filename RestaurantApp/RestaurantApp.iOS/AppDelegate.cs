@@ -23,6 +23,7 @@ namespace RestaurantApp.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             Forms.Init();
+            Xamarin.FormsGoogleMaps.Init("");
             FlowListView.Init();
             MobileCenter.Configure("8844801f-c2a9-4e09-b769-61856cfc7d1a");
 #if !GORILLA

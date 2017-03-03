@@ -38,6 +38,8 @@ namespace RestaurantApp.Droid
             base.OnCreate(bundle);
 
             Forms.Init(this, bundle);
+            Xamarin.FormsGoogleMaps.Init(this,bundle);
+
             FlowListView.Init();
             MobileCenter.Configure("8844801f-c2a9-4e09-b769-61856cfc7d1a");
 #if !GORILLA

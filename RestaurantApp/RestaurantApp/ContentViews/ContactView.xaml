@@ -4,6 +4,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:contentViews="clr-namespace:RestaurantApp.ContentViews;assembly=RestaurantApp"
+    xmlns:googleMaps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
     xmlns:localizations="clr-namespace:RestaurantApp.Localizations;assembly=RestaurantApp"
     xmlns:userControls="clr-namespace:RestaurantApp.UserControls;assembly=RestaurantApp"
     xmlns:viewModels="clr-namespace:RestaurantApp.Core.ViewModels;assembly=RestaurantApp.Core"
@@ -115,7 +116,11 @@
             </StackLayout>
         </ContentView>
 
-        <Image Source="{Binding MapUrl}" VerticalOptions="FillAndExpand" />
+        <googleMaps:Map
+            x:Name="ContactMap"
+            Margin="0,15,0,0"
+            HeightRequest="300"
+            VerticalOptions="FillAndExpand" />
 
 
     </StackLayout>

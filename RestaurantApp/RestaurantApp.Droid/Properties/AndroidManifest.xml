@@ -6,6 +6,8 @@
 	<permission android:name="com.restaurant.droid.permission.C2D_MESSAGE" android:protectionLevel="signature" />
 	<uses-permission android:name="com.restaurant.droid.permission.C2D_MESSAGE" />
 	<application android:label="RestaurantApp.Droid" android:largeHeap="true">
+		<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyCEJR1tYPVeTsKLA5PePJY4vD9Cze7Vo8I" />
+		<meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
 		<receiver android:name="com.onesignal.GcmBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND">
 			<intent-filter>
 				<action android:name="com.google.android.c2dm.intent.RECEIVE" />

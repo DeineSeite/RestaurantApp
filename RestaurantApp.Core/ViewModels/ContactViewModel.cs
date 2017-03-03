@@ -24,6 +24,8 @@ namespace RestaurantApp.Core.ViewModels
             Restaurant.PostalCode = "1210";
             Restaurant.City = "Wien";
             Restaurant.Company = "Gastro App";
+            Restaurant.Latitude = 48.2542395;
+            Restaurant.Longitude = 16.4446964;
             MapUrl =
                 @"https://maps.googleapis.com/maps/api/staticmap?center=Wagramer+Strasse+189b,+1210+Wien&zoom=13&scale=false&size=700x400&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:1%7CWagramer+Strasse+189b,+1210+Wien";
             var fileName = "RestaurantApp.Core.contactInfo.html";
@@ -82,9 +84,9 @@ namespace RestaurantApp.Core.ViewModels
                 emailTask.SendEmail(Restaurant.Email);
         }
 
-        private void NavigateTo()
+        public void NavigateTo()
         {
-            var address = "Wagramer Str. 189B, 1210 Wien";
+            var address = Restaurant.AddressString;
 
             switch (Device.OS)
             {

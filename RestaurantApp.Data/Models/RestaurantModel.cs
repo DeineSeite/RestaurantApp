@@ -6,11 +6,6 @@ namespace RestaurantApp.Data.Models
     [ImplementPropertyChanged]
     public class RestaurantModel : BaseModel
     {
-        public string DataPartitionId { get; set; }
-
-        public string FirstName { get; set; }
-
-        public string LastName { get; set; }
 
         public string Company { get; set; }
 
@@ -29,6 +24,8 @@ namespace RestaurantApp.Data.Models
         public string State { get; set; }
 
         public string PhotoUrl { get; set; }
+        public double Longitude { get; set; }
+        public double Latitude { get; set; }
 
         public string SmallPhotoUrl => PhotoUrl;
 
@@ -39,12 +36,8 @@ namespace RestaurantApp.Data.Models
         [JsonIgnore]
         public string DisplayName => ToString();
 
-        [JsonIgnore]
-        public string DisplayLastNameFirst => $"{LastName}, {FirstName}";
-
+   
         [JsonIgnore]
         public string StatePostal => State + " " + PostalCode;
-
-        public override string ToString() => $"{FirstName} {LastName}";
     }
 }

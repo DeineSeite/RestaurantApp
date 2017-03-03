@@ -9,6 +9,7 @@
     "Xam.Plugins.Settings": "2.6.0.12-beta",
     "Xamanimation": "1.0.0",
     "Xamarin.Forms": "2.3.5.30-nightly",
+    "Xamarin.Forms.GoogleMaps": "1.8.0-beta6",
     "ZXing.Net.Mobile.Forms": "2.1.47"
   },
   "frameworks": {
