@@ -50,13 +50,13 @@ namespace RestaurantApp.Data.Models
         public GenderType Gender { get; set; }
 
         [JsonProperty(PropertyName = "facebookid")]
-        public int FacebookId { get; set; }
+        public string FacebookId { get; set; }
 
         [JsonProperty(PropertyName = "twitterid")]
-        public int TwitterId { get; set; }
+        public string TwitterId { get; set; }
 
         [JsonProperty(PropertyName = "googleplusId")]
-        public int GoogleplusId { get; set; }
+        public string GoogleplusId { get; set; }
         
         public string AccessToken { get; set; }
     }

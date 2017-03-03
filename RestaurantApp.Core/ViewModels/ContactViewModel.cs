@@ -2,6 +2,8 @@
 using System.IO;
 using System.Net;
 using System.Reflection;
+using Plugin.Messaging;
+using RestaurantApp.Core.Helpers;
 using RestaurantApp.Data.Models;
 using Xamarin.Forms;
 
@@ -9,12 +11,12 @@ namespace RestaurantApp.Core.ViewModels
 {
     public class ContactViewModel : BaseViewModel
     {
-       public double WidthMap { get; set; }
-       public double HeightMap { get; set; }
-     
-
         public ContactViewModel()
         {
+            MessageNumberCommand = new Command(MessageNumber);
+            DialNumberCommand = new Command(DialNumber);
+            EmailCommand = new Command(SendEmail);
+
             Restaurant = new RestaurantModel();
             Restaurant.Phone = "01/256 89 80";
             Restaurant.Email = "lokal@gastroapp.at";
@@ -24,11 +26,11 @@ namespace RestaurantApp.Core.ViewModels
             Restaurant.Company = "Gastro App";
             MapUrl =
                 @"https://maps.googleapis.com/maps/api/staticmap?center=Wagramer+Strasse+189b,+1210+Wien&zoom=13&scale=false&size=700x400&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:1%7CWagramer+Strasse+189b,+1210+Wien";
-            string fileName = "RestaurantApp.Core.contactInfo.html";
+            var fileName = "RestaurantApp.Core.contactInfo.html";
             var assembly = typeof(ContactViewModel).GetTypeInfo().Assembly;
-            Stream stream = assembly.GetManifestResourceStream(fileName);
-            string text = "";
-            using (var reader = new System.IO.StreamReader(stream))
+            var stream = assembly.GetManifestResourceStream(fileName);
+            var text = "";
+            using (var reader = new StreamReader(stream))
             {
                 text = reader.ReadToEnd();
             }
@@ -38,10 +40,47 @@ namespace RestaurantApp.Core.ViewModels
             // NavigateToMap=new Command(NavigateTo);
         }
 
+        public double WidthMap { get; set; }
+        public double HeightMap { get; set; }
+
         public Command NavigateToMap { get; set; }
+        public Command MessageNumberCommand { get; set; }
+        public Command DialNumberCommand { get; set; }
+        public Command EmailCommand { get; set; }
         public string HtmlContent { get; set; }
         public string MapUrl { get; set; }
         public RestaurantModel Restaurant { get; set; }
+
+        private void MessageNumber()
+        {
+            if (string.IsNullOrWhiteSpace(Restaurant.Phone))
+                return;
+
+            var messageTask = MessagingPlugin.SmsMessenger;
+
+            if (messageTask.CanSendSms)
+                messageTask.SendSms(Restaurant.Phone.SanitizePhoneNumber());
+        }
+
+        private void DialNumber()
+        {
+            if (string.IsNullOrWhiteSpace(Restaurant.Phone))
+                return;
+
+
+            var phoneCallTask = MessagingPlugin.PhoneDialer;
+
+            if (phoneCallTask.CanMakePhoneCall)
+                phoneCallTask.MakePhoneCall(Restaurant.Phone.SanitizePhoneNumber());
+        }
+
+        public void SendEmail()
+        {
+            var emailTask = MessagingPlugin.EmailMessenger;
+
+            if (emailTask.CanSendEmail)
+                emailTask.SendEmail(Restaurant.Email);
+        }
 
         private void NavigateTo()
         {

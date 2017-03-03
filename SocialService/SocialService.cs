@@ -33,11 +33,7 @@ namespace SocialService
 
         private static IFacebookManager CreateFacebookManager()
         {
-#if PORTABLE
-            return null;
-#else
-            return new FacebookManagerImplementation();
-#endif
+            return new FacebookManager();
         }
 
         #endregion

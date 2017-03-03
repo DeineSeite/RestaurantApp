@@ -61,7 +61,6 @@
     <Compile Include="..\SocialService\SocialService.cs">
       <Link>SocialService.cs</Link>
     </Compile>
-    <Compile Include="FacebookManagerImplementation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TwitterManagerImplementation.cs" />
   </ItemGroup>

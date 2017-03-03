@@ -67,7 +67,11 @@
                     <Image
                         HeightRequest="50"
                         Source="fb.png"
-                        VerticalOptions="Center" />
+                        VerticalOptions="Center">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding FacebookLoginCommand}" />
+                        </Image.GestureRecognizers>
+                    </Image>
                     <Image
                         HeightRequest="50"
                         Source="twitter.png"

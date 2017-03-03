@@ -10,7 +10,9 @@ namespace SocialService.Abstractions.Interfaces
   public interface IFacebookManager:IBaseManager
   {
         string ClientId { get; set; }
-        Task<FacebookProfile> GetFacebookProfileAsync(INavigation navigation);
+        event EventHandler<FacebookProfile> OnUserAuthentication;
+        Task<Page> ShowLoginPageAsync(Page page);
+        Task<FacebookProfile> GetFacebookProfileAsync(Page page);
         Task<FacebookProfile> GetFacebookProfileAsync(string accessToken);
   }
 }

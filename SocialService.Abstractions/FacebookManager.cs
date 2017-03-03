@@ -9,7 +9,7 @@ using SocialService.Abstractions;
 using SocialService.Abstractions.Interfaces;
 using Xamarin.Forms;
 
-namespace SocialService
+namespace SocialService.Abstractions
 {
    public class FacebookManager: IFacebookManager
     {
@@ -18,7 +18,8 @@ namespace SocialService
             ClientId = "165942640479284";
         }
         public string ClientId { get; set; }
-      
+        public event EventHandler<FacebookProfile> OnUserAuthentication;
+
 
         /// <summary>
         /// Get Facebook profile without Login Page
@@ -40,11 +41,25 @@ namespace SocialService
             return facebookProfile;
         }
 
-        public async Task<FacebookProfile> GetFacebookProfileAsync(INavigation navigation)
+        public async Task<FacebookProfile> GetFacebookProfileAsync(Page page)
         {
-            var loginPage=new FacebookLoginPage();
-            await navigation.PushAsync(loginPage);
+            
             return null;
+        }
+
+        public async Task<Page> ShowLoginPageAsync(Page page)
+        {
+            var loginPage = new FacebookLoginPage(ClientId);
+            loginPage.OnUserIsLogin += LoginPage_OnUserIsLogin;
+            await page.Navigation.PushAsync(loginPage);
+            return loginPage;
+        }
+
+        private async void LoginPage_OnUserIsLogin(object sender, string accessToken)
+        {
+            var profile = await GetFacebookProfileAsync(accessToken);
+            //fire result Event
+            OnUserAuthentication?.Invoke(this, profile);
         }
     }
 }

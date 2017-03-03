@@ -158,6 +158,14 @@
       <HintPath>..\..\packages\Com.OneSignal.3.0.1\lib\MonoAndroid\OneSignal.Android.Binding.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Plugin.Messaging, Version=3.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xam.Plugins.Messaging.3.2.1\lib\MonoAndroid10\Plugin.Messaging.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Plugin.Messaging.Abstractions, Version=3.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xam.Plugins.Messaging.3.2.1\lib\MonoAndroid10\Plugin.Messaging.Abstractions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Plugin.Settings, Version=2.6.0.12, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xam.Plugins.Settings.2.6.0.12-beta\lib\MonoAndroid10\Plugin.Settings.dll</HintPath>
       <Private>True</Private>
@@ -290,6 +298,7 @@
   <ItemGroup>
     <Compile Include="Dependencies\DatabaseConnection_Android.cs" />
     <Compile Include="Dependencies\Debugger.cs" />
+    <Compile Include="Dependencies\EnvironmentService.cs" />
     <Compile Include="Dependencies\NativeHelper.cs" />
     <Compile Include="Dependencies\Localize.cs" />
     <Compile Include="Helpers\Settings.cs" />

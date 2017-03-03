@@ -1,6 +1,7 @@
 ﻿
 using Android.App;
 using Android.Content.PM;
+using Android.Gms.Common;
 using Android.OS;
 using DLToolkit.Forms.Controls;
 using Microsoft.Azure.Mobile;
@@ -41,6 +42,7 @@ namespace RestaurantApp.Droid
             MobileCenter.Configure("8844801f-c2a9-4e09-b769-61856cfc7d1a");
 #if !GORILLA
             LoadApplication(new App());
+           
 #else
             LoadApplication(Player.CreateApplication(ApplicationContext, new Config("Good Gorilla")
                 .RegisterAssemblyFromType<BasePage>()

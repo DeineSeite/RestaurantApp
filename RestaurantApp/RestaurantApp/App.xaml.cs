@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.Threading.Tasks;
@@ -32,38 +33,39 @@ namespace RestaurantApp
         {
             var watch = Stopwatch.StartNew();
             InitializeComponent();
-            AppDebugger.WriteLine("InitializeComponent time: " + watch.ElapsedMilliseconds);
+            MobileCenter.LogLevel = LogLevel.Debug;
+            Analytics.Enabled = true;
+
+            MobileCenterLog.Debug(TAG, "InitializeComponent time: " + watch.ElapsedMilliseconds);
 
             ChangeCurrentCultureInfo(CurrentCulture.Name);
 
             InitializeFreshMvvm();
-            AppDebugger.WriteLine("InitializeFreshMvvm time: " + watch.ElapsedMilliseconds);
+            MobileCenterLog.Debug(TAG, "InitializeFreshMvvm time: " + watch.ElapsedMilliseconds);
 
             RegisterInstances();
-            AppDebugger.WriteLine("RegisterInstances time: " + watch.ElapsedMilliseconds);
+            MobileCenterLog.Debug(TAG, "RegisterInstances time: " + watch.ElapsedMilliseconds);
 
             InitializeSettings();
-            AppDebugger.WriteLine("InitializeSettings time: " + watch.ElapsedMilliseconds);
+            MobileCenterLog.Debug(TAG, "InitializeSettings time: " + watch.ElapsedMilliseconds);
 
             InitializeStartMenu();
-            AppDebugger.WriteLine("InitializeStartMenu time: " + watch.ElapsedMilliseconds);
+            MobileCenterLog.Debug(TAG, "InitializeStartMenu time: " + watch.ElapsedMilliseconds);
 
             //Set Start page
             MainPage = BasicNavContainer;
 
             watch.Stop();
-            MobileCenter.LogLevel = LogLevel.Debug;
-
-            AppDebugger.WriteLine("Start time: " + watch.ElapsedMilliseconds);
+          
             Analytics.TrackEvent("Start time: " + watch.ElapsedMilliseconds);
-            MobileCenterLog.Debug("Test", "Start time: "+ watch.ElapsedMilliseconds);
+            MobileCenterLog.Debug(TAG, "Start time: "+ watch.ElapsedMilliseconds);
 
         
 
             Task.Run(() =>
             {
                 InitializePushNotificationService();
-                AppDebugger.WriteLine("InitializePushNotificationService time: " + watch.ElapsedMilliseconds);
+                MobileCenterLog.Debug(TAG, "InitializePushNotificationService time: " + watch.ElapsedMilliseconds);
             });
         }
 
@@ -72,7 +74,7 @@ namespace RestaurantApp
         #region Constants  
 
         public const string AuthenticationEndpoint = "http://www.luckywok.at/";
-        public static string TAG = "RestaurantApp";
+        private const string TAG = "GASTRO";
 
         #endregion
 
@@ -134,25 +136,24 @@ namespace RestaurantApp
             mainContentPage.BindingContext = mainPageModel;
 
             BasicNavContainer = new FreshNavigationContainer(mainContentPage);
-            await Task.Run(() =>
-            {
+          
                 //Register ContentNavigationService
                 var navService = new ContentNavigationService();
                 FreshIOC.Container.Register<IContentNavigationService>(navService);
 
                 //Initialize menu items
                 var startMenu = new MenuViewModel();
-                var infoMenu = new MenuViewModel
-                {
-                    MenuItemsList = new List<IBaseContentView>
+            var infoMenu = new MenuViewModel
+            {
+                MenuItemsList = new List<IBaseContentView>
                     {
                         new OpenHoursView(),
                         new TableOrderView(),
                         new GalleryView()
                     }
-                };
+            };
 
-                var bonusPointsMenu = new MenuViewModel
+            var bonusPointsMenu = new MenuViewModel
                 {
                     MenuItemsList = new List<IBaseContentView>
                     {
@@ -166,13 +167,13 @@ namespace RestaurantApp
                     Title = AppResources.BonusPoints
                 };
 
-                var infoMenuView = new MenuView
-                {
-                    BindingContext = infoMenu,
-                    Title = AppResources.Info
-                };
+            var infoMenuView = new MenuView
+            {
+                BindingContext = infoMenu,
+                Title = AppResources.Info
+            };
 
-                startMenu.MenuItemsList = new List<IBaseContentView>
+            startMenu.MenuItemsList = new List<IBaseContentView>
                 {
                     bonusPointsView,
                     infoMenuView,
@@ -183,13 +184,22 @@ namespace RestaurantApp
                 //Push menu as content
                 var startMenuView = new MenuView {BindingContext = startMenu};
                 navService.PushContentView(startMenuView);
-            });
+          
         }
 
         private void InitializePushNotificationService()
         {
-            OneSignal.Current.StartInit("fa5121e9-fe91-4836-89c6-e53e006346dd")
+            try
+            {
+                OneSignal.Current.StartInit("fa5121e9-fe91-4836-89c6-e53e006346dd")
                 .EndInit();
+            }
+            catch (Exception e)
+            {
+                MobileCenterLog.Debug(TAG, "InitializePushNotificationService Failed: "+e.Message);
+                throw;
+            }
+            
         }
 
         #endregion

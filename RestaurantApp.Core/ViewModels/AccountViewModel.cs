@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net.Http;
 using FreshMvvm;
+using RestaurantApp.Core.Converters;
 using RestaurantApp.Core.Helpers;
 using RestaurantApp.Core.Interfaces;
 using RestaurantApp.Core.Services;
@@ -10,13 +11,15 @@ namespace RestaurantApp.Core.ViewModels
 {
     public class AccountViewModel : BaseViewModel
     {
-            
+
         #region ctor
         public AccountViewModel()
         {
             SignUpCommand = new Command(SignUp);
             LoginCommand = new Command(Login);
             LogoutCommand = new Command(Logout);
+            FacebookLoginCommand = new Command(FacebookLogin);
+
         }
         #endregion
 
@@ -32,6 +35,8 @@ namespace RestaurantApp.Core.ViewModels
         public Command SignUpCommand { get; set; }
         public Command LoginCommand { get; set; }
         public Command LogoutCommand { get; set; }
+        public Command FacebookLoginCommand { get; set; }
+
 
         #endregion
 
@@ -40,6 +45,37 @@ namespace RestaurantApp.Core.ViewModels
         private void SignUp()
         {
             NavigationContentService.PushViewModel<SignUpViewModel>();
+        }
+        private async void FacebookLogin()
+        {
+            try
+            {
+                await SocialService.SocialService.FacebookManager.ShowLoginPageAsync(ParentPageModel.CurrentPage);
+                SocialService.SocialService.FacebookManager.OnUserAuthentication += FacebookManager_OnUserAuthentication;
+            }
+            catch (Exception e)
+            {
+                AppDebugger.WriteLine("Login " + e.Message);
+                DisplayService.DisplayAlert("Login failed:", e.Message);
+            }
+
+        }
+
+        private async void FacebookManager_OnUserAuthentication(object sender, SocialService.Abstractions.FacebookProfile profile)
+        {
+            try
+            {
+                var userModel = Util.FacebookProfileToUsermodel(profile);
+                var autService = FreshIOC.Container.Resolve<IAuthenticationService>();
+                await autService.SignUp(userModel);
+                NavigationContentService.PushViewModel<AccountViewModel>();
+                NavigationContentService.CleanStackNavigation();
+            }
+            catch (Exception e)
+            {
+                AppDebugger.WriteLine("Login " + e.Message);
+                DisplayService.DisplayAlert("Login failed:", e.Message);
+            }
         }
 
         private async void Login()
@@ -53,8 +89,8 @@ namespace RestaurantApp.Core.ViewModels
             }
             catch (Exception e)
             {
-                AppDebugger.WriteLine("Login "+e.Message);
-                DisplayService.DisplayAlert("Login failed:",e.Message);
+                AppDebugger.WriteLine("Login " + e.Message);
+                DisplayService.DisplayAlert("Login failed:", e.Message);
             }
 
         }
