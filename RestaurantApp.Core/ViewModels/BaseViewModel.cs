@@ -9,6 +9,7 @@ namespace RestaurantApp.Core.ViewModels
 {
     public abstract class BaseViewModel : INotifyPropertyChanged
     {
+        public  object Params { get; set; }
         public IBaseContentView CurrentContentView { get; set; }
         public bool IsAuthenticated => !string.IsNullOrEmpty(Settings.AccessToken);
 
@@ -20,7 +21,7 @@ namespace RestaurantApp.Core.ViewModels
 
         public virtual void Init(object data)
         {
-            
+            Params = data;
         }
 
         [NotifyPropertyChangedInvocator]

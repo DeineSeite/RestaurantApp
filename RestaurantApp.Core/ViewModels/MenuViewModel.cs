@@ -4,6 +4,8 @@ using FreshMvvm;
 using RestaurantApp.Core.Interfaces;
 using RestaurantApp.Core.Services;
 using Xamarin.Forms;
+using MenuItem = RestaurantApp.Data.Models.MenuItem;
+
 
 namespace RestaurantApp.Core.ViewModels
 {
@@ -13,8 +15,8 @@ namespace RestaurantApp.Core.ViewModels
 
         public MenuViewModel()
         {
-            MenuItemsList = new List<IBaseContentView>();
-            PushContentCommand = new Command<IBaseContentView>(PushContent);
+            MenuItemsList = new List<MenuItem>();
+            PushContentCommand = new Command<MenuItem>(PushContent);
             _contentNavigationService = FreshIOC.Container.Resolve<IContentNavigationService>();
         }
 
@@ -22,7 +24,7 @@ namespace RestaurantApp.Core.ViewModels
 
         #region Commands
 
-        public Command<IBaseContentView> PushContentCommand { get; set; }
+        public Command<MenuItem> PushContentCommand { get; set; }
 
         #endregion
 
@@ -32,7 +34,7 @@ namespace RestaurantApp.Core.ViewModels
 
         /// <summary>
         /// </summary>
-        public List<IBaseContentView> MenuItemsList { get; set; }
+        public List<MenuItem> MenuItemsList { get; set; }
 
         #endregion
 
@@ -47,9 +49,11 @@ namespace RestaurantApp.Core.ViewModels
           throw new NotImplementedException();
         }
 
-        private void PushContent(IBaseContentView view)
+        private void PushContent(MenuItem view)
         {
-            _contentNavigationService.PushContentView(view);
+          var item= ContentViewModelResolver.ResolveViewModel(view.ViewType,view.Params);
+            item.Title = view.Title;
+            _contentNavigationService.PushContentView(item);
         }
 
         #endregion

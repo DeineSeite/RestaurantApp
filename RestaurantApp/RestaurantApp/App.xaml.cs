@@ -15,11 +15,11 @@ using RestaurantApp.Core.PageModels;
 using RestaurantApp.Core.Services;
 using RestaurantApp.Core.ViewModels;
 using RestaurantApp.Data.Access;
-using RestaurantApp.Data.Models;
 using RestaurantApp.Localizations;
 using RestaurantApp.Pages;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using MenuItem = RestaurantApp.Data.Models.MenuItem;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 
@@ -31,41 +31,21 @@ namespace RestaurantApp
 
         public App()
         {
-            var watch = Stopwatch.StartNew();
             InitializeComponent();
             MobileCenter.LogLevel = LogLevel.Debug;
             Analytics.Enabled = true;
-
-            MobileCenterLog.Debug(TAG, "InitializeComponent time: " + watch.ElapsedMilliseconds);
-
             ChangeCurrentCultureInfo(CurrentCulture.Name);
-
             InitializeFreshMvvm();
-            MobileCenterLog.Debug(TAG, "InitializeFreshMvvm time: " + watch.ElapsedMilliseconds);
-
             RegisterInstances();
-            MobileCenterLog.Debug(TAG, "RegisterInstances time: " + watch.ElapsedMilliseconds);
-
             InitializeSettings();
-            MobileCenterLog.Debug(TAG, "InitializeSettings time: " + watch.ElapsedMilliseconds);
-
             InitializeStartMenu();
-            MobileCenterLog.Debug(TAG, "InitializeStartMenu time: " + watch.ElapsedMilliseconds);
-
+          
             //Set Start page
             MainPage = BasicNavContainer;
-
-            watch.Stop();
-          
-            Analytics.TrackEvent("Start time: " + watch.ElapsedMilliseconds);
-            MobileCenterLog.Debug(TAG, "Start time: "+ watch.ElapsedMilliseconds);
-
-        
 
             Task.Run(() =>
             {
                 InitializePushNotificationService();
-                MobileCenterLog.Debug(TAG, "InitializePushNotificationService time: " + watch.ElapsedMilliseconds);
             });
         }
 
@@ -102,6 +82,8 @@ namespace RestaurantApp
             FreshIOC.Container.Register<IRestaurantDataAccess, RestaurantDataAccess>();
             FreshIOC.Container.Register<IBonusPointService, BonusPointService>();
             FreshIOC.Container.Register<ITableOrderService, TableOrderService>();
+            FreshIOC.Container.Register<IContentNavigationService, ContentNavigationService>().AsSingleton();
+            FreshIOC.Container.Register<IMainPageModel,MainPageModel>().AsSingleton();
         }
 
         private void InitializeFreshMvvm()
@@ -125,10 +107,7 @@ namespace RestaurantApp
         private async void InitializeStartMenu()
         {
             //Register MainPageModel as model with dynamic ContentView
-            var mainPageModel = new MainPageModel();
-            FreshIOC.Container.Register<IDynamicContent>(mainPageModel);
-            FreshIOC.Container.Register<IMainPageModel>(mainPageModel);
-
+            var mainPageModel = FreshIOC.Container.Resolve<IMainPageModel>();
 
             //Resolve Page and start
             var mainContentPage = new MainPage();
@@ -136,55 +115,25 @@ namespace RestaurantApp
             mainContentPage.BindingContext = mainPageModel;
 
             BasicNavContainer = new FreshNavigationContainer(mainContentPage);
-          
-                //Register ContentNavigationService
-                var navService = new ContentNavigationService();
-                FreshIOC.Container.Register<IContentNavigationService>(navService);
 
+            await Task.Run(() =>
+            {
                 //Initialize menu items
-                var startMenu = new MenuViewModel();
-            var infoMenu = new MenuViewModel
-            {
-                MenuItemsList = new List<IBaseContentView>
-                    {
-                        new OpenHoursView(),
-                        new TableOrderView(),
-                        new GalleryView()
-                    }
-            };
-
-            var bonusPointsMenu = new MenuViewModel
+               var menuItems = new List<MenuItem>
                 {
-                    MenuItemsList = new List<IBaseContentView>
-                    {
-                        new BonusPointView(BonusPointType.Dinner) {Title = AppResources.Dinner},
-                        new BonusPointView(BonusPointType.Lunch) {Title = AppResources.Lunch}
-                    }
-                };
-                var bonusPointsView = new MenuView
-                {
-                    BindingContext = bonusPointsMenu,
-                    Title = AppResources.BonusPoints
-                };
-
-            var infoMenuView = new MenuView
-            {
-                BindingContext = infoMenu,
-                Title = AppResources.Info
-            };
-
-            startMenu.MenuItemsList = new List<IBaseContentView>
-                {
-                    bonusPointsView,
-                    infoMenuView,
-                    new FoodCardView(),
-                    new ContactView()
+                    new MenuItem(typeof(BonusPointMenuView), AppResources.BonusPoints),
+                    new MenuItem(typeof(InfoMenuView), AppResources.Info),
+                    new MenuItem(typeof(FoodCardView), AppResources.FoodCard),
+                    new MenuItem(typeof(ContactView), AppResources.Contacts)
                 };
 
                 //Push menu as content
-                var startMenuView = new MenuView {BindingContext = startMenu};
+                var startMenuView = new MenuView();
+                startMenuView.SetMenuItems(menuItems);
+              
+                var navService = FreshIOC.Container.Resolve<IContentNavigationService>();
                 navService.PushContentView(startMenuView);
-          
+            });
         }
 
         private void InitializePushNotificationService()
@@ -192,14 +141,13 @@ namespace RestaurantApp
             try
             {
                 OneSignal.Current.StartInit("fa5121e9-fe91-4836-89c6-e53e006346dd")
-                .EndInit();
+                    .EndInit();
             }
             catch (Exception e)
             {
-                MobileCenterLog.Debug(TAG, "InitializePushNotificationService Failed: "+e.Message);
+                MobileCenterLog.Debug(TAG, "InitializePushNotificationService Failed: " + e.Message);
                 throw;
             }
-            
         }
 
         #endregion

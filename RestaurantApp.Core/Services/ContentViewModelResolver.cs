@@ -68,6 +68,12 @@ namespace RestaurantApp.Core.Services
                 viewModel.Init(data);
                 targetPage.BindingContext = viewModel;
             }
+            else
+            {
+                var currentViewModel = targetPage.BindingContext as BaseViewModel;
+                if (currentViewModel != null) currentViewModel.Init(data);
+            }
+         
             return targetPage;
         }
     }

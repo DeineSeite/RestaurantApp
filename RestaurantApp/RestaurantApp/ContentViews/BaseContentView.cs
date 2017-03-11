@@ -4,8 +4,12 @@ using Xamarin.Forms;
 
 namespace RestaurantApp.ContentViews
 {
-    public class BaseContentView : ContentView, IBaseContentView
+    public abstract class BaseContentView : ContentView, IBaseContentView
     {
+        public virtual void OnAppearing(Page parentPage)
+        {
+            
+        }
         
         public BaseContentView()
         {

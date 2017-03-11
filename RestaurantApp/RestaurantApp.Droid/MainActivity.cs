@@ -1,4 +1,6 @@
 ﻿
+using System.Diagnostics;
+using System.Threading.Tasks;
 using Android.App;
 using Android.Content.PM;
 using Android.Gms.Common;
@@ -14,10 +16,6 @@ using Xamarin.Forms.Platform.Android;
 using UXDivers.Gorilla;
 using UXDivers.Gorilla.Droid;
 #endif
-
-
-[assembly: Application(Debuggable = true)]
-
 namespace RestaurantApp.Droid
 {
     [Activity(Label = "RestaurantApp",
@@ -32,19 +30,21 @@ namespace RestaurantApp.Droid
     {
         protected override void OnCreate(Bundle bundle)
         {
+            var watch = Stopwatch.StartNew();
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(bundle);
-
             Forms.Init(this, bundle);
             Xamarin.FormsGoogleMaps.Init(this,bundle);
 
             FlowListView.Init();
             MobileCenter.Configure("8844801f-c2a9-4e09-b769-61856cfc7d1a");
 #if !GORILLA
-            LoadApplication(new App());
            
+            LoadApplication(new App());
+            watch.Stop();
+            MobileCenterLog.Debug("GASTRO", "Start time: " + watch.ElapsedMilliseconds);
 #else
             LoadApplication(Player.CreateApplication(ApplicationContext, new Config("Good Gorilla")
                 .RegisterAssemblyFromType<BasePage>()
@@ -65,6 +65,7 @@ namespace RestaurantApp.Droid
             ));
 #endif
         }
+       
 
 #if GRILLA
 

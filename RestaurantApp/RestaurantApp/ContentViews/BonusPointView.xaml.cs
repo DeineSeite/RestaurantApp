@@ -16,17 +16,11 @@ namespace RestaurantApp.ContentViews
         public BonusPointView()
         {
             InitializeComponent();
-        }
-
-        public BonusPointView(BonusPointType type)
-        {
-            InitializeComponent();
 #if DEBUG
             FakeButton.IsVisible = false;
 #endif
-            var viewModel =new BonusPointViewModel(type);
-            BindingContext = viewModel;
-           
         }
+
+    
     }
 }

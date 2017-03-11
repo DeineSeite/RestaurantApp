@@ -24,12 +24,12 @@ namespace RestaurantApp.UserControls
 
        public void OnPageStarted(string url)
        {
-                var mainContent = FreshIOC.Container.Resolve<IDynamicContent>();
+                var mainContent = FreshIOC.Container.Resolve<IMainPageModel>();
                 mainContent.IsBusy = true;
         }
         public void OnPageFinished(string url)
         {
-                var mainContent = FreshIOC.Container.Resolve<IDynamicContent>();
+                var mainContent = FreshIOC.Container.Resolve<IMainPageModel>();
                 mainContent.IsBusy = false;
             Eval("AppHidden()");
         }

@@ -5,7 +5,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:contentViews="clr-namespace:RestaurantApp.ContentViews;assembly=RestaurantApp"
     xmlns:userControls="clr-namespace:RestaurantApp.UserControls;assembly=RestaurantApp"
+    xmlns:viewModels="clr-namespace:RestaurantApp.Core.ViewModels;assembly=RestaurantApp.Core"
     BackgroundColor="Transparent">
+    <contentViews:BaseContentView.BindingContext>
+        <viewModels:MenuViewModel />
+    </contentViews:BaseContentView.BindingContext>
     <StackLayout>
         <userControls:MenuTemplate />
     </StackLayout>

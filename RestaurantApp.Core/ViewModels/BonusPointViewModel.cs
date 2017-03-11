@@ -24,14 +24,20 @@ namespace RestaurantApp.Core.ViewModels
 
         #region ctor
 
-        public BonusPointViewModel(BonusPointType type)
+        public override void Init(object data)
+        {
+            base.Init(data);
+            BonusPointsList.FillFromDatabase((BonusPointType)Params);
+        }
+
+        public BonusPointViewModel()
         {
             StartScanCommand = new Command(ScanQrCode);
             ItemTappedCommand = new Command<BonusPointModel>(ItemTapped);
             FakeBonusCommand = new Command(FakeBonusPoint);
 
             BonusPointsList = new BonusPointCollection();
-            BonusPointsList.FillFromDatabase(type);
+           
 
             InitScanPage();
         }

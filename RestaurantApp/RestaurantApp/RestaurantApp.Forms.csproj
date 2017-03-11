@@ -61,6 +61,7 @@
       <DependentUpon>AccountView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ContentViews\BaseContentView.cs" />
+    <Compile Include="ContentViews\BonusPointMenuView.cs" />
     <Compile Include="ContentViews\BonusPointView.xaml.cs">
       <DependentUpon>BonusPointView.xaml</DependentUpon>
     </Compile>
@@ -73,6 +74,7 @@
     <Compile Include="ContentViews\GalleryView.xaml.cs">
       <DependentUpon>GalleryView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ContentViews\InfoMenuView.cs" />
     <Compile Include="ContentViews\MenuView.xaml.cs">
       <DependentUpon>MenuView.xaml</DependentUpon>
     </Compile>
@@ -133,6 +135,7 @@
     <EmbeddedResource Include="Localizations\AppResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\MainPage.xaml">
       <SubType>Designer</SubType>
