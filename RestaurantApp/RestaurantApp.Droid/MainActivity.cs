@@ -24,24 +24,19 @@ namespace RestaurantApp.Droid
 #else
       Icon = "@drawable/icon", 
 #endif
-        Theme = "@style/MainTheme", MainLauncher = true,
+        Theme = "@style/MainTheme",
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)
         {
-            var watch = Stopwatch.StartNew();
+       
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(bundle);
-            Forms.Init(this, bundle);
-            Xamarin.FormsGoogleMaps.Init(this,bundle);
-
-            FlowListView.Init();
-            MobileCenter.Configure("8844801f-c2a9-4e09-b769-61856cfc7d1a");
 #if !GORILLA
-           
+            var watch = Stopwatch.StartNew();
             LoadApplication(new App());
             watch.Stop();
             MobileCenterLog.Debug("GASTRO", "Start time: " + watch.ElapsedMilliseconds);

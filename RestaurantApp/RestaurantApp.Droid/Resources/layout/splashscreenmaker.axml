@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="https://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal|center_vertical"
+    android:layout_height="fill_parent"
+    android:background="@drawable/background"
+    android:id="@+id/lin_lay"
+    tools:context=".SplashScreenActivity">
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:src="@drawable/Logo1"
+        android:id="@+id/logo" />
+</LinearLayout>
