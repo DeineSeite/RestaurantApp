@@ -25,16 +25,18 @@ namespace RestaurantApp.Droid
       Icon = "@drawable/icon", 
 #endif
         Theme = "@style/MainTheme",
+        MainLauncher = false,
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)
         {
        
-            TabLayoutResource = Resource.Layout.Tabbar;
+           TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(bundle);
+        
 #if !GORILLA
             var watch = Stopwatch.StartNew();
             LoadApplication(new App());

@@ -8,11 +8,4 @@
       android:layout_height="match_parent"
       android:gravity="center" />
   </item>
-  <item>
-    <bitmap
-      android:src="@drawable/logo"
-      android:gravity="center" />
-  </item>
-
-
 </layer-list>
