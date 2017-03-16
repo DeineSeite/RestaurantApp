@@ -2,6 +2,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
+using Android.Graphics.Drawables;
 using Android.OS;
 using Android.Support.V7.App;
 using Android.Util;
@@ -9,6 +10,7 @@ using Android.Views;
 using Android.Views.Animations;
 using Android.Widget;
 using DLToolkit.Forms.Controls;
+using Java.Lang;
 using Microsoft.Azure.Mobile;
 using Xamarin.Forms;
 using Animation = Android.Views.Animations.Animation;
@@ -22,14 +24,16 @@ namespace RestaurantApp.Droid
         protected override void OnResume()
         {
             base.OnResume();
-            StartAnimations();
+          //  StartAnimations();
         }
        
         protected override void OnCreate(Bundle savedInstanceState)
         {
+           
             base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.splashscreenmaker);
-            StartAnimations();
+            //SetContentView(Resource.Layout.splashscreenmaker);
+       
+          // StartAnimations();
             Log.Debug("GASTRO APP", "1");
             ThreadPool.QueueUserWorkItem(o => Init(savedInstanceState));
         }
@@ -41,16 +45,27 @@ namespace RestaurantApp.Droid
                 Xamarin.FormsGoogleMaps.Init(this, bundle);
                 FlowListView.Init();
                 MobileCenter.Configure("8844801f-c2a9-4e09-b769-61856cfc7d1a");
-            });
+               StartActivity(typeof(MainActivity));
+                Finish();
+           });
         }
         private void StartAnimations()
         {
-            Animation anim2 = AnimationUtils.LoadAnimation(this, Resource.Animation.translate);
-            anim2.Reset();
             ImageView iv = (ImageView)FindViewById(Resource.Id.logo);
-            iv.ClearAnimation();
-            iv.StartAnimation(anim2);
-            iv.Animation.AnimationEnd += Animation_AnimationEnd;
+            iv.Visibility=ViewStates.Gone;
+            LinearLayout linear = (LinearLayout) FindViewById(Resource.Id.lin_lay);
+            LayerDrawable progressAnimationLeft = (LayerDrawable)linear.Background;
+
+ 
+            
+            //   ((Android.Graphics.Drawables.IAnimatable)progressAnimationLeft.GetDrawable(1)).Start();
+            //Animation anim2 = AnimationUtils.LoadAnimation(this, Resource.Animation.rotate);
+            //anim2.Reset();
+            // iv.Visibility =ViewStates.Visible;
+
+            //iv.ClearAnimation();
+            //  iv.StartAnimation(anim2);
+            //  iv.Animation.AnimationEnd += Animation_AnimationEnd;
         }
 
         private void Animation_AnimationEnd(object sender, Animation.AnimationEndEventArgs e)

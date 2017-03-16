@@ -4,8 +4,32 @@
   <item>
     <bitmap
       android:src="@drawable/background"
-      android:layout_width="match_parent"
+     android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:gravity="center" />
+  </item>
+  <item>
+       <bitmap
+      android:src="@drawable/Logo"
+     android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:gravity="center" />
+    <!--<animated-rotate xmlns:android="http://schemas.android.com/apk/res/android"
+         android:drawable="@drawable/Logo1"
+         android:pivotX="50%"
+                     android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+         android:pivotY="50%"
+         android:fromDegrees="0"
+         android:toDegrees="360"
+         android:interpolator="@android:anim/linear_interpolator"
+            android:duration="500"
+    android:indeterminate="true" 
+                     android:bottom="214dp"
+    android:top="214dp"
+    android:left="100dp"
+    android:right="100dp"
+
+         android:repeatCount="infinite"/>-->
   </item>
 </layer-list>

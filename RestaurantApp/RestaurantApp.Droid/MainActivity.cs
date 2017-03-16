@@ -8,6 +8,7 @@ using Android.OS;
 using DLToolkit.Forms.Controls;
 using Microsoft.Azure.Mobile;
 using Microsoft.Azure.Mobile.Analytics;
+using Plugin.Share;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
@@ -36,7 +37,7 @@ namespace RestaurantApp.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(bundle);
-        
+            var s = CrossShare.Current;
 #if !GORILLA
             var watch = Stopwatch.StartNew();
             LoadApplication(new App());

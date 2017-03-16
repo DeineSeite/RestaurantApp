@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
+using FAB.Forms;
 using FreshMvvm;
+using Plugin.Share;
+using Plugin.Share.Abstractions;
 using RestaurantApp.ContentViews;
 using RestaurantApp.Core.Interfaces;
 using RestaurantApp.UserControls;
@@ -22,8 +25,48 @@ namespace RestaurantApp.Pages
 
             this.SetBinding(MainContentProperty, "MainContentView");
             IsBusy = true;
+            AddFloatButtonToLayout();
+
         }
 
+        private FAB.Forms.FloatingActionButton FabButton;
+        public void FloadButtonVisibility(bool visible)
+        {
+            FabButton.IsVisible = visible;
+        }
+        public void AddFloatButtonToLayout()
+        {
+            var normalFab = new FAB.Forms.FloatingActionButton();
+            var backgroundColor = (Color)Application.Current.Resources["MainThemeColor"];
+            normalFab.NormalColor = backgroundColor;
+            normalFab.Source = "share.png";
+            normalFab.Size = FabSize.Normal;
+            var width = new OnIdiom<int>
+            {
+                Tablet = 80,
+                Phone = 50
+            };
+            AbsoluteLayout.SetLayoutBounds(normalFab, new Rectangle(.95, .95, width, width));
+            AbsoluteLayout.SetLayoutFlags(normalFab, AbsoluteLayoutFlags.PositionProportional);
+            MainLayout.Children.Add(normalFab);
+            normalFab.Clicked += delegate
+            {
+                var v = new ShareMessage();
+                v.Text = "TText";
+                v.Title = "TTitle";
+                v.Url = "http://chrisriesgo.com/material-design-fab-in-xamarin-forms/";
+                
+                var o=new ShareOptions();
+                o.ExcludedUIActivityTypes=new[] {ShareUIActivityType.PostToFacebook,ShareUIActivityType.Mail, ShareUIActivityType.Mail, ShareUIActivityType.PostToTwitter, ShareUIActivityType.PostToFlickr};
+                CrossShare.Current.Share(v,o);
+                //var b = new BrowserOptions();
+                //b.ChromeShowTitle = true;
+                //b.ChromeToolbarColor = new ShareColor((int)backgroundColor.R, (int)backgroundColor.R, (int)backgroundColor.B,
+                //    (int)backgroundColor.A);
+                //CrossShare.Current.OpenBrowser(v.Url, b);
+            };
+
+        }
         public BaseContentView MainContent
         {
             get { return (BaseContentView) GetValue(MainContentProperty); }

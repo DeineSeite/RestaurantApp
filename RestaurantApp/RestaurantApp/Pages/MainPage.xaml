@@ -3,11 +3,12 @@
     x:Class="RestaurantApp.Pages.MainPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:forms="clr-namespace:FAB.Forms;assembly=FAB.Forms"
     xmlns:pageModels="clr-namespace:RestaurantApp.Core.PageModels;assembly=RestaurantApp.Core"
     xmlns:pages="clr-namespace:RestaurantApp.Pages;assembly=RestaurantApp"
     xmlns:userControls="clr-namespace:RestaurantApp.UserControls;assembly=RestaurantApp"
     x:Name="BasePage">
-    <AbsoluteLayout>
+    <AbsoluteLayout x:Name="MainLayout">
         <Image
             AbsoluteLayout.LayoutBounds="1,1,1,1"
             AbsoluteLayout.LayoutFlags="All"
@@ -26,5 +27,6 @@
                 <ContentView x:Name="MainContentView" HorizontalOptions="FillAndExpand" />
             </ScrollView>
         </Grid>
+
     </AbsoluteLayout>
 </pages:BasePage>
