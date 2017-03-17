@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<contentViews:BaseContentView
+    x:Class="RestaurantApp.ContentViews.ActionView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:contentViews="clr-namespace:RestaurantApp.ContentViews;assembly=RestaurantApp"
+    xmlns:controls="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+    xmlns:viewModels="clr-namespace:RestaurantApp.Core.ViewModels;assembly=RestaurantApp.Core">
+    <contentViews:BaseContentView.BindingContext>
+        <viewModels:ActionViewModel />
+    </contentViews:BaseContentView.BindingContext>
+    <controls:FlowListView
+        FlowColumnCount="1"
+        FlowItemTappedCommand="{Binding ActionTappedCommand}"
+        FlowItemsSource="{Binding ActionsList}"
+        HorizontalOptions="FillAndExpand"
+        RowHeight="70"
+        VerticalOptions="FillAndExpand">
+        <controls:FlowListView.FlowColumnTemplate>
+            <DataTemplate>
+                <Grid
+                    Margin="5,5,5,0"
+                    ColumnSpacing="5"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="CenterAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="4*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+                    <StackLayout Grid.Column="0">
+                        <Image
+                            HeightRequest="50"
+                            Source="{Binding Image}"
+                            VerticalOptions="StartAndExpand"
+                            WidthRequest="50" />
+                    </StackLayout>
+                    <StackLayout
+                        Grid.Column="1"
+                        Orientation="Vertical"
+                        Spacing="0">
+                        <Label FontSize="Medium" Text="{Binding Title}" />
+                        <Label FontSize="Small" Text="{Binding Description}" />
+                    </StackLayout>
+                    <Label
+                        Grid.Column="2"
+                        FontSize="10"
+                        Text="{Binding Date, StringFormat='{0:dd.MM.yyyy}'}"
+                        VerticalOptions="StartAndExpand" />
+                </Grid>
+            </DataTemplate>
+        </controls:FlowListView.FlowColumnTemplate>
+    </controls:FlowListView>
+</contentViews:BaseContentView>
+

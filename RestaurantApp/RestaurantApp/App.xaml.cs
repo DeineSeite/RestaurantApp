@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Globalization;
 using System.Threading.Tasks;
 using Com.OneSignal;
+using Com.OneSignal.Abstractions;
 using FreshMvvm;
 using Microsoft.Azure.Mobile;
 using Microsoft.Azure.Mobile.Analytics;
@@ -13,8 +13,8 @@ using RestaurantApp.Core.Helpers;
 using RestaurantApp.Core.Interfaces;
 using RestaurantApp.Core.PageModels;
 using RestaurantApp.Core.Services;
-using RestaurantApp.Core.ViewModels;
 using RestaurantApp.Data.Access;
+using RestaurantApp.Data.Models;
 using RestaurantApp.Localizations;
 using RestaurantApp.Pages;
 using Xamarin.Forms;
@@ -39,14 +39,12 @@ namespace RestaurantApp
             RegisterInstances();
             InitializeSettings();
             InitializeStartMenu();
-          
+
             //Set Start page
             MainPage = BasicNavContainer;
 
-            Task.Run(() =>
-            {
-                InitializePushNotificationService();
-            });
+            Task.Run(() => { InitializePushNotificationService(); });
+            
         }
 
         #endregion
@@ -77,13 +75,14 @@ namespace RestaurantApp
         {
             FreshIOC.Container.Register<IApplicationContext>(this);
             FreshIOC.Container.Register<IContentNavigationService, ContentNavigationService>();
+            FreshIOC.Container.Register<INotificationService, NotificationService>();
             FreshIOC.Container.Register<IRequestProvider, RequestProvider>();
             FreshIOC.Container.Register<IAuthenticationService, AuthenticationService>();
             FreshIOC.Container.Register<IRestaurantDataAccess, RestaurantDataAccess>();
             FreshIOC.Container.Register<IBonusPointService, BonusPointService>();
             FreshIOC.Container.Register<ITableOrderService, TableOrderService>();
             FreshIOC.Container.Register<IContentNavigationService, ContentNavigationService>().AsSingleton();
-            FreshIOC.Container.Register<IMainPageModel,MainPageModel>().AsSingleton();
+            FreshIOC.Container.Register<IMainPageModel, MainPageModel>().AsSingleton();
         }
 
         private void InitializeFreshMvvm()
@@ -101,6 +100,7 @@ namespace RestaurantApp
                 var dataBase = FreshIOC.Container.Resolve<IRestaurantDataAccess>();
                 dataBase.CreateTables();
                 Settings.FirstStart = false;
+                Task.Run(() => { InitFakeData(); });
             }
         }
 
@@ -119,7 +119,7 @@ namespace RestaurantApp
             await Task.Run(() =>
             {
                 //Initialize menu items
-               var menuItems = new List<MenuItem>
+                var menuItems = new List<MenuItem>
                 {
                     new MenuItem(typeof(BonusPointMenuView), AppResources.BonusPoints),
                     new MenuItem(typeof(InfoMenuView), AppResources.Info),
@@ -130,7 +130,7 @@ namespace RestaurantApp
                 //Push menu as content
                 var startMenuView = new MenuView();
                 startMenuView.SetMenuItems(menuItems);
-              
+
                 var navService = FreshIOC.Container.Resolve<IContentNavigationService>();
                 navService.PushContentView(startMenuView);
             });
@@ -141,6 +141,7 @@ namespace RestaurantApp
             try
             {
                 OneSignal.Current.StartInit("fa5121e9-fe91-4836-89c6-e53e006346dd")
+                    .HandleNotificationReceived(ReceiveNotification)
                     .EndInit();
             }
             catch (Exception e)
@@ -148,6 +149,27 @@ namespace RestaurantApp
                 MobileCenterLog.Debug(TAG, "InitializePushNotificationService Failed: " + e.Message);
                 throw;
             }
+        }
+
+        private void ReceiveNotification(OSNotification notification)
+        {
+           FreshIOC.Container.Resolve<INotificationService>().ReceiveNotification(notification);
+        }
+
+        private async void InitFakeData()
+        {
+            await Task.Run(() =>
+            {
+                var fakeAction = new ActionModel()
+                {
+                    Title = "Happy birthday",
+                    Description = "Congratulations!",
+                    Date = DateTime.Now,
+                    Image = "birthday.jpg"
+                };
+                var dataAccess = FreshIOC.Container.Resolve<IRestaurantDataAccess>();
+                dataAccess.AddAction(fakeAction);
+            });
         }
 
         #endregion

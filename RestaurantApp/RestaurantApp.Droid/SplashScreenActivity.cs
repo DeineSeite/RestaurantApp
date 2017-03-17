@@ -32,23 +32,29 @@ namespace RestaurantApp.Droid
            
             base.OnCreate(savedInstanceState);
             //SetContentView(Resource.Layout.splashscreenmaker);
-       
-          // StartAnimations();
-            Log.Debug("GASTRO APP", "1");
-            ThreadPool.QueueUserWorkItem(o => Init(savedInstanceState));
+            Forms.Init(this, savedInstanceState);
+            MobileCenter.Configure("8844801f-c2a9-4e09-b769-61856cfc7d1a");
+            StartActivity(typeof(MainActivity));
+            Finish();
+            Xamarin.FormsGoogleMaps.Init(this, savedInstanceState);
+            FlowListView.Init();
+           
+            // StartAnimations();
+          //  Log.Debug("GASTRO APP", "1");
+           // ThreadPool.QueueUserWorkItem(o => Init(savedInstanceState));
         }
 
-        private async void Init(Bundle bundle)
-        {
-           await Task.Run(() => {
-                Forms.Init(this, bundle);
-                Xamarin.FormsGoogleMaps.Init(this, bundle);
-                FlowListView.Init();
-                MobileCenter.Configure("8844801f-c2a9-4e09-b769-61856cfc7d1a");
-               StartActivity(typeof(MainActivity));
-                Finish();
-           });
-        }
+        //private async void Init(Bundle bundle)
+        //{
+        //   await Task.Run(() => {
+        //        Forms.Init(this, bundle);
+        //       StartActivity(typeof(MainActivity));
+        //       Xamarin.FormsGoogleMaps.Init(this, bundle);
+        //        FlowListView.Init();
+        //        MobileCenter.Configure("8844801f-c2a9-4e09-b769-61856cfc7d1a");
+        //       Finish();
+        //   });
+        //}
         private void StartAnimations()
         {
             ImageView iv = (ImageView)FindViewById(Resource.Id.logo);

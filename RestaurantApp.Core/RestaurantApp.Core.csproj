@@ -76,6 +76,7 @@
     <Compile Include="Interfaces\ILocalize.cs" />
     <Compile Include="Interfaces\IMainPageModel.cs" />
     <Compile Include="Interfaces\INativeHelper.cs" />
+    <Compile Include="Interfaces\INotificationService.cs" />
     <Compile Include="Interfaces\IProfileService.cs" />
     <Compile Include="Interfaces\IRequestProvider.cs" />
     <Compile Include="Interfaces\ITableOrderService.cs" />
@@ -91,11 +92,13 @@
     <Compile Include="Services\ContentNavigationService.cs" />
     <Compile Include="Services\ContentViewModelMapper.cs" />
     <Compile Include="Services\ContentViewModelResolver.cs" />
+    <Compile Include="Services\NotificationService.cs" />
     <Compile Include="Services\RequestProvider.cs" />
     <Compile Include="Services\ServiceAuthenticationException.cs" />
     <Compile Include="Services\TableOrderService.cs" />
     <Compile Include="Services\DisplayService.cs" />
     <Compile Include="ViewModels\AccountViewModel.cs" />
+    <Compile Include="ViewModels\ActionViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\BonusPointViewModel.cs" />
     <Compile Include="ViewModels\ContactViewModel.cs" />

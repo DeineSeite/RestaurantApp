@@ -11,6 +11,7 @@ namespace RestaurantApp.Data.Access
             CreateTable<RestaurantModel>();
             CreateTable<UserModel>();
             CreateTable<BonusPointModel>();
+            CreateTable<ActionModel>();
         }
 
         /// <summary>
@@ -69,6 +70,34 @@ namespace RestaurantApp.Data.Access
         public UserModel GetCurrentUser()
         {
             return GetTable<UserModel>().FirstOrDefault();
+        }
+
+        /// <summary>
+        ///    ActionModel is a notiication recived from server
+        /// </summary>
+        /// <returns></returns>
+        public int  AddAction(ActionModel action)
+        {
+            AddNewRow(action);
+            return action.Id;
+        }
+
+        /// <summary>
+        ///   Delete notification from databse
+        /// </summary>
+        /// <returns></returns>
+        public void DeleteAction(ActionModel action)
+        {
+            DeleteRow(action);
+        }
+
+        /// <summary>
+        ///   Get all notifications from database
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<ActionModel> GetAllActions()
+        {
+           return GetTable<ActionModel>();
         }
     }
 }

@@ -12,5 +12,8 @@ namespace RestaurantApp.Data.Access
         int SetNewUser(UserModel user);
         UserModel GetCurrentUser();
         IEnumerable<BonusPointModel> GetAllBonusPoints(BonusPointType type);
+        int AddAction(ActionModel action);
+        void DeleteAction(ActionModel action);
+        IEnumerable<ActionModel> GetAllActions();
     }
 }

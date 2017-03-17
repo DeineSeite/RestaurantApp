@@ -198,4 +198,7 @@
   <data name="Lunch" xml:space="preserve">
     <value>Lunch</value>
   </data>
+  <data name="Actions" xml:space="preserve">
+    <value>Actions</value>
+  </data>
 </root>

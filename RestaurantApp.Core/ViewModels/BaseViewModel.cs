@@ -4,6 +4,7 @@ using FreshMvvm;
 using RestaurantApp.Core.Annotations;
 using RestaurantApp.Core.Helpers;
 using RestaurantApp.Core.Interfaces;
+using RestaurantApp.Data.Access;
 
 namespace RestaurantApp.Core.ViewModels
 {
@@ -15,7 +16,8 @@ namespace RestaurantApp.Core.ViewModels
 
         protected IContentNavigationService NavigationContentService
             => FreshIOC.Container.Resolve<IContentNavigationService>();
-
+        protected IRestaurantDataAccess DataAccess
+         => FreshIOC.Container.Resolve<IRestaurantDataAccess>();
         protected IMainPageModel ParentPageModel => FreshIOC.Container.Resolve<IMainPageModel>();
         public event PropertyChangedEventHandler PropertyChanged;
 

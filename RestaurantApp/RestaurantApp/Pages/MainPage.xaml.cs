@@ -52,9 +52,7 @@ namespace RestaurantApp.Pages
             normalFab.Clicked += delegate
             {
                 var v = new ShareMessage();
-                v.Text = "TText";
-                v.Title = "TTitle";
-                v.Url = "http://chrisriesgo.com/material-design-fab-in-xamarin-forms/";
+                v.Url = "http://www.gastro-app.com";
                 
                 var o=new ShareOptions();
                 o.ExcludedUIActivityTypes=new[] {ShareUIActivityType.PostToFacebook,ShareUIActivityType.Mail, ShareUIActivityType.Mail, ShareUIActivityType.PostToTwitter, ShareUIActivityType.PostToFlickr};

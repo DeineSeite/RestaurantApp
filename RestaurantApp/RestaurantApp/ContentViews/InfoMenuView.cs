@@ -18,6 +18,7 @@ namespace RestaurantApp.ContentViews
                 new MenuItem(typeof(OpenHoursView), AppResources.OpenHours),
                 new MenuItem(typeof(TableOrderView), AppResources.Tables),
                 new MenuItem(typeof(GalleryView), AppResources.Gallery),
+                new MenuItem(typeof(ActionView), AppResources.Actions),
             };
             SetMenuItems(items);
         }
