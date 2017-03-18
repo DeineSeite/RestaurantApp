@@ -28,6 +28,9 @@ namespace RestaurantApp.Core.Helpers
         private const string UserNameKey = "user_name_key";
         private static readonly string UserNameDefault = string.Empty;
 
+        private const string UserEmailKey = "user_email_key";
+        private static readonly string UserEmailDefault = string.Empty;
+
         private const string RestaurantIdKey = "restaurant_id_key";
         private static readonly int RestaurantIdDefault = 0;
 
@@ -60,6 +63,17 @@ namespace RestaurantApp.Core.Helpers
             get
             {
                 return AppSettings.GetValueOrDefault(UserNameKey, UserNameDefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue(UserNameKey, value);
+            }
+        }
+        public static string UserEmail
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault(UserEmailKey, UserEmailDefault);
             }
             set
             {
@@ -121,6 +135,10 @@ namespace RestaurantApp.Core.Helpers
         public static void RemoveUserName()
         {
             AppSettings.Remove(UserNameKey);
+        }
+        public static void RemoveUserEmail()
+        {
+            AppSettings.Remove(UserEmailKey);
         }
         public static void RemoveIsLogin()
         {

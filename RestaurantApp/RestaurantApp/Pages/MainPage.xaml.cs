@@ -54,21 +54,11 @@ namespace RestaurantApp.Pages
             normalFab.Clicked += delegate
             {
                 var v = new ShareMessage();
-                var email = Settings.UserName; //TODO make it with email
-                if (email == null)
-                    email = Settings.UserId.ToString();
+                var email = Settings.UserEmail ?? Settings.UserId.ToString();
                 v.Url = "http://www.gastro-app.com/download/download.php?file=com.restaurant.droid.apk&email="+email;
                 v.Title = "Share with your friend";
-                v.Text = "hi friend, check this app ("+ v.Url + ") and if you register (and by registration you put my email as recommender) I will get free point (stempel).";
-                
-                var o=new ShareOptions();
-                o.ExcludedUIActivityTypes=new[] {ShareUIActivityType.PostToFacebook,ShareUIActivityType.Mail, ShareUIActivityType.Mail, ShareUIActivityType.PostToTwitter, ShareUIActivityType.PostToFlickr};
-                CrossShare.Current.Share(v,o);
-                //var b = new BrowserOptions();
-                //b.ChromeShowTitle = true;
-                //b.ChromeToolbarColor = new ShareColor((int)backgroundColor.R, (int)backgroundColor.R, (int)backgroundColor.B,
-                //    (int)backgroundColor.A);
-                //CrossShare.Current.OpenBrowser(v.Url, b);
+                v.Text = $"hi friend, check this app ({v.Url}) and if you register (and by registration you put my email as recommender) I will get free point (stempel).";
+                CrossShare.Current.Share(v);
             };
 
         }

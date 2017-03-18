@@ -35,6 +35,7 @@ namespace RestaurantApp.Core.Services
             Settings.UserId = authenticationInfo.Id;
             Settings.UserName = authenticationInfo.FirstName+" "+authenticationInfo.LastName;
             Settings.AccessToken = authenticationInfo.AccessToken;
+            Settings.UserEmail = authenticationInfo.Email;
             return true;
         }
 
