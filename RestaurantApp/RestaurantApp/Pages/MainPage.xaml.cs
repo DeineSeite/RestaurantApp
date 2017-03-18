@@ -5,7 +5,9 @@ using FreshMvvm;
 using Plugin.Share;
 using Plugin.Share.Abstractions;
 using RestaurantApp.ContentViews;
+using RestaurantApp.Core.Helpers;
 using RestaurantApp.Core.Interfaces;
+using RestaurantApp.Data.Access;
 using RestaurantApp.UserControls;
 using Xamanimation;
 using Xamarin.Forms;
@@ -52,7 +54,12 @@ namespace RestaurantApp.Pages
             normalFab.Clicked += delegate
             {
                 var v = new ShareMessage();
-                v.Url = "http://www.gastro-app.com";
+                var email = Settings.UserName; //TODO make it with email
+                if (email == null)
+                    email = Settings.UserId.ToString();
+                v.Url = "http://www.gastro-app.com/download/download.php?file=com.restaurant.droid.apk&email="+email;
+                v.Title = "Share with your friend";
+                v.Text = "hi friend, check this app ("+ v.Url + ") and if you register (and by registration you put my email as recommender) I will get free point (stempel).";
                 
                 var o=new ShareOptions();
                 o.ExcludedUIActivityTypes=new[] {ShareUIActivityType.PostToFacebook,ShareUIActivityType.Mail, ShareUIActivityType.Mail, ShareUIActivityType.PostToTwitter, ShareUIActivityType.PostToFlickr};
