@@ -116,7 +116,7 @@
         </trans-unit>
         <trans-unit id="Actions" translate="yes" xml:space="preserve">
           <source>Actions</source>
-          <target state="new">Actions</target>
+          <target state="translated">Handlungen</target>
         </trans-unit>
       </group>
     </body>

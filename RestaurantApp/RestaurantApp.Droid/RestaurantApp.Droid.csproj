@@ -18,7 +18,7 @@
     <AndroidManifest Condition="'$(Configuration)'!='Gorilla'">Properties\AndroidManifest.xml</AndroidManifest>
     <AndroidManifest Condition="'$(Configuration)'=='Gorilla'">Properties\AndroidManifestGorilla.xml</AndroidManifest>
     <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v7.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
     <AndroidSupportedAbis>armeabi,armeabi-v7a,x86</AndroidSupportedAbis>
     <AndroidStoreUncompressedFileExtensions />
     <MandroidI18n />
@@ -346,6 +346,7 @@
     <Compile Include="Renderers\GradientContentViewRenderer.cs" />
     <Compile Include="Renderers\GridViewRenderer.cs" />
     <Compile Include="Renderers\HtmlLabelRenderer.cs" />
+    <Compile Include="Renderers\LiteGoogleMapRenderer.cs" />
     <Compile Include="Renderers\RoundedBoxRenderer.cs" />
     <Compile Include="Renderers\TransparentWebViewRenderer.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />

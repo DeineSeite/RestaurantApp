@@ -93,4 +93,7 @@
   <data name="Lunch" xml:space="preserve">
     <value>Mittagessen</value>
   </data>
+  <data name="Actions" xml:space="preserve">
+    <value>Handlungen</value>
+  </data>
 </root>

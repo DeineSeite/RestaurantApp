@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Android.Util;
 using Android.Views;
 using PropertyChanged;
+using RestaurantApp.Core.Helpers;
 using RestaurantApp.Core.Services;
 using RestaurantApp.Data.Models;
 using Xamarin.Forms;
@@ -22,6 +23,7 @@ namespace RestaurantApp.Core.ViewModels
         {
             ActionTappedCommand = new Command<ActionModel>(ActionTapped);
             ActionsList=new ObservableCollection<ActionModel>(DataAccess.GetAllActions());
+      
         }
 
         public Command<ActionModel> ActionTappedCommand { get; set; }

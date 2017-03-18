@@ -118,6 +118,7 @@
       <DependentUpon>HeaderTemplate.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\HtmlLabel.cs" />
+    <Compile Include="UserControls\LiteGoogleMap.cs" />
     <Compile Include="UserControls\MenuItemCellTemplate.xaml.cs">
       <DependentUpon>MenuItemCellTemplate.xaml</DependentUpon>
     </Compile>

@@ -116,7 +116,7 @@
             </StackLayout>
         </ContentView>
 
-        <googleMaps:Map
+        <userControls:LiteGoogleMap
             x:Name="ContactMap"
             Margin="0,15,0,0"
             HeightRequest="300"
