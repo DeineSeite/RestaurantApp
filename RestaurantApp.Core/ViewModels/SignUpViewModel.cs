@@ -56,7 +56,7 @@ namespace RestaurantApp.Core.ViewModels
 
         public SignUpViewModel()
         {
-            User = new UserModel { BirthDay = DateTime.Now, Gender = GenderType.Man };
+            User = new UserModel { BirthDay = new DateTime(DateTime.Now.Year-17,DateTime.Now.Month,DateTime.Now.Day), Gender = GenderType.Man };
             SignUpCommand = new Command(SignUp);
         }
 
