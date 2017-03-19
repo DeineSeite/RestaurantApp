@@ -118,6 +118,18 @@
           <source>Actions</source>
           <target state="translated">Handlungen</target>
         </trans-unit>
+        <trans-unit id="RecommendBy" translate="yes" xml:space="preserve">
+          <source>Recommend by</source>
+          <target state="new">Recommend by</target>
+        </trans-unit>
+        <trans-unit id="Time" translate="yes" xml:space="preserve">
+          <source>Time*</source>
+          <target state="new">Time*</target>
+        </trans-unit>
+        <trans-unit id="ContactFullName" translate="yes" xml:space="preserve">
+          <source>First name and Last name*</source>
+          <target state="new">First name and Last name*</target>
+        </trans-unit>
       </group>
     </body>
   </file>

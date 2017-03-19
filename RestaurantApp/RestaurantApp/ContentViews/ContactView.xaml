@@ -46,7 +46,7 @@
                                 VerticalOptions="CenterAndExpand"
                                 WidthRequest="20">
                                 <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding GetDirectionsCommand}" />
+                                    <TapGestureRecognizer Command="{Binding NavigateToMap}" />
                                 </Image.GestureRecognizers>
                             </Image>
                             <StackLayout Spacing="10">

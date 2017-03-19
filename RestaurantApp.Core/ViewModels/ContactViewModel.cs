@@ -16,6 +16,7 @@ namespace RestaurantApp.Core.ViewModels
             MessageNumberCommand = new Command(MessageNumber);
             DialNumberCommand = new Command(DialNumber);
             EmailCommand = new Command(SendEmail);
+            NavigateToMap = new Command(NavigateTo);
 
             Restaurant = new RestaurantModel();
             Restaurant.Phone = "01/256 89 80";
@@ -26,31 +27,13 @@ namespace RestaurantApp.Core.ViewModels
             Restaurant.Company = "Gastro App";
             Restaurant.Latitude = 48.2542395;
             Restaurant.Longitude = 16.4446964;
-            MapUrl =
-                @"https://maps.googleapis.com/maps/api/staticmap?center=Wagramer+Strasse+189b,+1210+Wien&zoom=13&scale=false&size=700x400&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:1%7CWagramer+Strasse+189b,+1210+Wien";
-            var fileName = "RestaurantApp.Core.contactInfo.html";
-            var assembly = typeof(ContactViewModel).GetTypeInfo().Assembly;
-            var stream = assembly.GetManifestResourceStream(fileName);
-            var text = "";
-            using (var reader = new StreamReader(stream))
-            {
-                text = reader.ReadToEnd();
-            }
-            HtmlContent = text;
-            //MapUrl =
-            //    "https://maps.googleapis.com/maps/api/staticmap?center=Wagramer+Str.+189B,+1210+Wien&zoom=14&scale=2&size=400x450&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:%7CWagramer+Str.+189B,+1210+Wien";
-            // NavigateToMap=new Command(NavigateTo);
+           
         }
-
-        public double WidthMap { get; set; }
-        public double HeightMap { get; set; }
 
         public Command NavigateToMap { get; set; }
         public Command MessageNumberCommand { get; set; }
         public Command DialNumberCommand { get; set; }
         public Command EmailCommand { get; set; }
-        public string HtmlContent { get; set; }
-        public string MapUrl { get; set; }
         public RestaurantModel Restaurant { get; set; }
 
         private void MessageNumber()
