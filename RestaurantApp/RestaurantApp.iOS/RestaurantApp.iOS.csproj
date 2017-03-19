@@ -165,6 +165,8 @@
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Renderers\CheckBox.cs" />
     <Compile Include="Renderers\CircleImageRenderer.cs" />
+    <Compile Include="Renderers\CustomDatePickerRenderer.cs" />
+    <Compile Include="Renderers\CustomTimePickerRenderer.cs" />
     <Compile Include="Renderers\GradientContentViewRenderer.cs" />
     <Compile Include="Renderers\GridViewRenderer.cs" />
     <Compile Include="Renderers\HtmlLabelRenderer.cs" />

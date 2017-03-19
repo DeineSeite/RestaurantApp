@@ -16,10 +16,17 @@ namespace RestaurantApp.Core.Services
         {
             MainPageModel = FreshIOC.Container.Resolve<IMainPageModel>();
             StackNavigation = new List<IBaseContentView>();
+            ViewsCache = new Dictionary<Type, IBaseContentView>();
             _currentPosition = -1;
             _isStepBack = false;
         }
 
+        public Dictionary<Type, IBaseContentView> ViewsCache { get; set; }
+
+        public void AddViewToCache(IBaseContentView contentView)
+        {
+            ViewsCache.Add(contentView.GetType(), contentView);
+        }
 
         public void PushContentView(IBaseContentView contentView)
         {
@@ -74,7 +81,7 @@ namespace RestaurantApp.Core.Services
             }
             catch (Exception e)
             {
-                AppDebugger.WriteLine("Cannot clean StackNavigation "+e.Message);
+                AppDebugger.WriteLine("Cannot clean StackNavigation " + e.Message);
             }
         }
 

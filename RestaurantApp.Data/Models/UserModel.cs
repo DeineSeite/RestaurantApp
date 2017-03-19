@@ -57,7 +57,9 @@ namespace RestaurantApp.Data.Models
 
         [JsonProperty(PropertyName = "googleplusId")]
         public string GoogleplusId { get; set; }
-        
+
+        public string RecommendBy { get; set; }
+
         public string AccessToken { get; set; }
     }
 }

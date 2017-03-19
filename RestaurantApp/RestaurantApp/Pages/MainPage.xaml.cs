@@ -38,20 +38,20 @@ namespace RestaurantApp.Pages
         }
         public void AddFloatButtonToLayout()
         {
-            var normalFab = new FAB.Forms.FloatingActionButton();
+            FabButton = new FAB.Forms.FloatingActionButton();
             var backgroundColor = (Color)Application.Current.Resources["MainThemeColor"];
-            normalFab.NormalColor = backgroundColor;
-            normalFab.Source = "share.png";
-            normalFab.Size = FabSize.Normal;
+            FabButton.NormalColor = backgroundColor;
+            FabButton.Source = "share.png";
+            FabButton.Size = FabSize.Normal;
             var width = new OnIdiom<int>
             {
                 Tablet = 80,
                 Phone = 50
             };
-            AbsoluteLayout.SetLayoutBounds(normalFab, new Rectangle(.95, .95, width, width));
-            AbsoluteLayout.SetLayoutFlags(normalFab, AbsoluteLayoutFlags.PositionProportional);
-            MainLayout.Children.Add(normalFab);
-            normalFab.Clicked += delegate
+            AbsoluteLayout.SetLayoutBounds(FabButton, new Rectangle(.95, .95, width, width));
+            AbsoluteLayout.SetLayoutFlags(FabButton, AbsoluteLayoutFlags.PositionProportional);
+            MainLayout.Children.Add(FabButton);
+            FabButton.Clicked += delegate
             {
                 var v = new ShareMessage();
                 var email = Settings.UserEmail ?? Settings.UserId.ToString();
@@ -78,9 +78,11 @@ namespace RestaurantApp.Pages
                 if (currentPage != null)
                 {
                     var titleControl = currentPage.HeaderPage.TitleControl;
-
+                    var isMenu = newValue.GetType() == typeof(MenuView);
                     //Hide Title if MenuView
-                    titleControl.IsVisible = newValue.GetType() != typeof(MenuView);
+                    titleControl.IsVisible = !isMenu;
+                    //Hide FAButton if MenuView
+                    currentPage.FloadButtonVisibility(isMenu);
 
                     //Set Title and Subtitle text for current view
                     titleControl.TitleText = ((BaseContentView) newValue).Title?.ToUpper();

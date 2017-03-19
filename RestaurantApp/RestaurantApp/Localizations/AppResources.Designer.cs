@@ -134,6 +134,15 @@ namespace RestaurantApp.Localizations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to First name and Last name*.
+        /// </summary>
+        public static string ContactFullName {
+            get {
+                return ResourceManager.GetString("ContactFullName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Last name*.
         /// </summary>
         public static string ContactLastName {
@@ -287,6 +296,15 @@ namespace RestaurantApp.Localizations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Recommend by.
+        /// </summary>
+        public static string RecommendBy {
+            get {
+                return ResourceManager.GetString("RecommendBy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Send.
         /// </summary>
         public static string Send {
@@ -310,6 +328,15 @@ namespace RestaurantApp.Localizations {
         public static string Tables {
             get {
                 return ResourceManager.GetString("Tables", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time*.
+        /// </summary>
+        public static string Time {
+            get {
+                return ResourceManager.GetString("Time", resourceCulture);
             }
         }
     }

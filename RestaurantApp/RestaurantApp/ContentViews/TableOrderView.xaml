@@ -5,6 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:contentViews="clr-namespace:RestaurantApp.ContentViews;assembly=RestaurantApp"
     xmlns:localizations="clr-namespace:RestaurantApp.Localizations;assembly=RestaurantApp"
+    xmlns:userControls="clr-namespace:RestaurantApp.UserControls;assembly=RestaurantApp"
     xmlns:viewModels="clr-namespace:RestaurantApp.Core.ViewModels;assembly=RestaurantApp.Core"
     Title="{x:Static localizations:AppResources.Tables}">
     <contentViews:BaseContentView.BindingContext>
@@ -34,7 +35,7 @@
                         Grid.Row="0"
                         Grid.ColumnSpan="2"
                         Margin="0,0,80,0"
-                        Placeholder="{x:Static localizations:AppResources.ContactFirstName}"
+                        Placeholder="{x:Static localizations:AppResources.ContactFullName}"
                         Text="{Binding Order.FullName}" />
                     <Entry
                         Grid.Row="1"
@@ -50,16 +51,19 @@
                         Keyboard="Telephone"
                         Placeholder="{x:Static localizations:AppResources.ContactNumber}"
                         Text="{Binding Order.PhoneNumber}" />
-                    <DatePicker
+                    <userControls:CustomDatePicker
                         Grid.Row="3"
                         Grid.Column="0"
                         Date="{Binding Order.ReservationDate}"
                         Format="yyyy-MM-dd"
-                        MinimumDate="{x:Static x:DateTime.Now}" />
-                    <TimePicker
+                        MinimumDate="{x:Static x:DateTime.Now}"
+                        PlaceHolder="{x:Static localizations:AppResources.ContactDate}" />
+                    <userControls:CustomTimePicker
+                        x:Name="PickerTime"
                         Grid.Row="3"
                         Grid.Column="1"
                         Format="HH:mm"
+                        PlaceHolder="{x:Static localizations:AppResources.Time}"
                         Time="{Binding Time}" />
                     <Entry
                         Grid.Row="4"
@@ -78,7 +82,7 @@
                     <Button
                         Grid.Row="5"
                         Grid.Column="1"
-                        BackgroundColor="Green"
+                        BackgroundColor="{StaticResource MainThemeColor}"
                         Command="{Binding MakeOrderCommand}"
                         Text="{x:Static localizations:AppResources.Send}" />
                 </Grid>

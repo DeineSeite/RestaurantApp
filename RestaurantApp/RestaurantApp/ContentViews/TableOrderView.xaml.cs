@@ -13,6 +13,7 @@ namespace RestaurantApp.ContentViews
         public TableOrderView()
         {
             InitializeComponent();
+           
         }
     }
 }

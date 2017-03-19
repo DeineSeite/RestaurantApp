@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using RestaurantApp.Core.ViewModels;
 
 namespace RestaurantApp.Core.Interfaces
@@ -13,5 +14,7 @@ namespace RestaurantApp.Core.Interfaces
         void PushViewModel(BaseViewModel model);
         void PushViewModel<T>() where T : BaseViewModel;
         void CleanStackNavigation();
+        void AddViewToCache(IBaseContentView contentView);
+        Dictionary<Type, IBaseContentView> ViewsCache { get; set; }
     }
 }

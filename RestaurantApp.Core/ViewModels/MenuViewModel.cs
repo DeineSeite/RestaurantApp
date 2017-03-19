@@ -51,9 +51,17 @@ namespace RestaurantApp.Core.ViewModels
 
         private void PushContent(MenuItem view)
         {
-          var item= ContentViewModelResolver.ResolveViewModel(view.ViewType,view.Params);
-            item.Title = view.Title;
-            _contentNavigationService.PushContentView(item);
+            IBaseContentView contentView;
+            if (!NavigationContentService.ViewsCache.ContainsKey(view.ViewType))
+            {
+                contentView = ContentViewModelResolver.ResolveViewModel(view.ViewType, view.Params);
+                contentView.Title = view.Title;
+            }
+            else
+            {
+                contentView = NavigationContentService.ViewsCache[view.ViewType];
+            }
+            _contentNavigationService.PushContentView(contentView);
         }
 
         #endregion

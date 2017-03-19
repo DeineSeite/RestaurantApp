@@ -112,6 +112,8 @@
     </Compile>
     <Compile Include="UserControls\CheckBox.cs" />
     <Compile Include="UserControls\CircleImage.cs" />
+    <Compile Include="UserControls\CustomDatePicker.cs" />
+    <Compile Include="UserControls\CustomTimePicker.cs" />
     <Compile Include="UserControls\GradientContentView.cs" />
     <Compile Include="UserControls\GridView.cs" />
     <Compile Include="UserControls\HeaderTemplate.xaml.cs">

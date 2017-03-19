@@ -6,6 +6,7 @@
     xmlns:behaviors="clr-namespace:RestaurantApp.Core.Behaviors;assembly=RestaurantApp.Core"
     xmlns:contentViews="clr-namespace:RestaurantApp.ContentViews;assembly=RestaurantApp"
     xmlns:localizations="clr-namespace:RestaurantApp.Localizations;assembly=RestaurantApp"
+    xmlns:userControls="clr-namespace:RestaurantApp.UserControls;assembly=RestaurantApp"
     xmlns:viewModels="clr-namespace:RestaurantApp.Core.ViewModels;assembly=RestaurantApp.Core"
     Title="{x:Static localizations:AppResources.Signup}">
     <contentViews:BaseContentView.BindingContext>
@@ -18,6 +19,7 @@
             AbsoluteLayout.LayoutFlags="All"
             VerticalOptions="FillAndExpand">
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -57,14 +59,20 @@
                 Keyboard="Telephone"
                 Placeholder="{x:Static localizations:AppResources.ContactNumber}"
                 Text="{Binding User.Phone}" />
-            <DatePicker
+            <userControls:CustomDatePicker
                 Grid.Row="5"
                 Date="{Binding User.BirthDay}"
                 Format="yyyy-MM-dd"
                 MaximumDate="{x:Static x:DateTime.Now}"
+                PlaceHolder="{x:Static localizations:AppResources.Birthday}"
                 VerticalOptions="CenterAndExpand" />
-            <Button
+            <Entry
                 Grid.Row="6"
+                Keyboard="Email"
+                Placeholder="{x:Static localizations:AppResources.RecommendBy}"
+                Text="{Binding User.RecommendBy}" />
+            <Button
+                Grid.Row="7"
                 Style="{StaticResource ButtonStyle}"
                 Command="{Binding SignUpCommand}"
                 Text="{x:Static localizations:AppResources.Signup}">
