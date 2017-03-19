@@ -166,6 +166,14 @@
       <Project>{67F9D3A8-F71E-4428-913F-C37AE82CDB24}</Project>
       <Name>RestaurantApp.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\SocialService.Abstractions\SocialService.Abstractions.csproj">
+      <Project>{90f859e0-9bc9-4da6-bfc6-1666e59b73c0}</Project>
+      <Name>SocialService.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SocialService\SocialService.csproj">
+      <Project>{4377628f-61b7-481b-9898-0ac6fd6f9873}</Project>
+      <Name>SocialService</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Com.OneSignal, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">

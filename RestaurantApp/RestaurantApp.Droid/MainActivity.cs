@@ -19,7 +19,7 @@ using UXDivers.Gorilla.Droid;
 #endif
 namespace RestaurantApp.Droid
 {
-    [Activity(Label = "RestaurantApp",
+    [Activity(Label = "Gastro app",
 #if GORILLA
         Icon = "@drawable/iconGorilla",
 #else
@@ -38,6 +38,7 @@ namespace RestaurantApp.Droid
 
             base.OnCreate(bundle);
             var s = CrossShare.Current;
+          
 #if !GORILLA
             var watch = Stopwatch.StartNew();
             LoadApplication(new App());

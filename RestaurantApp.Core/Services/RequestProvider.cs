@@ -21,7 +21,11 @@ namespace RestaurantApp.Core.Services
 
             {
                 ContractResolver = new CamelCasePropertyNamesContractResolver(),
-                DateTimeZoneHandling = DateTimeZoneHandling.Utc
+                DateTimeZoneHandling = DateTimeZoneHandling.Utc,
+                NullValueHandling = NullValueHandling.Ignore,
+              
+               
+            
             };
         }
 

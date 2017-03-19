@@ -169,6 +169,7 @@ namespace RestaurantApp
                 };
                 var dataAccess = FreshIOC.Container.Resolve<IRestaurantDataAccess>();
                 dataAccess.AddAction(fakeAction);
+               
             });
         }
 

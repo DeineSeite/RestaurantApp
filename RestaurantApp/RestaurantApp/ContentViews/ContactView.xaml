@@ -70,10 +70,10 @@
                             <Image
                                 Aspect="AspectFit"
                                 HeightRequest="20"
-                                Source="message.png"
+                                Source="phone.png"
                                 WidthRequest="20">
                                 <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding MessageNumberCommand}" NumberOfTapsRequired="1" />
+                                    <TapGestureRecognizer Command="{Binding DialNumberCommand}" NumberOfTapsRequired="1" />
                                 </Image.GestureRecognizers>
                             </Image>
                             <Label
@@ -82,15 +82,6 @@
                                 LineBreakMode="TailTruncation"
                                 Text="{Binding Restaurant.Phone}"
                                 VerticalTextAlignment="Center" />
-                            <Image
-                                Aspect="AspectFit"
-                                HeightRequest="20"
-                                Source="phone.png"
-                                WidthRequest="20">
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding DialNumberCommand}" NumberOfTapsRequired="1" />
-                                </Image.GestureRecognizers>
-                            </Image>
                         </StackLayout>
                     </ContentView>
                     <ContentView IsEnabled="True" IsVisible="True">
@@ -115,12 +106,12 @@
                 </StackLayout>
             </StackLayout>
         </ContentView>
-
-        <userControls:LiteGoogleMap
-            x:Name="ContactMap"
+        <ContentView
+            x:Name="MapView"
             Margin="0,15,0,0"
             HeightRequest="300"
             VerticalOptions="FillAndExpand" />
+
 
 
     </StackLayout>

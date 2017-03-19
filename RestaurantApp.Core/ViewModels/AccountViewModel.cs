@@ -58,7 +58,7 @@ namespace RestaurantApp.Core.ViewModels
                 AppDebugger.WriteLine("Login " + e.Message);
                 DisplayService.DisplayAlert("Login failed:", e.Message);
             }
-
+            
         }
 
         private async void FacebookManager_OnUserAuthentication(object sender, SocialService.Abstractions.FacebookProfile profile)
@@ -67,7 +67,7 @@ namespace RestaurantApp.Core.ViewModels
             {
                 var userModel = Util.FacebookProfileToUsermodel(profile);
                 var autService = FreshIOC.Container.Resolve<IAuthenticationService>();
-                await autService.SignUp(userModel);
+              userModel=  await autService.SignUp(userModel);
                 NavigationContentService.PushViewModel<AccountViewModel>();
                 NavigationContentService.CleanStackNavigation();
             }
@@ -75,6 +75,10 @@ namespace RestaurantApp.Core.ViewModels
             {
                 AppDebugger.WriteLine("Login " + e.Message);
                 DisplayService.DisplayAlert("Login failed:", e.Message);
+            }
+            finally
+            {
+                SocialService.SocialService.FacebookManager.OnUserAuthentication -= FacebookManager_OnUserAuthentication;
             }
         }
 

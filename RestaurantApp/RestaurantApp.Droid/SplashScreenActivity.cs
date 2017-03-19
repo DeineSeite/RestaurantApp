@@ -38,10 +38,10 @@ namespace RestaurantApp.Droid
             Finish();
             Xamarin.FormsGoogleMaps.Init(this, savedInstanceState);
             FlowListView.Init();
-           
+            
             // StartAnimations();
-          //  Log.Debug("GASTRO APP", "1");
-           // ThreadPool.QueueUserWorkItem(o => Init(savedInstanceState));
+            //  Log.Debug("GASTRO APP", "1");
+            // ThreadPool.QueueUserWorkItem(o => Init(savedInstanceState));
         }
 
         //private async void Init(Bundle bundle)
