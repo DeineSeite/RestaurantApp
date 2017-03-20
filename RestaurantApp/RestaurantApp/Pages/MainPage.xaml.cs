@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using FAB.Forms;
 using FreshMvvm;
 using Plugin.Share;
@@ -7,7 +8,7 @@ using Plugin.Share.Abstractions;
 using RestaurantApp.ContentViews;
 using RestaurantApp.Core.Helpers;
 using RestaurantApp.Core.Interfaces;
-using RestaurantApp.Data.Access;
+using RestaurantApp.Localizations;
 using RestaurantApp.UserControls;
 using Xamanimation;
 using Xamarin.Forms;
@@ -21,25 +22,64 @@ namespace RestaurantApp.Pages
                 BindingMode.TwoWay, null,
                 ContentChanged, null, null);
 
+        private FloatingActionButton FabButton;
+
         public MainPage()
         {
             InitializeComponent();
 
             this.SetBinding(MainContentProperty, "MainContentView");
             IsBusy = true;
-            AddFloatButtonToLayout();
-
+            Task.Run(() =>
+                {
+                    AddFloatButtonToLayout();
+                    AddLikeButton();
+                }
+            );
         }
 
-        private FAB.Forms.FloatingActionButton FabButton;
+        public BaseContentView MainContent
+        {
+            get { return (BaseContentView) GetValue(MainContentProperty); }
+            set { SetValue(MainContentProperty, value); }
+        }
+
         public void FloadButtonVisibility(bool visible)
         {
             FabButton.IsVisible = visible;
         }
-        public void AddFloatButtonToLayout()
+        public void LikeButtonVisibility(bool visible)
         {
-            FabButton = new FAB.Forms.FloatingActionButton();
-            var backgroundColor = (Color)Application.Current.Resources["MainThemeColor"];
+            FabButton.IsVisible = visible;
+        }
+
+        private TransparentWebView _likeView;
+        private void AddLikeButton()
+        {
+            _likeView = new TransparentWebView();
+            var source = new HtmlWebViewSource();
+            source.Html = @"<html>
+                           <head> 
+                           </head>
+                           <body>
+                           <iframe src=""http://www.facebook.com/plugins/like.php?href=https://www.facebook.com/gastroappdeineseite&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=false&amp;font&amp;colorscheme=light&amp;action=like&amp;height=21"" 
+                                   scrolling=""no"" 
+                                   frameborder=""0"" 
+                                   style=""border:none; overflow:hidden; width:300px; ""
+                                   allowTransparency=""true"">
+                           </iframe>
+                           </body>
+                           </html>";
+            _likeView.Source = source;
+            AbsoluteLayout.SetLayoutBounds(_likeView, new Rectangle(.05, .95, 210, 30));
+            AbsoluteLayout.SetLayoutFlags(_likeView, AbsoluteLayoutFlags.PositionProportional);
+            MainLayout.Children.Add(_likeView);
+        }
+
+        private void AddFloatButtonToLayout()
+        {
+            FabButton = new FloatingActionButton();
+            var backgroundColor = (Color) Application.Current.Resources["MainThemeColor"];
             FabButton.NormalColor = backgroundColor;
             FabButton.Source = "share.png";
             FabButton.Size = FabSize.Normal;
@@ -55,17 +95,11 @@ namespace RestaurantApp.Pages
             {
                 var v = new ShareMessage();
                 var email = Settings.UserEmail ?? Settings.UserId.ToString();
-                v.Url = "http://www.gastro-app.com/download/download.php?file=com.restaurant.droid.apk&email="+email;
-                v.Title = "Share with your friend";
-                v.Text = $"hi friend, check this app ({v.Url}) and if you register (and by registration you put my email as recommender) I will get free point (stempel).";
+                v.Url = "http://www.gastro-app.com/download/download.php?file=com.restaurant.droid.apk&email=" + email;
+                v.Title = AppResources.ShareWithFriend;
+                v.Text = string.Format(AppResources.HiFriend, v.Url);
                 CrossShare.Current.Share(v);
             };
-
-        }
-        public BaseContentView MainContent
-        {
-            get { return (BaseContentView) GetValue(MainContentProperty); }
-            set { SetValue(MainContentProperty, value); }
         }
 
 
@@ -79,10 +113,13 @@ namespace RestaurantApp.Pages
                 {
                     var titleControl = currentPage.HeaderPage.TitleControl;
                     var isMenu = newValue.GetType() == typeof(MenuView);
+
                     //Hide Title if MenuView
                     titleControl.IsVisible = !isMenu;
-                    //Hide FAButton if MenuView
+
+                    //Hide FAButton and LikeButton if not MenuView
                     currentPage.FloadButtonVisibility(isMenu);
+                    currentPage.LikeButtonVisibility(isMenu);
 
                     //Set Title and Subtitle text for current view
                     titleControl.TitleText = ((BaseContentView) newValue).Title?.ToUpper();
@@ -107,7 +144,7 @@ namespace RestaurantApp.Pages
                     if (((ContentView) newValue).Content is TransparentWebView)
                         currentPage.MainContentView.VerticalOptions = LayoutOptions.FillAndExpand;
                     else
-                       currentPage.MainContentView.VerticalOptions = LayoutOptions.Start;
+                        currentPage.MainContentView.VerticalOptions = LayoutOptions.Start;
                     //---------------------------------------------------------
                 }
             }

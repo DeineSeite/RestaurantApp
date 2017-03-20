@@ -224,6 +224,15 @@ namespace RestaurantApp.Localizations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to hi friend, check this app ({0}) and if you register (and by registration you put my email as recommender) I will get free point (stempel)..
+        /// </summary>
+        public static string HiFriend {
+            get {
+                return ResourceManager.GetString("HiFriend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Information.
         /// </summary>
         public static string Info {
@@ -310,6 +319,15 @@ namespace RestaurantApp.Localizations {
         public static string Send {
             get {
                 return ResourceManager.GetString("Send", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Share with your friend.
+        /// </summary>
+        public static string ShareWithFriend {
+            get {
+                return ResourceManager.GetString("ShareWithFriend", resourceCulture);
             }
         }
         

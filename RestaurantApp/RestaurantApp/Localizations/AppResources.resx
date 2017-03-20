@@ -210,4 +210,10 @@
   <data name="ContactFullName" xml:space="preserve">
     <value>First name and Last name*</value>
   </data>
+  <data name="HiFriend" xml:space="preserve">
+    <value>hi friend, check this app ({0}) and if you register (and by registration you put my email as recommender) I will get free point (stempel).</value>
+  </data>
+  <data name="ShareWithFriend" xml:space="preserve">
+    <value>Share with your friend</value>
+  </data>
 </root>

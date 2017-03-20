@@ -20,8 +20,22 @@ namespace RestaurantApp.Droid.Renderers
             var customWebViewClient = new CustomWebClient();
             Control.SetBackgroundColor(Color.Transparent.ToAndroid());
             Control.SetWebViewClient(customWebViewClient);
+            Control.LayoutChange += Control_LayoutChange;
             customWebViewClient.PageLoading += CustomWebViewClient_PageLoading;
             customWebViewClient.PageFinished += CustomWebViewClient_PageFinished;
+          
+            
+        }
+
+        
+
+        private void Control_Click(object sender, EventArgs e)
+        {
+            var s = sender;
+        }
+
+        private void Control_LayoutChange(object sender, LayoutChangeEventArgs e)
+        {
             
         }
 

@@ -42,9 +42,8 @@ namespace RestaurantApp
 
             //Set Start page
             MainPage = BasicNavContainer;
+            Task.Run(() => InitializePushNotificationService());
 
-            Task.Run(() => { InitializePushNotificationService(); });
-            
         }
 
         #endregion
@@ -153,7 +152,7 @@ namespace RestaurantApp
 
         private void ReceiveNotification(OSNotification notification)
         {
-           FreshIOC.Container.Resolve<INotificationService>().ReceiveNotification(notification);
+            FreshIOC.Container.Resolve<INotificationService>().ReceiveNotification(notification);
         }
 
         private async void InitFakeData()
@@ -169,7 +168,7 @@ namespace RestaurantApp
                 };
                 var dataAccess = FreshIOC.Container.Resolve<IRestaurantDataAccess>();
                 dataAccess.AddAction(fakeAction);
-               
+
             });
         }
 
